@@ -20,10 +20,15 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+	// load library
 	$this->load->library('format_rupiah');
+	// mengambil data dari db
 	$sql = "SELECT kamera.*, merek.* FROM kamera, merek WHERE merek.id_merek = kamera.id_merek";
 	$result =  $this->db->query($sql)->result_array();
 	$data = array('planet' => $result);
-	$this->load->view('coba',$data);
+	//mengirimkan data ke view
+	$this->load->view('header');
+	$this->load->view('home',$data);
+	$this->load->view('footer');
 	}
 }
