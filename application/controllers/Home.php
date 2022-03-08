@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,18 +21,30 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-	// load library
-	$this->load->library('format_rupiah');
-	// mengambil data dari db
-	$sql = "SELECT kamera.*, merek.* FROM kamera, merek WHERE merek.id_merek = kamera.id_merek";
-	$result =  $this->db->query($sql)->result_array();
-	$data = array('planet' => $result);
-	//mengirimkan data ke view
-	$this->load->view('template/header');
-	$this->load->view('home',$data);
-	$this->load->view('template/footer');
+		// load library
+		$this->load->library('format_rupiah');
+		// mengambil data dari db
+		$sql = "SELECT kamera.*, merek.* FROM kamera, merek WHERE merek.id_merek = kamera.id_merek";
+		$result =  $this->db->query($sql)->result_array();
+		$data = array('planet' => $result);
+		//mengirimkan data ke view
+		$this->load->view('template/header');
+		$this->load->view('home', $data);
+		$this->load->view('template/footer');
 	}
 
-	public function arr()
-	{ echo "qwerty";}
+	public function product_full()
+	{
+		$this->load->library('format_rupiah');
+		// mengambil data dari db
+		$vhid = intval($_GET['vhid']);
+		$sql = "SELECT kamera.*, merek.* from kamera, merek WHERE merek.id_merek=kamera.id_merek AND kamera.id_kamera='$vhid'";
+		$result =  $this->db->query($sql)->result_array();
+		$data = array('planet' => $result);
+		//mengirimkan data ke view
+		$this->load->view('template/header');
+		$this->load->view('detail', $data);
+		$this->load->view('template/footer');
+		// var_dump($data);
+	}
 }

@@ -17,13 +17,12 @@
         <div class="row">
             <div class="content-area shop-grid-content full-width col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="site-main">
-                    <div class="banner-shop banner-slider owl-slick equal-container"
-                         data-slick='{"autoplay":true, "autoplaySpeed":10000, "arrows":false, "dots":true, "infinite":true, "speed":800, "rows":1}'>
+                    <div class="banner-shop banner-slider owl-slick equal-container" data-slick='{"autoplay":true, "autoplaySpeed":10000, "arrows":false, "dots":true, "infinite":true, "speed":800, "rows":1}'>
                         <div class="item-banner style1">
                             <div class="inner equal-element">
                                 <div class="banner-content style1">
                                     <h4 class="tanajil-subtitle">Start ur weekend off right!</h4>
-                                    <h3 class="title">Flash Sale Up To<br/> 15% Off</h3>
+                                    <h3 class="title">Flash Sale Up To<br /> 15% Off</h3>
                                     <span class="when-code">When Use Code: <span class="code">TANAJIL</span></span>
                                     <button class="button button-now">shop now</button>
                                 </div>
@@ -33,7 +32,7 @@
                             <div class="inner equal-element">
                                 <div class="banner-content style2">
                                     <h3 class="title">Superior cars</h3>
-                                    <span class="description">Enjoy an entirely new level of <br/>  driving experience</span>
+                                    <span class="description">Enjoy an entirely new level of <br /> driving experience</span>
                                     <span class="hot-price">Hot Price: <span class="price-number">$250.00</span></span>
                                     <button class="button button-now">shop now</button>
                                     <button class="button button-view">View all</button>
@@ -81,58 +80,58 @@
                         </div>
                     </div>
                     <ul class="row list-products auto-clear equal-container product-grid">
-                    <?php
-                        foreach($planet as $new) {
-                    ?>
-                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                        <div class="product-inner equal-element">
-                                <div class="product-top">
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="<?= $new['id_kamera']?>">
-                                            <img src="assets/images/item/<?= $new['image1']?>" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
+                        <?php
+                        foreach ($planet as $new) {
+                        ?>
+                            <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                <div class="product-inner equal-element">
+                                    <div class="product-top">
+                                    </div>
+                                    <div class="product-thumb">
+                                        <div class="thumb-inner">
+                                            <a href="detail?vhid=<?= $new['id_kamera'] ?>">
+                                                <img src="assets/images/item/<?= $new['image1'] ?>" alt="img">
+                                            </a>
+                                            <div class="thumb-group">
+                                                <div class="yith-wcwl-add-to-wishlist">
+                                                    <div class="yith-wcwl-add-button">
+                                                        <a href="#">Add to Wishlist</a>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                <div class="loop-form-add-to-cart">
+                                                    <button class="single_add_to_cart_button button">Add to cart
+                                                    </button>
                                                 </div>
                                             </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h5 class="product-name product_title">
+                                            <a href="#"><?= $new['nama_kamera'] ?></a>
+                                        </h5>
+                                        <div class="group-info">
+                                            <div class="stars-rating">
+                                                <div class="star-rating">
+                                                    <span class="star-3"></span>
+                                                </div>
+                                                <div class="count-star">
+                                                    (3)
+                                                </div>
+                                            </div>
+                                            <div class="price">
+                                                <del>
+                                                    $65
+                                                </del>
+                                                <ins>
+                                                    <?= $this->format_rupiah->format($new['harga']) ?>
+                                                </ins>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#"><?= $new['nama_kamera']?></a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                <?= $this->format_rupiah->format($new['harga'])?>
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                            <?php }?>
+                            </li>
+                        <?php } ?>
                         <!-- <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
                             <div class="product-inner equal-element">
                                 <div class="product-top">
@@ -706,13 +705,11 @@
                     </ul>
                     <div class="pagination clearfix style2">
                         <div class="nav-link">
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-left"
-                                                                aria-hidden="true"></i></a>
+                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
                             <a href="#" class="page-numbers">1</a>
                             <a href="#" class="page-numbers">2</a>
                             <a href="#" class="page-numbers current">3</a>
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-right"
-                                                                aria-hidden="true"></i></a>
+                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -766,8 +763,7 @@
                                 Price
                             </h4>
                             <div class="price-slider-wrapper">
-                                <div data-label-reasult="Range:" data-min="0" data-max="3000" data-unit="$"
-                                     class="slider-range-price " data-value-min="0" data-value-max="1000">
+                                <div data-label-reasult="Range:" data-min="0" data-max="3000" data-unit="$" class="slider-range-price " data-value-min="0" data-value-max="1000">
                                 </div>
                                 <div class="price-slider-amount">
                                     <span class="from">$45</span>
