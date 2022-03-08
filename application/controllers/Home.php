@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Home extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -27,8 +27,11 @@ class Welcome extends CI_Controller {
 	$result =  $this->db->query($sql)->result_array();
 	$data = array('planet' => $result);
 	//mengirimkan data ke view
-	$this->load->view('header');
+	$this->load->view('template/header');
 	$this->load->view('home',$data);
-	$this->load->view('footer');
+	$this->load->view('template/footer');
 	}
+
+	public function arr()
+	{ echo "qwerty";}
 }
