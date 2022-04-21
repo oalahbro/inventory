@@ -19,32 +19,35 @@ class Home extends CI_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('mymodel');
+	}
+
 	public function index()
 	{
 		// load library
 		$this->load->library('format_rupiah');
-		// mengambil data dari db
-		$sql = "SELECT kamera.*, merek.* FROM kamera, merek WHERE merek.id_merek = kamera.id_merek";
-		$result =  $this->db->query($sql)->result_array();
-		$data = array('planet' => $result);
+		// load data from model
+		$data = array('planet' => $this->mymodel->getData());
 		//mengirimkan data ke view
-		$this->load->view('template/header');
-		$this->load->view('home', $data);
-		$this->load->view('template/footer');
+		$this->load->view('template/home/header');
+		$this->load->view('home/home', $data);
+		$this->load->view('template/home/footer');
+		// var_dump($data);
 	}
 
 	public function product_full()
 	{
-		$this->load->library('format_rupiah');
-		// mengambil data dari db
 		$vhid = intval($_GET['vhid']);
-		$sql = "SELECT kamera.*, merek.* from kamera, merek WHERE merek.id_merek=kamera.id_merek AND kamera.id_kamera='$vhid'";
-		$result =  $this->db->query($sql)->result_array();
-		$data = array('planet' => $result);
+		$this->load->library('format_rupiah');
+		//load data from model
+		$data = array('planet' => $this->mymodel->product_full($vhid));
 		//mengirimkan data ke view
-		$this->load->view('template/header');
-		$this->load->view('detail', $data);
-		$this->load->view('template/footer');
+		$this->load->view('template/home/header');
+		$this->load->view('home/detail', $data);
+		$this->load->view('template/home/footer');
 		// var_dump($data);
 	}
 }
