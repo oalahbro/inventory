@@ -847,7 +847,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./data-ruang.html">Data Ruang</a></li>
-                            <li><a href="./data-barang.html">Data Barang</a></li>
+                            <li><a href="<?= base_url() ?>admin/data_barang">Data Barang</a></li>
                             <!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Data Barang</a> -->
                             <!-- <ul aria-expanded="false">
                                     <li><a href="./email-compose.html">Compose</a></li>

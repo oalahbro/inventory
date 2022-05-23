@@ -1,6 +1,3 @@
-<!--**********************************
-            Content body start
-        ***********************************-->
 <div class="content-body">
 	<!-- row -->
 	<div class="container-fluid">
@@ -250,14 +247,13 @@
 				</div>
 			</td>
 		</tr>
-		<tr>
-			<!-- <td>
+		<!-- <td>
 											<div class="custom-control custom-checkbox">
 												<input type="checkbox" class="custom-control-input" id="customCheckBox6" required="">
 												<label class="custom-control-label" for="customCheckBox6"></label>
 											</div>
 										</td> -->
-			<!-- <td>#P-00012</td>
+		<!-- <td>#P-00012</td>
 										<td>26/02/2020, 12:42 AM</td>
 										<td>Alexia Kev</td>
 										<td>Dr. Samantha</td>
@@ -268,7 +264,7 @@
 												In Treatment
 											</span>
 										</td> -->
-			<!-- <td>AB-002</td>
+		<!-- <td>AB-002</td>
 										<td>
 											<div class="dropdown ml-auto text-right">
 												<div class="btn-link" data-toggle="dropdown">
@@ -509,6 +505,3 @@
 </div>
 </div>
 </div>
-<!--**********************************
-            Content body end
-        ***********************************-->
