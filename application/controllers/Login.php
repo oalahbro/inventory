@@ -10,8 +10,12 @@ class Login extends CI_Controller
     }
     public  function index()
     {
+        if (!$this->session->userdata('level')) {
+            $this->load->view('login');
+        }
         if ($this->session->userdata('level') == 1) {
-            return header("location:/superadmin/superadmin");
+            // return header('location:/inventory/admin');
+            echo "sudah login";
         }
         if ($this->session->userdata('level') == 2) {
             return header("location:/admin/admin");
@@ -21,8 +25,6 @@ class Login extends CI_Controller
         }
         if ($this->session->userdata('level') == 4) {
             return header("location:/user/user");
-        } else {
-            $this->load->view('login');
         }
     }
 
@@ -60,5 +62,11 @@ class Login extends CI_Controller
     public  function register()
     {
         $this->load->view('register');
+    }
+
+    public  function logout()
+    {
+        $this->session->sess_destroy();
+        $this->index();
     }
 }
