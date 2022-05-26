@@ -13,11 +13,30 @@ class Loginmodel extends CI_Model
         return $result;
     }
 
-    public function product_full($vhid)
+    public function cekPenyewa()
     {
-        $sql = "SELECT kamera.*, merek.* from kamera, merek WHERE merek.id_merek=kamera.id_merek AND kamera.id_kamera='$vhid'";
+        $username = $this->input->post('username');
+        $password = md5($this->input->post('password'));
+
+        $sql = "SELECT * FROM penyewa WHERE email='$username' AND password='$password'";
         $result =  $this->db->query($sql)->result_array();
         return $result;
-        // $data = array('planet' => $result);
+    }
+
+    public function resgister()
+    {
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'email' => $this->input->post('email'),
+            'telp' => $this->input->post('telp'),
+            'no_identitas' => $this->input->post('no_identitas'),
+            'jenis_penyewa' => '1',
+            'alamat' => $this->input->post('alamat'),
+            'level' => '3',
+            'password' => md5($this->input->post('password'))
+        ];
+
+        $result =  $this->db->insert('penyewa', $data);
+        return $result;
     }
 }

@@ -10,58 +10,70 @@ class Login extends CI_Controller
     }
     public  function index()
     {
-        if (!$this->session->userdata('level')) {
+        if (!$this->session->userdata('level') && !$this->session->userdata('levelpenyewa')) {
             $this->load->view('login');
         }
         if ($this->session->userdata('level') == 1) {
-            // return header('location:/inventory/admin');
-            echo "sudah login";
+            redirect(base_url("superadmin"));
         }
         if ($this->session->userdata('level') == 2) {
-            return header("location:/admin/admin");
+            redirect(base_url("beranda"));
         }
-        if ($this->session->userdata('level') == 3) {
-            return header("location:/siswa/siswa");
+        if ($this->session->userdata('levelpenyewa') == 1) {
+            echo "penyewa 1";
         }
-        if ($this->session->userdata('level') == 4) {
-            return header("location:/user/user");
+        if ($this->session->userdata('levelpenyewa') == 2) {
+            echo "penyewa 2";
         }
     }
 
     public  function auth()
     {
-        if (!$this->session->userdata('userdata')) {
+        if (!$this->session->userdata('level') && !$this->session->userdata('levelpenyewa')) {
+            $cariDatapenyewa = $this->Loginmodel->cekPenyewa();
+            $cariDataadmin = $this->Loginmodel->cek();
 
-            $cariData = $this->Loginmodel->cek();
-            if ($cariData) {
+            if ($cariDataadmin) {
                 $data_session = [
-                    'username' => $cariData[0]['username'],
+                    'username' => $cariDataadmin[0]['username'],
                     'status' => "login",
-                    'level' => $cariData[0]['level']
+                    'level' => $cariDataadmin[0]['level']
                 ];
                 $this->session->set_userdata($data_session);
-                echo 'berhasil login';
-                if ($cariData[0]['level'] == 1) {
-                    return header('location:/inventory/admin');
+
+                if ($cariDataadmin[0]['level'] == 1) {
+                    redirect(base_url("superadmin"));
                 }
-                if ($cariData[0]['level'] == 2) {
-                    return header('location:/superadmin/superadmin');
+                if ($cariDataadmin[0]['level'] == 2) {
+                    redirect(base_url("beranda"));
                 }
-                if ($cariData[0]['level'] == 3) {
-                    return header('location:/siswa/siswa');
-                }
-                if ($cariData[0]['level'] == 4) {
-                    return header('location:/user/user');
-                }
+            } else if ($cariDatapenyewa) {
+                $data_session = [
+                    'email' => $cariDatapenyewa[0]['email'],
+                    'status' => "login",
+                    'levelpenyewa' => $cariDatapenyewa[0]['level']
+                ];
+                $this->session->set_userdata($data_session);
+
+                echo "user";
             } else {
                 // $error['danger'] = "";
                 echo 'gagal';
             }
+        } else {
+            $this->index();
         }
     }
+
     public  function register()
     {
         $this->load->view('register');
+    }
+
+    public  function signup()
+    {
+        $cek = $this->Loginmodel->resgister();
+        var_dump($cek);
     }
 
     public  function logout()

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller
+class Superadmin extends CI_Controller
 {
 
 	/**
@@ -23,6 +23,10 @@ class Admin extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mymodel');
+		$this->load->model('mymodel');
+		if ($this->session->userdata('level') != 1) {
+			redirect(base_url("login"));
+		}
 	}
 
 	public function index()

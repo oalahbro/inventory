@@ -43,9 +43,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="./images/logo.png" alt="">
-                <img class="logo-compact" src="./images/logo-text.png" alt="">
-                <img class="brand-title" src="./images/logo-text.png" alt="">
+                <img class="logo-abbr" src="<?= base_url() ?>assets/admin/images/logo.png" alt="">
+                <img class="logo-compact" src="<?= base_url() ?>assets/admin/images/logo-text.png" alt="">
+                <img class="brand-title" src="<?= base_url() ?>assets/admin/images/logo-text.png" alt="">
             </a>
 
             <div class="nav-control">
@@ -104,7 +104,7 @@
                                     <li class="active dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/1.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -116,7 +116,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/2.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -128,7 +128,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/3.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -140,7 +140,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/4.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -153,7 +153,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/5.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -165,7 +165,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/1.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -177,7 +177,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/2.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -190,7 +190,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/3.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -202,7 +202,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/4.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -215,7 +215,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/5.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -227,7 +227,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/1.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/1.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -239,7 +239,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/2.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/2.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -251,7 +251,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/3.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/3.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon"></span>
                                             </div>
                                             <div class="user_info">
@@ -264,7 +264,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/4.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/4.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -276,7 +276,7 @@
                                     <li class="dz-chat-user">
                                         <div class="d-flex bd-highlight">
                                             <div class="img_cont">
-                                                <img src="images/avatar/5.jpg" class="rounded-circle user_img" alt="" />
+                                                <img src="<?= base_url() ?>/assets/admin/images/avatar/5.jpg" class="rounded-circle user_img" alt="" />
                                                 <span class="online_icon offline"></span>
                                             </div>
                                             <div class="user_info">
@@ -323,7 +323,7 @@
                             <div class="card-body msg_card_body dz-scroll" id="DZ_W_Contacts_Body3">
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="" />
+                                        <img src="<?= base_url() ?>/assets/admin/images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="" />
                                     </div>
                                     <div class="msg_cotainer">
                                         Hi, how are you samim?
@@ -336,12 +336,12 @@
                                         <span class="msg_time_send">8:55 AM, Today</span>
                                     </div>
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="" />
+                                        <img src="<?= base_url() ?>/assets/admin/images/avatar/2.jpg" class="rounded-circle user_img_msg" alt="" />
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start mb-4">
                                     <div class="img_cont_msg">
-                                        <img src="images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="" />
+                                        <img src="<?= base_url() ?>/assets/admin/images/avatar/1.jpg" class="rounded-circle user_img_msg" alt="" />
                                     </div>
                                     <div class="msg_cotainer">
                                         I am good too, thank you for your chat template
@@ -803,7 +803,7 @@
                                         </svg>
                                         <span class="ml-2">Inbox </span>
                                     </a>
-                                    <a href="./page-login.html" class="dropdown-item ai-icon">
+                                    <a href="<?= base_url() ?>login/logout" class="dropdown-item ai-icon">
                                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                             <polyline points="16 17 21 12 16 7"></polyline>

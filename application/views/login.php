@@ -25,14 +25,14 @@
                                         <a href="index.html"><img src="<?= base_url() ?>assets/admin/images/logo-full.png" alt=""></a>
                                     </div>
                                     <h4 class="text-center mb-4 text-white">Sign in your account</h4>
-                                    <form action="/inventory/login/auth" method="post">
+                                    <form action="<?= base_url() ?>login/auth" method="post">
                                         <div class="form-group">
-                                            <label class="mb-1 text-white"><strong>Username</strong></label>
-                                            <input name="username" type="text" class="form-control" value="username">
+                                            <label class="mb-1 text-white"><strong>Email or Username</strong></label>
+                                            <input name="username" type="text" class="form-control" placeholder="Email or Username">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
-                                            <input name="password" type="password" class="form-control" value="Password">
+                                            <input name="password" type="password" class="form-control" placeholder="Password">
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
                                             <div class="form-group">

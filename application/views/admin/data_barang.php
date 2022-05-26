@@ -50,10 +50,6 @@
 								<label class="text-black font-w500">Image</label>
 								<input type="file" id="file" accept="image/*">
 							</div>
-							<!-- <div class="form-group">
-										<label class="text-black font-w500">Date Check In</label>
-										<input type="date" class="form-control">
-									</div> -->
 							<div class="form-group">
 								<button type="button" class="btn btn-primary">CREATE</button>
 							</div>
@@ -63,445 +59,200 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xl-12">
-				<div class="table-responsive card-table">
-					<table id="example5" class="display dataTablesCard white-border table-responsive-xl">
-						<thead>
-							<tr>
-								<th>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" id="checkAll" required="">
-										<label class="custom-control-label" for="checkAll"></label>
-									</div>
-								</th>
-								<th>ID</th>
-								<!-- <th>Date Check In</th> -->
-								<th>Nama</th>
-								<th>Deskripsi</th>
-								<th>Tahun</th>
-								<th>Jumlah</th>
-								<th>Image</th>
-								<th>Harga</th>
-								<th>Aksi</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-										<label class="custom-control-label" for="customCheckBox2"></label>
-									</div>
-								</td>
-								<td>1</td>
-								<!-- <td>26/02/2020, 12:42 AM</td> -->
-								<td>Meja Guru</td>
-								<td>qwerty</td>
-								<td>2010</td>
-								<!-- <td>
-											<span class="badge badge-outline-primary">
-												<i class="fa fa-circle text-primary mr-1"></i>
-												New Patient
-											</span>
-										</td> -->
-								<td>50</td>
-								<td></td>
-								<td>Rp. 12.000</td>
-								<td>
-									<div class="d-flex">
-										<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-										<a href="#" class="btn btn-info shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
-										<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-									</div>
+			<div class="col-12">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Profile Datatable</h4>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<div id="example3_wrapper" class="dataTables_wrapper no-footer">
+								<div id="example3_filter" class="dataTables_filter"><label>Search:<input type="search" class="" placeholder="" aria-controls="example3"></label></div>
+								<table id="example3" class="display min-w850 dataTable no-footer" role="grid" aria-describedby="example3_info">
+									<thead>
+										<tr role="row">
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label=": activate to sort column ascending" style="width: 35px;"></th>
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 75.6721px;">Name</th>
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Department: activate to sort column ascending" style="width: 97.1803px;">Department</th>
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Gender: activate to sort column ascending" style="width: 56.0164px;">Gender</th>
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Education: activate to sort column ascending" style="width: 82.8197px;">Education</th>
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Mobile: activate to sort column ascending" style="width: 57.9508px;">Mobile</th>
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 127.869px;">Email</th>
+											<th class="sorting" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Joining Date: activate to sort column ascending" style="width: 96.0164px;">Joining Date</th>
+											<th class="sorting_desc" tabindex="0" aria-controls="example3" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 56.0164px;" aria-sort="descending">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr role="row" class="odd">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic1.jpg" alt=""></td>
+											<td>Tiger Nixon</td>
+											<td>Architect</td>
+											<td>Male</td>
+											<td>M.COM., P.H.D.</td>
+											<td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2011/04/25</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="even">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic2.jpg" alt=""></td>
+											<td>Garrett Winters</td>
+											<td>Accountant</td>
+											<td>Female</td>
+											<td>M.COM., P.H.D.</td>
+											<td><a href="javascript:void(0);"><strong>987 654 3210</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2011/07/25</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="odd">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic3.jpg" alt=""></td>
+											<td>Ashton Cox</td>
+											<td>Junior Technical</td>
+											<td>Male</td>
+											<td>B.COM., M.COM.</td>
+											<td><a href="javascript:void(0);"><strong>(123) 4567 890</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2009/01/12</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-info shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="even">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic4.jpg" alt=""></td>
+											<td>Cedric Kelly</td>
+											<td>Developer</td>
+											<td>Male</td>
+											<td>B.COM., M.COM.</td>
+											<td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2012/03/29</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="odd">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic5.jpg" alt=""></td>
+											<td>Airi Satou</td>
+											<td>Accountant</td>
+											<td>Female</td>
+											<td>B.A, B.C.A</td>
+											<td><a href="javascript:void(0);"><strong>987 654 3210</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2008/11/28</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="even">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic6.jpg" alt=""></td>
+											<td>Brielle Williamson</td>
+											<td>Specialist</td>
+											<td>Male</td>
+											<td>B.COM., M.COM.</td>
+											<td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2012/12/02</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="odd">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic7.jpg" alt=""></td>
+											<td>Herrod Chandler</td>
+											<td>Sales Assistant</td>
+											<td>Female</td>
+											<td>B.A, B.C.A</td>
+											<td><a href="javascript:void(0);"><strong>987 654 3210</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2012/08/06</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="even">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic8.jpg" alt=""></td>
+											<td>Rhona Davidson</td>
+											<td>Integration</td>
+											<td>Male</td>
+											<td>B.TACH, M.TACH</td>
+											<td><a href="javascript:void(0);"><strong>(123) 4567 890</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2010/10/14</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="odd">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic9.jpg" alt=""></td>
+											<td>Colleen Hurst</td>
+											<td>Javascript Developer</td>
+											<td>Female</td>
+											<td>B.A, B.C.A</td>
+											<td><a href="javascript:void(0);"><strong>(123) 4567 890</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2009/09/15</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr role="row" class="even">
+											<td class=""><img class="rounded-circle" width="35" src="images/profile/small/pic10.jpg" alt=""></td>
+											<td>Sonya Frost</td>
+											<td>Software Engineer</td>
+											<td>Male</td>
+											<td>B.COM., M.COM.</td>
+											<td><a href="javascript:void(0);"><strong>123 456 7890</strong></a></td>
+											<td><a href="javascript:void(0);"><strong>info@example.com</strong></a></td>
+											<td>2008/12/13</td>
+											<td class="sorting_1">
+												<div class="d-flex">
+													<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="dataTables_paginate paging_simple_numbers" id="example3_paginate"><a class="paginate_button previous disabled" aria-controls="example3" data-dt-idx="0" tabindex="0" id="example3_previous">Previous</a><span><a class="paginate_button current" aria-controls="example3" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="example3" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="example3" data-dt-idx="3" tabindex="0">3</a></span><a class="paginate_button next" aria-controls="example3" data-dt-idx="4" tabindex="0" id="example3_next">Next</a></div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="customCheckBox3" required="">
-					<label class="custom-control-label" for="customCheckBox3"></label>
-				</div>
-			</td>
-			<td>2</td>
-			<!-- <td>26/02/2020, 12:42 AM</td> -->
-			<td>Kursi Guru</td>
-			<td>qwerty</td>
-			<td>2009</td>
-			<!-- <td>
-											<span class="badge badge-info light">
-												<i class="fa fa-circle text-info mr-1"></i>
-												Recovered
-											</span>
-										</td> -->
-			<td>10</td>
-			<td></td>
-			<td>Rp.10.000</td>
-			<td>
-				<!-- <div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div> -->
-				<div class="d-flex">
-					<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-					<a href="#" class="btn btn-info shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
-					<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="customCheckBox4" required="">
-					<label class="custom-control-label" for="customCheckBox4"></label>
-				</div>
-			</td>
-			<td>3</td>
-			<!-- <td>26/02/2020, 12:42 AM</td> -->
-			<td>Meja Siswa</td>
-			<td>qwerty</td>
-			<td>2012</td>
-			<!-- <td>
-											<span class="badge badge-info light">
-												<i class="fa fa-circle text-info mr-1"></i>
-												Recovered
-											</span>
-										</td> -->
-			<td>20</td>
-			<td></td>
-			<td>Rp.10.000</td>
-			<td>
-				<!-- <div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div> -->
-				<div class="d-flex">
-					<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-					<a href="#" class="btn btn-info shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
-					<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" id="customCheckBox5" required="">
-					<label class="custom-control-label" for="customCheckBox5"></label>
-				</div>
-			</td>
-			<td>4</td>
-			<!-- <td>26/02/2020, 12:42 AM</td> -->
-			<td>Kursi Siswa</td>
-			<td>qwerty</td>
-			<td>2010</td>
-			<!-- <td>
-											<span class="badge badge-warning light">
-												<i class="fa fa-circle text-warning mr-1"></i>
-												In Treatment
-											</span>
-										</td> -->
-			<td>15</td>
-			<td></td>
-			<td>Rp.10.000</td>
-			<td>
-				<!-- <div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div> -->
-				<div class="d-flex">
-					<a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-					<a href="#" class="btn btn-info shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
-					<a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-				</div>
-			</td>
-		</tr>
-		<!-- <td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox6" required="">
-												<label class="custom-control-label" for="customCheckBox6"></label>
-											</div>
-										</td> -->
-		<!-- <td>#P-00012</td>
-										<td>26/02/2020, 12:42 AM</td>
-										<td>Alexia Kev</td>
-										<td>Dr. Samantha</td>
-										<td>Allergies & Asthma</td>
-										<td>
-											<span class="badge badge-warning light">
-												<i class="fa fa-circle text-warning mr-1"></i>
-												In Treatment
-											</span>
-										</td> -->
-		<!-- <td>AB-002</td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox7" required="">
-												<label class="custom-control-label" for="customCheckBox7"></label>
-											</div>
-										</td>
-										<td>#P-00016</td>
-										<td>26/02/2020, 12:42 AM</td>
-										<td>Brian Lucky</td>
-										<td>Not Assigned Yet</td>
-										<td>Cold & Flu</td>
-										<td>
-											<span class="badge badge-outline-primary">
-												<i class="fa fa-circle text-primary mr-1"></i>
-												New Patient
-											</span>
-										</td>
-										<td>AB-005</td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox8" required="">
-												<label class="custom-control-label" for="customCheckBox8"></label>
-											</div>
-										</td>
-										<td>#P-00019</td>
-										<td>26/02/2020, 12:42 AM</td>
-										<td>Eddy Cusuma</td>
-										<td>Dr. Samantha</td>
-										<td>Dental Care</td>
-										<td>
-											<span class="badge badge-warning light">
-												<i class="fa fa-circle text-warning mr-1"></i>
-												In Treatment
-											</span>
-										</td>
-										<td>AB-005</td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox9" required="">
-												<label class="custom-control-label" for="customCheckBox9"></label>
-											</div>
-										</td>
-										<td>#P-000110</td>
-										<td>26/02/2020, 12:42 AM</td>
-										<td>Frank Azire</td>
-										<td>Dr. David Lee</td>
-										<td>Allergies & Asthma</td>
-										<td>
-											<span class="badge badge-outline-primary">
-												<i class="fa fa-circle text-primary mr-1"></i>
-												New Patient
-											</span>
-										</td>
-										<td>AB-005</td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox321" required="">
-												<label class="custom-control-label" for="customCheckBox321"></label>
-											</div>
-										</td>
-										<td>#P-00013</td>
-										<td>26/02/2020, 12:42 AM</td>
-										<td>Andrew Stevano</td>
-										<td>Dr. Marcus Jr</td>
-										<td>Dental Care</td>
-										<td>
-											<span class="badge badge-warning light">
-												<i class="fa fa-circle text-warning mr-1"></i>
-												In Treatment
-											</span>
-										</td>
-										<td>AB-005</td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox32" required="">
-												<label class="custom-control-label" for="customCheckBox32"></label>
-											</div>
-										</td>
-										<td>#P-00013</td>
-										<td>26/02/2020, 12:42 AM</td>
-										<td>Andrew Stevano</td>
-										<td>Dr. Marcus Jr</td>
-										<td>Dental Care</td>
-										<td>
-											<span class="badge badge-warning light">
-												<i class="fa fa-circle text-warning mr-1"></i>
-												In Treatment
-											</span>
-										</td>
-										<td>AB-005</td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div>
-										</td>												
-									</tr>
-									<tr>
-										<td>
-											<div class="custom-control custom-checkbox">
-												<input type="checkbox" class="custom-control-input" id="customCheckBox31" required="">
-												<label class="custom-control-label" for="customCheckBox31"></label>
-											</div>
-										</td>
-										<td>#P-00013</td>
-										<td>26/02/2020, 12:42 AM</td>
-										<td>Andrew Stevano</td>
-										<td>Dr. Marcus Jr</td>
-										<td>Dental Care</td>
-										<td>
-											<span class="badge badge-warning light">
-												<i class="fa fa-circle text-warning mr-1"></i>
-												In Treatment
-											</span>
-										</td>
-										<td>AB-005</td>
-										<td>
-											<div class="dropdown ml-auto text-right">
-												<div class="btn-link" data-toggle="dropdown">
-													<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-														<path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													</svg>
-												</div>
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#">Accept Patient</a>
-													<a class="dropdown-item" href="#">Reject Order</a>
-													<a class="dropdown-item" href="#">View Details</a>
-												</div>
-											</div>
-										</td>												 -->
-		</tr>
-		</tbody>
-		</table>
 	</div>
-</div>
-</div>
-</div>
 </div>

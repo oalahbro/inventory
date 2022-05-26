@@ -26,18 +26,30 @@
                                         <a href="index.html"><img src="<?= base_url() ?>assets/admin/images/logo-full.png" alt=""></a>
                                     </div>
                                     <h4 class="text-center mb-4 text-white">Sign up your account</h4>
-                                    <form action="index.html">
+                                    <form action="<?= base_url() ?>login/signup" method="POST">
                                         <div class="form-group">
-                                            <label class="mb-1 text-white"><strong>Username</strong></label>
-                                            <input type="text" class="form-control" placeholder="username">
+                                            <label class="mb-1 text-white"><strong>Nama Lengkap</strong></label>
+                                            <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" placeholder="hello@example.com">
+                                            <input type="email" name="email" class="form-control" placeholder="hello@example.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1 text-white"><strong>Alamat</strong></label>
+                                            <input type="text" name="alamat" class="form-control" placeholder="alamat">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1 text-white"><strong>Telp</strong></label>
+                                            <input type="number" name="telp" class="form-control" placeholder="+62">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1 text-white"><strong>No identitias</strong></label>
+                                            <input type="number" name="no_identitas" class="form-control" placeholder="ktp/sim/etc">
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <input type="password" name="password" class="form-control" placeholder="Password">
                                         </div>
                                         <div class="text-center mt-4">
                                             <button type="submit" class="btn bg-white text-primary btn-block">Sign me up</button>
