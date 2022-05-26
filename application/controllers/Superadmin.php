@@ -55,6 +55,30 @@ class Superadmin extends CI_Controller
 		// var_dump($data);
 	}
 
+	public function data_admin()
+	{
+		$data['admin'] = $this->mymodel->getAdmin();
+		//mengirimkan data ke view
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/data_admin', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+
+	public function addAdmin()
+	{
+		$this->mymodel->addAdmin();
+
+		redirect(base_url('superadmin/data_admin'));
+	}
+
+	public function editAdmin()
+	{
+		$this->mymodel->editAdmin();
+
+		redirect(base_url('superadmin/data_admin'));
+	}
+
 	public function test()
 	{
 		$this->load->view('test');

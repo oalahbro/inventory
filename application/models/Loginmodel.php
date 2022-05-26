@@ -30,7 +30,6 @@ class Loginmodel extends CI_Model
             'email' => $this->input->post('email'),
             'telp' => $this->input->post('telp'),
             'no_identitas' => $this->input->post('no_identitas'),
-            'jenis_penyewa' => '1',
             'alamat' => $this->input->post('alamat'),
             'level' => '3',
             'password' => md5($this->input->post('password'))

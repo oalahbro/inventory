@@ -782,10 +782,7 @@
                             </li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                    <!-- <div class="header-info">
-										<span class="text-black">Hello,<strong>Franklin</strong></span>
-										<p class="fs-12 mb-0">Super Admin</p>
-									</div> -->
+
                                     <img src="images/profile/17.jpg" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -832,14 +829,6 @@
                             <i class="flaticon-381-networking"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
-                        <!-- <ul aria-expanded="false">
-							<li><a href="index.html">Dashboard</a></li>
-							<li><a href="patient.html">Patient</a></li>
-							<li><a href="patient-details.html">Patient Details</a></li>
-							<li><a href="doctor.html">Doctors</a></li>
-							<li><a href="doctor-details.html">Doctor Details</a></li>
-							<li><a href="reviews.html">Reviews</a></li>
-						</ul> -->
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-layer-1"></i>
@@ -847,27 +836,12 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./data-ruang.html">Data Ruang</a></li>
-                            <li><a href="<?= base_url() ?>admin/data_barang">Data Barang</a></li>
-                            <!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Data Barang</a> -->
-                            <!-- <ul aria-expanded="false">
-                                    <li><a href="./email-compose.html">Compose</a></li>
-                                    <li><a href="./email-inbox.html">Inbox</a></li>
-                                    <li><a href="./email-read.html">Read</a></li>
-                                </ul> -->
+                            <li><a href="<?= base_url() ?>superadmin/data_barang">Data Barang</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/data_admin">Data Admin</a></li>
+
                     </li>
                     <li><a href="./data-penyewa.html">Data Penyewa</a></li>
                     <li><a href="./kategori.html">Kategori</a></li>
-                    <!-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="./ecom-product-grid.html">Product Grid</a></li>
-									<li><a href="./ecom-product-list.html">Product List</a></li>
-									<li><a href="./ecom-product-detail.html">Product Details</a></li>
-									<li><a href="./ecom-product-order.html">Order</a></li>
-									<li><a href="./ecom-checkout.html">Checkout</a></li>
-									<li><a href="./ecom-invoice.html">Invoice</a></li>
-									<li><a href="./ecom-customers.html">Customers</a></li>
-                                </ul>
-                            </li> -->
                 </ul>
                 </li>
                 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -877,10 +851,6 @@
                     <ul aria-expanded="false">
                         <li><a href="./pinjam.html">Pinjam</a></li>
                         <li><a href="./sewa.html">Sewa</a></li>
-                        <!-- <li><a href="./chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="./chart-chartist.html">Chartist</a></li>
-                            <li><a href="./chart-sparkline.html">Sparkline</a></li>
-                            <li><a href="./chart-peity.html">Peity</a></li> -->
                     </ul>
                 </li>
                 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
@@ -908,46 +878,6 @@
 
                     </ul>
                 </li>
-                <!-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-381-user-9"></i>
-							<span class="nav-text">SYSTEM</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="./uc-select2.html">Select 2</a></li>
-                            <li><a href="./uc-nestable.html">Nestedable</a></li>
-                            <li><a href="./uc-noui-slider.html">Noui Slider</a></li>
-                            <li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
-                            <li><a href="./uc-toastr.html">Toastr</a></li>
-                            <li><a href="./map-jqvmap.html">Jqv Map</a></li>
-                            <li><a href="./uc-lightgallery.html">Lightgallery</a></li>
-                        </ul>
-                    </li> -->
-                <!-- <li><a href="widget-basic.html" class="ai-icon" aria-expanded="false">
-							<i class="flaticon-381-settings-2"></i>
-							<span class="nav-text">Widget</span>
-						</a>
-					</li>
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-381-notepad"></i>
-							<span class="nav-text">Forms</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="./form-element.html">Form Elements</a></li>
-                            <li><a href="./form-wizard.html">Wizard</a></li>
-                            <li><a href="./form-editor-summernote.html">Summernote</a></li>
-                            <li><a href="form-pickers.html">Pickers</a></li>
-                            <li><a href="form-validation-jquery.html">Jquery Validate</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-381-network"></i>
-							<span class="nav-text">Table</span>
-						</a>
-                        <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
-                            <li><a href="table-datatable-basic.html">Datatable</a></li>
-                        </ul>
-                    </li> -->
                 <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                         <i class="flaticon-381-settings-2"></i>
                         <span class="nav-text">SYSTEM</span>

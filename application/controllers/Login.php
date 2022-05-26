@@ -72,6 +72,7 @@ class Login extends CI_Controller
 
     public  function signup()
     {
+        $cariDatapenyewa = $this->Loginmodel->cekPenyewa();
         $cek = $this->Loginmodel->resgister();
         var_dump($cek);
     }

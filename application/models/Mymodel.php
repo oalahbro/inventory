@@ -17,4 +17,41 @@ class Mymodel extends CI_Model
         return $result;
         // $data = array('planet' => $result);
     }
+
+    public function getAdmin()
+    {
+        $sql = "SELECT * from admin";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function addAdmin()
+    {
+        $data = [
+            'username' => $this->input->post('username'),
+            'level' => $this->input->post('level'),
+            'status' => $this->input->post('status'),
+            'password' => md5($this->input->post('password'))
+        ];
+
+        $result =  $this->db->insert('admin', $data);
+        return $result;
+    }
+
+    public function editAdmin()
+    {
+        $data = [
+            'id_admin' => $this->input->post('id_admin'),
+            'username' => $this->input->post('username'),
+            'level' => $this->input->post('level'),
+            'status' => $this->input->post('status'),
+            'password' => md5($this->input->post('password'))
+        ];
+
+        $result =  $this->db->where(array(
+            'id_admin' => $data['id_admin']
+        ));
+        $this->db->update('admin', $data);
+        return $result;
+    }
 }
