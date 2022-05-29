@@ -112,8 +112,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
-                            <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                            <button type="submit" class="btn btn-primary">Ya</button>
                         </div>
                     </form>
                 </div>
