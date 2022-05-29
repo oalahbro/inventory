@@ -25,6 +25,12 @@ class Mymodel extends CI_Model
         return $result;
     }
 
+    public function hapus($id_admin)
+    {
+        $this->db->where(array('id_admin' => $id_admin));
+        $this->db->delete('admin');
+    }
+
     public function addAdmin()
     {
         $data = [
@@ -40,14 +46,23 @@ class Mymodel extends CI_Model
 
     public function editAdmin()
     {
-        $data = [
-            'id_admin' => $this->input->post('id_admin'),
-            'username' => $this->input->post('username'),
-            'level' => $this->input->post('level'),
-            'status' => $this->input->post('status'),
-            'password' => md5($this->input->post('password'))
-        ];
 
+        if (!$this->input->post('password')) {
+            $data = [
+                'id_admin' => $this->input->post('id_admin'),
+                'username' => $this->input->post('username'),
+                'level' => $this->input->post('level'),
+                'status' => $this->input->post('status')
+            ];
+        } else {
+            $data = [
+                'id_admin' => $this->input->post('id_admin'),
+                'username' => $this->input->post('username'),
+                'level' => $this->input->post('level'),
+                'status' => $this->input->post('status'),
+                'password' => md5($this->input->post('password'))
+            ];
+        }
         $result =  $this->db->where(array(
             'id_admin' => $data['id_admin']
         ));

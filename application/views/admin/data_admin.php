@@ -33,11 +33,11 @@
                         <form method="post" action="<?= base_url() ?>superadmin/addAdmin">
                             <div class="form-group">
                                 <label class="text-black font-w500">Username</label>
-                                <input type="text" name="username" class="form-control">
+                                <input type="text" name="username" class="form-control" required>
                                 <label class="text-black font-w500">Password</label>
-                                <input type="password" name="password" class="form-control">
+                                <input type="password" name="password" class="form-control" required>
                                 <label class="text-black font-w500">Level</label>
-                                <select class="form-control default-select" name="level">
+                                <select class="form-control default-select" name="level" required>
                                     <option value="1">Superadmin</option>
                                     <option value="2">Admin</option>
                                 </select>
@@ -70,18 +70,18 @@
                             <div class="form-group">
                                 <input type="hidden" id="id_admin" name="id_admin">
                                 <label class="text-black font-w500">Username</label>
-                                <input type="text" id="username" name="username" class="form-control">
+                                <input type="text" id="username" name="username" class="form-control" required>
                                 <label class="text-black font-w500">Password</label>
                                 <input type="password" id="password" name="password" class="form-control">
                                 <label class="text-black font-w500">Level</label>
-                                <select class="form-control default-select" id="level" name="level" required>
-                                    <option></option>
+                                <select class="form-control" name="level" required>
+                                    <option id="level" hidden></option>
                                     <option value="1">Superadmin</option>
                                     <option value="2">Admin</option>
                                 </select>
                                 <label class="text-black font-w500">Status</label>
-                                <select class="form-control default-select" id="status" name="status" required>
-                                    <option></option>
+                                <select class="form-control" name="status" required>
+                                    <option id="status" hidden></option>
                                     <option value="1">Aktif</option>
                                     <option value="0">Nonaktif</option>
                                 </select>
@@ -95,6 +95,30 @@
             </div>
         </div>
 
+        <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog" style="width:55%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="custom-width-modalLabel">DATA PENGGUNA</h4>
+                    </div>
+
+                    <form action="<?php echo base_url() . 'superadmin/hapus'; ?>" method="post" class="form-horizontal" role="form">
+                        <div class="modal-body">
+                            <h4>Konfirmasi</h4>
+                            <p>Apakah anda yakin ingin menghapus data ini ?</p>
+                            <div class="form-group">
+                                <input type="hidden" id="id_admin1" name="id_admin1">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                            <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-xl-12">
@@ -128,9 +152,9 @@
                                 }
                                 echo "<td>
                                 <div class='d-flex'>
-                                    <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_admin'] . "','" . $u['username'] .  "','" . $u['password'] . "','" . $u['level'] . "')\"><i class='fa fa-pencil'></i></a>
-                                    <a href='#' class='btn btn-info shadow btn-xs sharp mr-1'><i class='fa fa-eye'></i></a>
-                                    <a href='#' class='btn btn-danger shadow btn-xs sharp' onClick=\"setInput1('" . $u->id_admin . "')\"><i class='fa fa-trash'></i></a>
+                                    <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_admin'] . "','" . $u['username'] .  "','" . $u['level'] . "','" . $u['status'] . "')\"><i class='fa fa-pencil'></i></a>
+                                    
+                                    <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_admin'] . "')\"><i class='fa fa-trash'></i></a>
                                 </div>";
 
 
@@ -148,10 +172,23 @@
             Content body end
         ***********************************-->
 <script type="text/javascript">
-    function SetInput(id_admin, username, level) {
+    let asu = level;
+
+    function SetInput(id_admin, username, level, status) {
         document.getElementById('id_admin').value = id_admin;
         document.getElementById('username').value = username;
         document.getElementById('level').value = level;
+        document.getElementById('status').value = status;
+        if (level == 1) {
+            document.getElementById('level').innerText = "Superadmin"
+        } else {
+            document.getElementById('level').innerText = "Admin"
+        }
+        if (status == 1) {
+            document.getElementById('status').innerText = "Aktif"
+        } else {
+            document.getElementById('status').innerText = "Nonaktif"
+        }
 
     }
 

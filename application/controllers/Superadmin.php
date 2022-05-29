@@ -78,7 +78,13 @@ class Superadmin extends CI_Controller
 
 		redirect(base_url('superadmin/data_admin'));
 	}
+	public function hapus()
+	{
+		$id_admin = $this->input->post('id_admin1');
+		$this->mymodel->hapus($id_admin);
 
+		redirect(base_url('superadmin/data_admin'));
+	}
 	public function test()
 	{
 		$this->load->view('test');
