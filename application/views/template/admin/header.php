@@ -6,6 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Welly - Hospital Bootstrap Admin Dashboard</title>
+    <link href="<?php echo base_url(); ?>assets/admin/vendor/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Clockpicker -->
+    <link href="<?php echo base_url(); ?>assets/admin/vendor/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+    <!-- asColorpicker -->
+    <link href="<?php echo base_url(); ?>assets/admin/vendor/jquery-asColorPicker/css/asColorPicker.min.css" rel="stylesheet">
+    <!-- Material color picker -->
+    <link href="<?php echo base_url(); ?>assets/admin/vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <!-- Pick date -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/vendor/pickadate/themes/default.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/vendor/pickadate/themes/default.date.css">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url(); ?>assets/admin/images/favicon.png">
     <link href="<?php echo base_url(); ?>assets/admin/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
@@ -835,68 +845,67 @@
                             <span class="nav-text">MASTER DATA</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./data-ruang.html">Data Ruang</a></li>
-                            <li><a href="<?= base_url() ?>superadmin/data_barang">Data Barang</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/kategori">Kategori</a></li>
                             <li><a href="<?= base_url() ?>superadmin/data_admin">Data Admin</a></li>
-
+                            <li><a href="<?= base_url() ?>superadmin/data_ruang">Data Ruang</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/data_barang">Data Barang</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/data_penyewa">Data Penyewa</a></li>
+                        </ul>
                     </li>
-                    <li><a href="./data-penyewa.html">Data Penyewa</a></li>
-                    <li><a href="./kategori.html">Kategori</a></li>
-                </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-album-2"></i>
-                        <span class="nav-text">DATA TRANSAKSI</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="./pinjam.html">Pinjam</a></li>
-                        <li><a href="./sewa.html">Sewa</a></li>
-                    </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-notepad"></i>
-                        <span class="nav-text">REPORT</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="./ui-accordion.html">Accordion</a></li>
-                        <li><a href="./ui-alert.html">Alert</a></li>
-                        <li><a href="./ui-badge.html">Badge</a></li>
-                        <li><a href="./ui-button.html">Button</a></li>
-                        <li><a href="./ui-modal.html">Modal</a></li>
-                        <li><a href="./ui-button-group.html">Button Group</a></li>
-                        <li><a href="./ui-list-group.html">List Group</a></li>
-                        <li><a href="./ui-media-object.html">Media Object</a></li>
-                        <li><a href="./ui-card.html">Cards</a></li>
-                        <li><a href="./ui-carousel.html">Carousel</a></li>
-                        <li><a href="./ui-dropdown.html">Dropdown</a></li>
-                        <li><a href="./ui-popover.html">Popover</a></li>
-                        <li><a href="./ui-progressbar.html">Progressbar</a></li>
-                        <li><a href="./ui-tab.html">Tab</a></li>
-                        <li><a href="./ui-typography.html">Typography</a></li>
-                        <li><a href="./ui-pagination.html">Pagination</a></li>
-                        <li><a href="./ui-grid.html">Grid</a></li>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-album-2"></i>
+                            <span class="nav-text">DATA TRANSAKSI</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./pinjam.html">Pinjam</a></li>
+                            <li><a href="./sewa.html">Sewa</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-notepad"></i>
+                            <span class="nav-text">REPORT</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./ui-accordion.html">Accordion</a></li>
+                            <li><a href="./ui-alert.html">Alert</a></li>
+                            <li><a href="./ui-badge.html">Badge</a></li>
+                            <li><a href="./ui-button.html">Button</a></li>
+                            <li><a href="./ui-modal.html">Modal</a></li>
+                            <li><a href="./ui-button-group.html">Button Group</a></li>
+                            <li><a href="./ui-list-group.html">List Group</a></li>
+                            <li><a href="./ui-media-object.html">Media Object</a></li>
+                            <li><a href="./ui-card.html">Cards</a></li>
+                            <li><a href="./ui-carousel.html">Carousel</a></li>
+                            <li><a href="./ui-dropdown.html">Dropdown</a></li>
+                            <li><a href="./ui-popover.html">Popover</a></li>
+                            <li><a href="./ui-progressbar.html">Progressbar</a></li>
+                            <li><a href="./ui-tab.html">Tab</a></li>
+                            <li><a href="./ui-typography.html">Typography</a></li>
+                            <li><a href="./ui-pagination.html">Pagination</a></li>
+                            <li><a href="./ui-grid.html">Grid</a></li>
 
-                    </ul>
-                </li>
-                <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-settings-2"></i>
-                        <span class="nav-text">SYSTEM</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="./page-register.html">Register</a></li>
-                        <li><a href="./page-login.html">Login</a></li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
-                            <ul aria-expanded="false">
-                                <li><a href="./page-error-400.html">Error 400</a></li>
-                                <li><a href="./page-error-403.html">Error 403</a></li>
-                                <li><a href="./page-error-404.html">Error 404</a></li>
-                                <li><a href="./page-error-500.html">Error 500</a></li>
-                                <li><a href="./page-error-503.html">Error 503</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./page-lock-screen.html">Lock Screen</a></li>
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-settings-2"></i>
+                            <span class="nav-text">SYSTEM</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="./page-register.html">Register</a></li>
+                            <li><a href="./page-login.html">Login</a></li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="./page-error-400.html">Error 400</a></li>
+                                    <li><a href="./page-error-403.html">Error 403</a></li>
+                                    <li><a href="./page-error-404.html">Error 404</a></li>
+                                    <li><a href="./page-error-500.html">Error 500</a></li>
+                                    <li><a href="./page-error-503.html">Error 503</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="./page-lock-screen.html">Lock Screen</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <div class="copyright">

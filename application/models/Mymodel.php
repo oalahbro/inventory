@@ -69,4 +69,50 @@ class Mymodel extends CI_Model
         $this->db->update('admin', $data);
         return $result;
     }
+
+    public function getKategori()
+    {
+        $sql = "SELECT * from kategori";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function addKategori()
+    {
+        $data = [
+            'nama_kategori' => $this->input->post('nama_kategori')
+
+        ];
+
+        $result =  $this->db->insert('kategori', $data);
+        return $result;
+    }
+
+    public function editKategori()
+    {
+
+        $data = [
+            'id_kategori' => $this->input->post('id_kategori'),
+            'nama_kategori' => $this->input->post('nama_kategori')
+        ];
+        $result =  $this->db->where(array(
+            'id_kategori' => $data['id_kategori']
+        ));
+        $this->db->update('kategori', $data);
+        return $result;
+    }
+
+    public function hapusKategori($id_kategori)
+    {
+        $this->db->where(array('id_kategori' => $id_kategori));
+        $this->db->delete('kategori');
+    }
+    //SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin
+
+    public function getRuang()
+    {
+        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin WHERE inventory.id_kategori=1";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
 }
