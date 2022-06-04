@@ -30,34 +30,39 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form method="post" action="<?= base_url() ?>superadmin/addAdmin">
+						<form method="post" action="<?= base_url() ?>superadmin/addPenyewa">
 							<div class="form-group">
 								<label class="text-black font-w500">Nama</label>
 								<input type="text" name="nama" class="form-control" required>
-                                <div class="row">
+								<div class="row">
 									<div class="col-sm-6">
 										<label class="text-black font-w500">Email</label>
-										<input type="text" class="form-control" placeholder="email@example.com">
+										<input type="text" name="email" class="form-control" placeholder="email@example.com">
 									</div>
 									<div class="col-sm-6 mt-2 mt-sm-0">
 										<label class="text-black font-w500">Password</label>
-										<input type="text" class="form-control" placeholder="">
+										<input type="text" name="password" class="form-control" placeholder="">
 									</div>
 								</div>
-                                <div class="row">
+								<div class="row">
 									<div class="col-sm-6">
 										<label class="text-black font-w500">Telepon</label>
-										<input type="text" class="form-control" placeholder="+62">
+										<input type="text" name="telp" class="form-control" placeholder="+62">
 									</div>
 									<div class="col-sm-6 mt-2 mt-sm-0">
 										<label class="text-black font-w500">No.Identitas</label>
-										<input type="text" class="form-control" placeholder="">
+										<input type="text" name="no_identitas" class="form-control" placeholder="">
 									</div>
 								</div>
 								<label class="text-black font-w500">Alamat</label>
 								<div class="form-group">
-									<textarea class="form-control" rows="4" id="comment"></textarea>
+									<textarea class="form-control" name="alamat" rows="4" id="comment"></textarea>
 								</div>
+								<label class="text-black font-w500">Status</label>
+								<select class="form-control default-select" name="status" required>
+									<option value="1">Staff / Siswa</option>
+									<option value="0">Eksternal</option>
+								</select>
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">CREATE</button>
@@ -78,28 +83,44 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form method="post" action="<?= base_url() ?>superadmin/editAdmin">
+						<form method="post" action="<?= base_url() ?>superadmin/editPenyewa">
 							<div class="form-group">
-								<input type="hidden" id="id_admin" name="id_admin">
-								<label class="text-black font-w500">Username</label>
-								<input type="text" id="username" name="username" class="form-control" required>
-								<label class="text-black font-w500">Password</label>
-								<input type="password" id="password" name="password" class="form-control">
+								<label class="text-black font-w500">Nama</label>
+								<input type="text" id="id_penyewa" hidden name="id_penyewa">
+								<input type="text" id="nama" name="nama" class="form-control" required>
+								<div class="row">
+									<div class="col-sm-6">
+										<label class="text-black font-w500">Email</label>
+										<input type="text" id="email" name="email" class="form-control" placeholder="email@example.com">
+									</div>
+									<div class="col-sm-6 mt-2 mt-sm-0">
+										<label class="text-black font-w500">Password</label>
+										<input type="text" name="password" class="form-control" placeholder="">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<label class="text-black font-w500">Telepon</label>
+										<input type="text" id="telp" name="telp" class="form-control" placeholder="+62">
+									</div>
+									<div class="col-sm-6 mt-2 mt-sm-0">
+										<label class="text-black font-w500">No.Identitas</label>
+										<input type="text" id="no_identitas" name="no_identitas" class="form-control" placeholder="">
+									</div>
+								</div>
+								<label class="text-black font-w500">Alamat</label>
+								<div class="form-group">
+									<textarea class="form-control" id="alamat" name="alamat" rows="4" id="comment"></textarea>
+								</div>
 								<label class="text-black font-w500">Level</label>
 								<select class="form-control" name="level" required>
 									<option id="level" hidden></option>
-									<option value="1">Superadmin</option>
-									<option value="2">Admin</option>
-								</select>
-								<label class="text-black font-w500">Status</label>
-								<select class="form-control" name="status" required>
-									<option id="status" hidden></option>
-									<option value="1">Aktif</option>
-									<option value="0">Nonaktif</option>
+									<option value="1">Staff / Siswa</option>
+									<option value="0">Eksternal</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">SUBMIT</button>
+								<button type="submit" class="btn btn-primary">CREATE</button>
 							</div>
 						</form>
 					</div>
@@ -115,12 +136,12 @@
 						<h4 class="modal-title" id="custom-width-modalLabel">DATA PENGGUNA</h4>
 					</div>
 
-					<form action="<?php echo base_url() . 'superadmin/hapus'; ?>" method="post" class="form-horizontal" role="form">
+					<form action="<?php echo base_url() . 'superadmin/hapusPenyewa'; ?>" method="post" class="form-horizontal" role="form">
 						<div class="modal-body">
 							<h4>Konfirmasi</h4>
 							<p>Apakah anda yakin ingin menghapus data ini ?</p>
 							<div class="form-group">
-								<input type="hidden" id="id_admin1" name="id_admin1">
+								<input type="hidden" id="id_penyewa1" name="id_penyewa1">
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -144,31 +165,31 @@
 								<th>Telepon</th>
 								<th>No. Identitas</th>
 								<th>Alamat</th>
+								<th>Level</th>
 								<th>Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 							$no = 1;
-							foreach ($admin as $u) {
+							foreach ($penyewa as $u) {
 								echo "<tr>
                                             <td>" . $no . "</td>
-                                            <td>" . $u['username'] . "</td>";
+                                            <td>" . $u['nama'] . "</td>
+											<td>" . $u['email'] . "</td>
+											<td>" . $u['telp'] . "</td>
+											<td>" . $u['no_identitas'] . "</td>
+											<td>" . $u['alamat'] . "</td>";
 								if ($u['level'] == 1) {
-									echo "<td>Superadmin</td>";
+									echo "<td>Staff / Siswa</td>";
 								} else {
-									echo "<td>Admin</td>";
-								}
-								if ($u['status'] == 1) {
-									echo "<td><span class='badge light badge-success'>Aktif</span></td>";
-								} else {
-									echo "<td><span class='badge light badge-danger'>Nonaktif</span></td>";
+									echo "<td>Eksternal</td>";
 								}
 								echo "<td>
                                 <div class='d-flex'>
-                                    <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_admin'] . "','" . $u['username'] .  "','" . $u['level'] . "','" . $u['status'] . "')\"><i class='fa fa-pencil'></i></a>
+                                    <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_penyewa'] . "','" . $u['nama'] .  "','" . $u['email'] . "','" . $u['telp'] . "','" . $u['no_identitas'] . "','" . $u['alamat'] . "','" . $u['level'] . "')\"><i class='fa fa-pencil'></i></a>
                                     
-                                    <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_admin'] . "')\"><i class='fa fa-trash'></i></a>
+                                    <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_penyewa'] . "')\"><i class='fa fa-trash'></i></a>
                                 </div>";
 
 
@@ -188,25 +209,22 @@
 <script type="text/javascript">
 	let asu = level;
 
-	function SetInput(id_admin, username, level, status) {
-		document.getElementById('id_admin').value = id_admin;
-		document.getElementById('username').value = username;
-		document.getElementById('level').value = level;
-		document.getElementById('status').value = status;
+	function SetInput(id_penyewa, nama, email, telp, no_identitas, alamat, level) {
+		document.getElementById('id_penyewa').value = id_penyewa;
+		document.getElementById('nama').value = nama;
+		document.getElementById('email').value = email;
+		document.getElementById('telp').value = telp;
+		document.getElementById('no_identitas').value = no_identitas;
+		document.getElementById('alamat').value = alamat;
 		if (level == 1) {
-			document.getElementById('level').innerText = "Superadmin"
+			document.getElementById('level').innerText = "Staff / Siswa"
 		} else {
-			document.getElementById('level').innerText = "Admin"
-		}
-		if (status == 1) {
-			document.getElementById('status').innerText = "Aktif"
-		} else {
-			document.getElementById('status').innerText = "Nonaktif"
+			document.getElementById('level').innerText = "Eksternal"
 		}
 
 	}
 
-	function setInput1(id_admin) {
-		document.getElementById('id_admin1').value = id_admin;
+	function setInput1(id_penyewa) {
+		document.getElementById('id_penyewa1').value = id_penyewa;
 	}
 </script>

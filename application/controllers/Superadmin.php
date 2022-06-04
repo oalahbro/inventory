@@ -42,52 +42,44 @@ class Superadmin extends CI_Controller
 		// var_dump($data);
 	}
 
-	public function data_barang()
-	{
-		// $vhid = intval($_GET['vhid']);
-		// $this->load->library('format_rupiah');
-		// //load data from model
-		// $data = array('planet' => $this->mymodel->product_full($vhid));
-		//mengirimkan data ke view
-		$this->load->view('template/admin/header');
-		$this->load->view('superadmin/data_barang');
-		$this->load->view('template/admin/footer');
-		// var_dump($data);
-	}
-
 	public function kategori()
 	{
 		$data['kategori'] = $this->mymodel->getKategori();
 		$this->load->view('template/admin/header');
 		$this->load->view('superadmin/kategori', $data);
 		$this->load->view('template/admin/footer');
-		// var_dump($data);
-	}
-
-	public function data_ruang()
-	{
-		// $vhid = intval($_GET['vhid']);
-		// $this->load->library('format_rupiah');
-		// //load data from model
-		// $data = array('planet' => $this->mymodel->product_full($vhid));
-		//mengirimkan data ke view
-		$this->load->view('template/admin/header');
-		$this->load->view('superadmin/data_ruang');
-		$this->load->view('template/admin/footer');
-		// var_dump($data);
 	}
 
 	public function data_penyewa()
 	{
-		// $vhid = intval($_GET['vhid']);
-		// $this->load->library('format_rupiah');
-		// //load data from model
-		// $data = array('planet' => $this->mymodel->product_full($vhid));
+		$data['penyewa'] = $this->mymodel->getPenyewa();
 		//mengirimkan data ke view
 		$this->load->view('template/admin/header');
-		$this->load->view('superadmin/data_penyewa');
+		$this->load->view('superadmin/data_penyewa', $data);
 		$this->load->view('template/admin/footer');
 		// var_dump($data);
+	}
+
+	public function addPenyewa()
+	{
+		$this->mymodel->addPenyewa();
+
+		redirect(base_url('superadmin/data_penyewa'));
+	}
+
+	public function editPenyewa()
+	{
+		$this->mymodel->editPenyewa();
+
+		redirect(base_url('superadmin/data_penyewa'));
+	}
+
+	public function hapusPenyewa()
+	{
+		$id_penyewa = $this->input->post('id_penyewa1');
+		$this->mymodel->hapusPenyewa($id_penyewa);
+
+		redirect(base_url('superadmin/data_penyewa'));
 	}
 
 	public function data_admin()
@@ -122,7 +114,8 @@ class Superadmin extends CI_Controller
 	}
 	public function test()
 	{
-		$this->load->view('test');
+		$data = $this->session->userdata('id_admin');
+		var_dump($data);
 	}
 
 	public function addKategori()
@@ -146,12 +139,62 @@ class Superadmin extends CI_Controller
 
 		redirect(base_url('superadmin/kategori'));
 	}
-	public function ruang()
+	public function data_ruang()
 	{
 		$data['ruang'] = $this->mymodel->getRuang();
 		$this->load->view('template/admin/header');
 		$this->load->view('superadmin/data_ruang', $data);
 		$this->load->view('template/admin/footer');
+	}
+	public function updateRuang()
+	{
+		$data = $this->mymodel->updateRuang();
+		redirect(base_url('superadmin/data_ruang'));
 		// var_dump($data);
+	}
+
+	public function addRuang()
+	{
+		$data = $this->mymodel->addRuang();
+		// var_dump($data);
+		redirect(base_url('superadmin/data_ruang'));
+	}
+
+	public function delRuang()
+	{
+		$id_ruang = $this->input->post('id_inventory1');
+		$data = $this->mymodel->delRuang($id_ruang);
+		// var_dump($data);
+		redirect(base_url('superadmin/data_ruang'));
+	}
+
+	public function data_barang()
+	{
+		$data['barang'] = $this->mymodel->getBarang();
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/data_barang', $data);
+		$this->load->view('template/admin/footer');
+	}
+
+	public function updateBarang()
+	{
+		$data = $this->mymodel->updateRuang();
+		redirect(base_url('superadmin/data_barang'));
+		// var_dump($data);
+	}
+
+	public function addBarang()
+	{
+		$data = $this->mymodel->addBarang();
+		// var_dump($data);
+		redirect(base_url('superadmin/data_barang'));
+	}
+
+	public function delBarang()
+	{
+		$id_ruang = $this->input->post('id_inventory1');
+		$data = $this->mymodel->delRuang($id_ruang);
+		// var_dump($data);
+		redirect(base_url('superadmin/data_barang'));
 	}
 }

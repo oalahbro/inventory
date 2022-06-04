@@ -37,7 +37,8 @@ class Login extends CI_Controller
                 $data_session = [
                     'username' => $cariDataadmin[0]['username'],
                     'status' => "login",
-                    'level' => $cariDataadmin[0]['level']
+                    'level' => $cariDataadmin[0]['level'],
+                    'id_admin' => $cariDataadmin[0]['id_admin']
                 ];
                 $this->session->set_userdata($data_session);
 

@@ -30,28 +30,28 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form method="post" action="<?= base_url() ?>superadmin/addAdmin">
+						<form method="post" action="<?= base_url() ?>superadmin/addBarang">
 							<div class="form-group">
 								<label class="text-black font-w500">Nama</label>
 								<input type="text" name="nama" class="form-control" required>
 								<label class="text-black font-w500">Deskripsi</label>
 								<div class="form-group">
-									<textarea class="form-control" rows="4" id="comment"></textarea>
+									<textarea class="form-control" name="deskripsi" rows="4" id="comment"></textarea>
 								</div>
 								<div class="row">
 									<div class="col-sm-6">
 										<label class="text-black font-w500">Tahun</label>
-										<input type="text" class="form-control" placeholder="Tahun">
+										<input name="tahun" class="datepicker-default form-control" id="datepicker">
 									</div>
 									<div class="col-sm-6 mt-2 mt-sm-0">
 										<label class="text-black font-w500">Jumlah</label>
-										<input type="text" class="form-control" placeholder="Jumlah">
+										<input type="text" name="jumlah" class="form-control" placeholder="Jumlah">
 									</div>
 								</div>
 								<label class="text-black font-w500">Image</label>
 								<div class="input-group mb-3">
 									<div class="custom-file">
-										<input type="file" class="custom-file-input">
+										<input type="file" name="image" class="custom-file-input">
 										<label class="custom-file-label">Choose file</label>
 									</div>
 								</div>
@@ -66,39 +66,47 @@
 				</div>
 			</div>
 		</div>
-
-
-		<div class="modal fade" id="edit-modal">
-			<div class="modal-dialog" role="document">
+		<div class="modal  bd-example-modal-lg fade" id="edit-modal">
+			<div class="modal-dialog modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title">Edit Admin</h5>
+						<h5 class="modal-title">Tambah Data Barang</h5>
 						<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						<form method="post" action="<?= base_url() ?>superadmin/editAdmin">
+						<form method="post" action="<?= base_url() ?>superadmin/updateBarang">
 							<div class="form-group">
-								<input type="hidden" id="id_admin" name="id_admin">
-								<label class="text-black font-w500">Username</label>
-								<input type="text" id="username" name="username" class="form-control" required>
-								<label class="text-black font-w500">Password</label>
-								<input type="password" id="password" name="password" class="form-control">
-								<label class="text-black font-w500">Level</label>
-								<select class="form-control" name="level" required>
-									<option id="level" hidden></option>
-									<option value="1">Superadmin</option>
-									<option value="2">Admin</option>
-								</select>
-								<label class="text-black font-w500">Status</label>
-								<select class="form-control" name="status" required>
-									<option id="status" hidden></option>
-									<option value="1">Aktif</option>
-									<option value="0">Nonaktif</option>
-								</select>
+								<label class="text-black font-w500">Nama</label>
+								<input type="text" id="id_inventory" hidden name="id_inventory">
+								<input type="text" id="nama" name="nama" class="form-control" required>
+								<label class="text-black font-w500">Deskripsi</label>
+								<div class="form-group">
+									<textarea id="deskripsi" name="deskripsi" class="form-control" rows="4" id="comment"></textarea>
+								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<label class="text-black font-w500">Tahun</label>
+										<input name="tahun" class="datepicker-default form-control" id="tahun">
+									</div>
+									<div class="col-sm-6 mt-2 mt-sm-0">
+										<label class="text-black font-w500">Jumlah</label>
+										<input type="text" id="jumlah" name="jumlah" class="form-control" placeholder="Jumlah">
+									</div>
+								</div>
+								<label class="text-black font-w500">Image</label>
+								<div class="input-group mb-3">
+									<div class="custom-file">
+										<input id="img" name="image" type="text">
+										<input name="image" type="file" class="custom-file-input">
+										<label class="custom-file-label">Choose file</label>
+									</div>
+								</div>
+								<label class="text-black font-w500">Harga</label>
+								<input type="text" id="hrg" name="harga" class="form-control" placeholder="harga">
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">SUBMIT</button>
+								<button type="submit" class="btn btn-primary">CREATE</button>
 							</div>
 						</form>
 					</div>
@@ -114,12 +122,12 @@
 						<h4 class="modal-title" id="custom-width-modalLabel">DATA PENGGUNA</h4>
 					</div>
 
-					<form action="<?php echo base_url() . 'superadmin/hapus'; ?>" method="post" class="form-horizontal" role="form">
+					<form action="<?php echo base_url() . 'superadmin/delBarang'; ?>" method="post" class="form-horizontal" role="form">
 						<div class="modal-body">
 							<h4>Konfirmasi</h4>
 							<p>Apakah anda yakin ingin menghapus data ini ?</p>
 							<div class="form-group">
-								<input type="hidden" id="id_admin1" name="id_admin1">
+								<input type="hidden" id="id_inventory1" name="id_inventory1">
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -139,7 +147,8 @@
 							<tr>
 								<th>ID</th>
 								<th>Nama</th>
-								<th>Deskripsi</th>
+								<th>Nama Admin</th>
+								<th style="width: 20%">Deskripsi</th>
 								<th>Tahun</th>
 								<th>Jumlah</th>
 								<th>Image</th>
@@ -150,26 +159,22 @@
 						<tbody>
 							<?php
 							$no = 1;
-							foreach ($admin as $u) {
+							foreach ($barang as $u) {
 								echo "<tr>
                                             <td>" . $no . "</td>
-                                            <td>" . $u['username'] . "</td>";
-								if ($u['level'] == 1) {
-									echo "<td>Superadmin</td>";
-								} else {
-									echo "<td>Admin</td>";
-								}
-								if ($u['status'] == 1) {
-									echo "<td><span class='badge light badge-success'>Aktif</span></td>";
-								} else {
-									echo "<td><span class='badge light badge-danger'>Nonaktif</span></td>";
-								}
+                                            <td>" . $u['nama'] . "</td>
+                                            <td>" . $u['username'] . "</td>
+                                            <td>" . substr($u['deskripsi'], 0, 150) . " . . .</td>
+                                            <td>" . $u['tahun'] . "</td>
+                                            <td>" . $u['jumlah'] . "</td>
+                                            <td>" . $u['image'] . "</td>
+                                            <td>" . $u['harga'] . "</td>";
 								echo "<td>
-                                <div class='d-flex'>
-                                    <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_admin'] . "','" . $u['username'] .  "','" . $u['level'] . "','" . $u['status'] . "')\"><i class='fa fa-pencil'></i></a>
-                                    
-                                    <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_admin'] . "')\"><i class='fa fa-trash'></i></a>
-                                </div>";
+                                            <div class='d-flex'>
+                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_inventory'] . "','" . $u['nama'] .  "','" . $u['deskripsi'] . "','" . $u['tahun'] . "','" . $u['jumlah'] . "','" . $u['image'] . "','" . $u['harga'] . "')\"><i class='fa fa-pencil'></i></a>
+                                                
+                                                <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_inventory'] . "')\"><i class='fa fa-trash'></i></a>
+                                            </div>";
 
 
 								$no++;
@@ -186,27 +191,18 @@
             Content body end
         ***********************************-->
 <script type="text/javascript">
-	let asu = level;
-
-	function SetInput(id_admin, username, level, status) {
-		document.getElementById('id_admin').value = id_admin;
-		document.getElementById('username').value = username;
-		document.getElementById('level').value = level;
-		document.getElementById('status').value = status;
-		if (level == 1) {
-			document.getElementById('level').innerText = "Superadmin"
-		} else {
-			document.getElementById('level').innerText = "Admin"
-		}
-		if (status == 1) {
-			document.getElementById('status').innerText = "Aktif"
-		} else {
-			document.getElementById('status').innerText = "Nonaktif"
-		}
+	function SetInput(id_inventory, nama, deskripsi, tahun, jumlah, gambar, harga) {
+		document.getElementById('id_inventory').value = id_inventory;
+		document.getElementById('nama').value = nama;
+		document.getElementById('deskripsi').value = deskripsi;
+		document.getElementById('tahun').value = tahun;
+		document.getElementById('jumlah').value = jumlah;
+		document.getElementById('img').value = gambar;
+		document.getElementById('hrg').value = harga;
 
 	}
 
-	function setInput1(id_admin) {
-		document.getElementById('id_admin1').value = id_admin;
+	function setInput1(id_inventory) {
+		document.getElementById('id_inventory1').value = id_inventory;
 	}
 </script>

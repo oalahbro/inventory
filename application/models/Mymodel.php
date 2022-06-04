@@ -115,4 +115,181 @@ class Mymodel extends CI_Model
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
+
+    public function updateRuang()
+    {
+        if (!$this->input->post('image')) {
+            $data = [
+                'id_inventory' => $this->input->post('id_inventory'),
+                'nama' => $this->input->post('nama'),
+                'id_admin' => $this->session->userdata('id_admin'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
+                'jumlah' => $this->input->post('jumlah'),
+                'harga' => $this->input->post('harga')
+            ];
+        } else {
+            $data = [
+                'id_inventory' => $this->input->post('id_inventory'),
+                'id_admin' => $this->session->userdata('id_admin'),
+                'nama' => $this->input->post('nama'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
+                'image' => $this->input->post('image'),
+                'jumlah' => $this->input->post('jumlah'),
+                'harga' => $this->input->post('harga')
+            ];
+        }
+        $this->db->where(array(
+            'id_inventory' => $data['id_inventory']
+        ));
+        $this->db->update('inventory', $data);
+        return $data;
+    }
+
+    public function addRuang()
+    {
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'deskripsi' => $this->input->post('deskripsi'),
+            'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
+            'image' => $this->input->post('image'),
+            'jumlah' => $this->input->post('jumlah'),
+            'id_kategori' => "1",
+            'id_admin' => $this->session->userdata('id_admin'),
+            'harga' => $this->input->post('harga')
+
+        ];
+
+        $result =  $this->db->insert('inventory', $data);
+        return $result;
+    }
+    public function delRuang($id_ruang)
+    {
+        $this->db->where(array('id_inventory' => $id_ruang));
+        $this->db->delete('inventory');
+    }
+
+    public function getBarang()
+    {
+        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin WHERE inventory.id_kategori=2";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function updateBarang()
+    {
+        if (!$this->input->post('image')) {
+            $data = [
+                'id_inventory' => $this->input->post('id_inventory'),
+                'nama' => $this->input->post('nama'),
+                'id_admin' => $this->session->userdata('id_admin'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
+                'jumlah' => $this->input->post('jumlah'),
+                'harga' => $this->input->post('harga')
+            ];
+        } else {
+            $data = [
+                'id_inventory' => $this->input->post('id_inventory'),
+                'id_admin' => $this->session->userdata('id_admin'),
+                'nama' => $this->input->post('nama'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
+                'image' => $this->input->post('image'),
+                'jumlah' => $this->input->post('jumlah'),
+                'harga' => $this->input->post('harga')
+            ];
+        }
+        $this->db->where(array(
+            'id_inventory' => $data['id_inventory']
+        ));
+        $this->db->update('inventory', $data);
+        return $data;
+    }
+
+    public function addBarang()
+    {
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'deskripsi' => $this->input->post('deskripsi'),
+            'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
+            'image' => $this->input->post('image'),
+            'jumlah' => $this->input->post('jumlah'),
+            'id_kategori' => "2",
+            'id_admin' => $this->session->userdata('id_admin'),
+            'harga' => $this->input->post('harga')
+
+        ];
+
+        $result =  $this->db->insert('inventory', $data);
+        return $result;
+    }
+
+    public function delBarang($id_ruang)
+    {
+        $this->db->where(array('id_inventory' => $id_ruang));
+        $this->db->delete('inventory');
+    }
+
+    public function getPenyewa()
+    {
+        $sql = "SELECT * from penyewa";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function addPenyewa()
+    {
+        $data = [
+            'nama' => $this->input->post('nama'),
+            'email' => $this->input->post('email'),
+            'password' => md5($this->input->post('password')),
+            'telp' => $this->input->post('telp'),
+            'no_identitas' => $this->input->post('no_identitas'),
+            'alamat' => $this->input->post('alamat'),
+            'level' => $this->input->post('level')
+        ];
+
+        $result =  $this->db->insert('penyewa', $data);
+        return $result;
+    }
+
+    public function editPenyewa()
+    {
+
+        if (!$this->input->post('password')) {
+            $data = [
+                'id_penyewa' => $this->input->post('id_penyewa'),
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'telp' => $this->input->post('telp'),
+                'no_identitas' => $this->input->post('no_identitas'),
+                'alamat' => $this->input->post('alamat'),
+                'level' => $this->input->post('level'),
+            ];
+        } else {
+            $data = [
+                'id_penyewa' => $this->input->post('id_penyewa'),
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'telp' => $this->input->post('telp'),
+                'no_identitas' => $this->input->post('no_identitas'),
+                'alamat' => $this->input->post('alamat'),
+                'level' => $this->input->post('level'),
+                'password' => md5($this->input->post('password'))
+            ];
+        }
+        $result =  $this->db->where(array(
+            'id_penyewa' => $data['id_penyewa']
+        ));
+        $this->db->update('penyewa', $data);
+        return $result;
+    }
+
+    public function hapusPenyewa($id_penyewa)
+    {
+        $this->db->where(array('id_penyewa' => $id_penyewa));
+        $this->db->delete('penyewa');
+    }
 }
