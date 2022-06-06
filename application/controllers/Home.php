@@ -22,15 +22,16 @@ class Home extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('mymodel');
+		$this->load->model('M_Landing');
 	}
 
 	public function index()
 	{
-		// load library
-		$this->load->library('format_rupiah');
 		// load data from model
-		$data = array('planet' => $this->mymodel->getData());
+		$data = array(
+			'planet' => $this->M_Landing->getData(),
+			'title' => 'All Inventory'
+		);
 		//mengirimkan data ke view
 		$this->load->view('template/home/header');
 		$this->load->view('home/home', $data);
@@ -38,12 +39,40 @@ class Home extends CI_Controller
 		// var_dump($data);
 	}
 
-	public function product_full()
+	public function ruang()
+	{
+		// load data from model
+		$data = array(
+			'planet' => $this->M_Landing->getRuang(),
+			'title' => 'Ruang'
+		);
+		//mengirimkan data ke view
+		$this->load->view('template/home/header');
+		$this->load->view('home/home', $data);
+		$this->load->view('template/home/footer');
+		// var_dump($data);
+	}
+
+	public function barang()
+	{
+		// load data from model
+		$data = array(
+			'planet' => $this->M_Landing->getBarang(),
+			'title' => 'Barang'
+		);
+		//mengirimkan data ke view
+		$this->load->view('template/home/header');
+		$this->load->view('home/home', $data);
+		$this->load->view('template/home/footer');
+		// var_dump($data);
+	}
+
+	public function detail()
 	{
 		$vhid = intval($_GET['vhid']);
 		$this->load->library('format_rupiah');
 		//load data from model
-		$data = array('planet' => $this->mymodel->product_full($vhid));
+		$data = array('planet' => $this->M_Landing->product_full($vhid));
 		//mengirimkan data ke view
 		$this->load->view('template/home/header');
 		$this->load->view('home/detail', $data);

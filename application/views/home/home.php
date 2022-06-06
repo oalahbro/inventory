@@ -8,7 +8,7 @@
                             <a href="index-2.html">Home</a>
                         </li>
                         <li class="trail-item trail-end active">
-                            Ruang
+                            <?= $title ?>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <h3 class="custom_blog_title">
-                        Ruang
+                        <?= $title ?>
                     </h3>
                     <div class="shop-top-control">
                         <form class="select-item select-form">
@@ -89,8 +89,8 @@
                                     </div>
                                     <div class="product-thumb">
                                         <div class="thumb-inner">
-                                            <a href="detail?vhid=<?= $new['id_kamera'] ?>">
-                                                <img src="<?php echo base_url(); ?>assets/images/item/<?= $new['image1'] ?>" alt="img">
+                                            <a href="detail?vhid=<?= $new['id_inventory'] ?>">
+                                                <img src="<?php echo base_url(); ?>assets/images/item/<?= $new['image'] ?>" alt="img">
                                             </a>
                                             <div class="thumb-group">
                                                 <div class="yith-wcwl-add-to-wishlist">
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="product-info">
                                         <h5 class="product-name product_title">
-                                            <a href="#"><?= $new['nama_kamera'] ?></a>
+                                            <a href="#"><?= $new['nama'] ?></a>
                                         </h5>
                                         <div class="group-info">
                                             <div class="stars-rating">

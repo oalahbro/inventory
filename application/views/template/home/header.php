@@ -162,10 +162,10 @@
                         <div class="block-content verticalmenu-content">
                             <ul class="tanajil-nav-vertical vertical-menu tanajil-clone-mobile-menu">
                                 <li class="menu-item">
-                                    <a href="#" class="tanajil-menu-item-title" title="Ruang">Ruang</a>
+                                    <a href="<?= base_url() ?>Home/ruang" class="tanajil-menu-item-title" title="Ruang">Ruang</a>
                                 </li>
                                 <li class="menu-item">
-                                    <a title="Barang" href="barang.html" class="tanajil-menu-item-title">Barang</a>
+                                    <a title="Barang" href="<?= base_url() ?>Home/barang" class="tanajil-menu-item-title">Barang</a>
                                 </li>
 
                             </ul>

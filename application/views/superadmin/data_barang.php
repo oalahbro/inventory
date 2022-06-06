@@ -168,7 +168,7 @@
                                             <td>" . $u['tahun'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
                                             <td>" . $u['image'] . "</td>
-                                            <td>" . $u['harga'] . "</td>";
+                                            <td>" . $this->format_rupiah->format($u['harga']) . "</td>";
 								echo "<td>
                                             <div class='d-flex'>
                                                 <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_inventory'] . "','" . $u['nama'] .  "','" . $u['deskripsi'] . "','" . $u['tahun'] . "','" . $u['jumlah'] . "','" . $u['image'] . "','" . $u['harga'] . "')\"><i class='fa fa-pencil'></i></a>
