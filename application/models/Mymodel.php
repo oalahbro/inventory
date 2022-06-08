@@ -76,6 +76,16 @@ class Mymodel extends CI_Model
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
+    public function katTitle()
+    {
+        $catid = intval($_GET['catid']);
+        if (!$catid) {
+            $catid = "Inventory";
+        }
+        $sql = "SELECT * from kategori where id_kategori='$catid'";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
 
     public function addKategori()
     {
@@ -109,14 +119,22 @@ class Mymodel extends CI_Model
     }
     //SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin
 
-    public function getRuang()
+    public function getInventory()
     {
-        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin WHERE inventory.id_kategori=1";
+        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin";
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
 
-    public function updateRuang()
+    public function filter()
+    {
+        $catid = intval($_GET['catid']);
+        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin where inventory.id_kategori='$catid'";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function updateInventory()
     {
         if (!$this->input->post('image')) {
             $data = [
@@ -126,7 +144,8 @@ class Mymodel extends CI_Model
                 'deskripsi' => $this->input->post('deskripsi'),
                 'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
                 'jumlah' => $this->input->post('jumlah'),
-                'harga' => $this->input->post('harga')
+                'harga' => $this->input->post('harga'),
+                'id_kategori' => $this->input->post('kategori')
             ];
         } else {
             $data = [
@@ -137,7 +156,8 @@ class Mymodel extends CI_Model
                 'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
                 'image' => $this->input->post('image'),
                 'jumlah' => $this->input->post('jumlah'),
-                'harga' => $this->input->post('harga')
+                'harga' => $this->input->post('harga'),
+                'id_kategori' => $this->input->post('kategori')
             ];
         }
         $this->db->where(array(
@@ -147,7 +167,7 @@ class Mymodel extends CI_Model
         return $data;
     }
 
-    public function addRuang()
+    public function addInventory()
     {
         $data = [
             'nama' => $this->input->post('nama'),
@@ -155,7 +175,7 @@ class Mymodel extends CI_Model
             'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
             'image' => $this->input->post('image'),
             'jumlah' => $this->input->post('jumlah'),
-            'id_kategori' => "1",
+            'id_kategori' => $this->input->post('kategori'),
             'id_admin' => $this->session->userdata('id_admin'),
             'harga' => $this->input->post('harga')
 
@@ -164,9 +184,9 @@ class Mymodel extends CI_Model
         $result =  $this->db->insert('inventory', $data);
         return $result;
     }
-    public function delRuang($id_ruang)
+    public function delInventory($id_inv)
     {
-        $this->db->where(array('id_inventory' => $id_ruang));
+        $this->db->where(array('id_inventory' => $id_inv));
         $this->db->delete('inventory');
     }
 

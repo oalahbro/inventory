@@ -139,32 +139,47 @@ class Superadmin extends CI_Controller
 
 		redirect(base_url('superadmin/kategori'));
 	}
-	public function data_ruang()
+	public function getInventory()
 	{
-		$data['ruang'] = $this->mymodel->getRuang();
+		$data['ruang'] = $this->mymodel->getInventory();
+		$data['kategori'] = $this->mymodel->getKategori();
 		$this->load->view('template/admin/header');
-		$this->load->view('superadmin/data_ruang', $data);
+		$this->load->view('superadmin/data_inventory', $data);
 		$this->load->view('template/admin/footer');
-	}
-	public function updateRuang()
-	{
-		$data = $this->mymodel->updateRuang();
-		redirect(base_url('superadmin/data_ruang'));
 		// var_dump($data);
 	}
 
-	public function addRuang()
+	public function filter()
 	{
-		$data = $this->mymodel->addRuang();
+		$data = [
+			'ruang' => $this->mymodel->filter(),
+			'kategori' => $this->mymodel->getKategori(),
+			'kat_title' => $this->mymodel->katTitle()
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/data_filter', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data['kat_title']);
+	}
+	public function updateInventory()
+	{
+		$data = $this->mymodel->updateInventory();
+		redirect(base_url('superadmin/getInventory'));
 		// var_dump($data);
-		redirect(base_url('superadmin/data_ruang'));
 	}
 
-	public function delRuang()
+	public function addInventory()
 	{
-		$id_ruang = $this->input->post('id_inventory1');
-		$data = $this->mymodel->delRuang($id_ruang);
+		$data = $this->mymodel->addInventory();
 		// var_dump($data);
-		redirect(base_url('superadmin/data_ruang'));
+		redirect(base_url('superadmin/getInventory'));
+	}
+
+	public function delInventory()
+	{
+		$id_inv = $this->input->post('id_inventory1');
+		$data = $this->mymodel->delInventory($id_inv);
+		// var_dump($data);
+		redirect(base_url('superadmin/getInventory'));
 	}
 }

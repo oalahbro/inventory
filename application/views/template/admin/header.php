@@ -847,8 +847,7 @@
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url() ?>superadmin/kategori">Kategori</a></li>
                             <li><a href="<?= base_url() ?>superadmin/data_admin">Data Admin</a></li>
-                            <li><a href="<?= base_url() ?>superadmin/data_ruang">Data Ruang</a></li>
-                            <li><a href="<?= base_url() ?>superadmin/data_barang">Data Barang</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/getInventory">Data Inventory</a></li>
                             <li><a href="<?= base_url() ?>superadmin/data_penyewa">Data Penyewa</a></li>
                         </ul>
                     </li>
