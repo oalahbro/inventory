@@ -858,15 +858,20 @@
                             <span class="nav-text">DATA TRANSAKSI</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="./pinjam.html">Pinjam</a></li>
-                            <li><a href="./sewa.html">Sewa</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/pemesanan">Pemesanan</a></li>
+                            <li><a href="./sewa.html">Konfirmasi Pemesanan</a></li>
                         </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-album-2"></i>
+                            <span class="nav-text">HISTORY</span>
+                        </a>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-notepad"></i>
                             <span class="nav-text">REPORT</span>
                         </a>
-                        <ul aria-expanded="false">
+                        <!-- <ul aria-expanded="false">
                             <li><a href="./ui-accordion.html">Accordion</a></li>
                             <li><a href="./ui-alert.html">Alert</a></li>
                             <li><a href="./ui-badge.html">Badge</a></li>
@@ -885,7 +890,7 @@
                             <li><a href="./ui-pagination.html">Pagination</a></li>
                             <li><a href="./ui-grid.html">Grid</a></li>
 
-                        </ul>
+                        </ul> -->
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-settings-2"></i>

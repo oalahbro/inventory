@@ -167,34 +167,4 @@ class Superadmin extends CI_Controller
 		// var_dump($data);
 		redirect(base_url('superadmin/data_ruang'));
 	}
-
-	public function data_barang()
-	{
-		$data['barang'] = $this->mymodel->getBarang();
-		$this->load->view('template/admin/header');
-		$this->load->view('superadmin/data_barang', $data);
-		$this->load->view('template/admin/footer');
-	}
-
-	public function updateBarang()
-	{
-		$data = $this->mymodel->updateRuang();
-		redirect(base_url('superadmin/data_barang'));
-		// var_dump($data);
-	}
-
-	public function addBarang()
-	{
-		$data = $this->mymodel->addBarang();
-		// var_dump($data);
-		redirect(base_url('superadmin/data_barang'));
-	}
-
-	public function delBarang()
-	{
-		$id_ruang = $this->input->post('id_inventory1');
-		$data = $this->mymodel->delRuang($id_ruang);
-		// var_dump($data);
-		redirect(base_url('superadmin/data_barang'));
-	}
 }
