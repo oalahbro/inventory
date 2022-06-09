@@ -10,8 +10,8 @@
 <body>
 	<h3>Pilih gambar dari komputer Anda dan klik upload</h3>
 	<?php echo @$error; ?>
-	<?php echo form_open_multipart('upload/upload'); ?>
-	<?php echo "<input type='file' name='profile_pic' size='20' />"; ?>
+	<?php echo form_open_multipart('superadmin/addInventory'); ?>
+	<?php echo "<input type='file' name='image' size='20' />"; ?>
 	<?php echo "<input type='submit' name='submit' value='upload' /> "; ?>
 	<?php echo "</form>" ?>
 </body>

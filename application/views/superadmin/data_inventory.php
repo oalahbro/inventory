@@ -19,7 +19,7 @@
                 <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Inventory</a>
 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Dropdown button
+                    Kategori
                 </button>
                 <div class="dropdown-menu">
                     <?php foreach ($kategori as $cat) {
@@ -40,7 +40,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?= base_url() ?>superadmin/addInventory">
+                        <form method="post" action="<?= base_url() ?>superadmin/addInventory" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                             <div class="form-group">
                                 <label class="text-black font-w500">Kategori</label>
                                 <select class="form-control default-select" name="kategori" required>
@@ -193,7 +193,7 @@
                                             <td>" . substr($u['deskripsi'], 0, 150) . " . . .</td>
                                             <td>" . $u['tahun'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
-                                            <td>" . $u['image'] . "</td>
+                                            <td><img  width='80' src='" . base_url() . "assets/upload/" . $u['image'] . "' alt=''></td>
                                             <td>" . $this->format_rupiah->format($u['harga']) . "</td>
                                             <td>" . $u['nama_kategori'] . "</td>";
                                 echo "<td>

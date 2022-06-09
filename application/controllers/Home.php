@@ -1,4 +1,8 @@
 <?php
+
+use phpDocumentor\Reflection\Types\This;
+use PhpParser\Node\Stmt\Echo_;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
@@ -22,6 +26,7 @@ class Home extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('mymodel');
 		$this->load->model('M_Landing');
 	}
 
@@ -78,5 +83,11 @@ class Home extends CI_Controller
 		$this->load->view('home/detail', $data);
 		$this->load->view('template/home/footer');
 		// var_dump($data);
+	}
+
+	public function test()
+	{
+		$data['data'] = $this->mymodel->getKategori();
+		$this->load->view('test', $data);
 	}
 }

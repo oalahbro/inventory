@@ -835,7 +835,7 @@
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <li><a href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-networking"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -847,8 +847,8 @@
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url() ?>superadmin/kategori">Kategori</a></li>
                             <li><a href="<?= base_url() ?>superadmin/data_admin">Data Admin</a></li>
-                            <li><a href="<?= base_url() ?>superadmin/getInventory">Data Inventory</a></li>
                             <li><a href="<?= base_url() ?>superadmin/data_penyewa">Data Penyewa</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/getInventory">Data Inventory</a></li>
                         </ul>
                     </li>
                     </li>
@@ -857,16 +857,16 @@
                             <span class="nav-text">DATA TRANSAKSI</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= base_url() ?>superadmin/pemesanan">Pemesanan</a></li>
-                            <li><a href="./sewa.html">Konfirmasi Pemesanan</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/getPemesanan">Pemesanan</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/getKonfpemesanan">Konfirmasi Pemesanan</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <li><a href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-album-2"></i>
                             <span class="nav-text">HISTORY</span>
                         </a>
                     </li>
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <li><a href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-notepad"></i>
                             <span class="nav-text">REPORT</span>
                         </a>

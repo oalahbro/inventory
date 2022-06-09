@@ -24,6 +24,8 @@ class Superadmin extends CI_Controller
 		parent::__construct();
 		$this->load->model('mymodel');
 		$this->load->model('mymodel');
+		$this->load->helper('url', 'form');
+		$this->load->library('form_validation');
 		if ($this->session->userdata('level') != 1) {
 			redirect(base_url("login"));
 		}
@@ -121,7 +123,6 @@ class Superadmin extends CI_Controller
 	public function addKategori()
 	{
 		$this->mymodel->addKategori();
-
 		redirect(base_url('superadmin/kategori'));
 	}
 
@@ -163,23 +164,64 @@ class Superadmin extends CI_Controller
 	}
 	public function updateInventory()
 	{
-		$data = $this->mymodel->updateInventory();
+		$this->mymodel->updateInventory();
 		redirect(base_url('superadmin/getInventory'));
 		// var_dump($data);
 	}
 
 	public function addInventory()
 	{
-		$data = $this->mymodel->addInventory();
-		// var_dump($data);
-		redirect(base_url('superadmin/getInventory'));
+		$config['upload_path'] = 'assets/upload/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size'] = 2000;
+
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('image')) {
+			$error = array('error' => $this->upload->display_errors());
+			echo "<script>alert('" . $error['error'] . "'); document.location = '" . base_url('superadmin/getInventory') . "';</script>";
+		} else {
+			$data = $this->upload->data();
+			$this->mymodel->addInventory($data);
+			// var_dump($data);
+			redirect(base_url('superadmin/getInventory'));
+		}
 	}
 
 	public function delInventory()
 	{
 		$id_inv = $this->input->post('id_inventory1');
-		$data = $this->mymodel->delInventory($id_inv);
+		$this->mymodel->delInventory($id_inv);
 		// var_dump($data);
 		redirect(base_url('superadmin/getInventory'));
+	}
+
+	public function getPemesanan()
+	{
+		$data = [
+			'pemesanan' => $this->mymodel->getPemesanan()
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/pemesanan', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+
+	public function getKonfpemesanan()
+	{
+		$data = [
+			'konf_pemesanan' => $this->mymodel->getKonfpemesanan()
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/konf_pemesanan', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+	public function api()
+	{
+		$catid = intval($_GET['catid']);
+		$data = $this->mymodel->getSwdetail($catid);
+		echo json_encode($data);
 	}
 }

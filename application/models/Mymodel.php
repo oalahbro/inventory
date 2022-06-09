@@ -126,6 +126,7 @@ class Mymodel extends CI_Model
         return $result;
     }
 
+
     public function filter()
     {
         $catid = intval($_GET['catid']);
@@ -167,13 +168,13 @@ class Mymodel extends CI_Model
         return $data;
     }
 
-    public function addInventory()
+    public function addInventory($data)
     {
         $data = [
             'nama' => $this->input->post('nama'),
             'deskripsi' => $this->input->post('deskripsi'),
             'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
-            'image' => $this->input->post('image'),
+            'image' => $data['file_name'],
             'jumlah' => $this->input->post('jumlah'),
             'id_kategori' => $this->input->post('kategori'),
             'id_admin' => $this->session->userdata('id_admin'),
@@ -249,5 +250,42 @@ class Mymodel extends CI_Model
     {
         $this->db->where(array('id_penyewa' => $id_penyewa));
         $this->db->delete('penyewa');
+    }
+
+    public function getPemesanan()
+    {
+
+        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+            ->from('sewa')
+            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function getkonfPemesanan()
+    {
+
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function getSwdetail($catid)
+    {
+
+        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+            ->from('sewa')
+            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+            ->join('admin', 'sewa.id_admin = admin.id_admin')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+            ->where(array('sewa_detail.id_sewa' => $catid))
+            ->get()->result_array();
+        return $result;
     }
 }

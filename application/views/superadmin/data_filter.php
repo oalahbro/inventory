@@ -19,7 +19,7 @@
                 <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data <?= $kat_title[0]['nama_kategori'] ?></a>
 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                    Dropdown button
+                    Kategori
                 </button>
                 <div class="dropdown-menu">
                     <?php foreach ($kategori as $cat) {
