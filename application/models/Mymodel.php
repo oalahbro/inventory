@@ -137,7 +137,7 @@ class Mymodel extends CI_Model
 
     public function updateInventory($data)
     {
-        if (!$this->input->post('image') && $data['file_name']) {
+        if (!$data['file_name']) {
             $data = [
                 'id_inventory' => $this->input->post('id_inventory'),
                 'nama' => $this->input->post('nama'),

@@ -118,8 +118,12 @@
                                             <td>" . $u['nama_inventory'] . "</td>
                                             <td>" . $this->format_rupiah->format($u['harga']) . "</td>
                                             <td>" . $u['jumlah'] . "</td>
-                                            <td>" . $u['sub_total'] . "</td>
-                                            <td>" . $u['status'] . "</td>";
+                                            <td>" . $u['sub_total'] . "</td>";
+                                if ($u['status'] == 1) {
+                                    echo "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Confirmed</span></td>";
+                                } else {
+                                    echo "<td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>";
+                                }
                                 // echo "<td> 
                                 //             <div class='d-flex'>
                                 //                 <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['nama_inventory'] . "')\"><i class='fa fa-pencil'></i></a>

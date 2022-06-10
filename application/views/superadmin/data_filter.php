@@ -22,7 +22,7 @@
                     Kategori
                 </button>
                 <div class="dropdown-menu">
-                    <a class='dropdown-item' href='<?= base_url() ?>superadmin/getInventory'>Semua Kategori</a>
+                    <a class='dropdown-item' href='<?= base_url() ?>superadmin/getfInventory'>Semua Kategori</a>
                     <?php foreach ($kategori as $cat) {
                         echo "<a class='dropdown-item' href='filter?catid=" . $cat["id_kategori"] . "'>" . $cat["nama_kategori"] . "</a>";
                     } ?>
@@ -92,7 +92,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?= base_url() ?>superadmin/updateInventory">
+                        <form action="<?= base_url() ?>superadmin/updateInventory" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                             <div class="form-group">
                                 <label class="text-black font-w500">Kategori</label>
                                 <select class="form-control" name="kategori" required>

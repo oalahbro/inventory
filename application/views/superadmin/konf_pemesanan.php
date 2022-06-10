@@ -129,7 +129,7 @@
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Tanggal Booking</th>
-                                <th>Bukti Bayar</th>
+                                <th style="width:  8.33%">Bukti Bayar</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -144,8 +144,18 @@
                                             <td>" . $u['tgl_mulai'] . "</td>
                                             <td>" . $u['tgl_selesai'] . "</td>
                                             <td>" . $u['tgl_booking'] . "</td>
-                                            <td>" . $u['bukti_bayar'] . "</td>
-                                            <td>" . $u['status'] . "</td>";
+                                            <td >
+                                            <div class='lightgallery' class='row'>
+                                            <a href='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' data-exthumbimage='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "' data-src='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "'class='col-lg-3 col-md-6 mb-4' >
+                                            <img src='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' style='width:60%;' />
+                                            </a>
+                                            </div>
+                                            </td>";
+                                if ($u['status'] == 1) {
+                                    echo "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Confirmed</span></td>";
+                                } else {
+                                    echo "<td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>";
+                                }
                                 echo "<td> 
                                             <div class='d-flex'>
                                                 <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
