@@ -91,7 +91,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?= base_url() ?>superadmin/updateInventory">
+                        <form action="<?= base_url() ?>superadmin/updateInventory" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                             <div class="form-group">
                                 <label class="text-black font-w500">Kategori</label>
                                 <select class="form-control" name="kategori" required>
@@ -193,7 +193,13 @@
                                             <td>" . substr($u['deskripsi'], 0, 150) . " . . .</td>
                                             <td>" . $u['tahun'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
-                                            <td><img  width='80' src='" . base_url() . "assets/upload/" . $u['image'] . "' alt=''></td>
+                                            <td>
+                                            <div class='lightgallery' class='row'>
+                                            <a href='" . base_url() . "assets/upload/" . $u['image'] . "' data-exthumbimage='" . base_url() . "assets/upload/" . $u['image'] . "' data-src='" . base_url() . "assets/upload/" . $u['image'] . "'class='col-lg-3 col-md-6 mb-4' >
+                                            <img src='" . base_url() . "assets/upload/" . $u['image'] . "' style='width:80%;' />
+                                            </a>
+                                            </div>
+                                            </td>
                                             <td>" . $this->format_rupiah->format($u['harga']) . "</td>
                                             <td>" . $u['nama_kategori'] . "</td>";
                                 echo "<td>

@@ -61,6 +61,7 @@
 <script src="<?php echo base_url(); ?>assets/admin/js/plugins-init/material-date-picker-init.js"></script>
 <!-- Pickdate -->
 <script src="<?php echo base_url(); ?>assets/admin/js/plugins-init/pickadate-init.js"></script>
+<script src="<?= base_url() ?>assets/admin/vendor/lightgallery/js/lightgallery-all.min.js"></script>
 
 <!-- Datatable -->
 <script src="<?php echo base_url(); ?>assets/admin/vendor/datatables/js/jquery.dataTables.min.js"></script>
@@ -79,6 +80,13 @@
 
         });
     })(jQuery);
+</script>
+<script>
+    $('.lightgallery').lightGallery({
+        loop: true,
+        thumbnail: true,
+        exThumbImage: 'data-exthumbimage'
+    });
 </script>
 </body>
 

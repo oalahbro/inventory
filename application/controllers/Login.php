@@ -33,7 +33,7 @@ class Login extends CI_Controller
             $cariDatapenyewa = $this->Loginmodel->cekPenyewa();
             $cariDataadmin = $this->Loginmodel->cek();
 
-            if ($cariDataadmin) {
+            if ($cariDataadmin && $cariDataadmin[0]['status'] == 1) {
                 $data_session = [
                     'username' => $cariDataadmin[0]['username'],
                     'status' => "login",

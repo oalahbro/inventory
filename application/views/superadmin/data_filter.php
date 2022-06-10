@@ -22,6 +22,7 @@
                     Kategori
                 </button>
                 <div class="dropdown-menu">
+                    <a class='dropdown-item' href='<?= base_url() ?>superadmin/getInventory'>Semua Kategori</a>
                     <?php foreach ($kategori as $cat) {
                         echo "<a class='dropdown-item' href='filter?catid=" . $cat["id_kategori"] . "'>" . $cat["nama_kategori"] . "</a>";
                     } ?>
@@ -193,7 +194,13 @@
                                             <td>" . substr($u['deskripsi'], 0, 150) . " . . .</td>
                                             <td>" . $u['tahun'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
-                                            <td>" . $u['image'] . "</td>
+                                            <td>
+                                            <div class='lightgallery' class='row'>
+                                            <a href='" . base_url() . "assets/upload/" . $u['image'] . "' data-exthumbimage='" . base_url() . "assets/upload/" . $u['image'] . "' data-src='" . base_url() . "assets/upload/" . $u['image'] . "'class='col-lg-3 col-md-6 mb-4' >
+                                            <img src='" . base_url() . "assets/upload/" . $u['image'] . "' style='width:80%;' />
+                                            </a>
+                                            </div>
+                                            </td>
                                             <td>" . $this->format_rupiah->format($u['harga']) . "</td>
                                             <td>" . $u['nama_kategori'] . "</td>";
                                 echo "<td>

@@ -164,9 +164,22 @@ class Superadmin extends CI_Controller
 	}
 	public function updateInventory()
 	{
-		$this->mymodel->updateInventory();
-		redirect(base_url('superadmin/getInventory'));
-		// var_dump($data);
+		$config['upload_path'] = 'assets/upload/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size'] = 2000;
+
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('image')) {
+			$error = array('error' => $this->upload->display_errors());
+			echo "<script>alert('" . $error['error'] . "'); document.location = '" . base_url('superadmin/getInventory') . "';</script>";
+		} else {
+			$data = $this->upload->data();
+			$this->mymodel->updateInventory($data);
+			// var_dump($data);
+			redirect(base_url('superadmin/getInventory'));
+		}
 	}
 
 	public function addInventory()
@@ -223,5 +236,11 @@ class Superadmin extends CI_Controller
 		$catid = intval($_GET['catid']);
 		$data = $this->mymodel->getSwdetail($catid);
 		echo json_encode($data);
+	}
+	public function test1()
+	{
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/test');
+		$this->load->view('template/admin/footer');
 	}
 }
