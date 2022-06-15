@@ -14,7 +14,7 @@
                                 <a href="#">Ruang</a>
                             </li>
                             <li class="trail-item trail-end active">
-                                <?= $new['nama_kamera'] ?>
+                                <?= $new['nama'] ?>
                             </li>
                         </ul>
                     </div>
@@ -26,29 +26,29 @@
                         <div class="details-product">
                             <div class="details-thumd">
                                 <div class="image-preview-container image-thick-box image_preview_container">
-                                    <img id="img_zoom" data-zoom-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image1'] ?>" src="<?php echo base_url(); ?>assets/images/item/<?= $new['image1'] ?>" alt="img">
+                                    <img id="img_zoom" data-zoom-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img">
                                     <a href="#" class="btn-zoom open_qv"><i class="fa fa-search" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="product-preview image-small product_preview">
                                     <div id="thumbnails" class="thumbnails_carousel owl-carousel" data-nav="true" data-autoplay="false" data-dots="false" data-loop="false" data-margin="10" data-responsive='{"0":{"items":3},"480":{"items":3},"600":{"items":3},"1000":{"items":3}}'>
-                                        <a href="#" data-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image1'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image1'] ?>" class="active">
-                                            <img src="<?php echo base_url(); ?>assets/images/item/<?= $new['image1'] ?>" data-large-image="<?php echo base_url(); ?><?php echo base_url(); ?>assets/images/item/<?= $new['image1'] ?>" alt="img">
+                                        <a href="#" data-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" class="active">
+                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-large-image="<?php echo base_url(); ?><?php echo base_url(); ?>assets/upload<?= $new['image'] ?>" alt="img">
                                         </a>
-                                        <a href="#" data-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image2'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image2'] ?>">
-                                            <img src="<?php echo base_url(); ?>assets/images/item/<?= $new['image2'] ?>" data-large-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image2'] ?>" alt="img">
+                                        <a href="#" data-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>">
+                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-large-image="<?php echo base_url(); ?>assets/upload<?= $new['image'] ?>" alt="img">
                                         </a>
-                                        <a href="#" data-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image3'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image3'] ?>">
-                                            <img src="<?php echo base_url(); ?>assets/images/item/<?= $new['image3'] ?>" data-large-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image3'] ?>" alt="img">
+                                        <a href="#" data-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>">
+                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-large-image="<?php echo base_url(); ?>assets/upload<?= $new['image'] ?>" alt="img">
                                         </a>
-                                        <a href="#" data-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image4'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image4'] ?>">
-                                            <img src="<?php echo base_url(); ?>assets/images/item/<?= $new['image4'] ?>" data-large-image="<?php echo base_url(); ?>assets/images/item/<?= $new['image4'] ?>" alt="img">
+                                        <a href="#" data-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-zoom-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>">
+                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" data-large-image="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img">
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="details-infor">
                                 <h1 class="product-title">
-                                    <?= $new['nama_kamera'] ?>
+                                    <?= $new['nama'] ?>
                                 </h1>
                                 <!-- <div class="stars-rating">
                                     <div class="star-rating">
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="product-details-description">
                                     <ul>
-                                        <li>Vestibulum tortor quam</li>
+                                        <li>jumlah <?= $new['jumlah'] ?></li>
                                         <li>Imported</li>
                                         <li>Art.No. 06-7680</li>
                                     </ul>
@@ -110,16 +110,21 @@
                                                 Size Chart</a>
                                         </div>
                                     </div> -->
-                                <div class="quantity-add-to-cart">
-                                    <div class="quantity">
-                                        <div class="control">
-                                            <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                            <input type="text" data-step="1" data-min="0" value="1" title="Qty" class="input-qty qty" size="4">
-                                            <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+
+                                <form action="<?= base_url() ?>home/addCart" method="POST">
+                                    <div class="quantity-add-to-cart">
+                                        <div class="quantity">
+                                            <div class="control">
+                                                <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                <input type="number" min="1" max="<?= $new['jumlah'] ?>" value="1" title="Qty" class="input-qty qty" size="4">
+                                                <a href="#" class="btn-number qtyplus quantity-plus">+</a>
+                                            </div>
                                         </div>
+                                        <input type="text" name="id_inventory" value="<?= $new['id_inventory'] ?>" hidden />
+                                        <button type="submit" class="single_add_to_cart_button button">Add to cart</button>
+
                                     </div>
-                                    <button class="single_add_to_cart_button button">Add to cart</button>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -89,8 +89,8 @@
                                     </div>
                                     <div class="product-thumb">
                                         <div class="thumb-inner">
-                                            <a href="detail?vhid=<?= $new['id_inventory'] ?>">
-                                                <img src="<?php echo base_url(); ?>assets/images/item/<?= $new['image'] ?>" alt="img">
+                                            <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
+                                                <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
                                             </a>
                                             <div class="thumb-group">
                                                 <div class="yith-wcwl-add-to-wishlist">

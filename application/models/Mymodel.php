@@ -255,11 +255,10 @@ class Mymodel extends CI_Model
     public function getPemesanan()
     {
 
-        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
             ->from('sewa')
-            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
-            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+            ->where(array('sewa.status' => 2))
             ->get()->result_array();
         return $result;
     }
@@ -269,8 +268,8 @@ class Mymodel extends CI_Model
 
         $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
             ->from('sewa')
-
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => 1))
             ->get()->result_array();
         return $result;
     }
@@ -285,6 +284,65 @@ class Mymodel extends CI_Model
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
             ->where(array('sewa_detail.id_sewa' => $catid))
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function updatePemesanan()
+    {
+        if ($_POST['action'] == 'konfirmasi') {
+            $data = [
+                'id_sewa' => $this->input->post('id_sewa'),
+                'status' => 1
+            ];
+        } else if ($_POST['action'] == 'selesai') {
+            $data = [
+                'id_sewa' => $this->input->post('id_sewa'),
+                'status' => 3
+            ];
+        } else {
+            $data = [
+                'id_sewa' => $this->input->post('id_sewa'),
+                'status' => 0
+            ];
+        }
+        $result =  $this->db->where(array(
+            'id_sewa' => $data['id_sewa']
+        ));
+        $this->db->update('sewa', $data);
+        return $result;
+    }
+
+    public function getHistory()
+    {
+
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where('sewa.status', '0')
+            ->or_where('sewa.status', '3')
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function filterhistory()
+    {
+        $stts = intval($_GET['stts']);
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => $stts))
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function getLaporan()
+    {
+
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => 2))
             ->get()->result_array();
         return $result;
     }

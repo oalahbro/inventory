@@ -11,14 +11,21 @@
         <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
 
             <div class="mr-auto">
-                <h2 class="text-black font-w600">Pesanan Sewa</h2>
+                <h2 class="text-black font-w600">History</h2>
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <!-- <div>
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Ruang</a>
-                <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
-            </div> -->
+            <div>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Status
+                </button>
+                <div class="dropdown-menu">
+                    <a class='dropdown-item' href='<?= base_url() ?>superadmin/getHistory'>Semua</a>
+                    <a class='dropdown-item' href='filterstatus?stts=3'>Selesai</a>
+                    <a class='dropdown-item' href='filterstatus?stts=0'>Dibatalkan</a>
+                </div>
+
+            </div>
         </div>
         <!-- Add Order -->
         <!-- <div class="modal  bd-example-modal-lg fade" id="addOrderModal">
@@ -84,12 +91,12 @@
 
                                 </table>
                             </div>
-                            <form method="POST" action="<?= base_url() ?>superadmin/updateKonfpemesanan">
+                            <!-- <form method="POST" action="<?= base_url() ?>superadmin/updateKonfpemesanan">
                                 <input type="text" name="id_sewa" id="id_sewa" hidden></input>
                                 <div class="form-group mt-2">
                                     <button type="submit" value="selesai" name="action" class="btn btn-primary">SELESAI</button>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                 </div>
@@ -140,7 +147,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            foreach ($konf_pemesanan as $u) {
+                            foreach ($history as $u) {
                                 echo "<tr>
                                             <td>" . $no . "</td>
                                             <td>" . $u['nama'] . "</td>
@@ -153,13 +160,21 @@
                                             <img src='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' style='width:60%;' />
                                             </a>
                                             </div>
-                                            </td><td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Terkonfirmasi</span></td>
-                                            <td> 
+                                            </td>
+                                            ";
+                                if ($u['status'] == 1) {
+                                    echo  "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Terkonfirmasi</span></td>";
+                                } elseif ($u['status'] == 2) {
+                                    echo  "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Pengajuan</span></td>";
+                                } elseif ($u['status'] == 3) {
+                                    echo  "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Selesai</span></td>";
+                                } elseif ($u['status'] == 0) {
+                                    echo  "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Dibatalkan</span></td>";
+                                }
+                                echo "<td> 
                                             <div class='d-flex'>
-                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
-
-                                                <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_inventory'] . "')\"><i class='fa fa-trash'></i></a>
-                                            </div>";
+                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-eye'></i></a>
+                                            </div></td></tr>";
 
 
                                 $no++;
@@ -178,7 +193,6 @@
 <script type="text/javascript">
     // api url
     function SetInput(id_sewa) {
-        document.getElementById('id_sewa').value = id_sewa;
         var api_url =
             "<?= base_url() ?>superadmin/api?catid=" + id_sewa;
         async function getapi(url) {
@@ -224,9 +238,5 @@
             // Setting innerHTML as tab variable
             document.getElementById("employees").innerHTML = tab + "</tbody>";
         }
-    }
-
-    function setInput1(id_inventory) {
-        document.getElementById('id_inventory1').value = id_inventory;
     }
 </script>

@@ -26,6 +26,20 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/mobile-menu.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fonts/flaticon/flaticon.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+    <link href="<?= base_url(); ?>assets/admin/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body class="productsgrid-page">

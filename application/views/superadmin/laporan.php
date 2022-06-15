@@ -11,7 +11,7 @@
         <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
 
             <div class="mr-auto">
-                <h2 class="text-black font-w600">Pesanan Sewa</h2>
+                <h2 class="text-black font-w600">Laporan</h2>
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
@@ -84,10 +84,11 @@
 
                                 </table>
                             </div>
-                            <form method="POST" action="<?= base_url() ?>superadmin/updateKonfpemesanan">
+                            <form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan">
                                 <input type="text" name="id_sewa" id="id_sewa" hidden></input>
                                 <div class="form-group mt-2">
-                                    <button type="submit" value="selesai" name="action" class="btn btn-primary">SELESAI</button>
+                                    <button type="submit" value="konfirmasi" name="action" class="btn btn-primary">KONFORMASI</button>
+                                    <button type="submit" value="batal" name="action" class="btn btn-danger">BATAL</button>
                                 </div>
                             </form>
                         </div>
@@ -140,7 +141,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            foreach ($konf_pemesanan as $u) {
+                            foreach ($laporan as $u) {
                                 echo "<tr>
                                             <td>" . $no . "</td>
                                             <td>" . $u['nama'] . "</td>
@@ -153,7 +154,7 @@
                                             <img src='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' style='width:60%;' />
                                             </a>
                                             </div>
-                                            </td><td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Terkonfirmasi</span></td>
+                                            </td><td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>
                                             <td> 
                                             <div class='d-flex'>
                                                 <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
@@ -229,4 +230,10 @@
     function setInput1(id_inventory) {
         document.getElementById('id_inventory1').value = id_inventory;
     }
+
+    // function SetInput(id_sewa) {
+    //     document.getElementById('id_sewa').value = id_sewa;
+
+
+    // }
 </script>

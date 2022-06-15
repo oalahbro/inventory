@@ -7,7 +7,7 @@
 		<div class="form-head d-flex align-items-center mb-sm-4 mb-3">
 			<div class="mr-auto">
 				<h2 class="text-black font-w600">Dashboard</h2>
-				<p class="mb-0">Admin Dashboard</p>
+				<p class="mb-0">Super Admin Dashboard</p>
 			</div>
 			<a href="javascript:void(0)" class="btn btn-outline-primary"><i class="las la-cog scale5 mr-3"></i>Customize Layout</a>
 		</div>

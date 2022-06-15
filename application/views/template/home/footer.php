@@ -186,8 +186,12 @@
 <script src="<?php echo base_url(); ?>assets/js/jquery.scrollbar.min.js"></script>
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nDHy1dARR-Pa_2jjPCjvsOR4bcILYsM'></script>
 <script src="<?php echo base_url(); ?>assets/js/frontend-plugin.js"></script>
+<script src="<?= base_url(); ?>assets/admin/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
 </body>
-
+<?php
+error_reporting(0);
+echo $error;
+?>
 <!-- tanajil/gridproducts_bannerslider.html  21 Nov 2019 03:34:59 GMT -->
 
 </html>

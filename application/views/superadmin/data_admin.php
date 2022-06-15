@@ -72,7 +72,11 @@
                                 <label class="text-black font-w500">Username</label>
                                 <input type="text" id="username" name="username" class="form-control" required>
                                 <label class="text-black font-w500">Password</label>
-                                <input type="password" id="password" name="password" class="form-control">
+                                <input type="password" id="password" name="password" class="form-control" onkeyup='check();' />
+                                <label class="text-black font-w500">Konfirmasi cPassword</label>
+                                <input type="password" id="cpassword" name="cpassword" class="form-control" onkeyup='check();' />
+                                <span id='message'></span>
+                                <br>
                                 <label class="text-black font-w500">Level</label>
                                 <select class="form-control" name="level" required>
                                     <option id="level" hidden></option>
@@ -87,7 +91,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">SUBMIT</button>
+                                <button type="submit" class="btn btn-primary button">SUBMIT</button>
                             </div>
                         </form>
                     </div>
@@ -141,9 +145,9 @@
                                             <td>" . $no . "</td>
                                             <td>" . $u['username'] . "</td>";
                                 if ($u['level'] == 1) {
-                                    echo "<td>Superadmin</td>";
+                                    echo "<td><span class='badge badge-rounded badge-dark'>Superadmin</span></td>";
                                 } else {
-                                    echo "<td>Admin</td>";
+                                    echo "<td><span class='badge badge-rounded badge-light'>Admin</span></td>";
                                 }
                                 if ($u['status'] == 1) {
                                     echo "<td><span class='badge light badge-success'>Aktif</span></td>";
@@ -172,8 +176,6 @@
             Content body end
         ***********************************-->
 <script type="text/javascript">
-    let asu = level;
-
     function SetInput(id_admin, username, level, status) {
         document.getElementById('id_admin').value = id_admin;
         document.getElementById('username').value = username;
@@ -194,5 +196,18 @@
 
     function setInput1(id_admin) {
         document.getElementById('id_admin1').value = id_admin;
+    }
+    var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('cpassword').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'matching';
+            document.querySelector('.button').disabled = false;
+
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'not matching';
+            document.querySelector('.button').disabled = true;
+        }
     }
 </script>

@@ -90,4 +90,24 @@ class Home extends CI_Controller
 		$data['data'] = $this->mymodel->getKategori();
 		$this->load->view('test', $data);
 	}
+
+	public function addCart()
+	{
+		if (!$this->session->userdata('level') && !$this->session->userdata('levelpenyewa')) {
+			$data = [
+				'error' => '<script>
+							swal({
+								title: "Gagal menambah barang!",
+								text: "Silahkan login terlebih dahulu!",
+								type: "error"
+								}).then(function() {
+								window.location = "' . base_url() . 'home/detail?vhid=' . $this->input->post('id_inventory') . '";
+								});
+								</script>'
+			];
+			$this->load->view('test', $data);
+		} else {
+			echo "berhasil add cart";
+		}
+	}
 }

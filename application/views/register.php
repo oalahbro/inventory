@@ -30,26 +30,51 @@
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Nama Lengkap</strong></label>
                                             <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap">
+                                            <div class="text-danger">
+                                                <?= form_error('nama') ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input type="email" name="email" class="form-control" placeholder="hello@example.com">
+                                            <div class="text-danger">
+                                                <?= form_error('email') ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Alamat</strong></label>
                                             <input type="text" name="alamat" class="form-control" placeholder="alamat">
+                                            <div class="text-danger">
+                                                <?= form_error('alamat') ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Telp</strong></label>
                                             <input type="number" name="telp" class="form-control" placeholder="+62">
+                                            <div class="text-danger">
+                                                <?= form_error('telp') ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>No identitias</strong></label>
                                             <input type="number" name="no_identitas" class="form-control" placeholder="ktp/sim/etc">
+                                            <div class="text-danger">
+                                                <?= form_error('no_identitas') ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
                                             <input type="password" name="password" class="form-control" placeholder="Password">
+                                            <div class="text-danger">
+                                                <?= form_error('password') ?>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="mb-1 text-white"><strong>Konfirmasi Password</strong></label>
+                                            <input type="password" name="konfpassword" class="form-control" placeholder="Konfirmasi Password">
+                                            <div class="text-danger">
+                                                <?= form_error('cpassword') ?>
+                                            </div>
                                         </div>
                                         <div class="text-center mt-4">
                                             <button type="submit" class="btn bg-white text-primary btn-block">Sign me up</button>

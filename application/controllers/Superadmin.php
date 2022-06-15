@@ -1,4 +1,7 @@
 <?php
+
+use phpDocumentor\Reflection\Types\This;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Superadmin extends CI_Controller
@@ -237,10 +240,47 @@ class Superadmin extends CI_Controller
 		$data = $this->mymodel->getSwdetail($catid);
 		echo json_encode($data);
 	}
-	public function test1()
+	public function updatePemesanan()
 	{
+		$this->mymodel->updatePemesanan();
+		redirect(base_url('superadmin/getPemesanan'));
+		// echo $_POST['action'];
+	}
+	public function updateKonfpemesanan()
+	{
+		$this->mymodel->updatePemesanan();
+		redirect(base_url('superadmin/getKonfpemesanan'));
+	}
+
+	public function getHistory()
+	{
+		$data = [
+			'history' => $this->mymodel->getHistory()
+		];
 		$this->load->view('template/admin/header');
-		$this->load->view('superadmin/test');
+		$this->load->view('superadmin/history', $data);
 		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+	public function filterstatus()
+	{
+		$data = [
+			'history' => $this->mymodel->filterhistory()
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/history', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data['kat_title']);
+	}
+
+	public function getLaporan()
+	{
+		$data = [
+			'laporan' => $this->mymodel->getLaporan()
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/laporan', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
 	}
 }

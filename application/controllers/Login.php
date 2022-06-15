@@ -1,4 +1,7 @@
 <?php
+
+use function PHPUnit\Framework\callback;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Login extends CI_Controller
@@ -62,7 +65,7 @@ class Login extends CI_Controller
                 echo 'gagal';
             }
         } else {
-            $this->index();
+            redirect(base_url("login"));
         }
     }
 
@@ -73,9 +76,18 @@ class Login extends CI_Controller
 
     public  function signup()
     {
-        $cariDatapenyewa = $this->Loginmodel->cekPenyewa();
-        $cek = $this->Loginmodel->resgister();
-        var_dump($cek);
+        $this->form_validation->set_rules('nama', 'nama', 'required|min_length[3]');
+        $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+        $this->form_validation->set_rules('telp', 'telp', 'required|regex_match[/^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/]');
+        $this->form_validation->set_rules('no_identitas', 'no_identitas', 'required|min_length[3]');
+        $this->form_validation->set_rules('password', 'password', 'required|min_length[5]|matches[cpassword]');
+        $this->form_validation->set_rules('cPassword', 'password', 'required|min_length[5]');
+        if ($this->form_validation->run() != false) {
+            $cariDatapenyewa = $this->Loginmodel->cekPenyewa();
+            $cek = $this->Loginmodel->resgister();
+        } else {
+            $this->load->view('register');
+        }
     }
 
     public  function logout()

@@ -11,7 +11,7 @@
         <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
 
             <div class="mr-auto">
-                <h2 class="text-black font-w600">Pesanan Sewa</h2>
+                <h2 class="text-black font-w600">Pemesanan</h2>
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
@@ -66,7 +66,36 @@
                 </div>
             </div>
         </div> -->
+        <div class="modal  bd-example-modal-lg fade" id="edit-modal">
+            <div class="modal-dialog modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambah Data Barang</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="spinner-border" role="status" id="loading">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="employees" class="table primary-table-bordered">
 
+                                </table>
+                            </div>
+                            <form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan">
+                                <input type="text" name="id_sewa" id="id_sewa" hidden></input>
+                                <div class="form-group mt-2">
+                                    <button type="submit" value="konfirmasi" name="action" class="btn btn-primary">KONFORMASI</button>
+                                    <button type="submit" value="batal" name="action" class="btn btn-danger">BATAL</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog" style="width:55%;">
@@ -101,11 +130,12 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nama</th>
-                                <th>Item</th>
-                                <th>Harga</th>
-                                <th>Jumlah</th>
-                                <th>Sub Total</th>
+                                <th>Tanggal Mulai</th>
+                                <th>Tanggal Selesai</th>
+                                <th>Tanggal Booking</th>
+                                <th style="width:  8.33%">Bukti Bayar</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,20 +145,22 @@
                                 echo "<tr>
                                             <td>" . $no . "</td>
                                             <td>" . $u['nama'] . "</td>
-                                            <td>" . $u['nama_inventory'] . "</td>
-                                            <td>" . $this->format_rupiah->format($u['harga']) . "</td>
-                                            <td>" . $u['jumlah'] . "</td>
-                                            <td>" . $u['sub_total'] . "</td>";
-                                if ($u['status'] == 1) {
-                                    echo "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Confirmed</span></td>";
-                                } else {
-                                    echo "<td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>";
-                                }
-                                // echo "<td> 
-                                //             <div class='d-flex'>
-                                //                 <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['nama_inventory'] . "')\"><i class='fa fa-pencil'></i></a>
+                                            <td>" . $u['tgl_mulai'] . "</td>
+                                            <td>" . $u['tgl_selesai'] . "</td>
+                                            <td>" . $u['tgl_booking'] . "</td>
+                                            <td >
+                                            <div class='lightgallery' class='row'>
+                                            <a href='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' data-exthumbimage='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "' data-src='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "'class='col-lg-3 col-md-6 mb-4' >
+                                            <img src='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' style='width:60%;' />
+                                            </a>
+                                            </div>
+                                            </td><td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>
+                                            <td> 
+                                            <div class='d-flex'>
+                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
 
-                                //             </div>";
+                                                <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_inventory'] . "')\"><i class='fa fa-trash'></i></a>
+                                            </div>";
 
 
                                 $no++;
@@ -144,19 +176,64 @@
 <!--**********************************
             Content body end
         ***********************************-->
-<!-- <script type="text/javascript">
-    function SetInput(id_inventory, nama, deskripsi, tahun, jumlah, gambar, harga) {
-        document.getElementById('id_inventory').value = id_inventory;
-        document.getElementById('nama').value = nama;
-        document.getElementById('deskripsi').value = deskripsi;
-        document.getElementById('tahun').value = tahun;
-        document.getElementById('jumlah').value = jumlah;
-        document.getElementById('img').value = gambar;
-        document.getElementById('hrg').value = harga;
+<script type="text/javascript">
+    // api url
+    function SetInput(id_sewa) {
+        document.getElementById('id_sewa').value = id_sewa;
+        var api_url =
+            "<?= base_url() ?>superadmin/api?catid=" + id_sewa;
+        async function getapi(url) {
 
+            // Storing response
+            const response = await fetch(url);
+
+            // Storing data in form of JSON
+            var data = await response.json();
+            console.log(data);
+            if (response) {
+                hideloader();
+            }
+            show(data);
+        }
+        getapi(api_url);
+
+        function hideloader() {
+            document.getElementById('loading').style.display = 'none';
+        }
+        // Function to define innerHTML for HTML table
+        function show(data) {
+            let tab =
+                `<thead class="thead-primary">
+                            <tr>
+                                <th>Item</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>sub total</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+            // Loop to access all rows
+            for (let r of data) {
+                tab += `<tr>
+        <td>${r.nama_inventory} </td>
+        <td>${r.harga}</td>
+        <td>${r.jumlah}</td>
+        <td>${r.sub_total}</td>		
+        </tr>`;
+            }
+            // Setting innerHTML as tab variable
+            document.getElementById("employees").innerHTML = tab + "</tbody>";
+        }
     }
 
     function setInput1(id_inventory) {
         document.getElementById('id_inventory1').value = id_inventory;
     }
-</script> -->
+
+    // function SetInput(id_sewa) {
+    //     document.getElementById('id_sewa').value = id_sewa;
+
+
+    // }
+</script>

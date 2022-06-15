@@ -181,9 +181,9 @@
 											<td>" . $u['no_identitas'] . "</td>
 											<td>" . $u['alamat'] . "</td>";
 								if ($u['level'] == 1) {
-									echo "<td>Staff / Siswa</td>";
+									echo "<td><span class='badge badge-outline-success'>Staff / Siswa</span></td>";
 								} else {
-									echo "<td>Eksternal</td>";
+									echo "<td><span class='badge badge-outline-info'>Eksternal</span></td>";
 								}
 								echo "<td>
                                 <div class='d-flex'>
