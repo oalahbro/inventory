@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 29 Bulan Mei 2022 pada 20.02
+-- Waktu pembuatan: 16 Jun 2022 pada 11.01
 -- Versi server: 10.5.15-MariaDB-0+deb11u1
 -- Versi PHP: 7.4.29
 
@@ -62,6 +62,17 @@ CREATE TABLE `inventory` (
   `harga` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data untuk tabel `inventory`
+--
+
+INSERT INTO `inventory` (`id_inventory`, `id_admin`, `id_kategori`, `nama`, `deskripsi`, `tahun`, `jumlah`, `image`, `harga`) VALUES
+(4, 16, 3, 'SULAIMAN', 'asdfghjklzsdfh xsdfgh cfj', '2022-06-14', 13, 'wekek.jpeg', 1000),
+(5, 16, 1, 'SULAIMAN', 'asdfghjklzsdfh xsdfgh cfj', '2022-06-14', 13, 'xss_poc.png', 1000),
+(6, 16, 1, 'beruang', 'adadad adadad', '2022-06-21', 100, '202206160df2.png', 8000),
+(8, 16, 2, 'Davetta McBride', 'asdf asfda', '2022-06-30', 0, '2022061607a3.png', 1000),
+(9, 16, 1, 'asdasd', 'dadadada', '2022-06-27', 100, '202206160a6e.png', 1000);
+
 -- --------------------------------------------------------
 
 --
@@ -72,6 +83,16 @@ CREATE TABLE `kategori` (
   `id_kategori` int(11) NOT NULL,
   `nama_kategori` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+(1, 'ruang'),
+(2, 'barang'),
+(3, 'elektron'),
+(5, 'hahah');
 
 -- --------------------------------------------------------
 
@@ -95,8 +116,8 @@ CREATE TABLE `penyewa` (
 --
 
 INSERT INTO `penyewa` (`id_penyewa`, `nama`, `email`, `password`, `telp`, `no_identitas`, `alamat`, `level`) VALUES
-(2, 'SULAIMAN', 'eka@email.com', '827ccb0eea8a706c4c34a16891f84e7b', '0890890809098', '1110890890809098', 'madiun', 1),
-(8, 'Davetta McBride', 'epradana15@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '345678998765434567', '3456789987654345', '1255 N Grove Street Apt E', 3);
+(2, 'SULAIMAN', 'eka@email.com', '21232f297a57a5a743894a0e4a801fc3', '0890890809098', '1110890890809098', 'madiun', 1),
+(8, 'Davetta McBride', 'epradana15@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '345678998765434567', '3456789987654345', '1255 N Grove Street Apt E', 3);
 
 -- --------------------------------------------------------
 
@@ -107,7 +128,7 @@ INSERT INTO `penyewa` (`id_penyewa`, `nama`, `email`, `password`, `telp`, `no_id
 CREATE TABLE `sewa` (
   `id_sewa` int(11) NOT NULL,
   `id_penyewa` int(11) NOT NULL,
-  `id_admin` int(11) NOT NULL,
+  `id_admin` int(11) DEFAULT NULL,
   `tgl_mulai` datetime DEFAULT NULL,
   `tgl_selesai` datetime DEFAULT NULL,
   `tgl_booking` date DEFAULT NULL,
@@ -115,6 +136,13 @@ CREATE TABLE `sewa` (
   `bukti_bayar` varchar(20) DEFAULT NULL,
   `total` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `sewa`
+--
+
+INSERT INTO `sewa` (`id_sewa`, `id_penyewa`, `id_admin`, `tgl_mulai`, `tgl_selesai`, `tgl_booking`, `status`, `bukti_bayar`, `total`) VALUES
+(2, 2, 16, '2022-06-16 10:42:45', '2022-06-18 10:42:45', '2022-06-16', 4, 'ok', 12000);
 
 -- --------------------------------------------------------
 
@@ -191,13 +219,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id_inventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_inventory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `penyewa`
@@ -209,7 +237,7 @@ ALTER TABLE `penyewa`
 -- AUTO_INCREMENT untuk tabel `sewa`
 --
 ALTER TABLE `sewa`
-  MODIFY `id_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_sewa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `sewa_detail`
@@ -232,7 +260,7 @@ ALTER TABLE `inventory`
 -- Ketidakleluasaan untuk tabel `sewa`
 --
 ALTER TABLE `sewa`
-  ADD CONSTRAINT `fo_admin` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fo_admin` FOREIGN KEY (`id_admin`) REFERENCES `admin` (`id_admin`),
   ADD CONSTRAINT `fo_penyewa` FOREIGN KEY (`id_penyewa`) REFERENCES `penyewa` (`id_penyewa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
