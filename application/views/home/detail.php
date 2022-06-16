@@ -116,11 +116,12 @@
                                         <div class="quantity">
                                             <div class="control">
                                                 <a class="btn-number qtyminus quantity-minus" href="#">-</a>
-                                                <input type="number" min="1" max="<?= $new['jumlah'] ?>" value="1" title="Qty" class="input-qty qty" size="4">
+                                                <input type="number" name="jumlah" min="1" max="<?= $new['jumlah'] ?>" value="1" title="Qty" class="input-qty qty" size="4">
                                                 <a href="#" class="btn-number qtyplus quantity-plus">+</a>
                                             </div>
                                         </div>
-                                        <input type="text" name="id_inventory" value="<?= $new['id_inventory'] ?>" hidden />
+                                        <input type="number" name="harga" value="<?= $new['harga'] ?>" hidden />
+                                        <input type="number" name="id_inventory" value="<?= $new['id_inventory'] ?>" hidden />
                                         <button type="submit" class="single_add_to_cart_button button">Add to cart</button>
 
                                     </div>

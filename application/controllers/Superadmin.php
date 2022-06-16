@@ -167,9 +167,11 @@ class Superadmin extends CI_Controller
 	}
 	public function updateInventory()
 	{
+		$file_name  = substr(uniqid(), 5, 5);
 		$config['upload_path'] = 'assets/upload/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_size'] = 2000;
+		$config['file_name'] = date("Ymd") . $file_name;
 
 
 		$this->load->library('upload', $config);
@@ -187,9 +189,11 @@ class Superadmin extends CI_Controller
 
 	public function addInventory()
 	{
+		$file_name  = substr(uniqid(), 5, 5);
 		$config['upload_path'] = 'assets/upload/';
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 		$config['max_size'] = 2000;
+		$config['file_name'] = date("Ymd") . $file_name;
 
 
 		$this->load->library('upload', $config);

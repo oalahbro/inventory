@@ -23,10 +23,10 @@ class Login extends CI_Controller
             redirect(base_url("beranda"));
         }
         if ($this->session->userdata('levelpenyewa') == 1) {
-            echo "penyewa 1";
+            redirect(base_url());
         }
         if ($this->session->userdata('levelpenyewa') == 2) {
-            echo "penyewa 2";
+            redirect(base_url());
         }
     }
 
@@ -55,11 +55,12 @@ class Login extends CI_Controller
                 $data_session = [
                     'email' => $cariDatapenyewa[0]['email'],
                     'status' => "login",
-                    'levelpenyewa' => $cariDatapenyewa[0]['level']
+                    'levelpenyewa' => $cariDatapenyewa[0]['level'],
+                    'id_penyewa' => $cariDatapenyewa[0]['id_penyewa']
                 ];
                 $this->session->set_userdata($data_session);
 
-                echo "user";
+                redirect(base_url());
             } else {
                 // $error['danger'] = "";
                 echo 'gagal';

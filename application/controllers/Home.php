@@ -79,9 +79,13 @@ class Home extends CI_Controller
 		//load data from model
 		$data = array('planet' => $this->M_Landing->product_full($vhid));
 		//mengirimkan data ke view
-		$this->load->view('template/home/header');
-		$this->load->view('home/detail', $data);
-		$this->load->view('template/home/footer');
+		if (!$data['planet']) {
+			show_404();
+		} else {
+			$this->load->view('template/home/header');
+			$this->load->view('home/detail', $data);
+			$this->load->view('template/home/footer');
+		}
 		// var_dump($data);
 	}
 
@@ -93,21 +97,29 @@ class Home extends CI_Controller
 
 	public function addCart()
 	{
-		if (!$this->session->userdata('level') && !$this->session->userdata('levelpenyewa')) {
-			$data = [
-				'error' => '<script>
-							swal({
+		if (!$this->session->userdata('levelpenyewa')) {
+			$data['error'] =  '<script>
+								swal({
 								title: "Gagal menambah barang!",
 								text: "Silahkan login terlebih dahulu!",
 								type: "error"
 								}).then(function() {
 								window.location = "' . base_url() . 'home/detail?vhid=' . $this->input->post('id_inventory') . '";
 								});
-								</script>'
-			];
+								</script>';
 			$this->load->view('test', $data);
 		} else {
-			echo "berhasil add cart";
+			$data = $this->M_Landing->addCart();
+			$data['error'] =  '<script>
+								swal({
+								title: "Berhasil menambah barang!",
+								text: "Silahkan cek kranjang anda!",
+								type: "success"
+								}).then(function() {
+								window.location = "' . base_url() . 'home/detail?vhid=' . $this->input->post('id_inventory') . '";
+								});
+								</script>';
+			$this->load->view('test', $data);
 		}
 	}
 }
