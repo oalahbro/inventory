@@ -135,9 +135,9 @@ class Mymodel extends CI_Model
         return $result;
     }
 
-    public function updateInventory($data)
+    public function updateInventory($dataimg)
     {
-        if (!$data['file_name']) {
+        if (!$dataimg['file_ext']) {
             $data = [
                 'id_inventory' => $this->input->post('id_inventory'),
                 'nama' => $this->input->post('nama'),
@@ -155,7 +155,7 @@ class Mymodel extends CI_Model
                 'nama' => $this->input->post('nama'),
                 'deskripsi' => $this->input->post('deskripsi'),
                 'tahun' => date('Y-m-d', strtotime($this->input->post('tahun'))),
-                'image' => $data['file_name'],
+                'image' => $dataimg['file_name'],
                 'jumlah' => $this->input->post('jumlah'),
                 'harga' => $this->input->post('harga'),
                 'id_kategori' => $this->input->post('kategori')
