@@ -175,16 +175,10 @@ class Superadmin extends CI_Controller
 
 
 		$this->load->library('upload', $config);
-
-		if (!$this->upload->do_upload('image')) {
-			$error = array('error' => $this->upload->display_errors());
-			echo "<script>alert('" . $error['error'] . "'); document.location = '" . base_url('superadmin/getInventory') . "';</script>";
-		} else {
-			$data = $this->upload->data();
-			$this->mymodel->updateInventory($data);
-			// var_dump($data);
-			redirect(base_url('superadmin/getInventory'));
-		}
+		$dataimg = $this->upload->data();
+		$this->mymodel->updateInventory($dataimg);
+		// var_dump($data);
+		redirect(base_url('superadmin/getInventory'));
 	}
 
 	public function addInventory()
