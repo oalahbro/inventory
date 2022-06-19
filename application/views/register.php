@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Welly - Hospital Bootstrap Admin Dashboard</title>
+    <title>Super Admin Dashboard</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>assets/admin/images/favicon.png">
     <link href="<?= base_url() ?>assets/admin/css/style.css" rel="stylesheet">
@@ -22,9 +22,9 @@
                         <div class="row no-gutters">
                             <div class="col-xl-12">
                                 <div class="auth-form">
-                                    <div class="text-center mb-3">
+                                    <!-- <div class="text-center mb-3">
                                         <a href="index.html"><img src="<?= base_url() ?>assets/admin/images/logo-full.png" alt=""></a>
-                                    </div>
+                                    </div> -->
                                     <h4 class="text-center mb-4 text-white">Sign up your account</h4>
                                     <form action="<?= base_url() ?>login/signup" method="POST">
                                         <div class="form-group">

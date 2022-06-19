@@ -271,6 +271,30 @@ class Superadmin extends CI_Controller
 		// var_dump($data['kat_title']);
 	}
 
+	public function getPesananSelesai()
+	{
+		$data = [
+			'history' => $this->mymodel->getPesananSelesai(),
+			'title' => 'pesanan selesai'
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/history', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+
+	public function getPesananDibatalkan()
+	{
+		$data = [
+			'history' => $this->mymodel->getHistory(),
+			'title' => 'pesanan dibatalkan'
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('superadmin/history', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+
 	public function getLaporan()
 	{
 		$data = [

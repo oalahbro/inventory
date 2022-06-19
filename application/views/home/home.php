@@ -81,7 +81,7 @@
                     </div>
                     <ul class="row list-products auto-clear equal-container product-grid">
                         <?php
-                        foreach ($planet as $new) {
+                        foreach ($planet['get'] as $new) {
                         ?>
                             <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
                                 <div class="product-inner equal-element">

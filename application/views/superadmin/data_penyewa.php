@@ -59,7 +59,7 @@
 									<textarea class="form-control" name="alamat" rows="4" id="comment"></textarea>
 								</div>
 								<label class="text-black font-w500">Status</label>
-								<select class="form-control default-select" name="status" required>
+								<select class="form-control default-select" name="level" required>
 									<option value="1">Staff / Siswa</option>
 									<option value="0">Eksternal</option>
 								</select>
@@ -207,8 +207,6 @@
             Content body end
         ***********************************-->
 <script type="text/javascript">
-	let asu = level;
-
 	function SetInput(id_penyewa, nama, email, telp, no_identitas, alamat, level) {
 		document.getElementById('id_penyewa').value = id_penyewa;
 		document.getElementById('nama').value = nama;

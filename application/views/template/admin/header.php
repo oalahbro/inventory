@@ -815,14 +815,14 @@
                                         </svg>
                                         <span class="ml-2">Inbox </span>
                                     </a>
-                                    <!-- <a href="<?= base_url() ?>login/logout" class="dropdown-item ai-icon">
+                                    <a href="<?= base_url() ?>login/logout" class="dropdown-item ai-icon">
                                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                             <polyline points="16 17 21 12 16 7"></polyline>
                                             <line x1="21" y1="12" x2="9" y2="12"></line>
                                         </svg>
                                         <span class="ml-2">Logout </span>
-                                    </a> -->
+                                    </a>
                                 </div>
                             </li>
                         </ul>
@@ -873,7 +873,8 @@
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url() ?>superadmin/getPemesanan">Pemesanan</a></li>
                             <li><a href="<?= base_url() ?>superadmin/getKonfpemesanan">Konfirmasi Pemesanan</a></li>
-                            <li><a href="<?= base_url() ?>superadmin/getHistory">History</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/getPesananSelesai">Pesanan Selesai</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/getPesananDibatalkan">Pesanan Dibatalkan</a></li>
                         </ul>
                     </li>
                     <!-- <li><a href="javascript:void()" aria-expanded="false">
@@ -906,12 +907,12 @@
 
                         </ul> -->
                     </li>
-                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                    <!-- <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-381-settings-2"></i>
                             <span class="nav-text">SYSTEM</span>
                         </a>
-                        <ul aria-expanded="false">
-                            <!-- <li><a href="./page-register.html">Register</a></li>
+                        <ul aria-expanded="false"> -->
+                    <!-- <li><a href="./page-register.html">Register</a></li>
                             <li><a href="./page-login.html">Login</a></li>
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
                                 <ul aria-expanded="false">
@@ -924,16 +925,16 @@
                             </li>
                             <li><a href="./page-lock-screen.html">Lock Screen</a></li> -->
 
-                            <a href="<?= base_url() ?>login/logout" class="dropdown-item ai-icon">
+                    <!-- <a href="<?= base_url() ?>login/logout" class="dropdown-item ai-icon">
                                 <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                     <polyline points="16 17 21 12 16 7"></polyline>
                                     <line x1="21" y1="12" x2="9" y2="12"></line>
                                 </svg>
                                 <span class="ml-2">Logout </span>
-                            </a>
-                        </ul>
-                    </li>
+                            </a> -->
+                </ul>
+                </li>
                 </ul>
 
                 <div class="copyright">

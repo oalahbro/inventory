@@ -80,49 +80,58 @@
                     </div>
                     <div class="col-lg-2 col-sm-12 col-md-3 col-xs-12 col-ts-12">
                         <div class="header-control">
-                            <div class="block-minicart tanajil-mini-cart block-header tanajil-dropdown">
-                                <a href="<?= base_url() ?>home/cart" class="shopcart-icon">
-                                    Cart
-                                    <span class="count">
-                                        <?= $cart ?>
-                                    </span>
-                                </a>
-                                <!-- <div class="no-product tanajil-submenu">
-                                    <p class="text">
-                                        You have
-                                        <span>
-                                            0 item(s)
-                                        </span>
-                                        in your bag
-                                    </p>
-                                </div> -->
-                            </div>
+
                             <div class="block-account block-header tanajil-dropdown">
                                 <a href="javascript:void(0);" data-tanajil="tanajil-dropdown">
                                     <span class="flaticon-user"></span>
                                 </a>
-                                <div class="shopcart-description tanajil-submenu" style="min-width: 170px;">
-                                    <div class="content-wrap">
-                                        <ul class="minicart-items">
-                                            <li class="product-cart mini_cart_item">
-                                                <div class="product-details">
-                                                    <h5 class="product-name">
-                                                        <span class="flaticon-user fa-lg">&#160</span>
-                                                        <a href="#"><b>Profile</b></a>
-                                                    </h5>
-
-                                                </div>
+                                <div class="header-account tanajil-submenu">
+                                    <div class="header-user-form-tabs">
+                                        <ul class="tab-link">
+                                            <li class="active">
+                                                <a data-toggle="tab" aria-expanded="true" href="#header-tab-login">Login</a>
                                             </li>
-                                            <li class="product-cart mini_cart_item">
-                                                <div class="product-details">
-                                                    <h5 class="product-name">
-                                                        <span class="flaticon-login fa-lg text-danger">&#160</span>
-                                                        <a href="#" class="text-danger"><b>Logout</b></a>
-                                                    </h5>
-
-                                                </div>
+                                            <li>
+                                                <a data-toggle="tab" aria-expanded="true" href="#header-tab-rigister">Register</a>
                                             </li>
                                         </ul>
+                                        <div class="tab-container">
+                                            <div id="header-tab-login" class="tab-panel active">
+                                                <form method="post" class="login form-login">
+                                                    <p class="form-row form-row-wide">
+                                                        <input type="email" placeholder="Email" class="input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <input type="password" class="input-text" placeholder="Password">
+                                                    </p>
+                                                    <p class="form-row">
+                                                        <label class="form-checkbox">
+                                                            <input type="checkbox" class="input-checkbox">
+                                                            <span>
+                                                                Remember me
+                                                            </span>
+                                                        </label>
+                                                        <input type="submit" class="button" value="Login">
+                                                    </p>
+                                                    <p class="lost_password">
+                                                        <a href="#">Lost your password?</a>
+                                                    </p>
+                                                </form>
+                                            </div>
+                                            <div id="header-tab-rigister" class="tab-panel">
+                                                <form method="post" class="register form-register">
+                                                    <p class="form-row form-row-wide">
+                                                        <input type="email" placeholder="Email" class="input-text">
+                                                    </p>
+                                                    <p class="form-row form-row-wide">
+                                                        <input type="password" class="input-text" placeholder="Password">
+                                                    </p>
+                                                    <p class="form-row">
+                                                        <input type="submit" class="button" value="Register">
+                                                    </p>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -163,18 +172,7 @@
                     <div class="header-nav">
                         <div class="container-wapper">
                             <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
-                                <li class="menu-item menu-item-has-children">
-                                    <a href="gridproducts.html" class="tanajil-menu-item-title" title="Shop">TRANSAKSI</a>
-                                    <span class="toggle-submenu"></span>
-                                    <ul class="submenu">
-                                        <li class="menu-item">
-                                            <a href="">Cart</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="">Checkout</a>
-                                        </li>
-                                    </ul>
-                                </li>
+
                                 <li class="menu-item">
                                     <a href="about.html" class="tanajil-menu-item-title" title="About">Tentang Kami</a>
                                 </li>

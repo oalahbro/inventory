@@ -11,11 +11,11 @@
         <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
 
             <div class="mr-auto">
-                <h2 class="text-black font-w600">History</h2>
+                <h2 class="text-black font-w600"><?= $title ?></h2>
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <div>
+            <!-- <div>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     Status
                 </button>
@@ -25,7 +25,7 @@
                     <a class='dropdown-item' href='filterstatus?stts=0'>Dibatalkan</a>
                 </div>
 
-            </div>
+            </div> -->
         </div>
         <!-- Add Order -->
         <!-- <div class="modal  bd-example-modal-lg fade" id="addOrderModal">
@@ -77,7 +77,7 @@
             <div class="modal-dialog modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Data Barang</h5>
+                        <h5 class="modal-title">Riwayat</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -169,7 +169,7 @@
                                 } elseif ($u['status'] == 3) {
                                     echo  "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Selesai</span></td>";
                                 } elseif ($u['status'] == 0) {
-                                    echo  "<td><span class='badge badge-outline-primary'><i class='fa fa-circle text-primary mr-1'></i>Dibatalkan</span></td>";
+                                    echo  "<td><span class='badge badge-outline-danger'><i class='fa fa-circle text-danger mr-1'></i>Dibatalkan</span></td>";
                                 }
                                 echo "<td> 
                                             <div class='d-flex'>

@@ -15,10 +15,10 @@
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <!-- <div>
+            <div>
                 <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Ruang</a>
                 <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
-            </div> -->
+            </div>
         </div>
         <!-- Add Order -->
         <!-- <div class="modal  bd-example-modal-lg fade" id="addOrderModal">

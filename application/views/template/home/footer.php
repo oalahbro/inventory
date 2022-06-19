@@ -5,18 +5,17 @@
                 <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-4">
                     <div class="widget-box">
                         <div class="single-img">
-                            <a href="index-2.html"><img src="<?php echo base_url(); ?>assets/images/rent.png" alt="img"></a>
+                            <a href="index-2.html"><img src="<?php echo base_url(); ?>assets/images/sma.png" alt="img" width="100px" , height="100px"></a>
                         </div>
                         <ul class="menu">
                             <li class="menu-item">
-                                <a href="#"><span class="flaticon-placeholder"></span>45 Grand Central Terminal New
-                                    York,NY 1017 United State USA</a>
+                                <a href="#"><span class="flaticon-placeholder"></span>Jl. Pasar Legi Barat, Desa Blaran, Kecamatan Barat, Kabupaten Magetan</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#"><span class="fa fa-phone"></span>(+123) 456 789 - (+123) 666 888</a>
+                                <a href="#"><span class="fa fa-phone"></span>0351-869380</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#"><span class="fa fa-envelope-o"></span>Contact@yourcompany.com</a>
+                                <a href="#"><span class="fa fa-envelope-o"></span>sma1barat@yahoo.com</a>
                             </li>
                             <li class="menu-item">
                                 <a href="#"><span class="flaticon-clock"></span>Mon-Sat 9:00pm - 5:00pm Sun : Closed</a>
@@ -29,20 +28,12 @@
                         <h2 class="widgettitle">Quick Menu</h2>
                         <ul class="menu">
                             <li class="menu-item">
-                                <a href="#">New arrivals</a>
+                                <a href="#">Ruang</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#">Life style</a>
+                                <a href="#">Barang</a>
                             </li>
-                            <li class="menu-item">
-                                <a href="#">Interior</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Lighting</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="#">Wheels</a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -54,16 +45,16 @@
                                 <a href="#">FAQs</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#">Track Order</a>
+                                <a href="#">Track Pemesanan</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#">Delivery</a>
+                                <a href="#">Pengiriman</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#">Contact Us</a>
+                                <a href="#">Kontak</a>
                             </li>
                             <li class="menu-item">
-                                <a href="#">Return</a>
+                                <a href="#">Pengembalian</a>
                             </li>
                         </ul>
                     </div>
@@ -116,7 +107,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="tanajil-payment">
-                            <img src="<?php echo base_url(); ?>assets/images/payments.png" alt="img">
+                            <img src="assets/images/payments.png" alt="img">
                         </div>
                     </div>
                 </div>

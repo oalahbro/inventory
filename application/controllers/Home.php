@@ -38,7 +38,12 @@ class Home extends CI_Controller
 			'title' => 'All Inventory'
 		);
 		//mengirimkan data ke view
-		$this->load->view('template/home/header');
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $data['planet']);
+		}
+
 		$this->load->view('home/home', $data);
 		$this->load->view('template/home/footer');
 		// var_dump($data);
@@ -82,11 +87,11 @@ class Home extends CI_Controller
 		if (!$data['planet']) {
 			show_404();
 		} else {
-			$this->load->view('template/home/header');
+			$this->load->view('template/home/header', $data['planet']);
 			$this->load->view('home/detail', $data);
 			$this->load->view('template/home/footer');
 		}
-		// var_dump($data);
+		// var_dump($data['planet']['cart']);
 	}
 
 	public function test()
@@ -121,5 +126,15 @@ class Home extends CI_Controller
 								</script>';
 			$this->load->view('test', $data);
 		}
+	}
+
+	public function cart()
+	{
+		$data['planet'] = $this->M_Landing->cart();
+		//mengirimkan data ke view
+		$this->load->view('template/home/header', $data['planet']);
+		$this->load->view('home/cart', $data);
+		$this->load->view('template/home/footer');
+		// var_dump($data);
 	}
 }

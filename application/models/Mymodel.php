@@ -320,7 +320,6 @@ class Mymodel extends CI_Model
             ->from('sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->where('sewa.status', '0')
-            ->or_where('sewa.status', '3')
             ->get()->result_array();
         return $result;
     }
@@ -332,6 +331,28 @@ class Mymodel extends CI_Model
             ->from('sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->where(array('sewa.status' => $stts))
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function getPesananSelesai()
+    {
+
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where('sewa.status', '3')
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function getPesananDibatalkan()
+    {
+
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where('sewa.status', '0')
             ->get()->result_array();
         return $result;
     }

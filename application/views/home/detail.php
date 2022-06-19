@@ -1,7 +1,7 @@
 <div class="main-content main-content-details single no-sidebar">
     <div class="container">
         <?php
-        foreach ($planet as $new) {
+        foreach ($planet['result'] as $new) {
         ?>
             <div class="row">
                 <div class="col-lg-12">
