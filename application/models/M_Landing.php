@@ -65,7 +65,7 @@ class M_Landing extends CI_Model
         if (!$cart['dtl'][0]['id_sewa']) {
             $data = NULL;
         } else {
-            $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+            $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory')
                 ->from('sewa')
                 ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
                 // ->join('admin', 'sewa.id_admin = admin.id_admin')
