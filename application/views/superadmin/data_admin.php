@@ -35,7 +35,11 @@
                                 <label class="text-black font-w500">Username</label>
                                 <input type="text" name="username" class="form-control" required>
                                 <label class="text-black font-w500">Password</label>
-                                <input type="password" name="password" class="form-control" required>
+                                <input type="password" name="password" class="password form-control" onkeyup='check();' />
+                                <label class="text-black font-w500">Konfirmasi Password</label>
+                                <input type="password" name="cpassword" class="cpassword form-control" onkeyup='check();' />
+                                <span class='messages' value=""></span>
+                                <br>
                                 <label class="text-black font-w500">Level</label>
                                 <select class="form-control default-select" name="level" required>
                                     <option value="1">Superadmin</option>
@@ -48,7 +52,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">CREATE</button>
+                                <button type="submit" class="btn btn-primary submit">CREATE</button>
                             </div>
                         </form>
                     </div>
@@ -70,12 +74,12 @@
                             <div class="form-group">
                                 <input type="hidden" id="id_admin" name="id_admin">
                                 <label class="text-black font-w500">Username</label>
-                                <input type="text" id="username" name="username" class="form-control" required>
+                                <input type="text" id="username" name="username" class="form-control" required />
                                 <label class="text-black font-w500">Password</label>
-                                <input type="password" id="password" name="password" class="form-control" onkeyup='check();' />
-                                <label class="text-black font-w500">Konfirmasi cPassword</label>
-                                <input type="password" id="cpassword" name="cpassword" class="form-control" onkeyup='check();' />
-                                <span id='message'></span>
+                                <input type="password" id="password" name="password" class="password form-control" onkeyup='check();' />
+                                <label class="text-black font-w500">Konfirmasi Password</label>
+                                <input type="password" name="cpassword" id="cpassword" class="cpassword form-control" onkeyup='check();' />
+                                <span id='message' value=""></span>
                                 <br>
                                 <label class="text-black font-w500">Level</label>
                                 <select class="form-control" name="level" required>
@@ -198,6 +202,18 @@
         document.getElementById('id_admin1').value = id_admin;
     }
     var check = function() {
+        if (document.querySelector('.password').value ==
+            document.querySelector('.cpassword').value) {
+            document.querySelector('.messages').style.color = 'green';
+            document.querySelector('.messages').innerHTML = 'matching';
+            document.querySelector('.button').disabled = false;
+
+        } else {
+            document.querySelector('.messages').style.color = 'red';
+            document.querySelector('.messages').innerHTML = 'not matching';
+            document.querySelector('.button').disabled = true;
+        }
+
         if (document.getElementById('password').value ==
             document.getElementById('cpassword').value) {
             document.getElementById('message').style.color = 'green';

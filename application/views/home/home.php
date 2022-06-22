@@ -1,3 +1,11 @@
+<style>
+    .nav-pills>li.active>a,
+    .nav-pills>li.active>a:focus,
+    .nav-pills>li.active>a:hover {
+
+        background-color: #bf1b1b !important;
+    }
+</style>
 <div class="main-content main-content-product no-sidebar">
     <div class="container">
         <div class="row">
@@ -43,673 +51,193 @@
                     <h3 class="custom_blog_title">
                         <?= $title ?>
                     </h3>
-                    <div class="shop-top-control">
-                        <form class="select-item select-form">
-                            <span class="title">Sort</span>
-                            <select title="sort" data-placeholder="9 Products/Page" class="chosen-select">
-                                <option value="2">9 Products/Page</option>
-                                <option value="1">12 Products/Page</option>
-                                <option value="3">10 Products/Page</option>
-                                <option value="4">8 Products/Page</option>
-                                <option value="5">6 Products/Page</option>
-                            </select>
-                        </form>
-                        <form class="filter-choice select-form">
-                            <span class="title">Sort by</span>
-                            <select title="sort-by" data-placeholder="Price: Low to High" class="chosen-select">
-                                <option value="1">Price: Low to High</option>
-                                <option value="2">Sort by popularity</option>
-                                <option value="3">Sort by average rating</option>
-                                <option value="4">Sort by newness</option>
-                                <option value="5">Sort by price: low to high</option>
-                            </select>
-                        </form>
-                        <div class="grid-view-mode">
-                            <div class="inner">
-                                <a href="listproducts.html" class="modes-mode mode-list">
-                                    <span></span>
-                                    <span></span>
-                                </a>
-                                <a href="gridproducts.html" class="modes-mode mode-grid  active">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </a>
-                            </div>
+                    <div class="main-content-cart main-content col-sm-12">
+                        <div class="shop-top-control">
+                            <ul class="select-form nav nav-pills nav-justified">
+                                <li class="nav-link active"><a data-toggle="tab" href="#home">All Inventory</a></li>
+                                <li class="nav-link"><a data-toggle="tab" href="#menu1">Barang</a></li>
+                                <li class="nav-link"><a data-toggle="tab" href="#menu2">Ruang</a></li>
+                            </ul>
                         </div>
-                    </div>
-                    <ul class="row list-products auto-clear equal-container product-grid">
-                        <?php
-                        foreach ($planet['get'] as $new) {
-                        ?>
-                            <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                <div class="product-inner equal-element">
-                                    <div class="product-top">
-                                    </div>
-                                    <div class="product-thumb">
-                                        <div class="thumb-inner">
-                                            <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
-                                                <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
-                                            </a>
-                                            <div class="thumb-group">
-                                                <div class="yith-wcwl-add-to-wishlist">
-                                                    <div class="yith-wcwl-add-button">
-                                                        <a href="#">Add to Wishlist</a>
+                        <div class="tab-content card pt-5">
+                            <div id="home" class="tab-pane fade in active">
+                                <ul class="row list-products auto-clear equal-container product-grid">
+                                    <?php
+                                    foreach ($planet['get'] as $new) {
+                                    ?>
+                                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                            <div class="product-inner equal-element" style="min-height: 350px;">
+                                                <div class="product-top">
+                                                </div>
+                                                <div class="product-thumb">
+                                                    <div class="thumb-inner">
+                                                        <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
+                                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
+                                                        </a>
+                                                        <div class="thumb-group">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <div class="yith-wcwl-add-button">
+                                                                    <a href="#">Add to Wishlist</a>
+                                                                </div>
+                                                            </div>
+                                                            <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                            <div class="loop-form-add-to-cart">
+                                                                <button class="single_add_to_cart_button button">Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                <div class="loop-form-add-to-cart">
-                                                    <button class="single_add_to_cart_button button">Add to cart
-                                                    </button>
+                                                <div class="product-info">
+                                                    <h5 class="product-name product_title">
+                                                        <a href="#"><?= $new['nama'] ?></a>
+                                                    </h5>
+                                                    <div class="group-info">
+                                                        <div class="stars-rating">
+                                                            <div class="star-rating">
+                                                                <span class="star-3"></span>
+                                                            </div>
+                                                            <div class="count-star">
+                                                                (3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="price">
+                                                            <del>
+                                                                $65
+                                                            </del>
+                                                            <ins>
+                                                                <?= $this->format_rupiah->format($new['harga']) ?>
+                                                            </ins>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <h5 class="product-name product_title">
-                                            <a href="#"><?= $new['nama'] ?></a>
-                                        </h5>
-                                        <div class="group-info">
-                                            <div class="stars-rating">
-                                                <div class="star-rating">
-                                                    <span class="star-3"></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+
+                            <div id="menu1" class="tab-pane fade">
+                                <ul class="row list-products auto-clear equal-container product-grid">
+                                    <?php
+                                    foreach ($barang as $new) {
+                                    ?>
+                                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                            <div class="product-inner equal-element" style="min-height: 350px;">
+                                                <div class="product-top">
                                                 </div>
-                                                <div class="count-star">
-                                                    (3)
+                                                <div class="product-thumb">
+                                                    <div class="thumb-inner">
+                                                        <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
+                                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
+                                                        </a>
+                                                        <div class="thumb-group">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <div class="yith-wcwl-add-button">
+                                                                    <a href="#">Add to Wishlist</a>
+                                                                </div>
+                                                            </div>
+                                                            <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                            <div class="loop-form-add-to-cart">
+                                                                <button class="single_add_to_cart_button button">Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5 class="product-name product_title">
+                                                        <a href="#"><?= $new['nama'] ?></a>
+                                                    </h5>
+                                                    <div class="group-info">
+                                                        <div class="stars-rating">
+                                                            <div class="star-rating">
+                                                                <span class="star-3"></span>
+                                                            </div>
+                                                            <div class="count-star">
+                                                                (3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="price">
+                                                            <del>
+                                                                $65
+                                                            </del>
+                                                            <ins>
+                                                                <?= $this->format_rupiah->format($new['harga']) ?>
+                                                            </ins>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="price">
-                                                <del>
-                                                    $65
-                                                </del>
-                                                <ins>
-                                                    <?= $this->format_rupiah->format($new['harga']) ?>
-                                                </ins>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        <?php } ?>
-                        <!-- <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                <div class="flash">
-											<span class="onnew">
-												<span class="text">
-													new
-												</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas3.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                            <div id="menu2" class="tab-pane fade">
+                                <ul class="row list-products auto-clear equal-container product-grid">
+                                    <?php
+                                    foreach ($ruang as $new) {
+                                    ?>
+                                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                            <div class="product-inner equal-element" style="min-height: 350px;">
+                                                <div class="product-top">
+                                                </div>
+                                                <div class="product-thumb">
+                                                    <div class="thumb-inner">
+                                                        <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
+                                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
+                                                        </a>
+                                                        <div class="thumb-group">
+                                                            <div class="yith-wcwl-add-to-wishlist">
+                                                                <div class="yith-wcwl-add-button">
+                                                                    <a href="#">Add to Wishlist</a>
+                                                                </div>
+                                                            </div>
+                                                            <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                            <div class="loop-form-add-to-cart">
+                                                                <button class="single_add_to_cart_button button">Add to cart
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info">
+                                                    <h5 class="product-name product_title">
+                                                        <a href="#"><?= $new['nama'] ?></a>
+                                                    </h5>
+                                                    <div class="group-info">
+                                                        <div class="stars-rating">
+                                                            <div class="star-rating">
+                                                                <span class="star-3"></span>
+                                                            </div>
+                                                            <div class="count-star">
+                                                                (3)
+                                                            </div>
+                                                        </div>
+                                                        <div class="price">
+                                                            <del>
+                                                                $65
+                                                            </del>
+                                                            <ins>
+                                                                <?= $this->format_rupiah->format($new['harga']) ?>
+                                                            </ins>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Pillar Gauge Kit</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                            <div class="pagination clearfix style2">
+                                <div class="nav-link">
+                                    <a href="#" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
+                                    <a href="#" class="page-numbers">1</a>
+                                    <a href="#" class="page-numbers">2</a>
+                                    <a href="#" class="page-numbers current">3</a>
+                                    <a href="#" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
-                        </li> -->
-                        <!-- <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                    <div class="flash">
-											<span class="onnew">
-												<span class="text">
-													new
-												</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas1.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Series Floor Mount</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas3.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Pedal Assembly</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas2.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Quantum Cold </a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                    <div class="flash">
-											<span class="onnew">
-												<span class="text">
-													new
-												</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas1.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Air Intake System</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas3.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Evolution Line </a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas2.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Exhaust System</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                    <div class="flash">
-											<span class="onnew">
-												<span class="text">
-													new
-												</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas1.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">ALTA Performance</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas3.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Compress circular </a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                    <div class="flash">
-											<span class="onnew">
-												<span class="text">
-													new
-												</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas2.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">LED Headlights</a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="product-item  col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                            <div class="product-inner equal-element">
-                                <div class="product-top">
-                                    <div class="flash">
-											<span class="onnew">
-												<span class="text">
-													new
-												</span>
-											</span>
-                                    </div>
-                                </div>
-                                <div class="product-thumb">
-                                    <div class="thumb-inner">
-                                        <a href="#">
-                                            <img src="assets/images/kelas1.jpeg" alt="img">
-                                        </a>
-                                        <div class="thumb-group">
-                                            <div class="yith-wcwl-add-to-wishlist">
-                                                <div class="yith-wcwl-add-button">
-                                                    <a href="#">Add to Wishlist</a>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                            <div class="loop-form-add-to-cart">
-                                                <button class="single_add_to_cart_button button">Add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h5 class="product-name product_title">
-                                        <a href="#">Armor All </a>
-                                    </h5>
-                                    <div class="group-info">
-                                        <div class="stars-rating">
-                                            <div class="star-rating">
-                                                <span class="star-3"></span>
-                                            </div>
-                                            <div class="count-star">
-                                                (3)
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>
-                                                $65
-                                            </del>
-                                            <ins>
-                                                $45
-                                            </ins>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li> -->
-                    </ul>
-                    <div class="pagination clearfix style2">
-                        <div class="nav-link">
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
-                            <a href="#" class="page-numbers">1</a>
-                            <a href="#" class="page-numbers">2</a>
-                            <a href="#" class="page-numbers current">3</a>
-                            <a href="#" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>

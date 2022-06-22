@@ -117,7 +117,7 @@
                                                 <div class="product-details">
                                                     <h5 class="product-name">
                                                         <span class="flaticon-login fa-lg text-danger">&#160</span>
-                                                        <a href="#" class="text-danger"><b>Logout</b></a>
+                                                        <a href="<?= base_url() ?>login/logout" class="text-danger"><b>Logout</b></a>
                                                     </h5>
 
                                                 </div>
@@ -148,32 +148,12 @@
                             </span>
                             <span class="text">Home</span>
                         </div>
-                        <div class="block-content verticalmenu-content">
-                            <ul class="tanajil-nav-vertical vertical-menu tanajil-clone-mobile-menu">
-                                <li class="menu-item">
-                                    <a href="<?= base_url() ?>Home/ruang" class="tanajil-menu-item-title" title="Ruang">Ruang</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a title="Barang" href="<?= base_url() ?>Home/barang" class="tanajil-menu-item-title">Barang</a>
-                                </li>
-
-                            </ul>
-                        </div>
                     </div>
                     <div class="header-nav">
                         <div class="container-wapper">
                             <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
-                                <li class="menu-item menu-item-has-children">
+                                <li class="menu-item">
                                     <a href="gridproducts.html" class="tanajil-menu-item-title" title="Shop">TRANSAKSI</a>
-                                    <span class="toggle-submenu"></span>
-                                    <ul class="submenu">
-                                        <li class="menu-item">
-                                            <a href="">Cart</a>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="">Checkout</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li class="menu-item">
                                     <a href="about.html" class="tanajil-menu-item-title" title="About">Tentang Kami</a>

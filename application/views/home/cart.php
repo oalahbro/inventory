@@ -115,38 +115,55 @@
                                                 <th class="product-subtotal"></th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <?php
-                                            foreach ($planet['result'] as $item) {
 
-                                            ?>
-                                                <tr class="cart_item">
-                                                    <td class="product-remove">
-                                                        <a href="#" class="remove"></a>
-                                                    </td>
-                                                    <td class="product-thumbnail">
-                                                        <a href="#">
-                                                            <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                                        </a>
-                                                    </td>
-                                                    <td class="product-name" data-title="Product">
-                                                        <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
-                                                        <!-- <span class="attributes-select attributes-color">Black,</span>
+                                        <?php if (!$planet['result']) {
+                                            echo '<tbody>
+                                            <tr class="cart_item">
+                                            <td class="product-thumbnail"></td>
+                                            <td class="product-thumbnail"></td>
+                                            <td class="product-thumbnail"></td>
+                                            <td class="product-name" data-title="Price">
+                                            <span class="woocommerce-Price-amount amount">
+                                                <h3 class="text-danger"><b>Tidak Ada Barang</b></h3>
+                                            </span>
+                                        </td>
+
+                                            </tr>
+                                        </tbody>';
+                                        } else { ?>
+                                            <tbody>
+                                                <?php
+                                                foreach ($planet['result'] as $item) {
+
+                                                ?>
+                                                    <tr class="cart_item">
+                                                        <td class="product-remove">
+                                                            <a href="#" class="remove" data-toggle='modal' data-target='#delete-modal' <?= "onClick=\"setInput1('" . $item['id_sewa_detail'] . "','" . $item['nama_inventory'] .  "')\"" ?>></a>
+                                                        </td>
+                                                        <td class="product-thumbnail">
+                                                            <a href="#">
+                                                                <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
+                                                            <!-- <span class="attributes-select attributes-color">Black,</span>
                                                         <span class="attributes-select attributes-size">XXL</span> -->
-                                                    </td>
-                                                    <td class="product-price" data-title="Price">
-                                                        <span class="woocommerce-Price-amount amount">
-                                                            <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
-                                                        </span>
-                                                    </td>
-                                                    <td class="product-price" data-title="Price">
-                                                        <span class="woocommerce-Price-amount amount">
-                                                            <?= $this->format_rupiah->format($item['sub_total']) ?>
-                                                        </span>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
-                                        </tbody>
+                                                        </td>
+                                                        <td class="product-price" data-title="Price">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
+                                                            </span>
+                                                        </td>
+                                                        <td class="product-price" data-title="Price">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <?= $this->format_rupiah->format($item['sub_total']) ?>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        <?php } ?>
                                     </table>
                                 </form>
                                 <div class="control-cart">
@@ -163,133 +180,33 @@
                 </div>
             </div>
         </main>
-    </div>
-    <footer class="footer style7">
-        <div class="container">
-            <div class="container-wapper">
-                <div class="row">
-                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="widget-box">
-                            <div class="single-img">
-                                <a href="index-2.html"><img src="assets/images/logo-light.png" alt="img"></a>
-                            </div>
-                            <ul class="menu">
-                                <li class="menu-item">
-                                    <a href="#"><span class="flaticon-placeholder"></span>45 Grand Central Terminal New
-                                        York,NY 1017 United State USA</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#"><span class="fa fa-phone"></span>(+123) 456 789 - (+123) 666 888</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#"><span class="fa fa-envelope-o"></span>Contact@yourcompany.com</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#"><span class="flaticon-clock"></span>Mon-Sat 9:00pm - 5:00pm Sun : Closed</a>
-                                </li>
-                            </ul>
-                        </div>
+        <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog" style="width:30%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="custom-width-modalLabel">CART</h4>
                     </div>
-                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                        <div class="tanajil-custommenu default">
-                            <h2 class="widgettitle">Quick Menu</h2>
-                            <ul class="menu">
-                                <li class="menu-item">
-                                    <a href="#">New arrivals</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Life style</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Interior</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Lighting</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Wheels</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-2">
-                        <div class="tanajil-custommenu default">
-                            <h2 class="widgettitle">Information</h2>
-                            <ul class="menu">
-                                <li class="menu-item">
-                                    <a href="#">FAQs</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Track Order</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Delivery</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Contact Us</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Return</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="tanajil-newsletter style1">
-                            <div class="newsletter-head">
-                                <h3 class="title">Newsletter</h3>
-                            </div>
-                            <div class="newsletter-form-wrap">
-                                <div class="list">
-                                    Get notified of new products, limited releases, and more.
-                                </div>
-                                <input type="email" class="input-text email email-newsletter" placeholder="Your email letter">
-                                <button class="button btn-submit submit-newsletter">SUBSCRIBE</button>
+
+                    <form action="<?php echo base_url() . 'home/delCart'; ?>" method="post" class="form-horizontal" role="form">
+                        <div class="modal-body">
+                            <h4>Konfirmasi</h4>
+                            <p>Apakah anda yakin ingin menghapus
+                                <a id="name"></a> ?
+                            </p>
+                            <div class="form-group">
+                                <input type="hidden" id="id_inventory1" name="id_inventory1">
                             </div>
                         </div>
-                        <div class="tanajil-socials">
-                            <ul class="socials">
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="social-item" target="_blank">
-                                        <i class="icon fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+                            <button type="submit" class="btn btn-primary">Ya</button>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 border-custom">
-                        <span></span>
-                    </div>
-                </div>
-                <div class="footer-end">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="coppyright">
-                                <a href="templateshub.net">Templateshub</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="tanajil-payment">
-                                <img src="assets/images/payments.png" alt="img">
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
     <div class="footer-device-mobile">
         <div class="wapper">
             <div class="footer-device-mobile-item device-home">
@@ -329,7 +246,27 @@
             </div>
         </div>
     </div>
+
     <a href="#" class="backtotop">
         <i class="fa fa-angle-double-up"></i>
     </a>
 </body>
+<script type="text/javascript">
+    // function SetInput(id_inventory, nama, deskripsi, tahun, jumlah, gambar, harga, nama_kat, id_kat) {
+    //     document.getElementById('id_inventory').value = id_inventory;
+    //     document.getElementById('nama').value = nama;
+    //     document.getElementById('deskripsi').value = deskripsi;
+    //     document.getElementById('tahun').value = tahun;
+    //     document.getElementById('jumlah').value = jumlah;
+    //     document.getElementById('img').value = gambar;
+    //     document.getElementById('hrg').value = harga;
+    //     document.getElementById('kategori').value = id_kat;
+    //     document.getElementById('kategori').innerText = nama_kat;
+    // }
+
+    function setInput1(id_inventory, nama) {
+
+        document.getElementById('name').innerText = nama;
+        document.getElementById('id_inventory1').value = id_inventory;
+    }
+</script>

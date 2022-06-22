@@ -35,6 +35,8 @@ class Home extends CI_Controller
 		// load data from model
 		$data = array(
 			'planet' => $this->M_Landing->getData(),
+			'barang' => $this->M_Landing->getBarang(),
+			'ruang' => $this->M_Landing->getRuang(),
 			'title' => 'All Inventory'
 		);
 		//mengirimkan data ke view
@@ -134,6 +136,34 @@ class Home extends CI_Controller
 		//mengirimkan data ke view
 		$this->load->view('template/home/header', $data['planet']);
 		$this->load->view('home/cart', $data);
+		$this->load->view('template/home/footer');
+		// var_dump($data);
+	}
+
+	public function delCart()
+	{
+		$id_inv = $this->input->post('id_inventory1');
+		$this->M_Landing->delCart($id_inv);
+		// var_dump($id_inv);
+		redirect(base_url('home/cart'));
+	}
+
+	public function transaksi()
+	{
+		$data = $this->M_Landing->transaksi();
+		//mengirimkan data ke view
+		$this->load->view('template/home/header', $data);
+		$this->load->view('home/transaksi', $data);
+		$this->load->view('template/home/footer');
+		// var_dump($data);
+	}
+
+	public function pesan()
+	{
+		$data = $this->M_Landing->cart();
+		//mengirimkan data ke view
+		$this->load->view('template/home/header', $data);
+		$this->load->view('home/pesan', $data);
 		$this->load->view('template/home/footer');
 		// var_dump($data);
 	}
