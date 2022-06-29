@@ -104,7 +104,7 @@ class Login extends CI_Controller
         $google_client = new Google_Client();
         $google_client->setClientId('956614890648-mf3j1m4clnluus13vh3v9ier51mckepp.apps.googleusercontent.com'); //masukkan ClientID anda 
         $google_client->setClientSecret('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'); //masukkan Client Secret Key anda
-        $google_client->setRedirectUri('http://localhost/inventory/login'); //Masukkan Redirect Uri anda
+        $google_client->setRedirectUri(base_url() . 'login'); //Masukkan Redirect Uri anda
         $google_client->addScope('email');
         $google_client->addScope('profile');
 
