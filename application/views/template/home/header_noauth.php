@@ -81,59 +81,10 @@
                     <div class="col-lg-2 col-sm-12 col-md-3 col-xs-12 col-ts-12">
                         <div class="header-control">
 
-                            <div class="block-account block-header tanajil-dropdown">
-                                <a href="javascript:void(0);" data-tanajil="tanajil-dropdown">
+                            <div class="block-account block-header ">
+                                <a href="<?= base_url() ?>login">
                                     <span class="flaticon-user"></span>
                                 </a>
-                                <div class="header-account tanajil-submenu">
-                                    <div class="header-user-form-tabs">
-                                        <ul class="tab-link">
-                                            <li class="active">
-                                                <a data-toggle="tab" aria-expanded="true" href="#header-tab-login">Login</a>
-                                            </li>
-                                            <li>
-                                                <a data-toggle="tab" aria-expanded="true" href="#header-tab-rigister">Register</a>
-                                            </li>
-                                        </ul>
-                                        <div class="tab-container">
-                                            <div id="header-tab-login" class="tab-panel active">
-                                                <form method="post" class="login form-login">
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="email" placeholder="Email" class="input-text">
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="password" class="input-text" placeholder="Password">
-                                                    </p>
-                                                    <p class="form-row">
-                                                        <label class="form-checkbox">
-                                                            <input type="checkbox" class="input-checkbox">
-                                                            <span>
-                                                                Remember me
-                                                            </span>
-                                                        </label>
-                                                        <input type="submit" class="button" value="Login">
-                                                    </p>
-                                                    <p class="lost_password">
-                                                        <a href="#">Lost your password?</a>
-                                                    </p>
-                                                </form>
-                                            </div>
-                                            <div id="header-tab-rigister" class="tab-panel">
-                                                <form method="post" class="register form-register">
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="email" placeholder="Email" class="input-text">
-                                                    </p>
-                                                    <p class="form-row form-row-wide">
-                                                        <input type="password" class="input-text" placeholder="Password">
-                                                    </p>
-                                                    <p class="form-row">
-                                                        <input type="submit" class="button" value="Register">
-                                                    </p>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <a class="menu-bar mobile-navigation menu-toggle" href="#">
                                 <span></span>
@@ -148,33 +99,27 @@
         <div class="header-nav-container">
             <div class="container">
                 <div class="header-nav-wapper main-menu-wapper">
-                    <div class="vertical-wapper block-nav-categori">
-                        <div class="block-title">
-                            <span class="icon-bar">
+                    <div class="vertical-wapper" style="max-width: 140px; text-align: center;">
+                        <div class="container-wapper">
+                            <span class="fa fa-home" style="font-size: 30px; color: white;">
+                                <a href="about.html" class="tanajil-menu-item-title"></a>
+                            </span>
+                        </div>
+                        <!-- <div>
+                            <span class="fa fa-home" style="font-size: 36px;">
+
+                                <a class="tanajil-menu-item-title" href="<?= base_url() ?>home">Home</a>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </span>
-                            <span class="text">Home</span>
-                        </div>
-                        <div class="block-content verticalmenu-content">
-                            <ul class="tanajil-nav-vertical vertical-menu tanajil-clone-mobile-menu">
-                                <li class="menu-item">
-                                    <a href="<?= base_url() ?>Home/ruang" class="tanajil-menu-item-title" title="Ruang">Ruang</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a title="Barang" href="<?= base_url() ?>Home/barang" class="tanajil-menu-item-title">Barang</a>
-                                </li>
-
-                            </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="header-nav">
                         <div class="container-wapper">
                             <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
-
                                 <li class="menu-item">
-                                    <a href="about.html" class="tanajil-menu-item-title" title="About">Tentang Kami</a>
+                                    <a href="about.html" class="tanajil-menu-item-title">Tentang Kami</a>
                                 </li>
                             </ul>
                         </div>

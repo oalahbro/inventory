@@ -100,7 +100,7 @@
                         </li>
                         <li class="trail-item trail-end active">
                             <span>
-                                Shopping Cart
+                                Transaksi
                             </span>
                         </li>
                     </ul>
@@ -109,14 +109,15 @@
                     <div class="main-content-cart main-content col-sm-12">
                         <div class="shop-top-control">
                             <ul class="select-form nav nav-pills nav-justified">
-                                <li class="nav-link active"><a data-toggle="tab" href="#home">Pemesanan</a></li>
+                                <li class="nav-link active"><a data-toggle="tab" href="#menu">Belum Dibayar</a></li>
+                                <li class="nav-link"><a data-toggle="tab" href="#home">Pemesanan</a></li>
                                 <li class="nav-link"><a data-toggle="tab" href="#menu1">Konfirmasi</a></li>
                                 <li class="nav-link"><a data-toggle="tab" href="#menu2">Selesai</a></li>
                                 <li class="nav-link"><a data-toggle="tab" href="#menu3">Dibatalkan</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
-                            <div id="home" class="tab-pane fade in active">
+                            <div id="menu" class="tab-pane fade in active">
                                 <div class="page-main-content">
                                     <h3 class="custom_blog_title">
                                         asdf
@@ -176,6 +177,67 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="home" class="tab-pane fade">
+                                <div class="page-main-content">
+                                    <h3 class="custom_blog_title">
+                                        asdf
+                                    </h3>
+                                    <div class="shoppingcart-content">
+                                        <form action="http://tuongnam.com.vn/tanajil/shoppingcart.html" class="cart-form">
+                                            <table class="shop_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="product-remove"></th>
+                                                        <th class="product-thumbnail"></th>
+                                                        <th class="product-name"></th>
+                                                        <th class="product-price"></th>
+                                                        <th class="product-quantity"></th>
+                                                        <th class="product-subtotal"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    foreach ($pesan as $item) {
+
+                                                    ?>
+                                                        <tr class="cart_item">
+                                                            <td class="product-thumbnail">
+                                                                <a href="#">
+                                                                    <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                                </a>
+                                                            </td>
+                                                            <td class="product-name" data-title="Product">
+                                                                <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
+                                                                <!-- <span class="attributes-select attributes-color">Black,</span>
+                                                        <span class="attributes-select attributes-size">XXL</span> -->
+                                                            </td>
+                                                            <td class="product-price" data-title="Price">
+                                                                <span class="woocommerce-Price-amount amount">
+                                                                    <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
+                                                                </span>
+                                                            </td>
+                                                            <td class="product-price" data-title="Price">
+                                                                <span class="woocommerce-Price-amount amount">
+                                                                    <?= $this->format_rupiah->format($item['sub_total']) ?>
+                                                                </span>
+                                                            </td>
+                                                        </tr>
+                                                    <?php } ?>
+                                                </tbody>
+                                            </table>
+                                        </form>
+                                        <div class="control-cart">
+                                            <button class="button btn-continue-shopping">
+                                                Continue Shopping
+                                            </button>
+                                            <button class="button btn-cart-to-checkout">
+                                                Checkout
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div id="menu1" class="tab-pane fade">
                                 <div class="page-main-content">
                                     <h3 class="custom_blog_title">

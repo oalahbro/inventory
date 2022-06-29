@@ -11,7 +11,7 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model('Loginmodel');
     }
-    public  function index()
+    public  function indexx()
     {
         if (!$this->session->userdata('level') && !$this->session->userdata('levelpenyewa')) {
             $this->load->view('login');
@@ -64,6 +64,7 @@ class Login extends CI_Controller
             } else {
                 // $error['danger'] = "";
                 echo 'gagal';
+                // var_dump(md5($this->input->post('password')));
             }
         } else {
             redirect(base_url("login"));
@@ -91,9 +92,92 @@ class Login extends CI_Controller
         }
     }
 
-    public  function logout()
+    // public  function logout()
+    // {
+    //     $this->session->sess_destroy();
+    //     $this->index();
+    // }
+
+    public function index()
     {
+        include_once APPPATH . "../vendor/autoload.php";
+        $google_client = new Google_Client();
+        $google_client->setClientId('956614890648-mf3j1m4clnluus13vh3v9ier51mckepp.apps.googleusercontent.com'); //masukkan ClientID anda 
+        $google_client->setClientSecret('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'); //masukkan Client Secret Key anda
+        $google_client->setRedirectUri('http://localhost/inventory/login'); //Masukkan Redirect Uri anda
+        $google_client->addScope('email');
+        $google_client->addScope('profile');
+
+        if (isset($_GET["code"])) {
+            $token = $google_client->fetchAccessTokenWithAuthCode($_GET["code"]);
+            if (!isset($token["error"])) {
+                $google_client->setAccessToken($token['access_token']);
+                $this->session->set_userdata('access_token', $token['access_token']);
+                $google_service = new Google_Service_Oauth2($google_client);
+                $data = $google_service->userinfo->get();
+                $current_datetime = date('Y-m-d H:i:s');
+                $user_data = array(
+                    'first_name' => $data['given_name'],
+                    'last_name'  => $data['family_name'],
+                    'email_address' => $data['email'],
+                    'profile_picture' => $data['picture'],
+                    'updated_at' => $current_datetime
+                );
+                $this->session->set_userdata('user_data', $data);
+            }
+        }
+        $setuser = $this->session->userdata('user_data');
+        $goole = $this->Loginmodel->cekGoogle($setuser);
+        $login_button = '';
+        if (!$this->session->userdata('access_token')) {
+
+            $login_button = '<a href="' . $google_client->createAuthUrl() . '"><img src="https://1.bp.blogspot.com/-gvncBD5VwqU/YEnYxS5Ht7I/AAAAAAAAAXU/fsSRah1rL9s3MXM1xv8V471cVOsQRJQlQCLcBGAsYHQ/s320/google_logo.png" /></a>';
+            $data['login_button'] = $login_button;
+            $this->load->view('login-penyewa', $data);
+        } else {
+            // echo json_encode($this->session->userdata('access_token'));
+            // echo json_encode($this->session->userdata('user_data'), true);
+
+            if (!$goole) {
+                $this->Loginmodel->registerGoogle($data);
+                $cek = $this->Loginmodel->cekGoogle($setuser);
+                $data_session = [
+                    'email' => $cek[0]['email'],
+                    'status' => "login",
+                    'levelpenyewa' => $cek[0]['level'],
+                    'id_penyewa' => $cek[0]['id_penyewa']
+                ];
+                $this->session->set_userdata($data_session);
+                redirect(base_url());
+                // var_dump($cek);
+            } else {
+                $data_session = [
+                    'email' => $goole[0]['email'],
+                    'status' => "login",
+                    'levelpenyewa' => $goole[0]['level'],
+                    'id_penyewa' => $goole[0]['id_penyewa']
+                ];
+                $this->session->set_userdata($data_session);
+                // var_dump($goole);
+                redirect(base_url());
+            }
+            // var_dump($data);
+        }
+    }
+    public function logout()
+    {
+        $this->session->unset_userdata('access_token');
+
+        $this->session->unset_userdata('user_data');
         $this->session->sess_destroy();
-        $this->index();
+        redirect(base_url());
+        // echo "Logout berhasil";
+    }
+
+    public function cekses()
+    {
+        $cek = $this->session->userdata();
+        var_dump($cek);
+        // echo "Logout berhasil";
     }
 }

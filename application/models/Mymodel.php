@@ -34,6 +34,7 @@ class Mymodel extends CI_Model
     public function addAdmin()
     {
         $data = [
+            'nama' => $this->input->post('nama'),
             'username' => $this->input->post('username'),
             'level' => $this->input->post('level'),
             'status' => $this->input->post('status'),
@@ -50,6 +51,7 @@ class Mymodel extends CI_Model
         if (!$this->input->post('password')) {
             $data = [
                 'id_admin' => $this->input->post('id_admin'),
+                'nama' => $this->input->post('nama'),
                 'username' => $this->input->post('username'),
                 'level' => $this->input->post('level'),
                 'status' => $this->input->post('status')
@@ -57,6 +59,7 @@ class Mymodel extends CI_Model
         } else {
             $data = [
                 'id_admin' => $this->input->post('id_admin'),
+                'nama' => $this->input->post('nama'),
                 'username' => $this->input->post('username'),
                 'level' => $this->input->post('level'),
                 'status' => $this->input->post('status'),
@@ -360,11 +363,53 @@ class Mymodel extends CI_Model
     public function getLaporan()
     {
 
-        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
             ->from('sewa')
+            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
-            ->where(array('sewa.status' => 2))
+            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+
+            // ->where(array('sewa.status' => 2))
             ->get()->result_array();
+        return $result;
+    }
+
+    public function getProfil()
+    {
+        $sql = "SELECT * from admin where id_admin=" . $this->session->userdata('id_admin');
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function editProfil($dataimg)
+    {
+
+        if (!$dataimg['file_ext']) {
+            $img = $this->input->post('img');
+        } else {
+            $img = $dataimg['file_name'];
+        }
+
+        if (!$this->input->post('password')) {
+            $data = [
+                'id_admin' => $this->session->userdata('id_admin'),
+                'nama' => $this->input->post('nama'),
+                'username' => $this->input->post('username'),
+                'image' => $img
+            ];
+        } else {
+            $data = [
+                'id_admin' => $this->session->userdata('id_admin'),
+                'nama' => $this->input->post('nama'),
+                'username' => $this->input->post('username'),
+                'password' => md5($this->input->post('password')),
+                'image' => $img
+            ];
+        }
+        $result =  $this->db->where(array(
+            'id_admin' => $data['id_admin']
+        ));
+        $this->db->update('admin', $data);
         return $result;
     }
 }

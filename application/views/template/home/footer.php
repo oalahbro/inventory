@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="tanajil-payment">
-                            <img src="assets/images/payments.png" alt="img">
+                            <img src="<?php echo base_url(); ?>assets/images/payments.png" alt="img">
                         </div>
                     </div>
                 </div>

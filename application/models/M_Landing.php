@@ -76,7 +76,7 @@ class M_Landing extends CI_Model
                 'cart' => $cart['cart']
             ];
         } else {
-            $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory,sewa.total')
+            $result =  $this->db->select('sewa_detail.status_qty,sewa.id_sewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory,sewa.total')
                 ->from('sewa')
                 ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
                 // ->join('admin', 'sewa.id_admin = admin.id_admin')
@@ -166,8 +166,21 @@ class M_Landing extends CI_Model
 
     public function delCart($id_inv)
     {
-        $this->db->where(array('id_sewa_detail' => $id_inv));
-        $this->db->delete('sewa_detail');
+        $cekcart = "SELECT * FROM sewa where status=4 and id_penyewa=" . $this->session->userdata('id_penyewa');
+        $result =  $this->db->query($cekcart)->result_array();
+        $datasewa = [
+            'total' => $result[0]['total'] - $this->input->post('sub_total1')
+        ];
+        $this->db->where(array(
+            'id_sewa' => $result[0]['id_sewa']
+        ));
+        $this->db->update('sewa', $datasewa);
+        if ($this->input->post('sub_total1')) {
+            $this->db->where(array('id_sewa_detail' => $id_inv));
+            $this->db->delete('sewa_detail');
+        }
+
+        // return ($datasewa);
     }
     public function transaksi()
     {
@@ -195,7 +208,11 @@ class M_Landing extends CI_Model
             // ->join('admin', 'sewa.id_admin = admin.id_admin')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array('sewa.id_penyewa' => $this->session->userdata('id_penyewa'), 'sewa.status' => 2))
+            ->where(array(
+                'sewa.id_penyewa' => $this->session->userdata('id_penyewa'),
+                'sewa.status' => 2,
+                'sewa_detail.status_qty' => 1
+            ))
             ->get()->result_array();
         $proses =  $this->db->select('sewa.id_penyewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory')
             ->from('sewa')
@@ -214,5 +231,113 @@ class M_Landing extends CI_Model
         ];
 
         return $data;
+    }
+
+    public function getProfil()
+    {
+        $sql = "SELECT * from penyewa where id_penyewa=" . $this->session->userdata('id_penyewa');
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function editProfil($dataimg)
+    {
+
+        if (!$dataimg['file_ext']) {
+            $img = $this->input->post('img');
+        } else {
+            $img = $dataimg['file_name'];
+        }
+
+        if (!$this->input->post('password')) {
+            $data = [
+                'id_penyewa' => $this->session->userdata('id_penyewa'),
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'telp' => $this->input->post('telepon'),
+                'no_identitas' => $this->input->post('no_identitas'),
+                'alamat' => $this->input->post('alamat'),
+                'image' => $img
+            ];
+        } else {
+            $data = [
+                'id_penyewa' => $this->session->userdata('id_penyewa'),
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'password' => md5($this->input->post('password')),
+                'telp' => $this->input->post('telepon'),
+                'no_identitas' => $this->input->post('no_identitas'),
+                'alamat' => $this->input->post('alamat'),
+                'image' => $img
+            ];
+        }
+        $result =  $this->db->where(array(
+            'id_penyewa' => $data['id_penyewa']
+        ));
+        $this->db->update('penyewa', $data);
+        return $result;
+    }
+
+    public function cekQty($P)
+    {
+        $sql = "SELECT * FROM inventory where id_inventory = $P";
+        $get =  $this->db->query($sql)->result_array();
+        return $get[0];
+    }
+    public function updateDetail($dat)
+    {
+        $data = [
+            'id_sewa' => $dat['id_sewa'],
+            'id_inventory' => $dat['id_inventory'],
+            'status_qty' => $dat['respon']
+        ];
+        $result =  $this->db->where(array(
+            'id_sewa' => $data['id_sewa'],
+            'id_inventory' => $data['id_inventory']
+        ));
+        $this->db->update('sewa_detail', $data);
+        return $result;
+    }
+    public function checkout()
+    {
+        $cart = $this->getData();
+        if (!$cart['dtl']) {
+            $data = [
+                'result' => NULL,
+                'cart' => $cart['cart']
+            ];
+        } else {
+            $result =  $this->db->select('sewa_detail.status_qty,sewa.id_sewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory,sewa.total')
+
+                ->from('sewa')
+                ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+                // ->join('admin', 'sewa.id_admin = admin.id_admin')
+                ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+                ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+                ->where(array(
+                    'sewa_detail.id_sewa' => $cart['dtl'][0]['id_sewa'],
+                    'sewa_detail.status_qty' => 1
+                ))
+                ->get()->result_array();
+            $data = [
+                'result' => $result,
+                'cart' => $cart['cart']
+            ];
+        }
+        return $data;
+    }
+
+    public function updateSewa()
+    {
+        $data = [
+            'tgl_mulai' => date('Y-m-d H:i:s', strtotime($this->input->post('tgl-mulai'))),
+            'tgl_selesai' => date('Y-m-d H:i:s', strtotime($this->input->post('tgl-selesai'))),
+            'status' => 2
+        ];
+        $result =  $this->db->where(array(
+            'id_sewa' => $this->input->post('id_sewa'),
+        ));
+        $this->db->update('sewa', $data);
+        return $result;
     }
 }

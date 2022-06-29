@@ -181,11 +181,11 @@ jQuery(document).ready(function ($) {
         return false;
     });
     // vertical-menu
-    $(document).on('click', '.block-title', function () {
-        $(this).closest('.block-nav-categori').toggleClass('active');
-        $(this).closest('.block-nav-categori').find('.verticalmenu-content').toggleClass('show-up');
-        return false;
-    });
+    // $(document).on('click', '.block-title', function () {
+    //     $(this).closest('.block-nav-categori').toggleClass('active');
+    //     $(this).closest('.block-nav-categori').find('.verticalmenu-content').toggleClass('show-up');
+    //     return false;
+    // });
     $(document).on('click', '.bar-open-menu,.vertical-menu-overlay', function () {
         $('body').toggleClass('vertical-menu-open');
         return false;

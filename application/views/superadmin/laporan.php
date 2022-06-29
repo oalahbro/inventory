@@ -16,8 +16,8 @@
 
             </div>
             <div>
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Ruang</a>
-                <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
+                <a href="<?= base_url() ?>superadmin/pdf" type="button" class="btn btn-rounded btn-danger"><span class="btn-icon-left text-danger"><i class="fa fa-file-pdf-o color-danger"></i>
+                    </span>EXPORT PDF</a>
             </div>
         </div>
         <!-- Add Order -->
@@ -130,12 +130,13 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nama</th>
+                                <th>Item</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
                                 <th>Tanggal Mulai</th>
                                 <th>Tanggal Selesai</th>
                                 <th>Tanggal Booking</th>
-                                <th style="width:  8.33%">Bukti Bayar</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
+                                <th>Sub Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -144,30 +145,23 @@
                             foreach ($laporan as $u) {
                                 echo "<tr>
                                             <td>" . $no . "</td>
+                                            <td>" . $u['nama_penyewa'] . "</td>
                                             <td>" . $u['nama'] . "</td>
+                                            <td>" . $u['harga'] . "</td>
+                                            <td>" . $u['jumlah'] . "</td>
                                             <td>" . $u['tgl_mulai'] . "</td>
                                             <td>" . $u['tgl_selesai'] . "</td>
                                             <td>" . $u['tgl_booking'] . "</td>
-                                            <td >
-                                            <div class='lightgallery' class='row'>
-                                            <a href='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' data-exthumbimage='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "' data-src='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "'class='col-lg-3 col-md-6 mb-4' >
-                                            <img src='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' style='width:60%;' />
-                                            </a>
-                                            </div>
-                                            </td><td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>
-                                            <td> 
-                                            <div class='d-flex'>
-                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
-
-                                                <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_inventory'] . "')\"><i class='fa fa-trash'></i></a>
-                                            </div>";
+                                            <td>" . $u['sub_total'] . "</td>";
 
 
                                 $no++;
                             }
                             ?>
+
                         </tbody>
                     </table>
+                    <h3>TOTAL : <?= $total ?>
                 </div>
             </div>
         </div>
@@ -176,64 +170,3 @@
 <!--**********************************
             Content body end
         ***********************************-->
-<script type="text/javascript">
-    // api url
-    function SetInput(id_sewa) {
-        document.getElementById('id_sewa').value = id_sewa;
-        var api_url =
-            "<?= base_url() ?>superadmin/api?catid=" + id_sewa;
-        async function getapi(url) {
-
-            // Storing response
-            const response = await fetch(url);
-
-            // Storing data in form of JSON
-            var data = await response.json();
-            console.log(data);
-            if (response) {
-                hideloader();
-            }
-            show(data);
-        }
-        getapi(api_url);
-
-        function hideloader() {
-            document.getElementById('loading').style.display = 'none';
-        }
-        // Function to define innerHTML for HTML table
-        function show(data) {
-            let tab =
-                `<thead class="thead-primary">
-                            <tr>
-                                <th>Item</th>
-                                <th>Harga</th>
-                                <th>Jumlah</th>
-                                <th>sub total</th>
-                            </tr>
-                        </thead>
-                        <tbody>`;
-
-            // Loop to access all rows
-            for (let r of data) {
-                tab += `<tr>
-        <td>${r.nama_inventory} </td>
-        <td>${r.harga}</td>
-        <td>${r.jumlah}</td>
-        <td>${r.sub_total}</td>		
-        </tr>`;
-            }
-            // Setting innerHTML as tab variable
-            document.getElementById("employees").innerHTML = tab + "</tbody>";
-        }
-    }
-
-    function setInput1(id_inventory) {
-        document.getElementById('id_inventory1').value = id_inventory;
-    }
-
-    // function SetInput(id_sewa) {
-    //     document.getElementById('id_sewa').value = id_sewa;
-
-
-    // }
-</script>

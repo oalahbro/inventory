@@ -132,19 +132,39 @@ class Home extends CI_Controller
 
 	public function cart()
 	{
-		$data['planet'] = $this->M_Landing->cart();
-		//mengirimkan data ke view
-		$this->load->view('template/home/header', $data['planet']);
-		$this->load->view('home/cart', $data);
+		$post = $this->M_Landing->cart();
+		if (!$post['result']) {
+		} else {
+			foreach ($post['result'] as $P) {
+				$cek = $this->M_Landing->cekQty($P['id_inventory']);
+				if ($cek['jumlah'] < $P['jumlah']) {
+					$dat = [
+						'id_sewa' => $P['id_sewa'],
+						'id_inventory' => $P['id_inventory'],
+						'respon' => 0,
+					];
+					$this->M_Landing->updateDetail($dat);
+				} else {
+					$dat = [
+						'id_sewa' => $P['id_sewa'],
+						'id_inventory' => $P['id_inventory'],
+						'respon' => 1,
+					];
+					$this->M_Landing->updateDetail($dat);
+				}
+			}
+		}
+		$postt = $this->M_Landing->cart();
+		$this->load->view('template/home/header', $postt);
+		$this->load->view('home/cart', $postt);
 		$this->load->view('template/home/footer');
-		// var_dump($data);
 	}
 
 	public function delCart()
 	{
 		$id_inv = $this->input->post('id_inventory1');
 		$this->M_Landing->delCart($id_inv);
-		// var_dump($id_inv);
+		// var_dump($this->M_Landing->delCart($id_inv));
 		redirect(base_url('home/cart'));
 	}
 
@@ -160,11 +180,54 @@ class Home extends CI_Controller
 
 	public function pesan()
 	{
-		$data = $this->M_Landing->cart();
+		$data = $this->M_Landing->checkout();
+		foreach ($data['result'] as $r) {
+			$sum[] = $r['sub_total'];
+		};
+		$data['total'] = array_sum($sum);
 		//mengirimkan data ke view
 		$this->load->view('template/home/header', $data);
 		$this->load->view('home/pesan', $data);
 		$this->load->view('template/home/footer');
 		// var_dump($data);
+	}
+
+	public function profil()
+	{
+		$data['profil'] = $this->M_Landing->getProfil();
+		$this->load->view('template/profilhome/header', $data);
+		$this->load->view('home/profil', $data);
+		$this->load->view('template/profilhome/footer');
+		// var_dump($data);
+	}
+	public function editProfil()
+	{
+		$file_name  = substr(uniqid(), 5, 5);
+		$config['upload_path'] = 'assets/upload/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size'] = 2000;
+		$config['file_name'] = date("Ymd") . $file_name;
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('image')) {
+			$dataimg = $this->upload->data();
+			$this->M_Landing->editProfil($dataimg);
+			redirect(base_url('home/profil'));
+			// var_dump($this->M_Landing->editProfil($dataimg));
+		}
+		$dataimg = $this->upload->data();
+		$this->M_Landing->editProfil($dataimg);
+		redirect(base_url('home/profil'));
+		// var_dump($this->M_Landing->editProfil($dataimg));
+	}
+
+	public function updateSewa()
+	{
+		$data = $this->M_Landing->checkout();
+		$this->M_Landing->updateSewa();
+		$this->load->view('template/home/header', $data);
+		$this->load->view('home/checkout_end');
+		$this->load->view('template/home/footer');
+		// var_dump($tst);
 	}
 }

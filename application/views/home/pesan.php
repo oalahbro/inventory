@@ -104,66 +104,24 @@
                                 <h3 class="title-form">
                                     Shipping Address
                                 </h3>
-                                <p class="form-row form-row-first">
-                                    <label class="text">Nama Depan</label>
-                                    <input title="first" type="text" class="input-text">
-                                </p>
-                                <p class="form-row form-row-last">
-                                    <label class="text">Nama Belakang</label>
-                                    <input title="last" type="text" class="input-text">
-                                </p>
-                                <p class="form-row forn-row-col forn-row-col-1">
-                                    <label class="text">Tanggal Mulai</label>
-                                    <select title="country" data-placeholder="United Kingdom" class="chosen-select" tabindex="1">
-                                        <option value="United States">United States</option>
-                                        <option value="United Kingdom">United Kingdom</option>
-                                        <option value="Afghanistan">Afghanistan</option>
-                                        <option value="Aland Islands">Aland Islands</option>
-                                        <option value="Albania">Albania</option>
-                                        <option value="Algeria">Algeria</option>
-                                        <option value="American Samoa">American Samoa</option>
-                                        <option value="Andorra">Andorra</option>
-                                        <option value="Angola">Angola</option>
-                                        <option value="Anguilla">Anguilla</option>
-                                        <option value="Antarctica">Antarctica</option>
-                                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                                        <option value="Argentina">Argentina</option>
-                                        <option value="Armenia">Armenia</option>
-                                        <option value="Aruba">Aruba</option>
-                                        <option value="Australia">Australia</option>
-                                        <option value="Austria">Austria</option>
-                                        <option value="Azerbaijan">Azerbaijan</option>
-                                        <option value="Bahamas">Bahamas</option>
-                                        <option value="Bahrain">Bahrain</option>
-                                        <option value="Bangladesh">Bangladesh</option>
-                                        <option value="Barbados">Barbados</option>
-                                        <option value="Belarus">Belarus</option>
-                                        <option value="Belgium">Belgium</option>
-                                        <option value="Belize">Belize</option>
-                                        <option value="Benin">Benin</option>
-                                        <option value="Bermuda">Bermuda</option>
-                                        <option value="Bhutan">Bhutan</option>
-                                    </select>
-                                </p>
-                                <p class="form-row forn-row-col forn-row-col-2">
-                                    <label class="text">Tanggal Selesai</label>
-                                    <select title="state" data-placeholder="London" class="chosen-select" tabindex="1">
-                                        <option value="United States">London</option>
-                                        <option value="United Kingdom">tokyo</option>
-                                        <option value="Afghanistan">Seoul</option>
-                                        <option value="Aland Islands">Mexico city</option>
-                                        <option value="Albania">Mumbai</option>
-                                        <option value="Algeria">Delhi</option>
-                                        <option value="American Samoa">New York</option>
-                                        <option value="Andorra">Jakarta</option>
-                                        <option value="Angola">Sao Paulo</option>
-                                        <option value="Anguilla">Osaka</option>
-                                        <option value="Antarctica">Karachi</option>
-                                        <option value="Antigua and Barbuda">Matx-cơ-va</option>
-                                        <option value="Argentina">Toronto</option>
-                                        <option value="Armenia">Boston</option>
-                                    </select>
-                                </p>
+                                <form method="POST" action="<?= base_url() ?>home/updateSewa">
+                                    <input type="text" name="id_sewa" value="<?= $result[0]['id_sewa'] ?>" hidden />
+                                    <p class="form-row form-row-first">
+                                        <label class="text">Nama Depan</label>
+                                        <input title="first" type="text" class="form-control form-control-phone">
+                                    </p>
+                                    <p class="form-row form-row-last">
+                                        <label class="text">Nama Belakang</label>
+                                        <input title="last" type="text" class="form-control form-control-phone">
+                                    </p>
+                                    <p class="form-row forn-row-col forn-row-col-1">
+                                        <label class="text">Tanggal Mulai</label>
+                                        <input type="datetime-local" name="tgl-mulai" class="form-control form-control-phone">
+                                    </p>
+                                    <p class="form-row forn-row-col forn-row-col-2">
+                                        <label class="text">Tanggal Selesai</label>
+                                        <input type="datetime-local" name="tgl-selesai" class="form-control form-control-phone">
+                                    </p>
                             </div>
                         </div>
                         <div class="row-col-2 row-col">
@@ -189,6 +147,7 @@
                                                     <span class="count">x<?= $item['jumlah'] ?></span>
                                                 </div>
                                             </div>
+
                                         </li>
                                     <?php } ?>
                                 </ul>
@@ -197,13 +156,21 @@
                                         Total Price:
                                     </span>
                                     <span class="total-price">
-                                        <?= $this->format_rupiah->format($item['total']) ?>
+                                        <?= $this->format_rupiah->format($total) ?>
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button button-payment">Payment</a>
+                    <div class="control-cart">
+                        <button class="button btn-cart-to-checkout">
+                            <a href="<?= base_url() ?>home/cart">Kembali Ke Keranjang</a>
+                        </button>
+                        <button type="submit" class="button button-payment">
+                            Pembayaran
+                        </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

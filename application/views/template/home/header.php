@@ -4,7 +4,7 @@
 <!-- tanajil/gridproducts_bannerslider.html  21 Nov 2019 03:34:59 GMT -->
 
 <head>
-    <title>SMAN 1 BARAT -Peminjaman Ruang dan Barang</title>
+    <title>SMAN 1 BARAT - Peminjaman Ruang dan Barang</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,7 +108,7 @@
                                                 <div class="product-details">
                                                     <h5 class="product-name">
                                                         <span class="flaticon-user fa-lg">&#160</span>
-                                                        <a href="#"><b>Profile</b></a>
+                                                        <a href="<?= base_url() ?>home/profil"><b>Profil</b></a>
                                                     </h5>
 
                                                 </div>
@@ -139,24 +139,33 @@
         <div class="header-nav-container">
             <div class="container">
                 <div class="header-nav-wapper main-menu-wapper">
-                    <div class="vertical-wapper block-nav-categori">
-                        <div class="block-title">
-                            <span class="icon-bar">
+                    <div class="vertical-wapper" style="max-width: 140px; text-align: center;">
+                        <div class="container-wapper">
+                            <span class="fa fa-home" style="font-size: 30px; color: white;">
+                                <a href="<?= base_url() ?>home" class="tanajil-menu-item-title"></a>
+                            </span>
+                        </div>
+                        <!-- <div>
+                            <span class="fa fa-home" style="font-size: 36px;">
+
+                                <a class="tanajil-menu-item-title" href="<?= base_url() ?>home">Home</a>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </span>
-                            <span class="text">Home</span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="header-nav">
                         <div class="container-wapper">
                             <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
                                 <li class="menu-item">
-                                    <a href="gridproducts.html" class="tanajil-menu-item-title" title="Shop">TRANSAKSI</a>
+                                    <a href="<?= base_url() ?>home/transaksi" class="tanajil-menu-item-title">TRANSAKSI</a>
                                 </li>
+                                <span></span>
+                                <span></span>
+                                <span></span>
                                 <li class="menu-item">
-                                    <a href="about.html" class="tanajil-menu-item-title" title="About">Tentang Kami</a>
+                                    <a href="about.html" class="tanajil-menu-item-title">Tentang Kami</a>
                                 </li>
                             </ul>
                         </div>

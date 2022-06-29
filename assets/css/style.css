@@ -7341,6 +7341,8 @@ body.vertical-menu-open .vertical-menu-overlay {
 	padding: 12px 30px 17px;
 	letter-spacing: 0.05em;
 }
+
+
 .vertical-wapper .block-title::after {
 	content: '';
 	position: absolute;

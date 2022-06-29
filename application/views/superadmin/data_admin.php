@@ -32,6 +32,8 @@
                     <div class="modal-body">
                         <form method="post" action="<?= base_url() ?>superadmin/addAdmin">
                             <div class="form-group">
+                                <label class="text-black font-w500">Nama</label>
+                                <input type="text" name="nama" class="form-control" required>
                                 <label class="text-black font-w500">Username</label>
                                 <input type="text" name="username" class="form-control" required>
                                 <label class="text-black font-w500">Password</label>
@@ -73,6 +75,8 @@
                         <form method="post" action="<?= base_url() ?>superadmin/editAdmin">
                             <div class="form-group">
                                 <input type="hidden" id="id_admin" name="id_admin">
+                                <label class="text-black font-w500">Nama</label>
+                                <input type="text" id="nama" name="nama" class="form-control" required />
                                 <label class="text-black font-w500">Username</label>
                                 <input type="text" id="username" name="username" class="form-control" required />
                                 <label class="text-black font-w500">Password</label>
@@ -135,6 +139,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Nama</th>
                                 <th>Username</th>
                                 <th>Level</th>
                                 <th>Status</th>
@@ -147,6 +152,7 @@
                             foreach ($admin as $u) {
                                 echo "<tr>
                                             <td>" . $no . "</td>
+                                            <td>" . $u['nama'] . "</td>
                                             <td>" . $u['username'] . "</td>";
                                 if ($u['level'] == 1) {
                                     echo "<td><span class='badge badge-rounded badge-dark'>Superadmin</span></td>";
@@ -160,7 +166,7 @@
                                 }
                                 echo "<td>
                                 <div class='d-flex'>
-                                    <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_admin'] . "','" . $u['username'] .  "','" . $u['level'] . "','" . $u['status'] . "')\"><i class='fa fa-pencil'></i></a>
+                                    <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_admin'] . "','" . $u['nama'] . "','" . $u['username'] .  "','" . $u['level'] . "','" . $u['status'] . "')\"><i class='fa fa-pencil'></i></a>
                                     
                                     <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_admin'] . "')\"><i class='fa fa-trash'></i></a>
                                 </div>";
@@ -180,9 +186,10 @@
             Content body end
         ***********************************-->
 <script type="text/javascript">
-    function SetInput(id_admin, username, level, status) {
+    function SetInput(id_admin, nama, username, level, status) {
         document.getElementById('id_admin').value = id_admin;
         document.getElementById('username').value = username;
+        document.getElementById('nama').value = nama;
         document.getElementById('level').value = level;
         document.getElementById('status').value = status;
         if (level == 1) {

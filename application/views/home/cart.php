@@ -116,7 +116,7 @@
                                             </tr>
                                         </thead>
 
-                                        <?php if (!$planet['result']) {
+                                        <?php if (!$result) {
                                             echo '<tbody>
                                             <tr class="cart_item">
                                             <td class="product-thumbnail"></td>
@@ -133,12 +133,12 @@
                                         } else { ?>
                                             <tbody>
                                                 <?php
-                                                foreach ($planet['result'] as $item) {
+                                                foreach ($result as $item) {
 
                                                 ?>
                                                     <tr class="cart_item">
                                                         <td class="product-remove">
-                                                            <a href="#" class="remove" data-toggle='modal' data-target='#delete-modal' <?= "onClick=\"setInput1('" . $item['id_sewa_detail'] . "','" . $item['nama_inventory'] .  "')\"" ?>></a>
+                                                            <a href="#" class="remove" data-toggle='modal' data-target='#delete-modal' <?= "onClick=\"setInput1('" . $item['id_sewa_detail'] . "','" . $item['nama_inventory'] .  "','" . $item['sub_total'] .  "')\"" ?>></a>
                                                         </td>
                                                         <td class="product-thumbnail">
                                                             <a href="#">
@@ -147,8 +147,12 @@
                                                         </td>
                                                         <td class="product-name" data-title="Product">
                                                             <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
-                                                            <!-- <span class="attributes-select attributes-color">Black,</span>
-                                                        <span class="attributes-select attributes-size">XXL</span> -->
+                                                            <?php if ($item['status_qty'] == 0) {
+                                                                echo '<span class="text-danger"><b>Tidak Tersedia</b></span>';
+                                                            } else {
+                                                                echo '<span class="text-success"><b>Tersedia</b></span>';
+                                                            }
+                                                            ?>
                                                         </td>
                                                         <td class="product-price" data-title="Price">
                                                             <span class="woocommerce-Price-amount amount">
@@ -168,7 +172,7 @@
                                 </form>
                                 <div class="control-cart">
                                     <button class="button btn-continue-shopping">
-                                        Continue Shopping
+                                        <a href="<?= base_url() ?>home/pesan">Continue Shopping</a>
                                     </button>
                                     <button class="button btn-cart-to-checkout">
                                         Checkout
@@ -196,6 +200,7 @@
                             </p>
                             <div class="form-group">
                                 <input type="hidden" id="id_inventory1" name="id_inventory1">
+                                <input type="hidden" id="sub_total1" name="sub_total1">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -264,9 +269,10 @@
     //     document.getElementById('kategori').innerText = nama_kat;
     // }
 
-    function setInput1(id_inventory, nama) {
+    function setInput1(id_inventory, nama, harga) {
 
         document.getElementById('name').innerText = nama;
         document.getElementById('id_inventory1').value = id_inventory;
+        document.getElementById('sub_total1').value = harga;
     }
 </script>

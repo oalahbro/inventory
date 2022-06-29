@@ -22,7 +22,13 @@ class Loginmodel extends CI_Model
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
+    public function cekGoogle($setuser)
+    {
 
+        $sql = "SELECT * FROM penyewa WHERE email='" . $setuser['email'] . "'";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
     public function resgister()
     {
         $data = [
@@ -33,6 +39,18 @@ class Loginmodel extends CI_Model
             'alamat' => $this->input->post('alamat'),
             'level' => '3',
             'password' => md5($this->input->post('password'))
+        ];
+
+        $result =  $this->db->insert('penyewa', $data);
+        return $result;
+    }
+
+    public function registerGoogle($data)
+    {
+        $data = [
+            'nama' => $data['given_name'] . " " . $data['family_name'],
+            'email' => $data['email'],
+            'level' => '3'
         ];
 
         $result =  $this->db->insert('penyewa', $data);

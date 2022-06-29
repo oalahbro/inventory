@@ -41,27 +41,27 @@ class Superadmin extends CI_Controller
 		// load data from model
 		// $data = array('planet' => $this->mymodel->getData());
 		//mengirimkan data ke view
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/index');
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 
 	public function kategori()
 	{
 		$data['kategori'] = $this->mymodel->getKategori();
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/kategori', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 	}
 
 	public function data_penyewa()
 	{
 		$data['penyewa'] = $this->mymodel->getPenyewa();
 		//mengirimkan data ke view
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_penyewa', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 
@@ -91,9 +91,9 @@ class Superadmin extends CI_Controller
 	{
 		$data['admin'] = $this->mymodel->getAdmin();
 		//mengirimkan data ke view
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_admin', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 
@@ -147,9 +147,9 @@ class Superadmin extends CI_Controller
 	{
 		$data['ruang'] = $this->mymodel->getInventory();
 		$data['kategori'] = $this->mymodel->getKategori();
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_inventory', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 
@@ -160,9 +160,9 @@ class Superadmin extends CI_Controller
 			'kategori' => $this->mymodel->getKategori(),
 			'kat_title' => $this->mymodel->katTitle()
 		];
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_filter', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data['kat_title']);
 	}
 	public function updateInventory()
@@ -216,9 +216,9 @@ class Superadmin extends CI_Controller
 		$data = [
 			'pemesanan' => $this->mymodel->getPemesanan()
 		];
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/pemesanan', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 
@@ -227,9 +227,9 @@ class Superadmin extends CI_Controller
 		$data = [
 			'konf_pemesanan' => $this->mymodel->getKonfpemesanan()
 		];
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/konf_pemesanan', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 	public function api()
@@ -255,9 +255,9 @@ class Superadmin extends CI_Controller
 		$data = [
 			'history' => $this->mymodel->getHistory()
 		];
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/history', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 	public function filterstatus()
@@ -265,9 +265,9 @@ class Superadmin extends CI_Controller
 		$data = [
 			'history' => $this->mymodel->filterhistory()
 		];
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/history', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data['kat_title']);
 	}
 
@@ -277,9 +277,9 @@ class Superadmin extends CI_Controller
 			'history' => $this->mymodel->getPesananSelesai(),
 			'title' => 'pesanan selesai'
 		];
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/history', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 
@@ -289,20 +289,67 @@ class Superadmin extends CI_Controller
 			'history' => $this->mymodel->getHistory(),
 			'title' => 'pesanan dibatalkan'
 		];
-		$this->load->view('template/admin/header');
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/history', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}
 
 	public function getLaporan()
 	{
-		$data = [
-			'laporan' => $this->mymodel->getLaporan()
-		];
-		$this->load->view('template/admin/header');
+		$data['laporan'] = $this->mymodel->getLaporan();
+		foreach ($data['laporan'] as $r) {
+			$sum[] = $r['sub_total'];
+		};
+		$data['total'] = array_sum($sum);
+		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/laporan', $data);
-		$this->load->view('template/admin/footer');
+		$this->load->view('template/superadmin/footer');
+		// var_dump($total);
+	}
+
+	public function profil()
+	{
+		$data['profil'] = $this->mymodel->getProfil();
+		$this->load->view('template/superadmin/header', $data);
+		$this->load->view('superadmin/profil', $data);
+		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
+	}
+	public function editProfil()
+	{
+		$file_name  = substr(uniqid(), 5, 5);
+		$config['upload_path'] = 'assets/upload/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size'] = 2000;
+		$config['file_name'] = date("Ymd") . $file_name;
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('image')) {
+			$dataimg = $this->upload->data();
+			$this->mymodel->editProfil($dataimg);
+			redirect(base_url('superadmin/profil'));
+		}
+		$dataimg = $this->upload->data();
+		var_dump($dataimg);
+		$this->mymodel->editProfil($dataimg);
+		redirect(base_url('superadmin/profil'));
+	}
+
+	public function pdf()
+	{
+
+		$this->load->library('pdf');
+		$data['laporan'] = $this->mymodel->getLaporan();
+		// var_dump($data);
+		$this->load->view('superadmin/laporan_sewa', $data);
+		$html = $this->output->get_output();
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->load_html($html);
+		$this->pdf->render();
+		$this->pdf->stream('laporan_sewa.pdf', array('Attachment' => 0));
+
+
+		$this->pdf->filename = "laporan-data-siswa.pdf";
 	}
 }
