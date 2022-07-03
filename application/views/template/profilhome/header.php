@@ -240,7 +240,7 @@
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
                                     <?php $foto = $this->M_Landing->getProfil(); ?>
-                                    <img src="<?= base_url() ?>assets/upload/<?= $foto[0]['image'] ?>" class="img-fluid rounded-circle" width="20" alt="" />
+                                    <img src="<?= base_url() ?>assets/upload/<?= $foto['profil'][0]['image'] ?>" class="img-fluid rounded-circle" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="<?= base_url() ?>superadmin/profil" class="dropdown-item ai-icon">

@@ -185,11 +185,11 @@ class Home extends CI_Controller
 
 	public function profil()
 	{
-		$data['profil'] = $this->M_Landing->getProfil();
+		$data = $this->M_Landing->getProfil();
 		if (!$this->session->userdata('levelpenyewa')) {
 			$this->load->view('template/home/header_noauth');
 		} else {
-			$this->load->view('template/home/header', $data);
+			$this->load->view('template/profilhome/header', $data);
 		}
 		$this->load->view('home/profil', $data);
 		$this->load->view('template/profilhome/footer');
@@ -274,9 +274,9 @@ class Home extends CI_Controller
 			echo "<script>alert('" . $error['error'] . "'); document.location = '" . base_url('home/transaksi') . "';</script>";
 		} else {
 			$data = $this->upload->data();
-			$this->M_Landing->uploadBukti($data);
-			// var_dump($mod);
-			redirect(base_url('home/transaksi'));
+			$mod = $this->M_Landing->uploadBukti($data);
+			var_dump($mod);
+			// redirect(base_url('home/transaksi'));
 		}
 		// var_dump($this->input->post('id_sewa'));
 	}

@@ -13,7 +13,7 @@
                 <div class="profile card card-body px-3 pt-3 pb-0">
                     <div class="profile-head">
                         <div class="photo-content">
-                            <div class="cover-photo"><img src="https://picsum.photos/1500/1000" style="width:1458px; height:250px; object-fit: cover;"></div>
+                            <div class="cover-photo"><img src="https://picsum.photos/1500/1000" style="width:1141px; height:250px; object-fit: cover;"></div>
                         </div>
                         <div class="profile-info">
                             <div class="profile-photo">
