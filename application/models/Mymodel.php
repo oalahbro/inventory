@@ -283,7 +283,6 @@ class Mymodel extends CI_Model
         $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
             ->from('sewa')
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
-            ->join('admin', 'sewa.id_admin = admin.id_admin')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
             ->where(array('sewa_detail.id_sewa' => $catid))
@@ -411,5 +410,15 @@ class Mymodel extends CI_Model
         ));
         $this->db->update('admin', $data);
         return $result;
+    }
+
+    public function hitung()
+    {
+        $query = $this->db->get('inventory');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
     }
 }

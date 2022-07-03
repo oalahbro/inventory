@@ -186,41 +186,25 @@ class M_Landing extends CI_Model
     {
         $cart = $this->getData();
 
-        $batal =  $this->db->select('sewa.id_penyewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory')
+        $batal =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar,sewa.total')
             ->from('sewa')
-            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
-            // ->join('admin', 'sewa.id_admin = admin.id_admin')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
-            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array('sewa.id_penyewa' => $this->session->userdata('id_penyewa'), 'sewa.status' => 0))
+            ->where(array('sewa.status' => 0, 'sewa.id_penyewa' => $this->session->userdata('id_penyewa')))
             ->get()->result_array();
-        $selesai =  $this->db->select('sewa.id_penyewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory')
+        $selesai =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar,sewa.total')
             ->from('sewa')
-            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
-            // ->join('admin', 'sewa.id_admin = admin.id_admin')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
-            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array('sewa.id_penyewa' => $this->session->userdata('id_penyewa'), 'sewa.status' => 3))
+            ->where(array('sewa.status' => 3, 'sewa.id_penyewa' => $this->session->userdata('id_penyewa')))
             ->get()->result_array();
-        $pesan =  $this->db->select('sewa.id_penyewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory')
+        $pesan =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar,sewa.total')
             ->from('sewa')
-            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
-            // ->join('admin', 'sewa.id_admin = admin.id_admin')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
-            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array(
-                'sewa.id_penyewa' => $this->session->userdata('id_penyewa'),
-                'sewa.status' => 2,
-                'sewa_detail.status_qty' => 1
-            ))
+            ->where(array('sewa.status' => 2, 'sewa.id_penyewa' => $this->session->userdata('id_penyewa')))
             ->get()->result_array();
-        $proses =  $this->db->select('sewa.id_penyewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory')
+        $proses =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar,sewa.total')
             ->from('sewa')
-            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
-            // ->join('admin', 'sewa.id_admin = admin.id_admin')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
-            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array('sewa.id_penyewa' => $this->session->userdata('id_penyewa'), 'sewa.status' => 1))
+            ->where(array('sewa.status' => 1, 'sewa.id_penyewa' => $this->session->userdata('id_penyewa')))
             ->get()->result_array();
         $data = [
             'batal' => $batal,
@@ -231,6 +215,18 @@ class M_Landing extends CI_Model
         ];
 
         return $data;
+    }
+    public function getSwdetail($catid)
+    {
+
+        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+            ->from('sewa')
+            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+            ->where(array('sewa_detail.id_sewa' => $catid))
+            ->get()->result_array();
+        return $result;
     }
 
     public function getProfil()
@@ -329,10 +325,40 @@ class M_Landing extends CI_Model
 
     public function updateSewa()
     {
+        // date('Y-m-d H:i:s', strtotime($this->input->post('tgl-mulai')));
+        $datetime1 = strtotime($this->input->post('tgl-mulai'));
+        $datetime2 = strtotime($this->input->post('tgl-selesai'));
+        $interval = abs($datetime2 - $datetime1);
+        $numberDays = $interval / 86400;
+        $total = $this->input->post('total') * $numberDays;
         $data = [
-            'tgl_mulai' => date('Y-m-d H:i:s', strtotime($this->input->post('tgl-mulai'))),
-            'tgl_selesai' => date('Y-m-d H:i:s', strtotime($this->input->post('tgl-selesai'))),
+            'tgl_mulai' => date('Y-m-d H:i:s', $datetime1),
+            'tgl_selesai' => date('Y-m-d H:i:s', $datetime2),
+            'total' => $total,
             'status' => 2
+        ];
+
+        $result =  $this->db->where(array(
+            'id_sewa' => $this->input->post('id_sewa'),
+        ));
+        $this->db->update('sewa', $data);
+        return $result;
+    }
+
+    public function getPemesanan()
+    {
+
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => 2))
+            ->get()->result_array();
+        return $result;
+    }
+    public function uploadBukti($data)
+    {
+        $data = [
+            'bukti_bayar' => $data['file_name']
         ];
         $result =  $this->db->where(array(
             'id_sewa' => $this->input->post('id_sewa'),

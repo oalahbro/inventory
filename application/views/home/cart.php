@@ -156,7 +156,7 @@
                                                         </td>
                                                         <td class="product-price" data-title="Price">
                                                             <span class="woocommerce-Price-amount amount">
-                                                                <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
+                                                                <a class="text-danger">Qtyz </a> : <?= $item['jumlah'] ?>
                                                             </span>
                                                         </td>
                                                         <td class="product-price" data-title="Price">
@@ -171,11 +171,11 @@
                                     </table>
                                 </form>
                                 <div class="control-cart">
-                                    <button class="button btn-continue-shopping">
+                                    <!-- <button class="button btn-continue-shopping">
                                         <a href="<?= base_url() ?>home/pesan">Continue Shopping</a>
-                                    </button>
+                                    </button> -->
                                     <button class="button btn-cart-to-checkout">
-                                        Checkout
+                                        <a href="<?= base_url() ?>home/pesan">Checkout</a>
                                     </button>
                                 </div>
                             </div>

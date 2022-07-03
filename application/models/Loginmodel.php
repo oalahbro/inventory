@@ -24,10 +24,12 @@ class Loginmodel extends CI_Model
     }
     public function cekGoogle($setuser)
     {
-
-        $sql = "SELECT * FROM penyewa WHERE email='" . $setuser['email'] . "'";
-        $result =  $this->db->query($sql)->result_array();
-        return $result;
+        if (!$setuser) {
+        } else {
+            $sql = "SELECT * FROM penyewa WHERE email='" . $setuser['email'] . "'";
+            $result =  $this->db->query($sql)->result_array();
+            return $result;
+        }
     }
     public function resgister()
     {

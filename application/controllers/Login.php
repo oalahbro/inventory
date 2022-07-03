@@ -158,7 +158,6 @@ class Login extends CI_Controller
                     'id_penyewa' => $goole[0]['id_penyewa']
                 ];
                 $this->session->set_userdata($data_session);
-                // var_dump($goole);
                 redirect(base_url());
             }
             // var_dump($data);
@@ -167,11 +166,9 @@ class Login extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('access_token');
-
         $this->session->unset_userdata('user_data');
         $this->session->sess_destroy();
         redirect(base_url());
-        // echo "Logout berhasil";
     }
 
     public function cekses()

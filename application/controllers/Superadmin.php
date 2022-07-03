@@ -58,7 +58,6 @@ class Superadmin extends CI_Controller
 	public function data_penyewa()
 	{
 		$data['penyewa'] = $this->mymodel->getPenyewa();
-		//mengirimkan data ke view
 		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_penyewa', $data);
 		$this->load->view('template/superadmin/footer');
@@ -90,7 +89,6 @@ class Superadmin extends CI_Controller
 	public function data_admin()
 	{
 		$data['admin'] = $this->mymodel->getAdmin();
-		//mengirimkan data ke view
 		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_admin', $data);
 		$this->load->view('template/superadmin/footer');
@@ -150,7 +148,6 @@ class Superadmin extends CI_Controller
 		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_inventory', $data);
 		$this->load->view('template/superadmin/footer');
-		// var_dump($data);
 	}
 
 	public function filter()
@@ -163,7 +160,6 @@ class Superadmin extends CI_Controller
 		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/data_filter', $data);
 		$this->load->view('template/superadmin/footer');
-		// var_dump($data['kat_title']);
 	}
 	public function updateInventory()
 	{
@@ -175,6 +171,13 @@ class Superadmin extends CI_Controller
 
 
 		$this->load->library('upload', $config);
+		if (!$this->upload->do_upload('image')) {
+			var_dump($this->upload->data());
+			$dataimg = $this->upload->data();
+			$this->mymodel->updateInventory($dataimg);
+			// var_dump($data);
+			redirect(base_url('superadmin/getInventory'));
+		}
 		$dataimg = $this->upload->data();
 		$this->mymodel->updateInventory($dataimg);
 		// var_dump($data);
@@ -301,7 +304,12 @@ class Superadmin extends CI_Controller
 		foreach ($data['laporan'] as $r) {
 			$sum[] = $r['sub_total'];
 		};
-		$data['total'] = array_sum($sum);
+		if (!$data['laporan']) {
+			$data['total'] = 0;
+		} else {
+
+			$data['total'] = array_sum($sum);
+		}
 		$this->load->view('template/superadmin/header');
 		$this->load->view('superadmin/laporan', $data);
 		$this->load->view('template/superadmin/footer');
@@ -351,5 +359,26 @@ class Superadmin extends CI_Controller
 
 
 		$this->pdf->filename = "laporan-data-siswa.pdf";
+	}
+
+	public function count_item()
+	{
+		$this->load->view->mymodel('inventory');
+		return $this->ci->view->get()->num_rows;
+	}
+	public function count_pemesanan()
+	{
+		$this->load->view->mymodel('pemesanan_m');
+		return $this->ci->pemesanan_m->get()->num_rows;
+	}
+	public function count_konfpesmesanan()
+	{
+		$this->load->view->mymodel('konfpemesanan_m');
+		return $this->ci->konfpemesanan_m->get()->num_rows;
+	}
+	public function count_pesananselesai()
+	{
+		$this->load->view->mymodel('pesananselesai_m');
+		return $this->ci->pesananselesai_m->get()->num_rows;
 	}
 }

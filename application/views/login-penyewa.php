@@ -48,6 +48,7 @@
                                         <div class="text-center">
                                             <button type="submit" class="btn bg-white text-primary btn-block">Sign Me In</button>
                                         </div>
+                                        <h4 class="text-center mb-4 mt-4 text-white">atau</h4>
                                     </form>
                                     <div class="panel panel-default">
                                         <?php

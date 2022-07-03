@@ -109,8 +109,7 @@
                     <div class="main-content-cart main-content col-sm-12">
                         <div class="shop-top-control">
                             <ul class="select-form nav nav-pills nav-justified">
-                                <li class="nav-link active"><a data-toggle="tab" href="#menu">Belum Dibayar</a></li>
-                                <li class="nav-link"><a data-toggle="tab" href="#home">Pemesanan</a></li>
+                                <li class="nav-link active"><a data-toggle="tab" href="#menu">Pemesanan</a></li>
                                 <li class="nav-link"><a data-toggle="tab" href="#menu1">Konfirmasi</a></li>
                                 <li class="nav-link"><a data-toggle="tab" href="#menu2">Selesai</a></li>
                                 <li class="nav-link"><a data-toggle="tab" href="#menu3">Dibatalkan</a></li>
@@ -120,301 +119,311 @@
                             <div id="menu" class="tab-pane fade in active">
                                 <div class="page-main-content">
                                     <h3 class="custom_blog_title">
-                                        asdf
+                                        Pemesanan
                                     </h3>
-                                    <div class="shoppingcart-content">
-                                        <form action="http://tuongnam.com.vn/tanajil/shoppingcart.html" class="cart-form">
-                                            <table class="shop_table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product-remove"></th>
-                                                        <th class="product-thumbnail"></th>
-                                                        <th class="product-name"></th>
-                                                        <th class="product-price"></th>
-                                                        <th class="product-quantity"></th>
-                                                        <th class="product-subtotal"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    foreach ($pesan as $item) {
+                                    <div class="shoppingcart-content table-responsive">
 
-                                                    ?>
-                                                        <tr class="cart_item">
-                                                            <td class="product-thumbnail">
-                                                                <a href="#">
-                                                                    <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                                                </a>
-                                                            </td>
-                                                            <td class="product-name" data-title="Product">
-                                                                <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
-                                                                <!-- <span class="attributes-select attributes-color">Black,</span>
-                                                        <span class="attributes-select attributes-size">XXL</span> -->
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
-                                                                </span>
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <?= $this->format_rupiah->format($item['sub_total']) ?>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                        <div class="control-cart">
-                                            <button class="button btn-continue-shopping">
-                                                Continue Shopping
-                                            </button>
-                                            <button class="button btn-cart-to-checkout">
-                                                Checkout
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="home" class="tab-pane fade">
-                                <div class="page-main-content">
-                                    <h3 class="custom_blog_title">
-                                        asdf
-                                    </h3>
-                                    <div class="shoppingcart-content">
-                                        <form action="http://tuongnam.com.vn/tanajil/shoppingcart.html" class="cart-form">
-                                            <table class="shop_table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product-remove"></th>
-                                                        <th class="product-thumbnail"></th>
-                                                        <th class="product-name"></th>
-                                                        <th class="product-price"></th>
-                                                        <th class="product-quantity"></th>
-                                                        <th class="product-subtotal"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    foreach ($pesan as $item) {
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Bukti Bayar</th>
+                                                    <th>Nama</th>
+                                                    <th>Tgl Mulai</th>
+                                                    <th>Tgl Selesai</th>
+                                                    <th>Tgl Booking</th>
+                                                    <th>Total</th>
+                                                    <th>Upload</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                foreach ($pesan as $item) {
 
-                                                    ?>
-                                                        <tr class="cart_item">
-                                                            <td class="product-thumbnail">
-                                                                <a href="#">
-                                                                    <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                                                </a>
-                                                            </td>
-                                                            <td class="product-name" data-title="Product">
-                                                                <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
-                                                                <!-- <span class="attributes-select attributes-color">Black,</span>
-                                                        <span class="attributes-select attributes-size">XXL</span> -->
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
-                                                                </span>
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <?= $this->format_rupiah->format($item['sub_total']) ?>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                        <div class="control-cart">
-                                            <button class="button btn-continue-shopping">
-                                                Continue Shopping
-                                            </button>
-                                            <button class="button btn-cart-to-checkout">
-                                                Checkout
-                                            </button>
-                                        </div>
+                                                ?>
+                                                    <tr>
+                                                        <td class="product-thumbnail">
+                                                            <a href="#">
+                                                                <img style="max-width:150px;" src="<?= base_url() ?>assets/upload/<?= $item['bukti_bayar'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['nama'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_mulai'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_selesai'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_booking'] ?>
+                                                        </td>
+                                                        <td class="product-price" data-title="Price">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <?= $this->format_rupiah->format($item['total']) ?>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+
+
+
+                                                            <span>
+                                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                                    <button type="button" class="btn btn-secondary" data-toggle='modal' data-target='#upload-modal' onclick="SetUpload('<?= $item['id_sewa'] ?>');">Upload</button>
+
+                                                                    <button type="button" class="btn btn-secondary" data-toggle='modal' data-target='#edit-modal' onclick="SetInput('<?= $item['id_sewa'] ?>');">Detail</button>
+                                                                </div>
+                                                            </span>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="modal  bd-example-modal-lg fade" id="upload-modal">
+                                <div class="modal-dialog modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Detail Pemesanan</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="post" action="<?= base_url() ?>home/uploadBukti" enctype="multipart/form-data" accept-charset="utf-8">
+                                                <input type="text" name="id_sewa" id="id_sewa" hidden />
+                                                <input name="image" type="file" id="select_file" onchange="form.submit()">
+
+                                                <button type="button" value="batal" name="action" data-dismiss="modal" class="button btn-continue-shopping" style="float: right">EXIT</button>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal  bd-example-modal-lg fade" id="edit-modal">
+                                <div class="modal-dialog modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Detail Pemesanan</h5>
+                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="spinner-border" role="status" id="loading">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table id="employees" class="table primary-table-bordered">
+
+                                                    </table>
+                                                </div>
+                                                <form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan">
+                                                    <input type="text" name="id_sewa" id="id_sewa" hidden></input>
+
+                                                    <button type="button" value="batal" name="action" data-dismiss="modal" class="button btn-continue-shopping" style="float: right">EXIT</button>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div id="menu1" class="tab-pane fade">
                                 <div class="page-main-content">
                                     <h3 class="custom_blog_title">
-                                        1232453
+                                        Konfirmasi
                                     </h3>
-                                    <div class="shoppingcart-content">
-                                        <form action="http://tuongnam.com.vn/tanajil/shoppingcart.html" class="cart-form">
-                                            <table class="shop_table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product-remove"></th>
-                                                        <th class="product-thumbnail"></th>
-                                                        <th class="product-name"></th>
-                                                        <th class="product-price"></th>
-                                                        <th class="product-quantity"></th>
-                                                        <th class="product-subtotal"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    foreach ($proses as $item) {
+                                    <div class="shoppingcart-content table-responsive">
 
-                                                    ?>
-                                                        <tr class="cart_item">
-                                                            <td class="product-thumbnail">
-                                                                <a href="#">
-                                                                    <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                                                </a>
-                                                            </td>
-                                                            <td class="product-name" data-title="Product">
-                                                                <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
-                                                                <!-- <span class="attributes-select attributes-color">Black,</span>
-                                                        <span class="attributes-select attributes-size">XXL</span> -->
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Bukti Bayar</th>
+                                                    <th>Nama</th>
+                                                    <th>Tgl Mulai</th>
+                                                    <th>Tgl Selesai</th>
+                                                    <th>Tgl Booking</th>
+                                                    <th>Total</th>
+                                                    <th>Upload</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                foreach ($proses as $item) {
+
+                                                ?>
+                                                    <tr>
+                                                        <td class="product-thumbnail">
+                                                            <a href="#">
+                                                                <img style="max-width:150px;" src="<?= base_url() ?>assets/upload/<?= $item['bukti_bayar'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['nama'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_mulai'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_selesai'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_booking'] ?>
+                                                        </td>
+                                                        <td class="product-price" data-title="Price">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <?= $this->format_rupiah->format($item['total']) ?>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+
+                                                            <form method="post" action="<?= base_url() ?>home/uploadBukti" enctype="multipart/form-data" accept-charset="utf-8">
+                                                                <input type="text" name="id_sewa" value="<?= $item['id_sewa'] ?>" hidden />
+                                                                <input name="image" type="file" id="select_file" style="display: none;" onchange="form.submit()">
+                                                                <span>
+                                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                                        <button type="button" class="btn btn-secondary" data-toggle='modal' data-target='#edit-modal' onclick="SetInput('<?= $item['id_sewa'] ?>');">Detail</button>
+                                                                    </div>
                                                                 </span>
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <?= $this->format_rupiah->format($item['sub_total']) ?>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                        <div class="control-cart">
-                                            <button class="button btn-continue-shopping">
-                                                Continue Shopping
-                                            </button>
-                                            <button class="button btn-cart-to-checkout">
-                                                Checkout
-                                            </button>
-                                        </div>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                             <div id="menu2" class="tab-pane fade">
                                 <h3 class="custom_blog_title">
-                                    edcvgtyhn
+                                    Selesai
                                 </h3>
-                                <div class="page-main-content">
-                                    <div class="shoppingcart-content">
-                                        <form action="http://tuongnam.com.vn/tanajil/shoppingcart.html" class="cart-form">
-                                            <table class="shop_table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product-remove"></th>
-                                                        <th class="product-thumbnail"></th>
-                                                        <th class="product-name"></th>
-                                                        <th class="product-price"></th>
-                                                        <th class="product-quantity"></th>
-                                                        <th class="product-subtotal"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    foreach ($batal as $item) {
+                                <div class="shoppingcart-content table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Bukti Bayar</th>
+                                                <th>Nama</th>
+                                                <th>Tgl Mulai</th>
+                                                <th>Tgl Selesai</th>
+                                                <th>Tgl Booking</th>
+                                                <th>Total</th>
+                                                <th>Upload</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($selesai as $item) {
 
-                                                    ?>
-                                                        <tr class="cart_item">
-                                                            <td class="product-thumbnail">
-                                                                <a href="#">
-                                                                    <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                                                </a>
-                                                            </td>
-                                                            <td class="product-name" data-title="Product">
-                                                                <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
-                                                                <!-- <span class="attributes-select attributes-color">Black,</span>
-                                                        <span class="attributes-select attributes-size">XXL</span> -->
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
-                                                                </span>
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <?= $this->format_rupiah->format($item['sub_total']) ?>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                        <div class="control-cart">
-                                            <button class="button btn-continue-shopping">
-                                                Continue Shopping
-                                            </button>
-                                            <button class="button btn-cart-to-checkout">
-                                                Checkout
-                                            </button>
-                                        </div>
-                                    </div>
+                                            ?>
+                                                <tr>
+                                                    <td class="product-thumbnail">
+                                                        <a href="#">
+                                                            <img style="max-width:150px;" src="<?= base_url() ?>assets/upload/<?= $item['bukti_bayar'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                        </a>
+                                                    </td>
+                                                    <td class="product-name" data-title="Product">
+                                                        <?= $item['nama'] ?>
+                                                    </td>
+                                                    <td class="product-name" data-title="Product">
+                                                        <?= $item['tgl_mulai'] ?>
+                                                    </td>
+                                                    <td class="product-name" data-title="Product">
+                                                        <?= $item['tgl_selesai'] ?>
+                                                    </td>
+                                                    <td class="product-name" data-title="Product">
+                                                        <?= $item['tgl_booking'] ?>
+                                                    </td>
+                                                    <td class="product-price" data-title="Price">
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <?= $this->format_rupiah->format($item['total']) ?>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+
+                                                        <form method="post" action="<?= base_url() ?>home/uploadBukti" enctype="multipart/form-data" accept-charset="utf-8">
+                                                            <input type="text" name="id_sewa" value="<?= $item['id_sewa'] ?>" hidden />
+                                                            <input name="image" type="file" id="select_file" style="display: none;" onchange="form.submit()">
+                                                            <span>
+                                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                                    <button type="button" class="btn btn-secondary" data-toggle='modal' data-target='#edit-modal' onclick="SetInput('<?= $item['id_sewa'] ?>');">Detail</button>
+                                                                </div>
+                                                            </span>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                             <div id="menu3" class="tab-pane fade">
                                 <div class="page-main-content">
                                     <h3 class="custom_blog_title">
-                                        1232453
+                                        Dibatalkan
                                     </h3>
-                                    <div class="shoppingcart-content">
-                                        <form action="http://tuongnam.com.vn/tanajil/shoppingcart.html" class="cart-form">
-                                            <table class="shop_table">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="product-remove"></th>
-                                                        <th class="product-thumbnail"></th>
-                                                        <th class="product-name"></th>
-                                                        <th class="product-price"></th>
-                                                        <th class="product-quantity"></th>
-                                                        <th class="product-subtotal"></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    foreach ($selesai as $item) {
+                                    <div class="shoppingcart-content table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Bukti Bayar</th>
+                                                    <th>Nama</th>
+                                                    <th>Tgl Mulai</th>
+                                                    <th>Tgl Selesai</th>
+                                                    <th>Tgl Booking</th>
+                                                    <th>Total</th>
+                                                    <th>Upload</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                foreach ($batal as $item) {
 
-                                                    ?>
-                                                        <tr class="cart_item">
-                                                            <td class="product-thumbnail">
-                                                                <a href="#">
-                                                                    <img src="<?= base_url() ?>assets/upload/<?= $item['image'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
-                                                                </a>
-                                                            </td>
-                                                            <td class="product-name" data-title="Product">
-                                                                <a href="<?= base_url() ?>home/detail?vhid=<?= $item['id_inventory'] ?>" class="title"><?= $item['nama_inventory'] ?></a>
-                                                                <!-- <span class="attributes-select attributes-color">Black,</span>
-                                                        <span class="attributes-select attributes-size">XXL</span> -->
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <a class="text-danger">Qty </a> : <?= $item['jumlah'] ?>
+                                                ?>
+                                                    <tr>
+                                                        <td class="product-thumbnail">
+                                                            <a href="#">
+                                                                <img style="max-width:150px;" src="<?= base_url() ?>assets/upload/<?= $item['bukti_bayar'] ?>" alt="img" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image">
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['nama'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_mulai'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_selesai'] ?>
+                                                        </td>
+                                                        <td class="product-name" data-title="Product">
+                                                            <?= $item['tgl_booking'] ?>
+                                                        </td>
+                                                        <td class="product-price" data-title="Price">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <?= $this->format_rupiah->format($item['total']) ?>
+                                                            </span>
+                                                        </td>
+                                                        <td>
+
+                                                            <form method="post" action="<?= base_url() ?>home/uploadBukti" enctype="multipart/form-data" accept-charset="utf-8">
+                                                                <input type="text" name="id_sewa" value="<?= $item['id_sewa'] ?>" hidden />
+                                                                <input name="image" type="file" id="select_file" style="display: none;" onchange="form.submit()">
+                                                                <span>
+                                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                                        <button type="button" class="btn btn-secondary" data-toggle='modal' data-target='#edit-modal' onclick="SetInput('<?= $item['id_sewa'] ?>');">Detail</button>
+                                                                    </div>
                                                                 </span>
-                                                            </td>
-                                                            <td class="product-price" data-title="Price">
-                                                                <span class="woocommerce-Price-amount amount">
-                                                                    <?= $this->format_rupiah->format($item['sub_total']) ?>
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </form>
-                                        <div class="control-cart">
-                                            <button class="button btn-continue-shopping">
-                                                Continue Shopping
-                                            </button>
-                                            <button class="button btn-cart-to-checkout">
-                                                Checkout
-                                            </button>
-                                        </div>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -469,21 +478,63 @@
     </a>
 </body>
 <script type="text/javascript">
-    // function SetInput(id_inventory, nama, deskripsi, tahun, jumlah, gambar, harga, nama_kat, id_kat) {
-    //     document.getElementById('id_inventory').value = id_inventory;
-    //     document.getElementById('nama').value = nama;
-    //     document.getElementById('deskripsi').value = deskripsi;
-    //     document.getElementById('tahun').value = tahun;
-    //     document.getElementById('jumlah').value = jumlah;
-    //     document.getElementById('img').value = gambar;
-    //     document.getElementById('hrg').value = harga;
-    //     document.getElementById('kategori').value = id_kat;
-    //     document.getElementById('kategori').innerText = nama_kat;
-    // }
+    // api url
+    function SetInput(id_sewa) {
+        document.getElementById('id_sewa').value = id_sewa;
+        var api_url =
+            "<?= base_url() ?>home/api?catid=" + id_sewa;
+        async function getapi(url) {
 
-    // function setInput1(id_inventory, nama) {
+            // Storing response
+            const response = await fetch(url);
 
-    //     document.getElementById('name').innerText = nama;
-    //     document.getElementById('id_inventory1').value = id_inventory;
-    // }
+            // Storing data in form of JSON
+            var data = await response.json();
+            console.log(data);
+            if (response) {
+                hideloader();
+            }
+            show(data);
+        }
+        getapi(api_url);
+
+        function hideloader() {
+            document.getElementById('loading').style.display = 'none';
+        }
+        // Function to define innerHTML for HTML table
+        function show(data) {
+            let tab =
+                `<thead class="thead-primary">
+                            <tr>
+                                <th>Item</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>sub total</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+            // Loop to access all rows
+            for (let r of data) {
+                tab += `<tr>
+        <td>${r.nama_inventory} </td>
+        <td>${r.harga}</td>
+        <td>${r.jumlah}</td>
+        <td>${r.sub_total}</td>		
+        </tr>`;
+            }
+            // Setting innerHTML as tab variable
+            document.getElementById("employees").innerHTML = tab + "</tbody>";
+        }
+    }
+
+    function setInput1(id_inventory) {
+        document.getElementById('id_inventory1').value = id_inventory;
+    }
+
+    function SetUpload(id_sewa) {
+        document.getElementById('id_sewa').value = id_sewa;
+
+
+    }
 </script>
