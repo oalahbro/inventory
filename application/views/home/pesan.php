@@ -106,6 +106,7 @@
                                 </h3>
                                 <form method="POST" action="<?= base_url() ?>home/updateSewa">
                                     <input type="text" name="id_sewa" value="<?= $result[0]['id_sewa'] ?>" hidden />
+                                    <input type="text" name="total" value="<?= $total ?>" hidden />
                                     <p class="form-row form-row-first">
                                         <label class="text">Nama Depan</label>
                                         <input title="first" type="text" class="form-control form-control-phone">

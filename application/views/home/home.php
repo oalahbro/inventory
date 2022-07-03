@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item-banner style2">
+                        <div class="item-banner style2 ">
                             <div class="inner equal-element">
                                 <div class="banner-content style2">
                                     <h3 class="title">Superior cars</h3>

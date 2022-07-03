@@ -51,33 +51,7 @@ class Home extends CI_Controller
 		// var_dump($data);
 	}
 
-	public function ruang()
-	{
-		// load data from model
-		$data = array(
-			'planet' => $this->M_Landing->getRuang(),
-			'title' => 'Ruang'
-		);
-		//mengirimkan data ke view
-		$this->load->view('template/home/header');
-		$this->load->view('home/home', $data);
-		$this->load->view('template/home/footer');
-		// var_dump($data);
-	}
 
-	public function barang()
-	{
-		// load data from model
-		$data = array(
-			'planet' => $this->M_Landing->getBarang(),
-			'title' => 'Barang'
-		);
-		//mengirimkan data ke view
-		$this->load->view('template/home/header');
-		$this->load->view('home/home', $data);
-		$this->load->view('template/home/footer');
-		// var_dump($data);
-	}
 
 	public function detail()
 	{
@@ -89,7 +63,11 @@ class Home extends CI_Controller
 		if (!$data['planet']) {
 			show_404();
 		} else {
-			$this->load->view('template/home/header', $data['planet']);
+			if (!$this->session->userdata('levelpenyewa')) {
+				$this->load->view('template/home/header_noauth');
+			} else {
+				$this->load->view('template/home/header', $data['planet']);
+			}
 			$this->load->view('home/detail', $data);
 			$this->load->view('template/home/footer');
 		}
@@ -155,7 +133,12 @@ class Home extends CI_Controller
 			}
 		}
 		$postt = $this->M_Landing->cart();
-		$this->load->view('template/home/header', $postt);
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $postt);
+		}
+
 		$this->load->view('home/cart', $postt);
 		$this->load->view('template/home/footer');
 	}
@@ -172,7 +155,11 @@ class Home extends CI_Controller
 	{
 		$data = $this->M_Landing->transaksi();
 		//mengirimkan data ke view
-		$this->load->view('template/home/header', $data);
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $data);
+		}
 		$this->load->view('home/transaksi', $data);
 		$this->load->view('template/home/footer');
 		// var_dump($data);
@@ -186,7 +173,11 @@ class Home extends CI_Controller
 		};
 		$data['total'] = array_sum($sum);
 		//mengirimkan data ke view
-		$this->load->view('template/home/header', $data);
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $data);
+		}
 		$this->load->view('home/pesan', $data);
 		$this->load->view('template/home/footer');
 		// var_dump($data);
@@ -195,7 +186,11 @@ class Home extends CI_Controller
 	public function profil()
 	{
 		$data['profil'] = $this->M_Landing->getProfil();
-		$this->load->view('template/profilhome/header', $data);
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $data);
+		}
 		$this->load->view('home/profil', $data);
 		$this->load->view('template/profilhome/footer');
 		// var_dump($data);
@@ -224,10 +219,65 @@ class Home extends CI_Controller
 	public function updateSewa()
 	{
 		$data = $this->M_Landing->checkout();
-		$this->M_Landing->updateSewa();
-		$this->load->view('template/home/header', $data);
+		$l = $this->M_Landing->updateSewa();
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $data);
+		}
 		$this->load->view('home/checkout_end');
 		$this->load->view('template/home/footer');
+
+		// echo intval($numberDays);
+	}
+
+	public function tentang()
+	{
+
+		$data = $this->M_Landing->getData();
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $data);
+		}
+		$this->load->view('home/tentangkami');
+		$this->load->view('template/home/footer');
 		// var_dump($tst);
+	}
+	public function updatePemesanan()
+	{
+		$this->M_Landing->updatePemesanan();
+		redirect(base_url('superadmin/getPemesanan'));
+		// echo $_POST['action'];
+	}
+	public function api()
+	{
+		$catid = intval($_GET['catid']);
+		$data = $this->M_Landing->getSwdetail($catid);
+		echo json_encode($data);
+	}
+
+	public function uploadBukti()
+	{
+		$file_name  = substr(uniqid(), 5, 5);
+		$config['upload_path'] = 'assets/upload/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size'] = 2000;
+		$config['file_name'] = date("Ymd") . $file_name;
+
+
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload('image')) {
+			$error = array('error' => $this->upload->display_errors());
+			echo $error['error'];
+			echo "<script>alert('" . $error['error'] . "'); document.location = '" . base_url('home/transaksi') . "';</script>";
+		} else {
+			$data = $this->upload->data();
+			$this->M_Landing->uploadBukti($data);
+			// var_dump($mod);
+			redirect(base_url('home/transaksi'));
+		}
+		// var_dump($this->input->post('id_sewa'));
 	}
 }

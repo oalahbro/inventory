@@ -6,14 +6,14 @@
                     <div class="icon">
                     </div>
                     <h3 class="title-checkend">
-                        Congratulation! Your order has been processed.
+                        Selamat! Pesananmu Sudah Diproses
                     </h3>
                     <div class="sub-title">
                         Aenean dui mi, tempus non volutpat eget, molestie a orci.
                         Nullam eget sem et eros laoreet rutrum.
                         Quisque sem ante, feugiat quis lorem in.
                     </div>
-                    <a href="#" class="button btn-return">Return to Store</a>
+                    <a href="<?= base_url() ?>home/transaksi" class="button btn-return">Oke</a>
                 </div>
             </div>
         </div>

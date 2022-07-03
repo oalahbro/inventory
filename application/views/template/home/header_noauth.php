@@ -4,7 +4,7 @@
 <!-- tanajil/gridproducts_bannerslider.html  21 Nov 2019 03:34:59 GMT -->
 
 <head>
-    <title>SMAN 1 BARAT -Peminjaman Ruang dan Barang</title>
+    <title>SMAN 1 BARAT | Peminjaman Ruang dan Barang</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,14 +59,14 @@
                             <form class="form-search form-search-width-category">
                                 <div class="form-content">
                                     <div class="category">
-                                        <select title="cate" data-placeholder="All Categories" class="chosen-select" tabindex="1">
+                                        <!-- <select title="cate" data-placeholder="All Categories" class="chosen-select" tabindex="1">
                                             <option value="United States">Accessories</option>
                                             <option value="United Kingdom">Interior</option>
                                             <option value="Afghanistan">Performance</option>
                                             <option value="Aland Islands">Sofas</option>
                                             <option value="Albania">New Arrivals</option>
                                             <option value="Algeria">Storage</option>
-                                        </select>
+                                        </select> -->
                                     </div>
                                     <div class="inner">
                                         <input type="text" class="input" name="s" value="" placeholder="Search here">
@@ -119,7 +119,7 @@
                         <div class="container-wapper">
                             <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
                                 <li class="menu-item">
-                                    <a href="about.html" class="tanajil-menu-item-title">Tentang Kami</a>
+                                    <a href="<?= base_url() ?>home/tentang" class="tanajil-menu-item-title">Tentang Kami</a>
                                 </li>
                             </ul>
                         </div>

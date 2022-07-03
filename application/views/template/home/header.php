@@ -4,7 +4,7 @@
 <!-- tanajil/gridproducts_bannerslider.html  21 Nov 2019 03:34:59 GMT -->
 
 <head>
-    <title>SMAN 1 BARAT - Peminjaman Ruang dan Barang</title>
+    <title>SMAN 1 BARAT | Peminjaman Ruang dan Barang</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-4 col-md-3 col-xs-7 col-ts-12 header-element">
                         <div class="logo">
-                            <a href="index-2.html">
+                            <a href="<?= base_url() ?>home">
                                 <img src="<?php echo base_url(); ?>assets/images/sma.png" alt="img" style="height: 80px, width:80%">
                             </a>
                         </div>
@@ -59,14 +59,14 @@
                             <form class="form-search form-search-width-category">
                                 <div class="form-content">
                                     <div class="category">
-                                        <select title="cate" data-placeholder="All Categories" class="chosen-select" tabindex="1">
+                                        <!-- <select title="cate" data-placeholder="All Categories" class="chosen-select" tabindex="1">
                                             <option value="United States">Accessories</option>
                                             <option value="United Kingdom">Interior</option>
                                             <option value="Afghanistan">Performance</option>
                                             <option value="Aland Islands">Sofas</option>
                                             <option value="Albania">New Arrivals</option>
                                             <option value="Algeria">Storage</option>
-                                        </select>
+                                        </select> -->
                                     </div>
                                     <div class="inner">
                                         <input type="text" class="input" name="s" value="" placeholder="Search here">
@@ -139,13 +139,15 @@
         <div class="header-nav-container">
             <div class="container">
                 <div class="header-nav-wapper main-menu-wapper">
-                    <div class="vertical-wapper" style="max-width: 140px; text-align: center;">
-                        <div class="container-wapper">
-                            <span class="fa fa-home" style="font-size: 30px; color: white;">
-                                <a href="<?= base_url() ?>home" class="tanajil-menu-item-title"></a>
-                            </span>
-                        </div>
-                        <!-- <div>
+                    <a href="<?= base_url() ?>home">
+                        <div class="vertical-wapper" style="max-width: 140px; text-align: center;">
+                            <div class="container-wapper">
+                                <a href="<?= base_url() ?>home">
+                                    <span class="fa fa-home" class="tanajil-menu-item-title" style="font-size: 30px; color: white;">
+                                </a>
+                                </span>
+                            </div>
+                            <!-- <div>
                             <span class="fa fa-home" style="font-size: 36px;">
 
                                 <a class="tanajil-menu-item-title" href="<?= base_url() ?>home">Home</a>
@@ -154,22 +156,22 @@
                                 <span></span>
                             </span>
                         </div> -->
-                    </div>
-                    <div class="header-nav">
-                        <div class="container-wapper">
-                            <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
-                                <li class="menu-item">
-                                    <a href="<?= base_url() ?>home/transaksi" class="tanajil-menu-item-title">TRANSAKSI</a>
-                                </li>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <li class="menu-item">
-                                    <a href="about.html" class="tanajil-menu-item-title">Tentang Kami</a>
-                                </li>
-                            </ul>
                         </div>
-                    </div>
+                        <div class="header-nav">
+                            <div class="container-wapper">
+                                <ul class="tanajil-clone-mobile-menu tanajil-nav main-menu " id="menu-main-menu">
+                                    <li class="menu-item">
+                                        <a href="<?= base_url() ?>home/transaksi" class="tanajil-menu-item-title">TRANSAKSI</a>
+                                    </li>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <li class="menu-item">
+                                        <a href="<?= base_url() ?>home/tentang" class="tanajil-menu-item-title">Tentang Kami</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
