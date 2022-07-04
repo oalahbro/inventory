@@ -412,13 +412,18 @@ class Mymodel extends CI_Model
         return $result;
     }
 
-    public function hitung()
+    public function dashboard()
     {
-        $query = $this->db->get('inventory');
-        if ($query->num_rows() > 0) {
-            return $query->num_rows();
-        } else {
-            return 0;
-        }
+        $totinventory = $this->db->get('inventory')->num_rows();
+        $totpesan = $this->db->get_where('sewa', array('status =' => 2))->num_rows();
+        $totkonf = $this->db->get_where('sewa', array('status =' => 1))->num_rows();
+        $totselesai = $this->db->get_where('sewa', array('status =' => 3))->num_rows();
+        $data = [
+            'totinventory' => $totinventory,
+            'totpesan' => $totpesan,
+            'totkonf' => $totkonf,
+            'totselesai' => $totselesai
+        ];
+        return $data;
     }
 }

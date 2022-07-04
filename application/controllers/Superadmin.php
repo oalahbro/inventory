@@ -36,13 +36,9 @@ class Superadmin extends CI_Controller
 
 	public function index()
 	{
-		// load library
-		// $this->load->library('format_rupiah');
-		// load data from model
-		// $data = array('planet' => $this->mymodel->getData());
-		//mengirimkan data ke view
+		$data = $this->mymodel->dashboard();
 		$this->load->view('template/superadmin/header');
-		$this->load->view('superadmin/index');
+		$this->load->view('superadmin/index', $data);
 		$this->load->view('template/superadmin/footer');
 		// var_dump($data);
 	}

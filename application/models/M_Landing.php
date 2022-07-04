@@ -333,7 +333,6 @@ class M_Landing extends CI_Model
 
     public function updateSewa()
     {
-        // date('Y-m-d H:i:s', strtotime($this->input->post('tgl-mulai')));
         $datetime1 = strtotime($this->input->post('tgl-mulai'));
         $datetime2 = strtotime($this->input->post('tgl-selesai'));
         $interval = abs($datetime2 - $datetime1);
@@ -355,7 +354,6 @@ class M_Landing extends CI_Model
 
     public function getPemesanan()
     {
-
         $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
             ->from('sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
@@ -381,9 +379,6 @@ class M_Landing extends CI_Model
                 'id_inventory' => $get[$no][0]['id_inventory'],
                 'jumlah' => $get[$no][0]['jumlah'] - $i['jumlah']
             ];
-            // $res[$no] =  $this->db->where('id_inventory', $i['id_inventory']);
-            // $this->db->update('inventory', $dat[$no]);
-            // return $res[$no];
             $no++;
         }
         $k = $this->db->update_batch('inventory', $dat, 'id_inventory');
