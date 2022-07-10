@@ -9,9 +9,7 @@
                         Selamat! Pesananmu Sudah Diproses
                     </h3>
                     <div class="sub-title">
-                        Aenean dui mi, tempus non volutpat eget, molestie a orci.
-                        Nullam eget sem et eros laoreet rutrum.
-                        Quisque sem ante, feugiat quis lorem in.
+                        Silahkan Upload bukti bayar pada tab pemesanan
                     </div>
                     <a href="<?= base_url() ?>home/transaksi" class="button btn-return">Oke</a>
                 </div>

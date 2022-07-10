@@ -20,7 +20,7 @@ class Login extends CI_Controller
             redirect(base_url("superadmin"));
         }
         if ($this->session->userdata('level') == 2) {
-            redirect(base_url("beranda"));
+            redirect(base_url("admin"));
         }
         if ($this->session->userdata('levelpenyewa') == 1) {
             redirect(base_url());
@@ -49,7 +49,7 @@ class Login extends CI_Controller
                     redirect(base_url("superadmin"));
                 }
                 if ($cariDataadmin[0]['level'] == 2) {
-                    redirect(base_url("beranda"));
+                    redirect(base_url("admin"));
                 }
             } else if ($cariDatapenyewa) {
                 $data_session = [
@@ -168,7 +168,7 @@ class Login extends CI_Controller
                 redirect(base_url("superadmin"));
             }
             if ($this->session->userdata('level') == 2) {
-                redirect(base_url("superadmin"));
+                redirect(base_url("admin"));
             }
             if ($this->session->userdata('levelpenyewa') == 1) {
                 redirect(base_url());

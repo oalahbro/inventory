@@ -67,9 +67,9 @@
                                 </div>
                                 <div class="product-details-description">
                                     <ul>
-                                        <li>jumlah <?= $new['jumlah'] ?></li>
-                                        <li>Imported</li>
-                                        <li>Art.No. 06-7680</li>
+                                        <li>Jumlah : <?= $new['jumlah'] ?></li>
+                                        <li>Tahun : <?= date('d-M-Y', strtotime($new['tahun'])) ?></li>
+
                                     </ul>
                                 </div>
                                 <!-- <div class="variations">
@@ -138,17 +138,14 @@
                         <!-- <li class="">
                             <a data-toggle="tab" aria-expanded="true" href="#information">Information </a>
                         </li> -->
-                        <li class="">
+                        <!-- <li class="">
                             <a data-toggle="tab" aria-expanded="true" href="#reviews">Reviews</a>
-                        </li>
+                        </li> -->
                     </ul>
                     <div class="tab-container">
                         <div id="product-descriptions" class="tab-panel active">
-                            <p>
-                                <?= $new['deskripsi'] ?>
-                            </p>
-                            <p>
-                                <?= $new['deskripsi'] ?>
+                            <p style="font: size 50px;"><b>
+                                    <?= $new['deskripsi'] ?></b>
                             </p>
                         </div>
                         <!-- <div id="information" class="tab-panel">
@@ -167,7 +164,7 @@
                                 </tr>
                             </table>
                         </div> -->
-                        <div id="reviews" class="tab-panel">
+                        <!-- <div id="reviews" class="tab-panel">
                             <div class="reviews-tab">
                                 <div class="comments">
                                     <h2 class="reviews-title">
@@ -253,7 +250,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div style="clear: left;"></div>

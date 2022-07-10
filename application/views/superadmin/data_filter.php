@@ -76,7 +76,7 @@
                                 <input type="text" name="harga" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">CREATE</button>
+                                <button type="submit" class="btn btn-primary">SIMPAN</button>
                             </div>
                         </form>
                     </div>
@@ -130,7 +130,7 @@
                                 <input type="text" id="hrg" name="harga" class="form-control" placeholder="harga">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">CREATE</button>
+                                <button type="submit" class="btn btn-primary">SIMPAN</button>
                             </div>
                         </form>
                     </div>

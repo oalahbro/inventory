@@ -108,12 +108,13 @@
                                     <input type="text" name="id_sewa" value="<?= $result[0]['id_sewa'] ?>" hidden />
                                     <input type="text" name="total" value="<?= $total ?>" hidden />
                                     <p class="form-row form-row-first">
-                                        <label class="text">Nama Depan</label>
-                                        <input title="first" type="text" class="form-control form-control-phone">
+                                        <label class="text">Nama </label>
+                                        <input title="first" type="text" name="nama" class="form-control form-control-phone" value="<?= $result[0]['nama'] ?>">
                                     </p>
                                     <p class="form-row form-row-last">
-                                        <label class="text">Nama Belakang</label>
-                                        <input title="last" type="text" class="form-control form-control-phone">
+                                        <label class="text">Nomor Telp</label>
+
+                                        <input title="last" placeholder="contoh (628111222333)" type="number" name="telp" class="form-control form-control-phone" value="<?= $result[0]['telp'] ?>" required>
                                     </p>
                                     <p class="form-row forn-row-col forn-row-col-1">
                                         <label class="text">Tanggal Mulai</label>
@@ -167,10 +168,11 @@
                         <button class="button btn-cart-to-checkout">
                             <a href="<?= base_url() ?>home/cart">Kembali Ke Keranjang</a>
                         </button>
-                        <button type="submit" class="button button-payment">
-                            Pembayaran
-                        </button>
-                        </form>
+                        <a href="<?= base_url() ?>home/checkout_end">
+                            <button type="submit" class="button button-payment">
+                                Pembayaran
+                            </button>
+                            </form>
                     </div>
                 </div>
             </div>

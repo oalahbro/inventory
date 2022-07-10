@@ -280,18 +280,22 @@ class Mymodel extends CI_Model
     public function getSwdetail($catid)
     {
 
-        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.id_inventory,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
             ->from('sewa')
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array('sewa_detail.id_sewa' => $catid))
+            ->where(array(
+                'sewa_detail.id_sewa' => $catid,
+                'sewa_detail.status_qty' => 1
+            ))
             ->get()->result_array();
         return $result;
     }
 
     public function updatePemesanan()
     {
+
         if ($_POST['action'] == 'konfirmasi') {
             $data = [
                 'id_sewa' => $this->input->post('id_sewa'),
@@ -302,6 +306,18 @@ class Mymodel extends CI_Model
                 'id_sewa' => $this->input->post('id_sewa'),
                 'status' => 3
             ];
+
+            $inv = $this->getSwdetail($this->input->post('id_sewa'));
+            $no = 1;
+            foreach ($inv as $i) {
+                $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
+                $dat[] = [
+                    'id_inventory' => $get[$no][0]['id_inventory'],
+                    'jumlah' => $get[$no][0]['jumlah'] + $i['jumlah']
+                ];
+                $no++;
+            }
+            $this->db->update_batch('inventory', $dat, 'id_inventory');
         } else {
             $data = [
                 'id_sewa' => $this->input->post('id_sewa'),
@@ -369,6 +385,23 @@ class Mymodel extends CI_Model
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
 
             // ->where(array('sewa.status' => 2))
+            ->get()->result_array();
+        return $result;
+    }
+    public function getLaporandate()
+    {
+        $start_date = strtotime($this->input->post('tgl_mulai'));
+        $end_date = strtotime($this->input->post('tgl_selesai'));
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
+            ->from('sewa')
+            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+            ->where(array(
+                'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date),
+                'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
+            ))
+            // ->where('date BETWEEN "' . date('Y-m-d', strtotime($start_date)) . '" and "' . date('Y-m-d', strtotime($end_date)) . '"')
             ->get()->result_array();
         return $result;
     }

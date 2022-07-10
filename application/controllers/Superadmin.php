@@ -344,9 +344,25 @@ class Superadmin extends CI_Controller
 	{
 
 		$this->load->library('pdf');
-		$data['laporan'] = $this->mymodel->getLaporan();
+		$option = $this->pdf->getOptions();
+		$option->set(['isRemoteEnabled' => true, 'isHtml5ParserEnabled' => true]);
+		$data['laporan'] = $this->mymodel->getLaporandate();
+		foreach ($data['laporan'] as $r) {
+			$sum[] = $r['sub_total'];
+		};
+		if (!$data['laporan']) {
+			$data['total'] = 0;
+		} else {
+
+			$data['total'] = array_sum($sum);
+		}
+		$data['tgl'] = [
+			'tgl_mulai' => date('d-m-Y H:i:s', strtotime($this->input->post('tgl_mulai'))),
+			'tgl_selesai' => date('d-m-Y H:i:s', strtotime($this->input->post('tgl_selesai')))
+
+		];
 		// var_dump($data);
-		$this->load->view('superadmin/laporan_sewa', $data);
+		$this->load->view('admin/laporan_sewa', $data);
 		$html = $this->output->get_output();
 		$this->pdf->setPaper('A4', 'potrait');
 		$this->pdf->load_html($html);

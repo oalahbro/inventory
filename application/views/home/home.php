@@ -29,10 +29,11 @@
                         <div class="item-banner style1">
                             <div class="inner equal-element">
                                 <div class="banner-content style1">
-                                    <h4 class="tanajil-subtitle">Start ur weekend off right!</h4>
-                                    <h3 class="title">Flash Sale Up To<br /> 15% Off</h3>
-                                    <span class="when-code">When Use Code: <span class="code">TANAJIL</span></span>
-                                    <button class="button button-now">shop now</button>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <h2 style="text-align:center; color:white;"><b>Selamat Datang Di Sistem Informasi Peminjaman Ruang dan Barang Di SMA NEGERI 1 BARAT</b></h2>
                                 </div>
                             </div>
                         </div>
@@ -93,18 +94,18 @@
                                                         <a href="#"><?= $new['nama'] ?></a>
                                                     </h5>
                                                     <div class="group-info">
-                                                        <div class="stars-rating">
+                                                        <!-- <div class="stars-rating">
                                                             <div class="star-rating">
                                                                 <span class="star-3"></span>
                                                             </div>
                                                             <div class="count-star">
                                                                 (3)
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="price">
-                                                            <del>
+                                                            <!-- <del>
                                                                 $65
-                                                            </del>
+                                                            </del> -->
                                                             <ins>
                                                                 <?= $this->format_rupiah->format($new['harga']) ?>
                                                             </ins>
@@ -150,18 +151,18 @@
                                                         <a href="#"><?= $new['nama'] ?></a>
                                                     </h5>
                                                     <div class="group-info">
-                                                        <div class="stars-rating">
+                                                        <!-- <div class="stars-rating">
                                                             <div class="star-rating">
                                                                 <span class="star-3"></span>
                                                             </div>
                                                             <div class="count-star">
                                                                 (3)
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="price">
-                                                            <del>
+                                                            <!-- <del>
                                                                 $65
-                                                            </del>
+                                                            </del> -->
                                                             <ins>
                                                                 <?= $this->format_rupiah->format($new['harga']) ?>
                                                             </ins>
@@ -206,18 +207,18 @@
                                                         <a href="#"><?= $new['nama'] ?></a>
                                                     </h5>
                                                     <div class="group-info">
-                                                        <div class="stars-rating">
+                                                        <!-- <div class="stars-rating">
                                                             <div class="star-rating">
                                                                 <span class="star-3"></span>
                                                             </div>
                                                             <div class="count-star">
                                                                 (3)
                                                             </div>
-                                                        </div>
+                                                        </div> -->
                                                         <div class="price">
-                                                            <del>
+                                                            <!-- <del>
                                                                 $65
-                                                            </del>
+                                                            </del> -->
                                                             <ins>
                                                                 <?= $this->format_rupiah->format($new['harga']) ?>
                                                             </ins>
@@ -229,7 +230,7 @@
                                     <?php } ?>
                                 </ul>
                             </div>
-                            <div class="pagination clearfix style2">
+                            <!-- <div class="pagination clearfix style2">
                                 <div class="nav-link">
                                     <a href="#" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
                                     <a href="#" class="page-numbers">1</a>
@@ -237,7 +238,7 @@
                                     <a href="#" class="page-numbers current">3</a>
                                     <a href="#" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

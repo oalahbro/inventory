@@ -11,13 +11,13 @@
         <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
 
             <div class="mr-auto">
-                <h2 class="text-black font-w600">Admin</h2>
+                <h2 class="text-black font-w600">Data User</h2>
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
             <div>
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Admin</a>
-                <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah User</a>
+                <!-- <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a> -->
             </div>
         </div>
         <!-- Add Order -->
@@ -25,7 +25,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Admin</h5>
+                        <h5 class="modal-title">Tambah User</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -54,7 +54,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary submit">CREATE</button>
+                                <button type="submit" class="btn btn-primary submit">SIMPAN</button>
                             </div>
                         </form>
                     </div>
@@ -67,7 +67,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Admin</h5>
+                        <h5 class="modal-title">Edit User</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -99,7 +99,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary button">SUBMIT</button>
+                                <button type="submit" class="btn btn-primary button">SIMPAN</button>
                             </div>
                         </form>
                     </div>
@@ -112,7 +112,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="custom-width-modalLabel">DATA PENGGUNA</h4>
+                        <h4 class="modal-title" id="custom-width-modalLabel">Data User</h4>
                     </div>
 
                     <form action="<?php echo base_url() . 'superadmin/hapus'; ?>" method="post" class="form-horizontal" role="form">

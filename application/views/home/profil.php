@@ -1,10 +1,10 @@
 <div class="content-body" style="margin-left: 172.500px; margin-right: 172.500px;">
     <div class="container-fluid">
         <div class="page-titles">
-            <h4>Profile</h4>
+            <h4>Profil</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">App</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Profile</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Profil</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Profil User</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -30,7 +30,7 @@
                                             echo 'Eksternal';
                                         } ?></p>
                                 </div>
-                                <div class="dropdown ml-auto">
+                                <!-- <div class="dropdown ml-auto">
                                     <a href="#" class="btn btn-primary light sharp" data-toggle="dropdown" aria-expanded="true"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <rect x="0" y="0" width="24" height="24"></rect>
@@ -45,7 +45,7 @@
                                         <li class="dropdown-item"><i class="fa fa-plus text-primary mr-2"></i> Add to group</li>
                                         <li class="dropdown-item"><i class="fa fa-ban text-primary mr-2"></i> Block</li>
                                     </ul>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

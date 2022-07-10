@@ -11,7 +11,7 @@
         <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
 
             <div class="mr-auto">
-                <h2 class="text-black font-w600">Pesanan Sewa</h2>
+                <h2 class="text-black font-w600">Pesanan Dikonfirmasi</h2>
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
@@ -59,7 +59,7 @@
                                 <input type="text" name="harga" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">CREATE</button>
+                                <button type="submit" class="btn btn-primary">SIMPAN</button>
                             </div>
                         </form>
                     </div>
@@ -70,9 +70,9 @@
             <div class="modal-dialog modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Konfirmasi Pemesanan>
-                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                            </button>
+                        <h5 class="modal-title">Pesanan Dikonfirmasi<h2>
+                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                </button>
                     </div>
                     <div class="modal-body">
                         <div class="spinner-border" role="status" id="loading">

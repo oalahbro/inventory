@@ -9,7 +9,7 @@
                                 <a href="index-2.html">Home</a>
                             </li>
                             <li class="trail-item trail-end active">
-                                About Us
+                                Tentang Kami
                             </li>
                         </ul>
                     </div>
@@ -19,21 +19,23 @@
                 <div class="row">
                     <div class="content-area content-about col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="site-main">
-                            <h3 class="custom_blog_title">About Us</h3>
+                            <h3 class="custom_blog_title">Tentang Kami</h3>
                             <div class="page-main-content">
                                 <div class="header-banner banner-image">
                                     <div class="banner-wrap">
                                         <div class="banner-header">
-                                            <div class="col-lg-5 col-md-offset-7">
+                                            <div class="col-sm-5 col-md-offset-7">
                                                 <div class="content-inner">
-                                                    <h2 class="title">
+                                                    <!-- <h2 class="title">
                                                         Tanajil's Collection <br /> for you
                                                     </h2>
+                                                    <span></span>
+                                                    <span></span>
                                                     <div class="sub-title">
                                                         Shop the latest products right from your home with tanajilshop.
                                                         We have beard supplies, clothing & accessories from top brands.
                                                     </div>
-                                                    <a href="#" class="tanajil-button button">Shop now</a>
+                                                    <a href="#" class="tanajil-button button">Shop now</a> -->
                                                 </div>
                                             </div>
                                         </div>

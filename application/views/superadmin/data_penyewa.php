@@ -17,7 +17,7 @@
 			</div>
 			<div>
 				<a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Penyewa</a>
-				<a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
+				<!-- <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a> -->
 			</div>
 		</div>
 		<!-- Add Order -->
@@ -65,7 +65,7 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">CREATE</button>
+								<button type="submit" class="btn btn-primary">SIMPAN</button>
 							</div>
 						</form>
 					</div>
@@ -120,7 +120,7 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="btn btn-primary">CREATE</button>
+								<button type="submit" class="btn btn-primary">SIMPAN</button>
 							</div>
 						</form>
 					</div>

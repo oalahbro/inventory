@@ -95,7 +95,7 @@ h1 {
 }
 
 h2 {
-	font-size: 30px;
+	font-size: 25px;
 }
 
 h3 {
@@ -5939,7 +5939,7 @@ ul.list-products {
 /*about page*/
 /*banner about*/
 .header-banner.banner-image .banner-wrap {
-	background-image: url(../images/about-background.jpg) !important;
+	background-image: url(../images/sma1.jpg) !important;
 	background-position: center !important;
 	background-repeat: no-repeat !important;
 	background-size: cover !important;
@@ -5957,8 +5957,8 @@ ul.list-products {
 }
 
 .header-banner.banner-image .banner-wrap .content-inner {
-	padding-top: 65px;
-	padding-bottom: 65px;
+	padding-top: 80px;
+	padding-bottom: 400px;
 }
 
 .header-banner .title {
@@ -7160,7 +7160,7 @@ ul.list-products {
 }
 
 .slider-item.style1 .slider-inner {
-	background-image: url(../images/kelas1.jpeg);
+	background-image: url(../images/5.jpg);
 }
 
 .slider-item.style1 .slider-inner .slider-infor,
@@ -7172,7 +7172,7 @@ ul.list-products {
 }
 
 .slider-item.style2 .slider-inner {
-	background-image: url(../images/kelas3.jpeg);
+	background-image: url(../images/4.jpg);
 }
 
 .slider-item.style2 .slider-inner .slider-infor {
@@ -7192,7 +7192,7 @@ ul.list-products {
 }
 
 .slider-item.style3 .slider-inner {
-	background-image: url(../images/kelas2.jpeg);
+	background-image: url(../images/5.jpg);
 }
 
 .home-slider.style1 {
@@ -10100,7 +10100,7 @@ body.vertical-menu-open .vertical-menu-overlay {
 }
 
 .full-width .item-banner.style1 .inner {
-	background-image: url(../images/kelas1.jpeg);
+	background-image: url(../images/kelas2.jpeg);
 }
 
 .item-banner.style1 .banner-content {
@@ -10174,7 +10174,7 @@ body.vertical-menu-open .vertical-menu-overlay {
 }
 
 .full-width .item-banner.style2 .inner {
-	background-image: url(../images/kelas2.jpeg);
+	background-image: url(../images/kelas3.jpeg);
 }
 
 .item-banner.style2 .banner-content {
@@ -11518,7 +11518,7 @@ iframe {
 	.header-banner.banner-image .banner-wrap .banner-header,
 	.tanajil-newsletter>*,
 	.item-banner .banner-content {
-		position: relative;
+		position: absolute;
 	}
 
 	.banner-wrapp.rows-space-65,

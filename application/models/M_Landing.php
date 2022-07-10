@@ -311,7 +311,7 @@ class M_Landing extends CI_Model
                 'cart' => $cart['cart']
             ];
         } else {
-            $result =  $this->db->select('sewa_detail.status_qty,sewa.id_sewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory,sewa.total')
+            $result =  $this->db->select('sewa_detail.status_qty,sewa.id_sewa,sewa_detail.id_sewa_detail,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,penyewa.telp,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,inventory.image,inventory.id_inventory,sewa.total')
 
                 ->from('sewa')
                 ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
@@ -348,8 +348,9 @@ class M_Landing extends CI_Model
         $result =  $this->db->where(array(
             'id_sewa' => $this->input->post('id_sewa'),
         ));
+        $dat = ['data' => $data, 'result' => $result];
         $this->db->update('sewa', $data);
-        return $result;
+        return $dat;
     }
 
     public function getPemesanan()

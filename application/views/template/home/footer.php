@@ -28,23 +28,23 @@
                         <h2 class="widgettitle">Quick Menu</h2>
                         <ul class="menu">
                             <li class="menu-item">
-                                <a href="#">Ruang</a>
+                                <a href="<?= base_url() ?>home/transaksi">Transaksi</a>
                             </li>
-                            <li class="menu-item">
+                            <!-- <li class="menu-item">
                                 <a href="#">Barang</a>
-                            </li>
+                            </li> -->
 
                         </ul>
                     </div>
                 </div>
                 <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-2">
                     <div class="tanajil-custommenu default">
-                        <h2 class="widgettitle">Information</h2>
+                        <h2 class="widgettitle">Informasi</h2>
                         <ul class="menu">
                             <li class="menu-item">
-                                <a href="#">FAQs</a>
+                                <a href="<?= base_url() ?>home/tentang">Tentang Kami</a>
                             </li>
-                            <li class="menu-item">
+                            <!-- <li class="menu-item">
                                 <a href="#">Track Pemesanan</a>
                             </li>
                             <li class="menu-item">
@@ -55,22 +55,22 @@
                             </li>
                             <li class="menu-item">
                                 <a href="#">Pengembalian</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
                 <div class="box-footer col-xs-12 col-sm-6 col-md-6 col-lg-4">
                     <div class="tanajil-newsletter style1">
                         <div class="newsletter-head">
-                            <h3 class="title">Newsletter</h3>
+                            <h3 class="title">Hubungi Lebih Lanjut</h3>
                         </div>
-                        <div class="newsletter-form-wrap">
+                        <!-- <div class="newsletter-form-wrap">
                             <div class="list">
                                 Get notified of new products, limited releases, and more.
                             </div>
                             <input type="email" class="input-text email email-newsletter" placeholder="Your email letter">
                             <button class="button btn-submit submit-newsletter">SUBSCRIBE</button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="tanajil-socials">
                         <ul class="socials">
@@ -102,7 +102,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="coppyright">
-                            <a href="templateshub.net">Templateshub</a>
+                            <a>Copyright © Sman 1 Barat</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

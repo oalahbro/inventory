@@ -91,7 +91,7 @@
                         </li>
                         <li class="trail-item trail-end active">
                             <span>
-                                Shopping Cart
+                                Cart
                             </span>
                         </li>
                     </ul>
@@ -99,7 +99,7 @@
                 <div class="row">
                     <div class="main-content-cart main-content col-sm-12">
                         <h3 class="custom_blog_title">
-                            Shopping Cart
+                            Cart
                         </h3>
                         <div class="page-main-content">
                             <div class="shoppingcart-content">
@@ -124,7 +124,7 @@
                                             <td class="product-thumbnail"></td>
                                             <td class="product-name" data-title="Price">
                                             <span class="woocommerce-Price-amount amount">
-                                                <h3 class="text-danger"><b>Tidak Ada Barang</b></h3>
+                                                <h3 class="text-danger"><b>Tidak Ada Item</b></h3>
                                             </span>
                                         </td>
 
@@ -174,9 +174,11 @@
                                     <!-- <button class="button btn-continue-shopping">
                                         <a href="<?= base_url() ?>home/pesan">Continue Shopping</a>
                                     </button> -->
-                                    <button class="button btn-cart-to-checkout">
-                                        <a href="<?= base_url() ?>home/pesan">Checkout</a>
-                                    </button>
+                                    <a href="<?= base_url() ?>home/pesan">
+                                        <button class=" button btn-cart-to-checkout">
+                                            Checkout
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

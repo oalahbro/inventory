@@ -220,6 +220,28 @@ class Home extends CI_Controller
 	{
 		$data = $this->M_Landing->checkout();
 		$l = $this->M_Landing->updateSewa();
+		// var_dump($this->input->post('nama'));
+		$url = 'http://127.0.0.1:3000/kirim';
+		$datawa = [
+			'pesan' => 'Pesanan berhasil silahkan melakukan transfer sebesar '
+				. $this->format_rupiah->format($l['data']['total']) . ' atas nama '
+				. $this->input->post('nama') . ' dan upload bukti bayar pada tab pemesanan',
+			'nomer' => $this->input->post('telp'),
+			'link' => base_url() . 'assets/images/atm.png'
+		];
+		$options = array(
+			'http' => array(
+				'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method' => 'POST',
+				'content' => http_build_query($datawa)
+			)
+		);
+		$context = stream_context_create($options);
+		$result = file_get_contents($url, false, $context);
+		if ($result === FALSE) {
+		}
+		// return $result;
+
 		if (!$this->session->userdata('levelpenyewa')) {
 			$this->load->view('template/home/header_noauth');
 		} else {
@@ -275,9 +297,31 @@ class Home extends CI_Controller
 		} else {
 			$data = $this->upload->data();
 			$mod = $this->M_Landing->uploadBukti($data);
-			var_dump($mod);
-			// redirect(base_url('home/transaksi'));
+			// var_dump($mod);
+			redirect(base_url('home/transaksi'));
 		}
-		// var_dump($this->input->post('id_sewa'));
+		var_dump($this->input->post('id_sewa'));
+	}
+
+	public function apiwa()
+	{
+		$url = 'http://127.0.0.1:3000/kirim';
+		$data = [
+			'pesan' => 'asdfghjk',
+			'nomer' => '62895338221298',
+			'link' => 'https://picsum.photos/720/800'
+		];
+		$options = array(
+			'http' => array(
+				'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+				'method' => 'POST',
+				'content' => http_build_query($data)
+			)
+		);
+		$context = stream_context_create($options);
+		$result = file_get_contents($url, false, $context);
+		if ($result === FALSE) {
+		}
+		var_dump($result);
 	}
 }
