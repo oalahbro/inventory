@@ -181,7 +181,7 @@
             <div class="item mobile-logo">
                 <div class="logo">
                     <a href="#">
-                        <img src="<?php echo base_url(); ?>assets/images/rent.png" alt="img">
+                        <img src="<?php echo base_url(); ?>assets/images/sma.png" alt="img">
                     </a>
                 </div>
             </div>
