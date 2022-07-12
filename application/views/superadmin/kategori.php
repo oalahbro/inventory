@@ -66,7 +66,7 @@
                                 <input type="text" id="nama_kategori" name="nama_kategori" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">SUBMIT</button>
+                                <button type="submit" class="btn btn-primary">SIMPAN</button>
                             </div>
                         </form>
                     </div>

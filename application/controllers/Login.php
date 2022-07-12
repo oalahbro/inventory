@@ -75,6 +75,102 @@ class Login extends CI_Controller
     {
         $this->load->view('register');
     }
+    public  function forgot()
+    {
+        $this->load->view('lupapass');
+    }
+    public  function send()
+    {
+        $sql = "SELECT * FROM penyewa where telp =" . $this->input->post('telp');
+        $email =  $this->db->query($sql)->result_array();
+        if (!$email) {
+            $data['error'] =  '<script>
+								swal({
+								title: "Nomor telp tidak cocok dengan user manapun!",
+								text: "Silahkan hubungi administrator!",
+								type: "error"
+								}).then(function() {
+								window.location = "' . base_url() . 'login";
+								});
+								</script>';
+            $this->load->view('test', $data);
+        } else {
+            $otp = ['otp' => (rand(100, 999)) . (rand(100, 999))];
+
+            $this->session->set_userdata($otp);
+            $url = 'http://127.0.0.1:3000/otp';
+            $datawa = [
+                'pesan' => 'Kode Otp anda ' . $otp['otp'],
+                'nomer' => $this->input->post('telp')
+            ];
+            $options = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($datawa)
+                )
+            );
+            $context = stream_context_create($options);
+            $result = file_get_contents($url, false, $context);
+            if ($result === FALSE) {
+            } else {
+                $data = [
+                    'telp' => $this->input->post('telp'),
+                    'email' => $email[0]['email']
+                ];
+                $this->load->view('otp', $data);
+                // var_dump($data);
+            }
+        }
+    }
+
+    public function konf()
+    {
+        $otp = $this->input->post();
+        $impl = substr(implode('', $otp), -6);
+        if ($impl == $this->session->userdata('otp')) {
+            $data = [
+                'email' => $this->input->post('email')
+            ];
+            $this->load->view('gantipass', $data);
+        } else {
+            $data['error'] =  '<script>
+								swal({
+								title: "Code OTP Salah silahkan masukkan kembali",
+								text: "atau hubungi administrator!",
+								type: "error"
+								}).then(function() {
+								window.location = "' . base_url() . 'login";
+								});
+								</script>';
+            $this->load->view('test', $data);
+        }
+    }
+
+    public  function ganti()
+    {
+        $data = [
+            'email' => $this->input->post('email'),
+            'password' => md5($this->input->post('password'))
+        ];
+
+        $result =  $this->db->where(array(
+            'email' => $data['email']
+        ));
+        $this->db->update('penyewa', $data);
+        // return $result;
+
+        $dat['error'] =  '<script>
+								swal({
+								title: "Password berhasil diganti",
+								text: "Silahkan Login menggunakan password baru!",
+								type: "success"
+								}).then(function() {
+								window.location = "' . base_url() . 'login";
+								});
+								</script>';
+        $this->load->view('test', $dat);
+    }
 
     public  function signup()
     {

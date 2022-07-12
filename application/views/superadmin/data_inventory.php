@@ -11,7 +11,7 @@
         <div class="form-head align-items-center d-flex mb-sm-4 mb-3">
 
             <div class="mr-auto">
-                <h2 class="text-black font-w600">Data Inventory</h2>
+                <h2 class="text-black font-w600">Data Inventori</h2>
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
@@ -20,7 +20,7 @@
                 <div class="input-group-append mr-2">
                     <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
                 </div>
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Inventory</a>
+                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Inventori</a>
 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     Kategori
@@ -39,7 +39,7 @@
             <div class="modal-dialog modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Tambah Inventory</h5>
+                        <h5 class="modal-title">Tambah Inventori</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -90,7 +90,7 @@
             <div class="modal-dialog modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Data Inventory</h5>
+                        <h5 class="modal-title">Edit Data Inventori</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                         </button>
                     </div>
@@ -146,7 +146,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="custom-width-modalLabel">Data Inventory</h4>
+                        <h4 class="modal-title" id="custom-width-modalLabel">Data Inventori</h4>
                     </div>
 
                     <form action="<?php echo base_url() . 'superadmin/delInventory'; ?>" method="post" class="form-horizontal" role="form">

@@ -313,7 +313,7 @@
                             <li><a href="<?= base_url() ?>superadmin/kategori">Kategori</a></li>
                             <li><a href="<?= base_url() ?>superadmin/data_admin">Data User</a></li>
                             <li><a href="<?= base_url() ?>superadmin/data_penyewa">Data Penyewa</a></li>
-                            <li><a href="<?= base_url() ?>superadmin/getInventory">Data Inventory</a></li>
+                            <li><a href="<?= base_url() ?>superadmin/getInventory">Data Inventori</a></li>
                         </ul>
                     </li>
                     </li>

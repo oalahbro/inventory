@@ -855,7 +855,7 @@
                         <ul aria-expanded="false">
                             <li><a href="<?= base_url() ?>admin/kategori">Kategori</a></li>
                             <li><a href="<?= base_url() ?>admin/data_penyewa">Data Penyewa</a></li>
-                            <li><a href="<?= base_url() ?>admin/getInventory">Data Inventory</a></li>
+                            <li><a href="<?= base_url() ?>admin/getInventory">Data Inventori</a></li>
                         </ul>
                     </li>
                     </li>
