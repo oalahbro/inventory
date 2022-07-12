@@ -49,7 +49,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-sm-4 col-md-3 col-xs-7 col-ts-12 header-element">
                         <div class="logo">
-                            <a href="index-2.html">
+                            <a href="<?= base_url() ?>home">
                                 <img src="<?php echo base_url(); ?>assets/images/sma.png" alt="img" style="height: 80px, width:80%">
                             </a>
                         </div>
@@ -101,9 +101,10 @@
                 <div class="header-nav-wapper main-menu-wapper">
                     <div class="vertical-wapper" style="max-width: 140px; text-align: center;">
                         <div class="container-wapper">
-                            <span class="fa fa-home" style="font-size: 30px; color: white;">
-                                <a href="about.html" class="tanajil-menu-item-title"></a>
-                            </span>
+                            <a href="<?= base_url() ?>home">
+                                <span class="fa fa-home" style="font-size: 30px; color: white;">
+                                    <a class="tanajil-menu-item-title"></a>
+                                </span>
                         </div>
                         <!-- <div>
                             <span class="fa fa-home" style="font-size: 36px;">

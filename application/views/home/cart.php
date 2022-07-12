@@ -171,9 +171,6 @@
                                     </table>
                                 </form>
                                 <div class="control-cart">
-                                    <!-- <button class="button btn-continue-shopping">
-                                        <a href="<?= base_url() ?>home/pesan">Continue Shopping</a>
-                                    </button> -->
                                     <a href="<?= base_url() ?>home/pesan">
                                         <button class=" button btn-cart-to-checkout">
                                             Checkout
@@ -259,18 +256,6 @@
     </a>
 </body>
 <script type="text/javascript">
-    // function SetInput(id_inventory, nama, deskripsi, tahun, jumlah, gambar, harga, nama_kat, id_kat) {
-    //     document.getElementById('id_inventory').value = id_inventory;
-    //     document.getElementById('nama').value = nama;
-    //     document.getElementById('deskripsi').value = deskripsi;
-    //     document.getElementById('tahun').value = tahun;
-    //     document.getElementById('jumlah').value = jumlah;
-    //     document.getElementById('img').value = gambar;
-    //     document.getElementById('hrg').value = harga;
-    //     document.getElementById('kategori').value = id_kat;
-    //     document.getElementById('kategori').innerText = nama_kat;
-    // }
-
     function setInput1(id_inventory, nama, harga) {
 
         document.getElementById('name').innerText = nama;

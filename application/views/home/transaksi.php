@@ -92,7 +92,7 @@
                 <div class="breadcrumb-trail breadcrumbs">
                     <ul class="trail-items breadcrumb">
                         <li class="trail-item trail-begin">
-                            <a href="#">
+                            <a>
                                 <span>
                                     Home
                                 </span>

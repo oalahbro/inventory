@@ -6,7 +6,7 @@
                     <div class="breadcrumb-trail breadcrumbs">
                         <ul class="trail-items breadcrumb">
                             <li class="trail-item trail-begin">
-                                <a href="index-2.html">Home</a>
+                                <a>Home</a>
                             </li>
                             <li class="trail-item trail-end active">
                                 Tentang Kami
@@ -26,16 +26,6 @@
                                         <div class="banner-header">
                                             <div class="col-sm-5 col-md-offset-7">
                                                 <div class="content-inner">
-                                                    <!-- <h2 class="title">
-                                                        Tanajil's Collection <br /> for you
-                                                    </h2>
-                                                    <span></span>
-                                                    <span></span>
-                                                    <div class="sub-title">
-                                                        Shop the latest products right from your home with tanajilshop.
-                                                        We have beard supplies, clothing & accessories from top brands.
-                                                    </div>
-                                                    <a href="#" class="tanajil-button button">Shop now</a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -60,21 +50,21 @@
     <div class="footer-device-mobile">
         <div class="wapper">
             <div class="footer-device-mobile-item device-home">
-                <a href="index-2.html">
+                <a href="#">
                     <span class="icon">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </span>
                     Home
                 </a>
             </div>
-            <div class="footer-device-mobile-item device-home device-wishlist">
+            <!-- <div class="footer-device-mobile-item device-home device-wishlist">
                 <a href="#">
                     <span class="icon">
                         <i class="fa fa-heart" aria-hidden="true"></i>
                     </span>
                     Wishlist
                 </a>
-            </div>
+            </div> -->
             <div class="footer-device-mobile-item device-home device-cart">
                 <a href="#">
                     <span class="icon">

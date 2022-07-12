@@ -26,7 +26,7 @@
                     Kategori
                 </button>
                 <div class="dropdown-menu">
-                    <a class='dropdown-item' href='<?= base_url() ?>superadmin/getfInventory'>Semua Kategori</a>
+                    <a class='dropdown-item' href='<?= base_url() ?>superadmin/getInventory'>Semua Kategori</a>
                     <?php foreach ($kategori as $cat) {
                         echo "<a class='dropdown-item' href='filter?catid=" . $cat["id_kategori"] . "'>" . $cat["nama_kategori"] . "</a>";
                     } ?>
