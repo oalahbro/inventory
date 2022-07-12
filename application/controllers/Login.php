@@ -63,7 +63,16 @@ class Login extends CI_Controller
                 redirect(base_url());
             } else {
                 // $error['danger'] = "";
-                echo 'gagal';
+                $data['error'] =  '<script>
+								swal({
+								title: "Gagal Login!",
+								text: "Username atau Password salah!",
+								type: "error"
+								}).then(function() {
+								window.location = "' . base_url() . 'login";
+								});
+								</script>';
+                $this->load->view('test', $data);
                 // var_dump(md5($this->input->post('password')));
             }
         } else {
