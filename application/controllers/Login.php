@@ -103,8 +103,8 @@ class Login extends CI_Controller
         if (!$this->session->userdata('level') && !$this->session->userdata('levelpenyewa')) {
             include_once APPPATH . "../vendor/autoload.php";
             $google_client = new Google_Client();
-            $google_client->setClientId('956614890648-mf3j1m4clnluus13vh3v9ier51mckepp.apps.googleusercontent.com'); //masukkan ClientID anda 
-            $google_client->setClientSecret('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'); //masukkan Client Secret Key anda
+            $google_client->setClientId('315049808973-0n11j2cr3qc9fdva4cuhd0gs6on9tlj3.apps.googleusercontent.com'); //masukkan ClientID anda 
+            $google_client->setClientSecret('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'); //masukkan Client Secret Key anda
             $google_client->setRedirectUri(base_url() . 'login'); //Masukkan Redirect Uri anda
             $google_client->addScope('email');
             $google_client->addScope('profile');
