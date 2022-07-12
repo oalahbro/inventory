@@ -15,7 +15,11 @@
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <div>
+            <div class="input-group mb-3 col-md-8">
+                <input type="text" class="form-control" placeholder=" Cari disini...">
+                <div class="input-group-append mr-2">
+                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                </div>
                 <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data <?= $kat_title[0]['nama_kategori'] ?></a>
 
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">

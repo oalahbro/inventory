@@ -15,6 +15,12 @@
                 <p class="mb-0">Admin Dashboard</p>
 
             </div>
+            <div class="input-group mb-3 col-md-4">
+                <input type="text" class="form-control" placeholder=" Cari disini...">
+                <div class="input-group-append mr-2">
+                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                </div>
+            </div>
             <!-- <div>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     Status

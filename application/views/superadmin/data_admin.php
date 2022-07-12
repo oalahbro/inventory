@@ -15,9 +15,12 @@
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <div>
+            <div class="input-group mb-3 col-md-6">
+                <input type="text" class="form-control" placeholder=" Cari disini...">
+                <div class="input-group-append mr-2">
+                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                </div>
                 <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah User</a>
-                <!-- <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a> -->
             </div>
         </div>
         <!-- Add Order -->

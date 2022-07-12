@@ -3,20 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mymodel extends CI_Model
 {
-    public function getData()
-    {
-        $sql = "SELECT kamera.*, merek.* FROM kamera, merek WHERE merek.id_merek = kamera.id_merek";
-        $result =  $this->db->query($sql)->result_array();
-        return $result;
-    }
 
-    public function product_full($vhid)
-    {
-        $sql = "SELECT kamera.*, merek.* from kamera, merek WHERE merek.id_merek=kamera.id_merek AND kamera.id_kamera='$vhid'";
-        $result =  $this->db->query($sql)->result_array();
-        return $result;
-        // $data = array('planet' => $result);
-    }
 
     public function getAdmin()
     {
@@ -280,7 +267,7 @@ class Mymodel extends CI_Model
     public function getSwdetail($catid)
     {
 
-        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.id_inventory,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.id_inventory,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah,sewa.bukti_bayar')
             ->from('sewa')
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
@@ -323,6 +310,20 @@ class Mymodel extends CI_Model
                 'id_sewa' => $this->input->post('id_sewa'),
                 'status' => 0
             ];
+            $inv = $this->getSwdetail($this->input->post('id_sewa'));
+            if (!$inv[0]['bukti_bayar']) {
+            } else {
+                $no = 1;
+                foreach ($inv as $i) {
+                    $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
+                    $dat[] = [
+                        'id_inventory' => $get[$no][0]['id_inventory'],
+                        'jumlah' => $get[$no][0]['jumlah'] + $i['jumlah']
+                    ];
+                    $no++;
+                }
+                $this->db->update_batch('inventory', $dat, 'id_inventory');
+            }
         }
         $result =  $this->db->where(array(
             'id_sewa' => $data['id_sewa']

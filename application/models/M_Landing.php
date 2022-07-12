@@ -91,6 +91,36 @@ class M_Landing extends CI_Model
         }
         return $data;
     }
+
+    public function searchAll()
+    {
+        $search = $this->input->post('query');
+        $sql = "SELECT * FROM inventory where nama LIKE '%$search%'";
+        $get =  $this->db->query($sql)->result_array();
+        $cart = $this->getData();
+        $data = [
+            'get' => $get,
+            'cart' => $cart['cart']
+        ];
+        return $data;
+    }
+
+    public function searchBarang()
+    {
+        $search = $this->input->post('query');
+        $sql = "SELECT * FROM inventory where nama LIKE '%$search%' and id_kategori=2";
+        $get =  $this->db->query($sql)->result_array();
+
+        return $get;
+    }
+    public function searchRuang()
+    {
+        $search = $this->input->post('query');
+        $sql = "SELECT * FROM inventory where nama LIKE '%$search%' and id_kategori=1";
+        $get =  $this->db->query($sql)->result_array();
+
+        return $get;
+    }
     public function addCart()
     {
         $post = $this->input->post();
@@ -364,25 +394,36 @@ class M_Landing extends CI_Model
     }
     public function uploadBukti($data)
     {
-        $data = [
-            'bukti_bayar' => $data['file_name']
-        ];
-        $result =  $this->db->where(array(
-            'id_sewa' => $this->input->post('id_sewa'),
-        ));
-        $this->db->update('sewa', $data);
-
-        $inv = $this->getSwdetail($this->input->post('id_sewa'));
-        $no = 1;
-        foreach ($inv as $i) {
-            $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
-            $dat[] = [
-                'id_inventory' => $get[$no][0]['id_inventory'],
-                'jumlah' => $get[$no][0]['jumlah'] - $i['jumlah']
+        $cekbukti = $this->db->query("SELECT bukti_bayar FROM sewa where id_sewa=" . $this->input->post('id_sewa'))->result_array();
+        if (!$cekbukti[0]['bukti_bayar']) {
+            $data = [
+                'bukti_bayar' => $data['file_name']
             ];
-            $no++;
+            $result =  $this->db->where(array(
+                'id_sewa' => $this->input->post('id_sewa'),
+            ));
+            $this->db->update('sewa', $data);
+
+            $inv = $this->getSwdetail($this->input->post('id_sewa'));
+            $no = 1;
+            foreach ($inv as $i) {
+                $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
+                $dat[] = [
+                    'id_inventory' => $get[$no][0]['id_inventory'],
+                    'jumlah' => $get[$no][0]['jumlah'] - $i['jumlah']
+                ];
+                $no++;
+            }
+            $k = $this->db->update_batch('inventory', $dat, 'id_inventory');
+            return $k;
+        } else {
+            $data = [
+                'bukti_bayar' => $data['file_name']
+            ];
+            $result =  $this->db->where(array(
+                'id_sewa' => $this->input->post('id_sewa'),
+            ));
+            $this->db->update('sewa', $data);
         }
-        $k = $this->db->update_batch('inventory', $dat, 'id_inventory');
-        return $k;
     }
 }

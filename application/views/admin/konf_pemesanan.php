@@ -15,10 +15,12 @@
                 <p class="mb-0">Admin Dashboard</p>
 
             </div>
-            <!-- <div>
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Ruang</a>
-                <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
-            </div> -->
+            <div class="input-group mb-3 col-md-4">
+                <input type="text" class="form-control" placeholder=" Cari disini...">
+                <div class="input-group-append mr-2">
+                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                </div>
+            </div>
         </div>
         <!-- Add Order -->
         <!-- <div class="modal  bd-example-modal-lg fade" id="addOrderModal">

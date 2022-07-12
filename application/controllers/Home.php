@@ -76,8 +76,8 @@ class Home extends CI_Controller
 
 	public function test()
 	{
-		$data['data'] = $this->mymodel->getKategori();
-		$this->load->view('test', $data);
+		$cekbukti = $this->db->query("SELECT bukti_bayar FROM sewa where id_sewa=45")->result_array();
+		var_dump($cekbukti[0]['bukti_bayar']);
 	}
 
 	public function addCart()
@@ -303,25 +303,25 @@ class Home extends CI_Controller
 		var_dump($this->input->post('id_sewa'));
 	}
 
-	public function apiwa()
+
+	public function search()
 	{
-		$url = 'http://127.0.0.1:3000/kirim';
-		$data = [
-			'pesan' => 'asdfghjk',
-			'nomer' => '62895338221298',
-			'link' => 'https://picsum.photos/720/800'
-		];
-		$options = array(
-			'http' => array(
-				'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-				'method' => 'POST',
-				'content' => http_build_query($data)
-			)
+		// load data from model
+		$data = array(
+			'planet' => $this->M_Landing->searchAll(),
+			'barang' => $this->M_Landing->searchBarang(),
+			'ruang' => $this->M_Landing->searchRuang(),
+			'title' => 'Pencarian'
 		);
-		$context = stream_context_create($options);
-		$result = file_get_contents($url, false, $context);
-		if ($result === FALSE) {
+		//mengirimkan data ke view
+		if (!$this->session->userdata('levelpenyewa')) {
+			$this->load->view('template/home/header_noauth');
+		} else {
+			$this->load->view('template/home/header', $data['planet']);
 		}
-		var_dump($result);
+
+		$this->load->view('home/home', $data);
+		$this->load->view('template/home/footer');
+		// var_dump($data['planet']['get']);
 	}
 }

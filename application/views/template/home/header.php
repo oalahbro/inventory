@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-lg-7 col-sm-8 col-md-6 col-xs-5 col-ts-12">
                         <div class="block-search-block">
-                            <form class="form-search form-search-width-category">
+                            <form class="form-search form-search-width-category" method="POST" action="<?= base_url() ?>home/search">
                                 <div class="form-content">
                                     <div class="category">
                                         <!-- <select title="cate" data-placeholder="All Categories" class="chosen-select" tabindex="1">
@@ -69,7 +69,7 @@
                                         </select> -->
                                     </div>
                                     <div class="inner">
-                                        <input type="text" class="input" name="s" value="" placeholder="Search here">
+                                        <input type="text" class="input" name="query" value="" placeholder="Search here">
                                     </div>
                                     <button class="btn-search" type="submit">
                                         <span class="icon-search"></span>

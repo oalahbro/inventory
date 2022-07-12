@@ -64,25 +64,28 @@
                             <div id="home" class="tab-pane fade in active">
                                 <ul class="row list-products auto-clear equal-container product-grid">
                                     <?php
-                                    foreach ($planet['get'] as $new) {
+                                    if (!$planet['get']) {
+                                        echo "<h3 class='custom_blog_title text-center'>Barang tidak di temukan</h3>";
+                                    } else {
+                                        foreach ($planet['get'] as $new) {
                                     ?>
-                                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                            <div class="product-inner equal-element" style="min-height: 350px;">
-                                                <div class="product-top">
-                                                </div>
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
-                                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
-                                                        </a>
+                                            <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                                <div class="product-inner equal-element" style="min-height: 350px;">
+                                                    <div class="product-top">
                                                     </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h5 class="product-name product_title">
-                                                        <a href="#"><?= $new['nama'] ?></a>
-                                                    </h5>
-                                                    <div class="group-info">
-                                                        <!-- <div class="stars-rating">
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
+                                                                <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <h5 class="product-name product_title">
+                                                            <a href="#"><?= $new['nama'] ?></a>
+                                                        </h5>
+                                                        <div class="group-info">
+                                                            <!-- <div class="stars-rating">
                                                             <div class="star-rating">
                                                                 <span class="star-3"></span>
                                                             </div>
@@ -90,56 +93,60 @@
                                                                 (3)
                                                             </div>
                                                         </div> -->
-                                                        <div class="price">
-                                                            <!-- <del>
+                                                            <div class="price">
+                                                                <!-- <del>
                                                                 $65
                                                             </del> -->
-                                                            <ins>
-                                                                <?= $this->format_rupiah->format($new['harga']) ?>
-                                                            </ins>
+                                                                <ins>
+                                                                    <?= $this->format_rupiah->format($new['harga']) ?>
+                                                                </ins>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
+                                            </li>
+                                    <?php }
+                                    } ?>
                                 </ul>
                             </div>
 
                             <div id="menu1" class="tab-pane fade">
                                 <ul class="row list-products auto-clear equal-container product-grid">
                                     <?php
-                                    foreach ($barang as $new) {
+                                    if (!$planet['get']) {
+                                        echo "<h3 class='custom_blog_title text-center'>Barang tidak di temukan</h3>";
+                                    } else {
+                                        foreach ($barang as $new) {
                                     ?>
-                                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                            <div class="product-inner equal-element" style="min-height: 350px;">
-                                                <div class="product-top">
-                                                </div>
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
-                                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
-                                                        </a>
-                                                        <div class="thumb-group">
-                                                            <div class="yith-wcwl-add-to-wishlist">
-                                                                <div class="yith-wcwl-add-button">
-                                                                    <a href="#">Add to Wishlist</a>
+                                            <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                                <div class="product-inner equal-element" style="min-height: 350px;">
+                                                    <div class="product-top">
+                                                    </div>
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
+                                                                <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
+                                                            </a>
+                                                            <div class="thumb-group">
+                                                                <div class="yith-wcwl-add-to-wishlist">
+                                                                    <div class="yith-wcwl-add-button">
+                                                                        <a href="#">Add to Wishlist</a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                            <div class="loop-form-add-to-cart">
-                                                                <button class="single_add_to_cart_button button">Add to cart
-                                                                </button>
+                                                                <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                                <div class="loop-form-add-to-cart">
+                                                                    <button class="single_add_to_cart_button button">Add to cart
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h5 class="product-name product_title">
-                                                        <a href="#"><?= $new['nama'] ?></a>
-                                                    </h5>
-                                                    <div class="group-info">
-                                                        <!-- <div class="stars-rating">
+                                                    <div class="product-info">
+                                                        <h5 class="product-name product_title">
+                                                            <a href="#"><?= $new['nama'] ?></a>
+                                                        </h5>
+                                                        <div class="group-info">
+                                                            <!-- <div class="stars-rating">
                                                             <div class="star-rating">
                                                                 <span class="star-3"></span>
                                                             </div>
@@ -147,55 +154,59 @@
                                                                 (3)
                                                             </div>
                                                         </div> -->
-                                                        <div class="price">
-                                                            <!-- <del>
+                                                            <div class="price">
+                                                                <!-- <del>
                                                                 $65
                                                             </del> -->
-                                                            <ins>
-                                                                <?= $this->format_rupiah->format($new['harga']) ?>
-                                                            </ins>
+                                                                <ins>
+                                                                    <?= $this->format_rupiah->format($new['harga']) ?>
+                                                                </ins>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
+                                            </li>
+                                    <?php }
+                                    } ?>
                                 </ul>
                             </div>
                             <div id="menu2" class="tab-pane fade">
                                 <ul class="row list-products auto-clear equal-container product-grid">
                                     <?php
-                                    foreach ($ruang as $new) {
+                                    if (!$planet['get']) {
+                                        echo "<h3 class='custom_blog_title text-center'>Barang tidak di temukan</h3>";
+                                    } else {
+                                        foreach ($ruang as $new) {
                                     ?>
-                                        <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
-                                            <div class="product-inner equal-element" style="min-height: 350px;">
-                                                <div class="product-top">
-                                                </div>
-                                                <div class="product-thumb">
-                                                    <div class="thumb-inner">
-                                                        <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
-                                                            <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
-                                                        </a>
-                                                        <div class="thumb-group">
-                                                            <div class="yith-wcwl-add-to-wishlist">
-                                                                <div class="yith-wcwl-add-button">
-                                                                    <a href="#">Add to Wishlist</a>
+                                            <li class="product-item product-type-variable col-lg-3 col-md-4 col-sm-6 col-xs-6 col-ts-12 style-1">
+                                                <div class="product-inner equal-element" style="min-height: 350px;">
+                                                    <div class="product-top">
+                                                    </div>
+                                                    <div class="product-thumb">
+                                                        <div class="thumb-inner">
+                                                            <a href="<?= base_url() . 'home/detail?vhid=' . $new['id_inventory'] ?>">
+                                                                <img src="<?php echo base_url(); ?>assets/upload/<?= $new['image'] ?>" alt="img" style="height: 200px;">
+                                                            </a>
+                                                            <div class="thumb-group">
+                                                                <div class="yith-wcwl-add-to-wishlist">
+                                                                    <div class="yith-wcwl-add-button">
+                                                                        <a href="#">Add to Wishlist</a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <a href="#" class="button quick-wiew-button">Quick View</a>
-                                                            <div class="loop-form-add-to-cart">
-                                                                <button class="single_add_to_cart_button button">Add to cart
-                                                                </button>
+                                                                <a href="#" class="button quick-wiew-button">Quick View</a>
+                                                                <div class="loop-form-add-to-cart">
+                                                                    <button class="single_add_to_cart_button button">Add to cart
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="product-info">
-                                                    <h5 class="product-name product_title">
-                                                        <a href="#"><?= $new['nama'] ?></a>
-                                                    </h5>
-                                                    <div class="group-info">
-                                                        <!-- <div class="stars-rating">
+                                                    <div class="product-info">
+                                                        <h5 class="product-name product_title">
+                                                            <a href="#"><?= $new['nama'] ?></a>
+                                                        </h5>
+                                                        <div class="group-info">
+                                                            <!-- <div class="stars-rating">
                                                             <div class="star-rating">
                                                                 <span class="star-3"></span>
                                                             </div>
@@ -203,19 +214,20 @@
                                                                 (3)
                                                             </div>
                                                         </div> -->
-                                                        <div class="price">
-                                                            <!-- <del>
+                                                            <div class="price">
+                                                                <!-- <del>
                                                                 $65
                                                             </del> -->
-                                                            <ins>
-                                                                <?= $this->format_rupiah->format($new['harga']) ?>
-                                                            </ins>
+                                                                <ins>
+                                                                    <?= $this->format_rupiah->format($new['harga']) ?>
+                                                                </ins>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    <?php } ?>
+                                            </li>
+                                    <?php }
+                                    } ?>
                                 </ul>
                             </div>
                             <!-- <div class="pagination clearfix style2">
