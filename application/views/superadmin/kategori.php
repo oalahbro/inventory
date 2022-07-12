@@ -23,12 +23,7 @@
         <div class="modal fade" id="addOrderModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="input-group search-area d-lg-inline-flex d-none">
-                        <input type="text" class="form-control" placeholder="Search here...">
-                        <div class="input-group-append">
-                            <span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
-                        </div>
-                    </div>
+
                     <div class="modal-header">
                         <h5 class="modal-title">Tambah Kategori</h5>
                         <button type="button" class="close" data-dismiss="modal"><span>&times;</span>

@@ -15,13 +15,17 @@
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <div class="input-group mb-3 col-md-6">
-                <input type="text" class="form-control" placeholder=" Cari disini...">
+            <form method="POST" action="<?= base_url() ?>superadmin/searchAdmin" class=" input-group mb-3 col-md-6">
+
+                <input type="text" class="form-control" name="query" placeholder=" Cari disini...">
                 <div class="input-group-append mr-2">
-                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                    <button class="btn btn-primary" type="submit"><i class="flaticon-381-search-2"></i></button>
                 </div>
+
                 <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah User</a>
-            </div>
+
+
+            </form>
         </div>
         <!-- Add Order -->
         <div class="modal fade" id="addOrderModal">

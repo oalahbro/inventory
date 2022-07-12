@@ -25,8 +25,7 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('m_admin');
-		$this->load->model('m_admin');
+		$this->load->model('M_Admin');
 		$this->load->helper('url', 'form');
 		$this->load->library('form_validation');
 		if ($this->session->userdata('level') != 2) {
@@ -36,7 +35,7 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
-		$data = $this->m_admin->dashboard();
+		$data = $this->M_Admin->dashboard();
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/index', $data);
 		$this->load->view('template/admin/footer');
@@ -45,7 +44,7 @@ class Admin extends CI_Controller
 
 	public function kategori()
 	{
-		$data['kategori'] = $this->m_admin->getKategori();
+		$data['kategori'] = $this->M_Admin->getKategori();
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/kategori', $data);
 		$this->load->view('template/admin/footer');
@@ -53,7 +52,7 @@ class Admin extends CI_Controller
 
 	public function data_penyewa()
 	{
-		$data['penyewa'] = $this->m_admin->getPenyewa();
+		$data['penyewa'] = $this->M_Admin->getPenyewa();
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/data_penyewa', $data);
 		$this->load->view('template/admin/footer');
@@ -62,14 +61,14 @@ class Admin extends CI_Controller
 
 	public function addPenyewa()
 	{
-		$this->m_admin->addPenyewa();
+		$this->M_Admin->addPenyewa();
 
 		redirect(base_url('admin/data_penyewa'));
 	}
 
 	public function editPenyewa()
 	{
-		$this->m_admin->editPenyewa();
+		$this->M_Admin->editPenyewa();
 
 		redirect(base_url('admin/data_penyewa'));
 	}
@@ -77,20 +76,20 @@ class Admin extends CI_Controller
 	public function hapusPenyewa()
 	{
 		$id_penyewa = $this->input->post('id_penyewa1');
-		$this->m_admin->hapusPenyewa($id_penyewa);
+		$this->M_Admin->hapusPenyewa($id_penyewa);
 
 		redirect(base_url('admin/data_penyewa'));
 	}
 
 	public function addKategori()
 	{
-		$this->m_admin->addKategori();
+		$this->M_Admin->addKategori();
 		redirect(base_url('admin/kategori'));
 	}
 
 	public function editKategori()
 	{
-		$this->m_admin->editKategori();
+		$this->M_Admin->editKategori();
 
 		redirect(base_url('admin/kategori'));
 	}
@@ -98,14 +97,14 @@ class Admin extends CI_Controller
 	public function hapusKategori()
 	{
 		$id_kategori = $this->input->post('id_kategori1');
-		$this->m_admin->hapusKategori($id_kategori);
+		$this->M_Admin->hapusKategori($id_kategori);
 
 		redirect(base_url('admin/kategori'));
 	}
 	public function getInventory()
 	{
-		$data['ruang'] = $this->m_admin->getInventory();
-		$data['kategori'] = $this->m_admin->getKategori();
+		$data['ruang'] = $this->M_Admin->getInventory();
+		$data['kategori'] = $this->M_Admin->getKategori();
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/data_inventory', $data);
 		$this->load->view('template/admin/footer');
@@ -114,9 +113,9 @@ class Admin extends CI_Controller
 	public function filter()
 	{
 		$data = [
-			'ruang' => $this->m_admin->filter(),
-			'kategori' => $this->m_admin->getKategori(),
-			'kat_title' => $this->m_admin->katTitle()
+			'ruang' => $this->M_Admin->filter(),
+			'kategori' => $this->M_Admin->getKategori(),
+			'kat_title' => $this->M_Admin->katTitle()
 		];
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/data_filter', $data);
@@ -135,12 +134,12 @@ class Admin extends CI_Controller
 		if (!$this->upload->do_upload('image')) {
 			var_dump($this->upload->data());
 			$dataimg = $this->upload->data();
-			$this->m_admin->updateInventory($dataimg);
+			$this->M_Admin->updateInventory($dataimg);
 			// var_dump($data);
 			redirect(base_url('admin/getInventory'));
 		}
 		$dataimg = $this->upload->data();
-		$this->m_admin->updateInventory($dataimg);
+		$this->M_Admin->updateInventory($dataimg);
 		// var_dump($data);
 		redirect(base_url('admin/getInventory'));
 	}
@@ -158,10 +157,10 @@ class Admin extends CI_Controller
 
 		if (!$this->upload->do_upload('image')) {
 			$error = array('error' => $this->upload->display_errors());
-			echo "<script>alert('" . $error['error'] . "'); document.location = '" . base_url('superadmin/getInventory') . "';</script>";
+			echo "<script>alert('" . $error['error'] . "'); document.location = '" . base_url('admin/getInventory') . "';</script>";
 		} else {
 			$data = $this->upload->data();
-			$this->m_admin->addInventory($data);
+			$this->M_Admin->addInventory($data);
 			// var_dump($data);
 			redirect(base_url('admin/getInventory'));
 		}
@@ -170,7 +169,7 @@ class Admin extends CI_Controller
 	public function delInventory()
 	{
 		$id_inv = $this->input->post('id_inventory1');
-		$this->m_admin->delInventory($id_inv);
+		$this->M_Admin->delInventory($id_inv);
 		// var_dump($data);
 		redirect(base_url('admin/getInventory'));
 	}
@@ -178,7 +177,7 @@ class Admin extends CI_Controller
 	public function getPemesanan()
 	{
 		$data = [
-			'pemesanan' => $this->m_admin->getPemesanan()
+			'pemesanan' => $this->M_Admin->getPemesanan()
 		];
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/pemesanan', $data);
@@ -189,7 +188,7 @@ class Admin extends CI_Controller
 	public function getKonfpemesanan()
 	{
 		$data = [
-			'konf_pemesanan' => $this->m_admin->getKonfpemesanan()
+			'konf_pemesanan' => $this->M_Admin->getKonfpemesanan()
 		];
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/konf_pemesanan', $data);
@@ -199,25 +198,25 @@ class Admin extends CI_Controller
 	public function api()
 	{
 		$catid = intval($_GET['catid']);
-		$data = $this->m_admin->getSwdetail($catid);
+		$data = $this->M_Admin->getSwdetail($catid);
 		echo json_encode($data);
 	}
 	public function updatePemesanan()
 	{
-		$this->m_admin->updatePemesanan();
+		$this->M_Admin->updatePemesanan();
 		redirect(base_url('admin/getPemesanan'));
 		// echo $_POST['action'];
 	}
 	public function updateKonfpemesanan()
 	{
-		$this->m_admin->updatePemesanan();
+		$this->M_Admin->updatePemesanan();
 		redirect(base_url('admin/getKonfpemesanan'));
 	}
 
 	public function getHistory()
 	{
 		$data = [
-			'history' => $this->m_admin->getHistory()
+			'history' => $this->M_Admin->getHistory()
 		];
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/history', $data);
@@ -227,7 +226,7 @@ class Admin extends CI_Controller
 	public function filterstatus()
 	{
 		$data = [
-			'history' => $this->m_admin->filterhistory()
+			'history' => $this->M_Admin->filterhistory()
 		];
 		$this->load->view('template/admin/header');
 		$this->load->view('admin/history', $data);
@@ -238,7 +237,7 @@ class Admin extends CI_Controller
 	public function getPesananSelesai()
 	{
 		$data = [
-			'history' => $this->m_admin->getPesananSelesai(),
+			'history' => $this->M_Admin->getPesananSelesai(),
 			'title' => 'pesanan selesai'
 		];
 		$this->load->view('template/admin/header');
@@ -250,7 +249,7 @@ class Admin extends CI_Controller
 	public function getPesananDibatalkan()
 	{
 		$data = [
-			'history' => $this->m_admin->getHistory(),
+			'history' => $this->M_Admin->getHistory(),
 			'title' => 'pesanan dibatalkan'
 		];
 		$this->load->view('template/admin/header');
@@ -261,7 +260,7 @@ class Admin extends CI_Controller
 
 	public function getLaporan()
 	{
-		$data['laporan'] = $this->m_admin->getLaporan();
+		$data['laporan'] = $this->M_Admin->getLaporan();
 		foreach ($data['laporan'] as $r) {
 			$sum[] = $r['sub_total'];
 		};
@@ -279,7 +278,7 @@ class Admin extends CI_Controller
 
 	public function profil()
 	{
-		$data['profil'] = $this->m_admin->getProfil();
+		$data['profil'] = $this->M_Admin->getProfil();
 		$this->load->view('template/admin/header', $data);
 		$this->load->view('admin/profil', $data);
 		$this->load->view('template/admin/footer');
@@ -296,12 +295,12 @@ class Admin extends CI_Controller
 
 		if (!$this->upload->do_upload('image')) {
 			$dataimg = $this->upload->data();
-			$this->m_admin->editProfil($dataimg);
+			$this->M_Admin->editProfil($dataimg);
 			redirect(base_url('admin/profil'));
 		}
 		$dataimg = $this->upload->data();
 		var_dump($dataimg);
-		$this->m_admin->editProfil($dataimg);
+		$this->M_Admin->editProfil($dataimg);
 		redirect(base_url('admin/profil'));
 	}
 	public function cek()
@@ -314,7 +313,7 @@ class Admin extends CI_Controller
 		$this->load->library('pdf');
 		$option = $this->pdf->getOptions();
 		$option->set(['isRemoteEnabled' => true, 'isHtml5ParserEnabled' => true]);
-		$data['laporan'] = $this->m_admin->getLaporandate();
+		$data['laporan'] = $this->M_Admin->getLaporandate();
 		foreach ($data['laporan'] as $r) {
 			$sum[] = $r['sub_total'];
 		};
@@ -339,5 +338,81 @@ class Admin extends CI_Controller
 
 
 		$this->pdf->filename = "laporan-data-siswa.pdf";
+	}
+	public function searchPenyewa()
+	{
+		$data['penyewa'] = $this->M_Admin->searchPenyewa();
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/data_penyewa', $data);
+		$this->load->view('template/admin/footer');
+	}
+
+	public function searchInventory()
+	{
+		$data['ruang'] = $this->M_Admin->searchInventory();
+		$data['kategori'] = $this->M_Admin->getKategori();
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/data_inventory', $data);
+		$this->load->view('template/admin/footer');
+	}
+	public function searchPemesanan()
+	{
+		$data = [
+			'pemesanan' => $this->M_Admin->searchPemesanan()
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/pemesanan', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+	public function searchKonf()
+	{
+		$data = [
+			'konf_pemesanan' => $this->M_Admin->searchKonf()
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/konf_pemesanan', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+
+	public function searchPesananSelesai()
+	{
+		$data = [
+			'history' => $this->M_Admin->searchPesananSelesai(),
+			'title' => 'pesanan selesai'
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/history', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+	public function searchPesananDibatalkan()
+	{
+		$data = [
+			'history' => $this->M_Admin->searchPesananDibatalkan(),
+			'title' => 'pesanan dibatalkan'
+		];
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/history', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($data);
+	}
+
+	public function searchLaporan()
+	{
+		$data['laporan'] = $this->M_Admin->searchLaporan();
+		foreach ($data['laporan'] as $r) {
+			$sum[] = $r['sub_total'];
+		};
+		if (!$data['laporan']) {
+			$data['total'] = 0;
+		} else {
+
+			$data['total'] = array_sum($sum);
+		}
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/laporan', $data);
+		$this->load->view('template/admin/footer');
 	}
 }

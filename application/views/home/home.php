@@ -25,10 +25,10 @@
         <div class="row">
             <div class="content-area shop-grid-content full-width col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="site-main">
-                    <div class="banner-shop banner-slider owl-slick equal-container" data-slick='{"autoplay":true, "autoplaySpeed":10000, "arrows":false, "dots":true, "infinite":true, "speed":800, "rows":1}'>
+                    <div class="banner-shop banner-slider owl-slick equal-container" data-slick='{" autoplay":true, "autoplaySpeed" :10000, "arrows" :false, "dots" :true, "infinite" :true, "speed" :800, "rows" :1}'>
                         <div class="item-banner style1">
                             <div class="inner equal-element">
-                                <div class="banner-content style1">
+                                <div class="banner-content style1" style="min-height: 358px;">
                                     <span></span>
                                     <span></span>
                                     <span></span>
@@ -39,12 +39,11 @@
                         </div>
                         <div class="item-banner style2 ">
                             <div class="inner equal-element">
-                                <div class="banner-content style2">
-                                    <h3 class="title">Superior cars</h3>
-                                    <span class="description">Enjoy an entirely new level of <br /> driving experience</span>
-                                    <span class="hot-price">Hot Price: <span class="price-number">$250.00</span></span>
-                                    <button class="button button-now">shop now</button>
-                                    <button class="button button-view">View all</button>
+                                <div class="banner-content style2" style="min-height: 358px;">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </div>
                             </div>
                         </div>
@@ -85,18 +84,7 @@
                                                             <a href="#"><?= $new['nama'] ?></a>
                                                         </h5>
                                                         <div class="group-info">
-                                                            <!-- <div class="stars-rating">
-                                                            <div class="star-rating">
-                                                                <span class="star-3"></span>
-                                                            </div>
-                                                            <div class="count-star">
-                                                                (3)
-                                                            </div>
-                                                        </div> -->
                                                             <div class="price">
-                                                                <!-- <del>
-                                                                $65
-                                                            </del> -->
                                                                 <ins>
                                                                     <?= $this->format_rupiah->format($new['harga']) ?>
                                                                 </ins>
@@ -146,18 +134,7 @@
                                                             <a href="#"><?= $new['nama'] ?></a>
                                                         </h5>
                                                         <div class="group-info">
-                                                            <!-- <div class="stars-rating">
-                                                            <div class="star-rating">
-                                                                <span class="star-3"></span>
-                                                            </div>
-                                                            <div class="count-star">
-                                                                (3)
-                                                            </div>
-                                                        </div> -->
                                                             <div class="price">
-                                                                <!-- <del>
-                                                                $65
-                                                            </del> -->
                                                                 <ins>
                                                                     <?= $this->format_rupiah->format($new['harga']) ?>
                                                                 </ins>
@@ -206,18 +183,7 @@
                                                             <a href="#"><?= $new['nama'] ?></a>
                                                         </h5>
                                                         <div class="group-info">
-                                                            <!-- <div class="stars-rating">
-                                                            <div class="star-rating">
-                                                                <span class="star-3"></span>
-                                                            </div>
-                                                            <div class="count-star">
-                                                                (3)
-                                                            </div>
-                                                        </div> -->
                                                             <div class="price">
-                                                                <!-- <del>
-                                                                $65
-                                                            </del> -->
                                                                 <ins>
                                                                     <?= $this->format_rupiah->format($new['harga']) ?>
                                                                 </ins>
@@ -230,15 +196,6 @@
                                     } ?>
                                 </ul>
                             </div>
-                            <!-- <div class="pagination clearfix style2">
-                                <div class="nav-link">
-                                    <a href="#" class="page-numbers"><i class="icon fa fa-angle-left" aria-hidden="true"></i></a>
-                                    <a href="#" class="page-numbers">1</a>
-                                    <a href="#" class="page-numbers">2</a>
-                                    <a href="#" class="page-numbers current">3</a>
-                                    <a href="#" class="page-numbers"><i class="icon fa fa-angle-right" aria-hidden="true"></i></a>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>

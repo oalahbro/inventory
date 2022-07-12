@@ -15,14 +15,14 @@
                 <p class="mb-0">Admin Dashboard</p>
 
             </div>
-            <div class="input-group mb-3 col-md-6">
-                <input type="text" class="form-control" placeholder=" Cari disini...">
+            <form class="input-group mb-3 col-md-6" method="POST" action="<?= base_url() ?>admin/searchLaporan">
+                <input type="text" class="form-control" name="query" placeholder=" Cari disini...">
                 <div class="input-group-append mr-2">
-                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                    <button class="btn btn-primary" type="sumbit"><i class="flaticon-381-search-2"></i></button>
                 </div>
                 <a data-toggle="modal" data-target="#addOrderModal" type="button" class="btn btn-rounded btn-danger"><span class="btn-icon-left text-danger"><i class="fa fa-file-pdf-o color-danger"></i>
                     </span>EXPORT PDF</a>
-            </div>
+            </form>
         </div>
         <!-- Add Order -->
         <div class="modal  bd-example-modal-lg fade" id="addOrderModal">

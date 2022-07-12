@@ -791,7 +791,7 @@
                             </li> -->
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                    <?php $foto = $this->m_admin->getProfil(); ?>
+                                    <?php $foto = $this->M_Admin->getProfil(); ?>
                                     <img src="<?= base_url() ?>assets/upload/<?= $foto[0]['image'] ?>" class="img-fluid rounded-circle" width="20" alt="" />
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">

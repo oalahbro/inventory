@@ -15,63 +15,13 @@
                 <p class="mb-0">Admin Dashboard</p>
 
             </div>
-            <div class="input-group mb-3 col-md-4">
-                <input type="text" class="form-control" placeholder=" Cari disini...">
+            <form class="input-group mb-3 col-md-4" method="POST" action="<?= base_url() ?>admin/searchPemesanan">
+                <input type="text" name="query" class="form-control" placeholder=" Cari disini...">
                 <div class="input-group-append mr-2">
-                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                    <button class="btn btn-primary" type="submit"><i class="flaticon-381-search-2"></i></button>
                 </div>
-            </div>
-            <!-- <div>
-                <a href="javascript:void(0)" class="btn btn-primary mr-3" data-toggle="modal" data-target="#addOrderModal">+Tambah Data Ruang</a>
-                <a href="index.html" class="btn btn-outline-primary"><i class="las la-calendar-plus scale5 mr-3"></i>Filter Date</a>
-            </div> -->
+            </form>
         </div>
-        <!-- Add Order -->
-        <!-- <div class="modal  bd-example-modal-lg fade" id="addOrderModal">
-            <div class="modal-dialog modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Tambah Data Ruang</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="<?= base_url() ?>admin/addBarang">
-                            <div class="form-group">
-                                <label class="text-black font-w500">Nama</label>
-                                <input type="text" name="nama" class="form-control" required>
-                                <label class="text-black font-w500">Deskripsi</label>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="deskripsi" rows="4" id="comment"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label class="text-black font-w500">Tahun</label>
-                                        <input name="tahun" class="datepicker-default form-control" id="datepicker">
-                                    </div>
-                                    <div class="col-sm-6 mt-2 mt-sm-0">
-                                        <label class="text-black font-w500">Jumlah</label>
-                                        <input type="text" name="jumlah" class="form-control" placeholder="Jumlah">
-                                    </div>
-                                </div>
-                                <label class="text-black font-w500">Image</label>
-                                <div class="input-group mb-3">
-                                    <div class="custom-file">
-                                        <input type="file" name="image" class="custom-file-input">
-                                        <label class="custom-file-label">Choose file</label>
-                                    </div>
-                                </div>
-                                <label class="text-black font-w500">Harga</label>
-                                <input type="text" name="harga" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">SIMPAN</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="modal  bd-example-modal-lg fade" id="edit-modal">
             <div class="modal-dialog modal-dialog modal-lg" role="document">
                 <div class="modal-content">

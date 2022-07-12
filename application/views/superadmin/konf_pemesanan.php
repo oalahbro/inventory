@@ -15,12 +15,12 @@
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <div class="input-group mb-3 col-md-4">
-                <input type="text" class="form-control" placeholder=" Cari disini...">
+            <form class="input-group mb-3 col-md-4" method="POST" action="<?= base_url() ?>superadmin/searchKonf">
+                <input type="text" name="query" class="form-control" placeholder=" Cari disini...">
                 <div class="input-group-append mr-2">
-                    <button class="btn btn-primary" type="button"><i class="flaticon-381-search-2"></i></button>
+                    <button class="btn btn-primary" type="submit"><i class="flaticon-381-search-2"></i></button>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="modal  bd-example-modal-lg fade" id="edit-modal">
             <div class="modal-dialog modal-dialog modal-lg" role="document">

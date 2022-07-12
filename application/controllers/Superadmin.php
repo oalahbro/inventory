@@ -373,24 +373,87 @@ class Superadmin extends CI_Controller
 		$this->pdf->filename = "laporan-data-siswa.pdf";
 	}
 
-	public function count_item()
+	public function searchAdmin()
 	{
-		$this->load->view->mymodel('inventory');
-		return $this->ci->view->get()->num_rows;
+		$data['admin'] = $this->mymodel->searchAdmin();
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/data_admin', $data);
+		$this->load->view('template/superadmin/footer');
 	}
-	public function count_pemesanan()
+
+	public function searchPenyewa()
 	{
-		$this->load->view->mymodel('pemesanan_m');
-		return $this->ci->pemesanan_m->get()->num_rows;
+		$data['penyewa'] = $this->mymodel->searchPenyewa();
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/data_penyewa', $data);
+		$this->load->view('template/superadmin/footer');
 	}
-	public function count_konfpesmesanan()
+
+	public function searchInventory()
 	{
-		$this->load->view->mymodel('konfpemesanan_m');
-		return $this->ci->konfpemesanan_m->get()->num_rows;
+		$data['ruang'] = $this->mymodel->searchInventory();
+		$data['kategori'] = $this->mymodel->getKategori();
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/data_inventory', $data);
+		$this->load->view('template/superadmin/footer');
 	}
-	public function count_pesananselesai()
+	public function searchPemesanan()
 	{
-		$this->load->view->mymodel('pesananselesai_m');
-		return $this->ci->pesananselesai_m->get()->num_rows;
+		$data = [
+			'pemesanan' => $this->mymodel->searchPemesanan()
+		];
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/pemesanan', $data);
+		$this->load->view('template/superadmin/footer');
+		// var_dump($data);
+	}
+	public function searchKonf()
+	{
+		$data = [
+			'konf_pemesanan' => $this->mymodel->searchKonf()
+		];
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/konf_pemesanan', $data);
+		$this->load->view('template/superadmin/footer');
+		// var_dump($data);
+	}
+
+	public function searchPesananSelesai()
+	{
+		$data = [
+			'history' => $this->mymodel->searchPesananSelesai(),
+			'title' => 'pesanan selesai'
+		];
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/history', $data);
+		$this->load->view('template/superadmin/footer');
+		// var_dump($data);
+	}
+	public function searchPesananDibatalkan()
+	{
+		$data = [
+			'history' => $this->mymodel->searchPesananDibatalkan(),
+			'title' => 'pesanan dibatalkan'
+		];
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/history', $data);
+		$this->load->view('template/superadmin/footer');
+		// var_dump($data);
+	}
+	public function searchLaporan()
+	{
+		$data['laporan'] = $this->mymodel->searchLaporan();
+		foreach ($data['laporan'] as $r) {
+			$sum[] = $r['sub_total'];
+		};
+		if (!$data['laporan']) {
+			$data['total'] = 0;
+		} else {
+
+			$data['total'] = array_sum($sum);
+		}
+		$this->load->view('template/superadmin/header');
+		$this->load->view('superadmin/laporan', $data);
+		$this->load->view('template/superadmin/footer');
 	}
 }

@@ -460,4 +460,83 @@ class Mymodel extends CI_Model
         ];
         return $data;
     }
+
+    public function searchAdmin()
+    {
+        $search = $this->input->post('query');
+        $sql = "SELECT * from admin where nama LIKE '%$search%'";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+    public function searchPenyewa()
+    {
+        $search = $this->input->post('query');
+        $sql = "SELECT * from penyewa where nama LIKE '%$search%'";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function searchInventory()
+    {
+        $search = $this->input->post('query');
+        $sql = "SELECT * from inventory where nama LIKE '%$search%'";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
+
+    public function searchPemesanan()
+    {
+        $search = $this->input->post('query');
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => 2, 'penyewa.nama LIKE' => '%' . $search . '%'))
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function searchKonf()
+    {
+        $search = $this->input->post('query');
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => 1, 'penyewa.nama LIKE' => '%' . $search . '%'))
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function searchPesananSelesai()
+    {
+        $search = $this->input->post('query');
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => 3, 'penyewa.nama LIKE' => '%' . $search . '%'))
+            ->get()->result_array();
+        return $result;
+    }
+
+    public function searchPesananDibatalkan()
+    {
+        $search = $this->input->post('query');
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama,sewa.status,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa.bukti_bayar')
+            ->from('sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->where(array('sewa.status' => 0, 'penyewa.nama LIKE' => '%' . $search . '%'))
+            ->get()->result_array();
+        return $result;
+    }
+    public function searchLaporan()
+    {
+        $search = $this->input->post('query');
+        $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
+            ->from('sewa')
+            ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+            ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+            ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+            ->where(array('penyewa.nama LIKE' => '%' . $search . '%'))
+            ->get()->result_array();
+        return $result;
+    }
 }
