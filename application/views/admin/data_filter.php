@@ -61,7 +61,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label class="text-black font-w500">Tahun</label>
-                                        <input type="text" class="form-control" placeholder="2017-06-04" id="mdate" required>
+                                        <input name="tahun" type="text" class="form-control" placeholder="2017-06-04" id="mdate" required>
                                     </div>
                                     <div class="col-sm-6 mt-2 mt-sm-0">
                                         <label class="text-black font-w500">Jumlah</label>
