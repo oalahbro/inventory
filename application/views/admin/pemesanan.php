@@ -53,30 +53,7 @@
             </div>
         </div>
 
-        <!-- <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog" style="width:55%;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="custom-width-modalLabel">DATA PENGGUNA</h4>
-                    </div>
 
-                    <form action="<?php echo base_url() . 'admin/delBarang'; ?>" method="post" class="form-horizontal" role="form">
-                        <div class="modal-body">
-                            <h4>Konfirmasi</h4>
-                            <p>Apakah anda yakin ingin menghapus data ini ?</p>
-                            <div class="form-group">
-                                <input type="hidden" id="id_inventory1" name="id_inventory1">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger" data-dismiss="modal">Tidak</button>
-                            <button type="submit" class="btn btn-primary">Ya</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
 
         <div class="row">
             <div class="col-xl-12">
@@ -115,7 +92,7 @@
                                             <div class='d-flex'>
                                                 <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
 
-                                                <a href='#' class='btn btn-danger shadow btn-xs sharp' data-toggle='modal' data-target='#delete-modal' onClick=\"setInput1('" . $u['id_inventory'] . "')\"><i class='fa fa-trash'></i></a>
+                                                
                                             </div>";
 
 
