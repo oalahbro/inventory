@@ -61,22 +61,22 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label class="text-black font-w500">Tahun</label>
-                                        <input name="tahun" class="datepicker-default form-control" id="datepicker">
+                                        <input type="text" class="form-control" placeholder="2017-06-04" id="mdate" required>
                                     </div>
                                     <div class="col-sm-6 mt-2 mt-sm-0">
                                         <label class="text-black font-w500">Jumlah</label>
-                                        <input type="text" name="jumlah" class="form-control" placeholder="Jumlah">
+                                        <input type="text" name="jumlah" class="form-control" placeholder="Jumlah" required>
                                     </div>
                                 </div>
                                 <label class="text-black font-w500">Image</label>
                                 <div class="input-group mb-3">
                                     <div class="custom-file">
-                                        <input type="file" name="image" class="custom-file-input">
+                                        <input type="file" name="image" class="custom-file-input" required>
                                         <label class="custom-file-label">Choose file</label>
                                     </div>
                                 </div>
                                 <label class="text-black font-w500">Harga</label>
-                                <input type="text" name="harga" class="form-control" required>
+                                <input type="text" name="harga" class="form-control" required required>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">SIMPAN</button>
@@ -114,7 +114,8 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label class="text-black font-w500">Tahun</label>
-                                        <input name="tahun" class="datepicker-default form-control" id="tahun">
+
+                                        <input type="date" id="tahun" name="tahun" class="form-control" required>
                                     </div>
                                     <div class="col-sm-6 mt-2 mt-sm-0">
                                         <label class="text-black font-w500">Jumlah</label>
