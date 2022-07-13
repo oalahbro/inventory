@@ -61,7 +61,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label class="text-black font-w500">Tahun</label>
-                                        <input name="tahun" class="datepicker-default form-control" id="datepicker">
+                                        <input type="text" class="form-control" placeholder="2017-06-04" id="mdate" required>
                                     </div>
                                     <div class="col-sm-6 mt-2 mt-sm-0">
                                         <label class="text-black font-w500">Jumlah</label>
@@ -114,7 +114,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label class="text-black font-w500">Tahun</label>
-                                        <input name="tahun" class="datepicker-default form-control" id="tahun">
+                                        <input type="date" id="tahun" name="tahun" class="form-control" required>
                                     </div>
                                     <div class="col-sm-6 mt-2 mt-sm-0">
                                         <label class="text-black font-w500">Jumlah</label>
