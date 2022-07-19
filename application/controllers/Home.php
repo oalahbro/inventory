@@ -220,7 +220,8 @@ class Home extends CI_Controller
 	{
 		$data = $this->M_Landing->checkout();
 		$l = $this->M_Landing->updateSewa();
-		// var_dump($this->input->post('nama'));
+		// var_dump($l);
+		var_dump($this->input->post('nama'));
 		$url = 'http://127.0.0.1:3000/kirim';
 		$datawa = [
 			'pesan' => 'Pesanan berhasil silahkan melakukan transfer sebesar '
@@ -266,12 +267,7 @@ class Home extends CI_Controller
 		$this->load->view('template/home/footer');
 		// var_dump($tst);
 	}
-	public function updatePemesanan()
-	{
-		$this->M_Landing->updatePemesanan();
-		redirect(base_url('superadmin/getPemesanan'));
-		// echo $_POST['action'];
-	}
+
 	public function api()
 	{
 		$catid = intval($_GET['catid']);

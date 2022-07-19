@@ -15,33 +15,8 @@
                 <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-        </div>
-        <form class="row align-items-end  mb-2" method="POST" action="<?= base_url() ?>superadmin/searchLaporan">
-            <div class="col">
-                <label class="text-black font-w500">Kategori</label>
-                <input type="date" id="tgl-mulai" name="tgl_mulai" class="form-control" onchange="sub()">
-            </div>
-            <div class="col">
-                <label class="text-black font-w500">Stock</label>
-                <input type="date" id="tgl-selesai" name="tgl_selesai" class="form-control" onchange="sub()">
-                <button class="btn btn-primary" id="filter" name="submit" value="filter" type="sumbit"></button>
-            </div>
-            <div class="col">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="query" placeholder=" Cari disini...">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" name="submit" value="search" type="sumbit"><i class="flaticon-381-search-2"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-block btn-rounded btn-danger" name="submit" value="export" type="sumbit">
-                    <span class="btn-icon-left text-danger"><i class="fa fa-file-pdf-o color-danger"></i>
-                    </span>EXPORT
-                </button>
-            </div>
 
-        </form>
+        </div>
         <!-- Add Order -->
         <div class="modal  bd-example-modal-lg fade" id="addOrderModal">
             <div class="modal-dialog modal-dialog modal-lg" role="document">
@@ -52,7 +27,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?= base_url() ?>superadmin/pdf">
+                        <form method="post" action="<?= base_url() ?>admin/pdf">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -74,22 +49,57 @@
                 </div>
             </div>
         </div>
+        <form class="row align-items-end  mb-2" method="POST" action="<?= base_url() ?>admin/searchLapstock">
+            <div class="col">
+                <label class="text-black font-w500">Kategori</label>
+                <select class="form-control" name="kategori" onchange="sub()">
+                    <option value="" selected>Semua Kategori</option>
+                    <?php foreach ($kategori as $cat) {
+                        echo "<option value=" . $cat["id_kategori"] . ">" . $cat["nama_kategori"] . "</option>";
+                    } ?>
+                </select>
+            </div>
+            <div class="col">
+                <label class="text-black font-w500">Stock</label>
+                <select class="form-control" name="stock" onchange="sub()">
+                    <option value="" selected>Semua</option>
+                    <option value="1">Dipinjam</option>
+                    <option value="2">Tersedia</option>
+                </select>
+                <button class="btn btn-primary" id="filter" name="submit" value="filter" type="sumbit" hidden><i class="flaticon-381-search-2"></i></button>
+            </div>
+            <div class="col">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="query" placeholder=" Cari disini...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" name="submit" value="search" type="sumbit"><i class="flaticon-381-search-2"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-block btn-rounded btn-danger" name="submit" value="export" type="sumbit">
+                    <span class="btn-icon-left text-danger"><i class="fa fa-file-pdf-o color-danger"></i>
+                    </span>EXPORT
+                </button>
+            </div>
 
+        </form>
         <div class="row">
             <div class="col-xl-12">
                 <div class="table-responsive card-table">
                     <table id="example5" class="display dataTablesCard white-border table-responsive-xl">
+
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Nama</th>
-                                <th>Item</th>
-                                <th>Harga</th>
+                                <th>Nama Admin</th>
+                                <th>Tahun</th>
                                 <th>Jumlah</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Selesai</th>
-                                <th>Tanggal Booking</th>
-                                <th>Sub Total</th>
+                                <th>Tersedia</th>
+                                <th>Dipinjam</th>
+                                <th>Harga</th>
+                                <th>Kategori</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,14 +108,14 @@
                             foreach ($laporan as $u) {
                                 echo "<tr>
                                             <td>" . $no . "</td>
-                                            <td>" . $u['nama_penyewa'] . "</td>
                                             <td>" . $u['nama'] . "</td>
-                                            <td>" . $u['harga'] . "</td>
+                                            <td>" . $u['username'] . "</td>
+                                            <td>" . $u['tahun'] . "</td>
+                                            <td>" . $jum = $u['jumlah'] + $u['dipinjam'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
-                                            <td>" . $u['tgl_mulai'] . "</td>
-                                            <td>" . $u['tgl_selesai'] . "</td>
-                                            <td>" . $u['tgl_booking'] . "</td>
-                                            <td>" . $this->format_rupiah->format($u['sub_total']) . "</td>";
+                                            <td>" . $u['dipinjam'] . "</td>
+                                            <td>" . $this->format_rupiah->format($u['harga']) . "</td>
+                                            <td>" . $u['nama_kategori'] . "</td></tr>";
 
 
                                 $no++;
@@ -113,25 +123,14 @@
                             ?>
 
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><b>TOTAL</b></td>
-                                <td><?= $this->format_rupiah->format($total) ?></td>
-                            </tr>
-                        </tfoot class='mb-2'>
+
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <!--**********************************
             Content body end
         ***********************************-->

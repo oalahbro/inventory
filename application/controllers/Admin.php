@@ -275,6 +275,15 @@ class Admin extends CI_Controller
 		$this->load->view('template/admin/footer');
 		// var_dump($total);
 	}
+	public function getLapstock()
+	{
+		$data['laporan'] = $this->M_Admin->getInventory();
+		$data['kategori'] = $this->M_Admin->getKategori();
+		$this->load->view('template/admin/header');
+		$this->load->view('admin/lapstock', $data);
+		$this->load->view('template/admin/footer');
+		// var_dump($total);
+	}
 
 	public function profil()
 	{
@@ -401,18 +410,96 @@ class Admin extends CI_Controller
 
 	public function searchLaporan()
 	{
-		$data['laporan'] = $this->M_Admin->searchLaporan();
-		foreach ($data['laporan'] as $r) {
-			$sum[] = $r['sub_total'];
-		};
-		if (!$data['laporan']) {
-			$data['total'] = 0;
-		} else {
+		if ($_POST['submit'] == "filter") {
+			$data['laporan'] = $this->M_Admin->searchLapdate();
+			foreach ($data['laporan'] as $r) {
+				$sum[] = $r['sub_total'];
+			};
+			if (!$data['laporan']) {
+				$data['total'] = 0;
+			} else {
 
-			$data['total'] = array_sum($sum);
+				$data['total'] = array_sum($sum);
+			}
+		} elseif ($_POST['submit'] == "search") {
+			$data['laporan'] = $this->M_Admin->searchLaporan();
+			foreach ($data['laporan'] as $r) {
+				$sum[] = $r['sub_total'];
+			};
+			if (!$data['laporan']) {
+				$data['total'] = 0;
+			} else {
+
+				$data['total'] = array_sum($sum);
+			}
+		} else {
+			$this->load->library('pdf');
+			$option = $this->pdf->getOptions();
+			$option->set(['isRemoteEnabled' => true, 'isHtml5ParserEnabled' => true]);
+			$data['laporan'] = $this->M_Admin->searchLapdate();
+			foreach ($data['laporan'] as $r) {
+				$sum[] = $r['sub_total'];
+			};
+			if (!$data['laporan']) {
+				$data['total'] = 0;
+			} else {
+
+				$data['total'] = array_sum($sum);
+			}
+			$data['tgl'] = [
+				'tgl_mulai' => date('d-m-Y H:i:s', strtotime($this->input->post('tgl_mulai'))),
+				'tgl_selesai' => date('d-m-Y H:i:s', strtotime($this->input->post('tgl_selesai')))
+
+			];
+			// var_dump($data);
+			$this->load->view('admin/laporan_sewa', $data);
+			$html = $this->output->get_output();
+			$this->pdf->setPaper('A4', 'landscape');
+			$this->pdf->load_html($html);
+			$this->pdf->render();
+			$this->pdf->stream('laporan_sewa.pdf', array('Attachment' => 0));
+
+
+			$this->pdf->filename = "laporan-data-siswa.pdf";
 		}
 		$this->load->view('template/admin/header');
-		$this->load->view('admin/laporan', $data);
+		$this->load->view('admin/laporans', $data);
 		$this->load->view('template/admin/footer');
+	}
+	public function searchLapstock()
+	{
+		if ($_POST['submit'] == "filter") {
+			$data['laporan'] = $this->M_Admin->getlapstock();
+			$data['kategoris'] = $this->M_Admin->getKategoris();
+			$data['kategori'] = $this->M_Admin->getKategori();
+			$this->load->view('template/admin/header');
+			$this->load->view('admin/lapstock_s', $data);
+			$this->load->view('template/admin/footer');
+			// echo "lap stck";
+			// var_dump($this->input->post());
+		} elseif ($_POST['submit'] == "search") {
+			$data['laporan'] = $this->M_Admin->searchLapstock();
+			$data['kategoris'] = $this->M_Admin->getKategoris();
+			$data['kategori'] = $this->M_Admin->getKategori();
+			$this->load->view('template/admin/header');
+			$this->load->view('admin/lapstock_s', $data);
+			$this->load->view('template/admin/footer');
+		} else {
+			$this->load->library('pdf');
+			$option = $this->pdf->getOptions();
+			$option->set(['isRemoteEnabled' => true, 'isHtml5ParserEnabled' => true]);
+			$data['laporan'] = $this->M_Admin->getlapstock();
+
+			// var_dump($data);
+			$this->load->view('admin/laporan_stock', $data);
+			$html = $this->output->get_output();
+			$this->pdf->setPaper('A4', 'landscape');
+			$this->pdf->load_html($html);
+			$this->pdf->render();
+			$this->pdf->stream('laporan_sewa.pdf', array('Attachment' => 0));
+
+
+			$this->pdf->filename = "laporan-data-siswa.pdf";
+		}
 	}
 }

@@ -118,11 +118,11 @@
                                     </p>
                                     <p class="form-row forn-row-col forn-row-col-1">
                                         <label class="text">Tanggal Mulai</label>
-                                        <input type="datetime-local" name="tgl-mulai" class="form-control form-control-phone">
+                                        <input type="datetime-local" id="tgl-mulai" name="tgl-mulai" class="form-control form-control-phone" onchange="tgl()">
                                     </p>
                                     <p class="form-row forn-row-col forn-row-col-2">
                                         <label class="text">Tanggal Selesai</label>
-                                        <input type="datetime-local" name="tgl-selesai" class="form-control form-control-phone">
+                                        <input type="datetime-local" id="tgl-selesai" name="tgl-selesai" class="form-control form-control-phone" onchange="tgl()">
                                     </p>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                                                 </h5>
                                                 <div class="price">
                                                     <?= $this->format_rupiah->format($item['harga']) ?>
-                                                    <span class="count">x<?= $item['jumlah'] ?></span>
+                                                    <span class="count">x<?= $item['jumlah'] ?>/hari</span>
                                                 </div>
                                             </div>
 
@@ -157,7 +157,8 @@
                                     <span class="title">
                                         Total Price:
                                     </span>
-                                    <span class="total-price">
+                                    <input type="text" value="<?= $total ?>" id="tot" hidden>
+                                    <span class="total-price" id="total">
                                         <?= $this->format_rupiah->format($total) ?>
                                     </span>
                                 </div>
@@ -169,7 +170,7 @@
                             <a href="<?= base_url() ?>home/cart">Kembali Ke Keranjang</a>
                         </button>
                         <a href="<?= base_url() ?>home/checkout_end">
-                            <button type="submit" class="button button-payment">
+                            <button type="submit" id="sub" class="button button-payment">
                                 Pembayaran
                             </button>
                             </form>
@@ -218,3 +219,49 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    function tgl() {
+        let tgl_mulai = new Date(document.getElementById('tgl-mulai').value)
+        let mulai = tgl_mulai.toLocaleDateString()
+        let tgl_selesai = new Date(document.getElementById('tgl-selesai').value)
+        let selesai = tgl_selesai.toLocaleDateString()
+        var days = daysdifference(mulai, selesai);
+
+        const rupiah = (number) => {
+            return new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR"
+            }).format(number);
+        }
+        if (mulai >= selesai) {
+            alert("Tanggal selesai harus lebih dari tanggal mulai!")
+            document.getElementById("total").innerHTML = "Rp. 0"
+            document.getElementById("sub").disabled = true
+
+        } else {
+            if (!days) {
+                console.log('is nan')
+            } else {
+                let tot = document.getElementById('tot').value
+                let hari = days * tot
+                let rp = rupiah(hari)
+                console.log(rupiah(hari))
+                document.getElementById("total").innerHTML = rp
+                document.getElementById("sub").disabled = false
+            }
+        }
+        console.log(days);
+
+
+        function daysdifference(firstDate, secondDate) {
+            var startDay = new Date(firstDate);
+            var endDay = new Date(secondDate);
+
+            var millisBetween = startDay.getTime() - endDay.getTime();
+            var days = millisBetween / (1000 * 3600 * 24);
+
+            return Math.round(Math.abs(days));
+        }
+    }
+</script>

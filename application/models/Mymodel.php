@@ -1,4 +1,7 @@
 <?php
+
+use FontLib\Table\Type\post;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mymodel extends CI_Model
@@ -66,6 +69,13 @@ class Mymodel extends CI_Model
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
+    public function getKategoris()
+    {
+        $id = (int)$this->input->post('kategori');
+        $sql = "SELECT * from kategori where id_kategori=$id";
+        $result =  $this->db->query($sql)->result_array();
+        return $result;
+    }
     public function katTitle()
     {
         $catid = intval($_GET['catid']);
@@ -111,7 +121,7 @@ class Mymodel extends CI_Model
 
     public function getInventory()
     {
-        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin";
+        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin";
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
@@ -389,6 +399,83 @@ class Mymodel extends CI_Model
             ->get()->result_array();
         return $result;
     }
+    public function searchLapstock()
+    {
+        $query = $this->input->post('query');
+        $result = $this->db->select('inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image')
+            ->from('kategori')
+            ->join('inventory', 'kategori.id_kategori = inventory.id_kategori')
+            ->join('admin', 'inventory.id_admin = admin.id_admin')
+            ->where(array(
+                'inventory.nama LIKE' => '%' . $query . '%'
+            ))
+            ->get()->result_array();
+        return $result;
+    }
+    public function getlapstock()
+    {
+        if ($this->input->post('kategori') && $this->input->post('stock') == 1) {
+            $result = $this->db->select('inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image')
+                ->from('kategori')
+                ->join('inventory', 'kategori.id_kategori = inventory.id_kategori')
+                ->join('admin', 'inventory.id_admin = admin.id_admin')
+                ->where(array(
+                    'inventory.dipinjam >' => 0,
+                    'inventory.id_kategori' => $this->input->post('kategori')
+                ))
+                ->get()->result_array();
+            return $result;
+        } elseif ($this->input->post('kategori') && $this->input->post('stock') == 2) {
+            $result = $this->db->select('inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image')
+                ->from('kategori')
+                ->join('inventory', 'kategori.id_kategori = inventory.id_kategori')
+                ->join('admin', 'inventory.id_admin = admin.id_admin')
+                ->where(array(
+                    'inventory.jumlah >' => 0,
+                    'inventory.id_kategori' => $this->input->post('kategori')
+                ))
+                ->get()->result_array();
+            return $result;
+        } elseif ($this->input->post('kategori')) {
+            $result = $this->db->select('inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image')
+                ->from('kategori')
+                ->join('inventory', 'kategori.id_kategori = inventory.id_kategori')
+                ->join('admin', 'inventory.id_admin = admin.id_admin')
+                ->where(array(
+                    'inventory.id_kategori' => $this->input->post('kategori')
+                ))
+                ->get()->result_array();
+            return $result;
+        } elseif ($this->input->post('stock') == 1) {
+            $result = $this->db->select('inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image')
+                ->from('kategori')
+                ->join('inventory', 'kategori.id_kategori = inventory.id_kategori')
+                ->join('admin', 'inventory.id_admin = admin.id_admin')
+                ->where(array(
+                    'inventory.dipinjam >' => 0
+                ))
+                ->get()->result_array();
+            return $result;
+        } elseif ($this->input->post('stock') == 2) {
+            $result = $this->db->select('inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image')
+                ->from('kategori')
+                ->join('inventory', 'kategori.id_kategori = inventory.id_kategori')
+                ->join('admin', 'inventory.id_admin = admin.id_admin')
+                ->where(array(
+                    'inventory.jumlah >' => 0
+                ))
+                ->get()->result_array();
+            return $result;
+        } else {
+            $result = $this->db->select('inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah,inventory.dipinjam,inventory.deskripsi,inventory.harga,inventory.image')
+                ->from('kategori')
+                ->join('inventory', 'kategori.id_kategori = inventory.id_kategori')
+                ->join('admin', 'inventory.id_admin = admin.id_admin')
+                ->get()->result_array();
+            return $result;
+        }
+    }
+
     public function getLaporandate()
     {
         $start_date = strtotime($this->input->post('tgl_mulai'));
@@ -538,5 +625,58 @@ class Mymodel extends CI_Model
             ->where(array('penyewa.nama LIKE' => '%' . $search . '%'))
             ->get()->result_array();
         return $result;
+    }
+
+    public function searchLapdate()
+    {
+        $start_date = strtotime($this->input->post('tgl_mulai'));
+        $end_date = strtotime($this->input->post('tgl_selesai'));
+        if ($start_date && $end_date) {
+            $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
+                ->from('sewa')
+                ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+                ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+                ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+                ->where(array(
+                    'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date),
+                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
+                ))
+
+                ->get()->result_array();
+            return $result;
+        } elseif ($start_date) {
+            $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
+                ->from('sewa')
+                ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+                ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+                ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+                ->where(array(
+                    'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date)
+                ))
+
+                ->get()->result_array();
+            return $result;
+        } elseif ($end_date) {
+            $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
+                ->from('sewa')
+                ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+                ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+                ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+                ->where(array(
+                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
+                ))
+
+                ->get()->result_array();
+            return $result;
+        } else {
+            $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
+                ->from('sewa')
+                ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
+                ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
+                ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
+
+                ->get()->result_array();
+            return $result;
+        }
     }
 }

@@ -51,8 +51,8 @@
         }
 
         tfoot>tr {
-            /* background: black; */
-            color: black;
+            background: black;
+            color: white;
         }
 
         tbody>tr:hover {
@@ -69,7 +69,7 @@
             position: absolute;
             right: 0px;
 
-            bottom: -10;
+            bottom: 0;
             width: 300px;
             /* border: 3px solid #73AD21; */
             /* padding: 10px; */
@@ -103,22 +103,22 @@
     </table> -->
     <hr class="new5">
     <p align="center">
-        <b> LAPORAN STOCK RUANGAN DAN BARANG</b>
+        <b> LAPORAN SEWA RUANGAN DAN BARANG</b>
     </p>
     <br />
 
     <table width="100%">
         <thead style="background-color: lightgray;">
             <tr>
-                <th>No.</th>
+                <th>ID</th>
                 <th>Nama</th>
-                <th>Item</th>
-                <th>Harga</th>
+                <th>Nama Admin</th>
+                <th>Tahun</th>
                 <th>Jumlah</th>
-                <th>Tanggal Mulai</th>
-                <th>Tanggal Selesai</th>
-                <th>Tanggal Booking</th>
-                <th>Sub Total</th>
+                <th>Tersedia</th>
+                <th>Dipinjam</th>
+                <th>Harga</th>
+                <th>Kategori</th>
             </tr>
         </thead>
         <tbody>
@@ -128,14 +128,14 @@
 
                 <tr>
                     <th scope="row"><?= $no ?></th>
-                    <td><?= $lap['nama_penyewa'] ?></td>
-                    <td align="right"><?= $lap['nama'] ?></td>
+                    <td align="left"><?= $lap['nama'] ?></td>
+                    <td align="left"><?= $lap['username'] ?></td>
+                    <td align="center"><?= date_format(date_create($lap['tahun']), 'd-M-Y') ?></td>
+                    <td align="center"><?= $lap['jumlah'] + $lap['dipinjam'] ?></td>
+                    <td align="center"><?= $lap['jumlah'] ?></td>
+                    <td align="center"><?= $lap['dipinjam'] ?></td>
                     <td align="right"><?= $this->format_rupiah->format($lap['harga']) ?></td>
-                    <td align="right"><?= $lap['jumlah'] ?></td>
-                    <td align="right"><?= date('d-m-Y H:i:s', strtotime($lap['tgl_mulai'])) ?></td>
-                    <td align="right"><?= date('d-m-Y H:i:s', strtotime($lap['tgl_selesai'])) ?></td>
-                    <td align="right"><?= $lap['tgl_booking'] ?></td>
-                    <td align="right"><?= $this->format_rupiah->format($lap['sub_total']) ?></td>
+                    <td align="right"><?= $lap['nama_kategori'] ?></td>
                 </tr>
             <?php
                 $no++;
@@ -143,13 +143,7 @@
 
         </tbody>
 
-        <tfoot>
-            <tr>
-                <td colspan="7"></td>
-                <td align="right">TOTAL</td>
-                <td align="right"><?= $total ?></td>
-            </tr>
-        </tfoot>
+
     </table>
     <div class="right">
         <p style="margin-bottom: 50px;">Madiun ,<?php

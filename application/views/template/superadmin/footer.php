@@ -88,6 +88,12 @@
         exThumbImage: 'data-exthumbimage'
     });
 </script>
+<script type="text/javascript">
+    function sub() {
+        document.getElementById('filter').click();
+
+    }
+</script>
 </body>
 
 </html>

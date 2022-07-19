@@ -19,12 +19,12 @@
         <form class="row align-items-end  mb-2" method="POST" action="<?= base_url() ?>superadmin/searchLaporan">
             <div class="col">
                 <label class="text-black font-w500">Kategori</label>
-                <input type="date" id="tgl-mulai" name="tgl_mulai" class="form-control" onchange="sub()">
+                <input type="date" value="<?= $this->input->post('tgl_mulai') ?>" id="tgl-mulai" name="tgl_mulai" class="form-control" onchange="sub()">
             </div>
             <div class="col">
                 <label class="text-black font-w500">Stock</label>
-                <input type="date" id="tgl-selesai" name="tgl_selesai" class="form-control" onchange="sub()">
-                <button class="btn btn-primary" id="filter" name="submit" value="filter" type="sumbit"></button>
+                <input type="date" value="<?= $this->input->post('tgl_selesai') ?>" id="tgl-selesai" name="tgl_selesai" class="form-control" onchange="sub()">
+                <button class="btn btn-primary" id="filter" hidden name="submit" value="filter" type="sumbit"><i class="flaticon-381-search-2"></i></button>
             </div>
             <div class="col">
                 <div class="input-group">

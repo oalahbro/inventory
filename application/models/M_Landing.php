@@ -378,8 +378,22 @@ class M_Landing extends CI_Model
         $result =  $this->db->where(array(
             'id_sewa' => $this->input->post('id_sewa'),
         ));
-        $dat = ['data' => $data, 'result' => $result];
+
         $this->db->update('sewa', $data);
+
+        $inv = $this->getSwdetail($this->input->post('id_sewa'));
+
+        foreach ($inv as $i) {
+            $dati = [
+                'id_sewa' => $this->input->post('id_sewa'),
+                'sub_total' => $i['sub_total'] * $numberDays
+            ];
+            $this->db->where(['id_sewa' => $dati['id_sewa'], 'id_inventory' => $i['id_inventory']]);
+            $this->db->update('sewa_detail', $dati);
+        }
+        // $k = $this->db->update_batch('sewa_detail', $dati, 'id_sewa', 'id_inventory');
+        $dat = ['data' => $data, 'result' => $result];
+
         return $dat;
     }
 
@@ -410,7 +424,8 @@ class M_Landing extends CI_Model
                 $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
                 $dat[] = [
                     'id_inventory' => $get[$no][0]['id_inventory'],
-                    'jumlah' => $get[$no][0]['jumlah'] - $i['jumlah']
+                    'jumlah' => $get[$no][0]['jumlah'] - $i['jumlah'],
+                    'dipinjam' => $i['jumlah']
                 ];
                 $no++;
             }

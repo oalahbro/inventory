@@ -12,18 +12,36 @@
 
             <div class="mr-auto">
                 <h2 class="text-black font-w600">Laporan</h2>
-                <p class="mb-0">Admin Dashboard</p>
+                <p class="mb-0">Super Admin Dashboard</p>
 
             </div>
-            <form class="input-group mb-3 col-md-6" method="POST" action="<?= base_url() ?>admin/searchLaporan">
-                <input type="text" class="form-control" name="query" placeholder=" Cari disini...">
-                <div class="input-group-append mr-2">
-                    <button class="btn btn-primary" type="sumbit"><i class="flaticon-381-search-2"></i></button>
-                </div>
-                <a data-toggle="modal" data-target="#addOrderModal" type="button" class="btn btn-rounded btn-danger"><span class="btn-icon-left text-danger"><i class="fa fa-file-pdf-o color-danger"></i>
-                    </span>EXPORT PDF</a>
-            </form>
         </div>
+        <form class="row align-items-end  mb-2" method="POST" action="<?= base_url() ?>admin/searchLaporan">
+            <div class="col">
+                <label class="text-black font-w500">Kategori</label>
+                <input type="date" id="tgl-mulai" name="tgl_mulai" class="form-control" onchange="sub()">
+            </div>
+            <div class="col">
+                <label class="text-black font-w500">Stock</label>
+                <input type="date" id="tgl-selesai" name="tgl_selesai" class="form-control" onchange="sub()">
+                <button class="btn btn-primary" id="filter" name="submit" value="filter" type="sumbit"></button>
+            </div>
+            <div class="col">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="query" placeholder=" Cari disini...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" name="submit" value="search" type="sumbit"><i class="flaticon-381-search-2"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-block btn-rounded btn-danger" name="submit" value="export" type="sumbit">
+                    <span class="btn-icon-left text-danger"><i class="fa fa-file-pdf-o color-danger"></i>
+                    </span>EXPORT
+                </button>
+            </div>
+
+        </form>
         <!-- Add Order -->
         <div class="modal  bd-example-modal-lg fade" id="addOrderModal">
             <div class="modal-dialog modal-dialog modal-lg" role="document">
@@ -87,7 +105,7 @@
                                             <td>" . $u['tgl_mulai'] . "</td>
                                             <td>" . $u['tgl_selesai'] . "</td>
                                             <td>" . $u['tgl_booking'] . "</td>
-                                            <td>" . $u['sub_total'] . "</td>";
+                                            <td>" . $this->format_rupiah->format($u['sub_total']) . "</td>";
 
 
                                 $no++;
