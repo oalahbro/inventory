@@ -328,7 +328,8 @@ class Mymodel extends CI_Model
                     $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
                     $dat[] = [
                         'id_inventory' => $get[$no][0]['id_inventory'],
-                        'jumlah' => $get[$no][0]['jumlah'] + $i['jumlah']
+                        'jumlah' => $get[$no][0]['jumlah'] + $i['jumlah'],
+                        'dipinjam' => $get[$no][0]['dipinjam'] - $i['jumlah']
                     ];
                     $no++;
                 }

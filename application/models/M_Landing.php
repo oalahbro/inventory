@@ -425,7 +425,7 @@ class M_Landing extends CI_Model
                 $dat[] = [
                     'id_inventory' => $get[$no][0]['id_inventory'],
                     'jumlah' => $get[$no][0]['jumlah'] - $i['jumlah'],
-                    'dipinjam' => $i['jumlah']
+                    'dipinjam' => $get[$no][0]['dipinjam'] + $i['jumlah']
                 ];
                 $no++;
             }
