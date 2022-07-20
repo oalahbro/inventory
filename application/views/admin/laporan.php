@@ -18,11 +18,11 @@
         </div>
         <form class="row align-items-end  mb-2" method="POST" action="<?= base_url() ?>admin/searchLaporan">
             <div class="col">
-                <label class="text-black font-w500">Kategori</label>
+                <label class="text-black font-w500">Tanggal Mulai</label>
                 <input type="date" id="tgl-mulai" name="tgl_mulai" class="form-control" onchange="sub()">
             </div>
             <div class="col">
-                <label class="text-black font-w500">Stock</label>
+                <label class="text-black font-w500">Tanggal Selesai</label>
                 <input type="date" id="tgl-selesai" name="tgl_selesai" class="form-control" onchange="sub()">
                 <button class="btn btn-primary" id="filter" name="submit" value="filter" type="sumbit"></button>
             </div>
