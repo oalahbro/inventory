@@ -205,7 +205,7 @@ class Admin extends CI_Controller
 	{
 		$this->M_Admin->updatePemesanan();
 		redirect(base_url('admin/getPemesanan'));
-		// echo $_POST['action'];
+		// var_dump($dab);
 	}
 	public function updateKonfpemesanan()
 	{

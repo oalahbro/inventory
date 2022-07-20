@@ -337,8 +337,7 @@ class Mymodel extends CI_Model
                 'status' => 0
             ];
             $inv = $this->getSwdetail($this->input->post('id_sewa'));
-            if (!$inv[0]['bukti_bayar']) {
-            } else {
+            if ($inv[0]['bukti_bayar']) {
                 $no = 1;
                 foreach ($inv as $i) {
                     $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();

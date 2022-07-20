@@ -225,7 +225,7 @@ class M_Admin extends CI_Model
     public function getSwdetail($catid)
     {
 
-        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.id_inventory,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa_detail.sub_total,sewa_detail.jumlah')
+        $result =  $this->db->select('sewa_detail.id_sewa_detail,inventory.id_inventory,inventory.nama AS nama_inventory,inventory.harga,penyewa.nama,sewa.status,sewa.bukti_bayar,sewa_detail.sub_total,sewa_detail.jumlah')
             ->from('sewa')
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
@@ -286,8 +286,7 @@ class M_Admin extends CI_Model
             ];
 
             $inv = $this->getSwdetail($this->input->post('id_sewa'));
-            if (!$inv[0]['bukti_bayar']) {
-            } else {
+            if ($inv[0]['bukti_bayar']) {
                 $no = 1;
                 foreach ($inv as $i) {
                     $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
@@ -306,6 +305,7 @@ class M_Admin extends CI_Model
         ));
         $this->db->update('sewa', $data);
         return $result;
+        // return $inv;
     }
 
     public function getHistory()
