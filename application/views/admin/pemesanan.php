@@ -40,11 +40,12 @@
 
                                 </table>
                             </div>
+                            <input type="text" name="bukti_bayar" id="bukti_bayar" hidden></input>
                             <div id="konfirmasi">
-                                <form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan">
+                                <form method="POST" action="<?= base_url() ?>admin/updatePemesanan">
 
                                     <input type="text" name="id_sewa" id="id_sewa" hidden></input>
-                                    <input type="text" name="bukti_bayar" id="bukti_bayar"></input>
+
                                     <div class="form-group mt-2">
                                         <button type="submit" value="konfirmasi" name="action" class="btn btn-primary">KONFORMASI</button>
                                         <button type="submit" value="batal" name="action" class="btn btn-danger">BATAL</button>
@@ -95,7 +96,7 @@
                                             </td><td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>
                                             <td> 
                                             <div class='d-flex'>
-                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
+                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "','" . $u['bukti_bayar'] . "')\"><i class='fa fa-check'></i></a>
 
                                                 
                                             </div>";
@@ -123,7 +124,7 @@
         let sew = document.getElementById('id_sewa').value = id_sewa;
         let buk = document.getElementById('bukti_bayar').value = bukti_bayar;
         var api_url =
-            "<?= base_url() ?>superadmin/api?catid=" + id_sewa;
+            "<?= base_url() ?>admin/api?catid=" + id_sewa;
         async function getapi(url) {
 
             // Storing response
@@ -176,7 +177,7 @@
         let but = document.getElementById('konfirmasi').innerHTML
         console.log(but)
         if (!buk) {
-            document.getElementById('konfirmasi').innerHTML = `<form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan" onsubmit="return confirm('Bukti bayar belum di upload! ingin melanjutkan ?');">
+            document.getElementById('konfirmasi').innerHTML = `<form method="POST" action="<?= base_url() ?>admin/updatePemesanan" onsubmit="return confirm('Bukti bayar belum di upload! ingin melanjutkan ?');">
 
 <input type="text" name="id_sewa" id="id_sewa" hidden value="` + sew + `"></input>
 <div class="form-group mt-2">

@@ -40,11 +40,12 @@
 
                                 </table>
                             </div>
+                            <input type="text" name="bukti_bayar" id="bukti_bayar" hidden></input>
                             <div id="konfirmasi">
                                 <form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan">
 
                                     <input type="text" name="id_sewa" id="id_sewa" hidden></input>
-                                    <input type="text" name="bukti_bayar" id="bukti_bayar"></input>
+
                                     <div class="form-group mt-2">
                                         <button type="submit" value="konfirmasi" name="action" class="btn btn-primary">KONFORMASI</button>
                                         <button type="submit" value="batal" name="action" class="btn btn-danger">BATAL</button>
