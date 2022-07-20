@@ -241,6 +241,21 @@ class M_Admin extends CI_Model
     public function updatePemesanan()
     {
         if ($_POST['action'] == 'konfirmasi') {
+            $inv = $this->getSwdetail($this->input->post('id_sewa'));
+            if (!$inv[0]['bukti_bayar']) {
+                $inv = $this->getSwdetail($this->input->post('id_sewa'));
+                $no = 1;
+                foreach ($inv as $i) {
+                    $get[$no] =  $this->db->query("SELECT * FROM inventory where id_inventory=" . $i['id_inventory'])->result_array();
+                    $dat[] = [
+                        'id_inventory' => $get[$no][0]['id_inventory'],
+                        'jumlah' => $get[$no][0]['jumlah'] - $i['jumlah'],
+                        'dipinjam' => $get[$no][0]['dipinjam'] + $i['jumlah']
+                    ];
+                    $no++;
+                }
+                $this->db->update_batch('inventory', $dat, 'id_inventory');
+            }
             $data = [
                 'id_sewa' => $this->input->post('id_sewa'),
                 'status' => 1

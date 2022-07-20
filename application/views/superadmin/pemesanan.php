@@ -40,12 +40,16 @@
 
                                 </table>
                             </div>
-                            <form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan">
-                                <input type="text" name="id_sewa" id="id_sewa" hidden></input>
-                                <div class="form-group mt-2">
-                                    <button type="submit" value="konfirmasi" name="action" class="btn btn-primary">KONFORMASI</button>
-                                    <button type="submit" value="batal" name="action" class="btn btn-danger">BATAL</button>
-                                </div>
+                            <div id="konfirmasi">
+                                <form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan">
+
+                                    <input type="text" name="id_sewa" id="id_sewa" hidden></input>
+                                    <input type="text" name="bukti_bayar" id="bukti_bayar"></input>
+                                    <div class="form-group mt-2">
+                                        <button type="submit" value="konfirmasi" name="action" class="btn btn-primary">KONFORMASI</button>
+                                        <button type="submit" value="batal" name="action" class="btn btn-danger">BATAL</button>
+                                    </div>
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -88,7 +92,7 @@
                                             </td><td><span class='badge badge-info light'><i class='fa fa-circle text-info mr-1'></i>Pengajuan</span></td>
                                             <td> 
                                             <div class='d-flex'>
-                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "')\"><i class='fa fa-check'></i></a>
+                                                <a href='#' class='btn btn-primary shadow btn-xs sharp mr-1' data-toggle='modal' data-target='#edit-modal' onClick=\"SetInput('" . $u['id_sewa'] . "','" . $u['bukti_bayar'] . "')\"><i class='fa fa-check'></i></a>
 
                                                 
                                             </div>";
@@ -111,8 +115,10 @@
     // api url
 
 
-    function SetInput(id_sewa) {
+    function SetInput(id_sewa, bukti_bayar) {
         document.getElementById('id_sewa').value = id_sewa;
+        let sew = document.getElementById('id_sewa').value = id_sewa;
+        let buk = document.getElementById('bukti_bayar').value = bukti_bayar;
         var api_url =
             "<?= base_url() ?>superadmin/api?catid=" + id_sewa;
         async function getapi(url) {
@@ -164,15 +170,25 @@
             // Setting innerHTML as tab variable
             document.getElementById("employees").innerHTML = tab + "</tbody>";
         }
+        let but = document.getElementById('konfirmasi').innerHTML
+        console.log(but)
+        if (!buk) {
+            document.getElementById('konfirmasi').innerHTML = `<form method="POST" action="<?= base_url() ?>superadmin/updatePemesanan" onsubmit="return confirm('Bukti bayar belum di upload! ingin melanjutkan ?');">
+
+<input type="text" name="id_sewa" id="id_sewa" hidden value="` + sew + `"></input>
+<div class="form-group mt-2">
+    <button type="submit" value="konfirmasi" name="action" class="btn btn-primary">KONFORMASI</button>
+    <button type="submit" value="batal" name="action" class="btn btn-danger">BATAL</button>
+</div>`
+        }
+
     }
 
     function setInput1(id_inventory) {
         document.getElementById('id_inventory1').value = id_inventory;
     }
 
-    // function SetInput(id_sewa) {
-    //     document.getElementById('id_sewa').value = id_sewa;
-
-
-    // }
+    function alert() {
+        alert("Hello! I am an alert box!");
+    }
 </script>
