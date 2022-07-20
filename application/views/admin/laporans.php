@@ -12,7 +12,7 @@
 
             <div class="mr-auto">
                 <h2 class="text-black font-w600">Laporan</h2>
-                <p class="mb-0">Super Admin Dashboard</p>
+                <p class="mb-0">Admin Dashboard</p>
 
             </div>
         </div>
@@ -102,9 +102,9 @@
                                             <td>" . $u['nama'] . "</td>
                                             <td>" . $u['harga'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
-                                            <td>" . $u['tgl_mulai'] . "</td>
-                                            <td>" . $u['tgl_selesai'] . "</td>
-                                            <td>" . $u['tgl_booking'] . "</td>
+                                            <td>" . date_format(date_create($u['tgl_mulai']), 'd-M-Y') . "</td>
+                                            <td>" . date_format(date_create($u['tgl_selesai']), 'd-M-Y') . "</td>
+                                            <td>" . date_format(date_create($u['tgl_booking']), 'd-M-Y') . "</td>
                                             <td>" . $this->format_rupiah->format($u['sub_total']) . "</td>";
 
 

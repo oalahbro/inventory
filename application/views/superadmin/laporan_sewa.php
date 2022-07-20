@@ -103,7 +103,7 @@
     </table> -->
     <hr class="new5">
     <p align="center">
-        <b> LAPORAN STOCK RUANGAN DAN BARANG</b>
+        <b> LAPORAN SEWA RUANGAN DAN BARANG</b>
     </p>
     <br />
 

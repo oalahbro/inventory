@@ -12,7 +12,7 @@
 
             <div class="mr-auto">
                 <h2 class="text-black font-w600">Laporan</h2>
-                <p class="mb-0">Super Admin Dashboard</p>
+                <p class="mb-0">Admin Dashboard</p>
 
             </div>
 

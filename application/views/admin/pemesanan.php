@@ -78,9 +78,9 @@
                                 echo "<tr>
                                             <td>" . $no . "</td>
                                             <td>" . $u['nama'] . "</td>
-                                            <td>" . $u['tgl_mulai'] . "</td>
-                                            <td>" . $u['tgl_selesai'] . "</td>
-                                            <td>" . $u['tgl_booking'] . "</td>
+                                            <td>" . date_format(date_create($u['tgl_mulai']), 'd-M-Y') . "</td>
+                                            <td>" . date_format(date_create($u['tgl_selesai']), 'd-M-Y') . "</td>
+                                            <td>" . date_format(date_create($u['tgl_booking']), 'd-M-Y') . "</td>
                                             <td >
                                             <div class='lightgallery' class='row'>
                                             <a href='" . base_url() . "assets/upload/" . $u['bukti_bayar'] . "' data-exthumbimage='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "' data-src='" . base_url() . "assets/upload/" . $u['bukti_bayar']  . "'class='col-lg-3 col-md-6 mb-4' >
