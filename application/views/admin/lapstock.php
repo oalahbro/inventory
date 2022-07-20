@@ -110,7 +110,7 @@
                                             <td>" . $no . "</td>
                                             <td>" . $u['nama'] . "</td>
                                             <td>" . $u['username'] . "</td>
-                                            <td>" . $u['tahun'] . "</td>
+                                            <td>" . date_format(date_create($u['tahun']), 'd-M-Y') . "</td>
                                             <td>" . $jum = $u['jumlah'] + $u['dipinjam'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
                                             <td>" . $u['dipinjam'] . "</td>

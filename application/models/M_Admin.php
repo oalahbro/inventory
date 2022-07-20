@@ -339,14 +339,14 @@ class M_Admin extends CI_Model
 
     public function getLaporan()
     {
-
+        $notw = [4];
         $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
             ->from('sewa')
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
 
-            // ->where(array('sewa.status' => 2))
+            ->where_not_in('sewa.status', $notw)
             ->get()->result_array();
         return $result;
     }
