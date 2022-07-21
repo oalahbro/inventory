@@ -78,7 +78,7 @@ class M_Admin extends CI_Model
     public function filter()
     {
         $catid = intval($_GET['catid']);
-        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin where inventory.id_kategori='$catid'";
+        $sql = "SELECT inventory.id_inventory,inventory.dipinjam,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin where inventory.id_kategori='$catid'";
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
@@ -466,7 +466,7 @@ class M_Admin extends CI_Model
                 ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
-                    'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date)
+                    'sewa.tgl_selesai <=' =>  date('Y-m-d',  $end_date) . ' 23:59:59',
                 ))
 
                 ->get()->result_array();

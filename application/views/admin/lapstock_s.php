@@ -145,19 +145,7 @@
                             ?>
 
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><b>TOTAL</b></td>
-                                <!-- <td><?= $this->format_rupiah->format($total) ?></td> -->
-                            </tr>
-                        </tfoot class='mb-2'>
+
                     </table>
                 </div>
             </div>

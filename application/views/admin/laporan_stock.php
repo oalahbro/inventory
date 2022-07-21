@@ -149,7 +149,8 @@
         <p style="margin-bottom: 50px;">Madiun ,<?php
                                                 echo $date = date('d-M-Y'); ?></p>
 
-        (yang bertanggung jawab)
+        <b>Mulyono <br>
+            NIP : </b> 197012102007011023
     </div>
 </body>
 

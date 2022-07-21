@@ -17,38 +17,7 @@
             </div>
 
         </div>
-        <!-- Add Order -->
-        <div class="modal  bd-example-modal-lg fade" id="addOrderModal">
-            <div class="modal-dialog modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Pilih Tanggal</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="<?= base_url() ?>superadmin/pdf">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <label class="text-black font-w500">Dari Tanggal</label>
-                                        <input name="tgl_mulai" class="datepicker-default form-control" id="datepicker">
-                                    </div>
-                                    <div class="col-sm-6 mt-2 mt-sm-0">
-                                        <label class="text-black font-w500">Sampai Tanggal</label>
-                                        <input name="tgl_selesai" class="datepicker-default form-control" id="datepicker">
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">SIMPAN</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <form class="row align-items-end  mb-2" method="POST" action="<?= base_url() ?>superadmin/searchLapstock">
             <div class="col">
                 <label class="text-black font-w500">Kategori</label>

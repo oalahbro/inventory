@@ -181,6 +181,8 @@
                                 <th style="width: 20%">Deskripsi</th>
                                 <th>Tahun</th>
                                 <th>Jumlah</th>
+                                <th>Tersedia</th>
+                                <th>Dipinjam</th>
                                 <th>Image</th>
                                 <th>Harga</th>
                                 <th>Kategori</th>
@@ -197,7 +199,9 @@
                                             <td>" . $u['username'] . "</td>
                                             <td>" . substr($u['deskripsi'], 0, 150) . " . . .</td>
                                             <td>" . $u['tahun'] . "</td>
+                                            <td>" . $jum = $u['jumlah'] + $u['dipinjam'] . "</td>
                                             <td>" . $u['jumlah'] . "</td>
+                                            <td>" . $u['dipinjam'] . "</td>
                                             <td>
                                             <div class='lightgallery' class='row'>
                                             <a href='" . base_url() . "assets/upload/" . $u['image'] . "' data-exthumbimage='" . base_url() . "assets/upload/" . $u['image'] . "' data-src='" . base_url() . "assets/upload/" . $u['image'] . "'class='col-lg-3 col-md-6 mb-4' >

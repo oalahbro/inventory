@@ -94,19 +94,18 @@
             </td>
         </tr>
     </table>
-    <!-- <table width="50%">
-        <tr>
-            <td><strong>From:</strong><?= $tgl['tgl_mulai'] ?></td>
-            <td><strong>To:</strong><?= $tgl['tgl_selesai'] ?></td>
-        </tr>
 
-    </table> -->
     <hr class="new5">
     <p align="center">
         <b> LAPORAN STOCK RUANGAN DAN BARANG</b>
     </p>
     <br />
+    <?php if (!$tgl) {
+        echo '<strong>Semua</strong></br>';
+    } else { ?>
+        <strong>Tanggal : </strong><?= $tgl['tgl_mulai'] ?><strong> - </strong><?= $tgl['tgl_selesai'] ?> <?php } ?><br />
 
+    <br />
     <table width="100%">
         <thead style="background-color: lightgray;">
             <tr>
@@ -155,7 +154,8 @@
         <p style="margin-bottom: 50px;">Madiun ,<?php
                                                 echo $date = date('d-M-Y'); ?></p>
 
-        (yang bertanggung jawab)
+        <b>Mulyono <br>
+            NIP : </b> 197012102007011023
     </div>
 </body>
 

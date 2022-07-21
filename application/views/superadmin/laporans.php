@@ -18,11 +18,11 @@
         </div>
         <form class="row align-items-end  mb-2" method="POST" action="<?= base_url() ?>superadmin/searchLaporan">
             <div class="col">
-                <label class="text-black font-w500">Kategori</label>
+                <label class="text-black font-w500">Dari Tanggal</label>
                 <input type="date" value="<?= $this->input->post('tgl_mulai') ?>" id="tgl-mulai" name="tgl_mulai" class="form-control" onchange="sub()">
             </div>
             <div class="col">
-                <label class="text-black font-w500">Stock</label>
+                <label class="text-black font-w500">Sampai Tanggal</label>
                 <input type="date" value="<?= $this->input->post('tgl_selesai') ?>" id="tgl-selesai" name="tgl_selesai" class="form-control" onchange="sub()">
                 <button class="btn btn-primary" id="filter" hidden name="submit" value="filter" type="sumbit"><i class="flaticon-381-search-2"></i></button>
             </div>

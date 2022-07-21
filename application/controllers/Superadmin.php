@@ -488,11 +488,28 @@ class Superadmin extends CI_Controller
 
 				$data['total'] = array_sum($sum);
 			}
-			$data['tgl'] = [
-				'tgl_mulai' => date('d-m-Y H:i:s', strtotime($this->input->post('tgl_mulai'))),
-				'tgl_selesai' => date('d-m-Y H:i:s', strtotime($this->input->post('tgl_selesai')))
+			if ($this->input->post('tgl_mulai') && $this->input->post('tgl_selesai')) {
+				$data['tgl'] = [
+					'tgl_mulai' => date('d-M-Y', strtotime($this->input->post('tgl_mulai'))),
+					'tgl_selesai' => date('d-M-Y', strtotime($this->input->post('tgl_selesai')))
 
-			];
+				];
+			} elseif ($this->input->post('tgl_mulai')) {
+				$data['tgl'] = [
+					'tgl_mulai' => date('d-M-Y', strtotime($this->input->post('tgl_mulai'))),
+					'tgl_selesai' => ''
+
+				];
+			} elseif ($this->input->post('tgl_selesai')) {
+				$data['tgl'] = [
+					'tgl_mulai' => '',
+					'tgl_selesai' => date('d-M-Y', strtotime($this->input->post('tgl_selesai')))
+
+				];
+			} else {
+				$data['tgl'] = [];
+			}
+
 			// var_dump($data);
 			$this->load->view('superadmin/laporan_sewa', $data);
 			$html = $this->output->get_output();

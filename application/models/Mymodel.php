@@ -130,7 +130,7 @@ class Mymodel extends CI_Model
     public function filter()
     {
         $catid = intval($_GET['catid']);
-        $sql = "SELECT inventory.id_inventory,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin where inventory.id_kategori='$catid'";
+        $sql = "SELECT inventory.id_inventory,inventory.dipinjam,admin.username,kategori.nama_kategori,kategori.id_kategori,inventory.nama,inventory.tahun,inventory.jumlah, inventory.deskripsi,inventory.harga,inventory.image FROM kategori JOIN inventory ON kategori.id_kategori=inventory.id_kategori JOIN admin ON inventory.id_admin=admin.id_admin where inventory.id_kategori='$catid'";
         $result =  $this->db->query($sql)->result_array();
         return $result;
     }
@@ -494,17 +494,14 @@ class Mymodel extends CI_Model
 
     public function getLaporandate()
     {
-        $start_date = strtotime($this->input->post('tgl_mulai'));
-        $end_date = strtotime($this->input->post('tgl_selesai'));
+        $notw = [4];
         $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
             ->from('sewa')
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array(
-                'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date),
-                'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
-            ))
+            ->where_not_in('sewa.status', $notw)
+
             // ->where('date BETWEEN "' . date('Y-m-d', strtotime($start_date)) . '" and "' . date('Y-m-d', strtotime($end_date)) . '"')
             ->get()->result_array();
         return $result;
@@ -645,6 +642,7 @@ class Mymodel extends CI_Model
 
     public function searchLapdate()
     {
+        $notw = [4];
         $start_date = strtotime($this->input->post('tgl_mulai'));
         $end_date = strtotime($this->input->post('tgl_selesai'));
         if ($start_date && $end_date) {
@@ -657,6 +655,7 @@ class Mymodel extends CI_Model
                     'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date),
                     'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
                 ))
+
 
                 ->get()->result_array();
             return $result;
@@ -679,7 +678,8 @@ class Mymodel extends CI_Model
                 ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
-                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
+                    'sewa.tgl_selesai <=' =>  date('Y-m-d',  $end_date) . ' 23:59:59',
+
                 ))
 
                 ->get()->result_array();
@@ -690,7 +690,7 @@ class Mymodel extends CI_Model
                 ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
                 ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-
+                ->where_not_in('sewa.status', $notw)
                 ->get()->result_array();
             return $result;
         }
