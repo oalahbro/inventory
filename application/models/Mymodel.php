@@ -404,14 +404,14 @@ class Mymodel extends CI_Model
 
     public function getLaporan()
     {
-        $notw = [4];
+        // $notw = [4];
         $result =  $this->db->select('sewa.id_sewa,penyewa.nama as nama_penyewa,inventory.nama,sewa_detail.harga,sewa_detail.jumlah,sewa.tgl_mulai,sewa.tgl_selesai,sewa.tgl_booking,sewa_detail.sub_total')
             ->from('sewa')
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
 
-            ->where_not_in('sewa.status', $notw)
+            ->where('sewa.status', '1')
             ->get()->result_array();
         return $result;
     }
@@ -635,7 +635,10 @@ class Mymodel extends CI_Model
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array('penyewa.nama LIKE' => '%' . $search . '%'))
+            ->where(array(
+                'penyewa.nama LIKE' => '%' . $search . '%',
+                'sewa.status' => 1
+            ))
             ->get()->result_array();
         return $result;
     }
@@ -653,7 +656,8 @@ class Mymodel extends CI_Model
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
                     'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date),
-                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
+                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date),
+                    'sewa.status' => 1
                 ))
 
 
@@ -666,7 +670,8 @@ class Mymodel extends CI_Model
                 ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
-                    'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date)
+                    'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date),
+                    'sewa.status' => 1
                 ))
 
                 ->get()->result_array();
@@ -679,7 +684,7 @@ class Mymodel extends CI_Model
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
                     'sewa.tgl_selesai <=' =>  date('Y-m-d',  $end_date) . ' 23:59:59',
-
+                    'sewa.status' => 1
                 ))
 
                 ->get()->result_array();
@@ -690,7 +695,7 @@ class Mymodel extends CI_Model
                 ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
                 ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-                ->where_not_in('sewa.status', $notw)
+                ->where('sewa.status', '1')
                 ->get()->result_array();
             return $result;
         }

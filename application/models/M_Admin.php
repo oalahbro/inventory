@@ -454,7 +454,8 @@ class M_Admin extends CI_Model
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
                     'sewa.tgl_mulai >=' =>  date('Y-m-d H:i:s', $start_date),
-                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
+                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date),
+                    'sewa.status' => 1
                 ))
 
                 ->get()->result_array();
@@ -467,6 +468,7 @@ class M_Admin extends CI_Model
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
                     'sewa.tgl_selesai <=' =>  date('Y-m-d',  $end_date) . ' 23:59:59',
+                    'sewa.status' => 1
                 ))
 
                 ->get()->result_array();
@@ -478,7 +480,8 @@ class M_Admin extends CI_Model
                 ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
                 ->where(array(
-                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date)
+                    'sewa.tgl_selesai <=' =>  date('Y-m-d H:i:s',  $end_date),
+                    'sewa.status' => 1
                 ))
 
                 ->get()->result_array();
@@ -489,7 +492,7 @@ class M_Admin extends CI_Model
                 ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
                 ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
                 ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-
+                ->where('sewa.status', '1')
                 ->get()->result_array();
             return $result;
         }
@@ -505,7 +508,8 @@ class M_Admin extends CI_Model
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
             ->where(array(
                 'sewa.tgl_mulai >' =>  date('Y-m-d H:i:s', $start_date),
-                'sewa.tgl_selesai <' =>  date('Y-m-d H:i:s',  $end_date)
+                'sewa.tgl_selesai <' =>  date('Y-m-d H:i:s',  $end_date),
+                'sewa.status' => 1
             ))
             // ->where('date BETWEEN "' . date('Y-m-d', strtotime($start_date)) . '" and "' . date('Y-m-d', strtotime($end_date)) . '"')
             ->get()->result_array();
@@ -631,7 +635,10 @@ class M_Admin extends CI_Model
             ->join('sewa_detail', 'sewa.id_sewa = sewa_detail.id_sewa')
             ->join('penyewa', 'sewa.id_penyewa = penyewa.id_penyewa')
             ->join('inventory', 'sewa_detail.id_inventory = inventory.id_inventory')
-            ->where(array('penyewa.nama LIKE' => '%' . $search . '%'))
+            ->where(array(
+                'penyewa.nama LIKE' => '%' . $search . '%',
+                'sewa.status' => 1
+            ))
             ->get()->result_array();
         return $result;
     }
