@@ -133,6 +133,7 @@
                                         } else { ?>
                                             <tbody>
                                                 <?php
+                                                $no = 1;
                                                 foreach ($result as $item) {
 
                                                 ?>
@@ -154,22 +155,34 @@
                                                             }
                                                             ?>
                                                         </td>
-                                                        <td class="product-price" data-title="Price">
-                                                            <span class="woocommerce-Price-amount amount">
-                                                                <a class="text-danger">Qtyz </a> : <?= $item['jumlah'] ?>
-                                                            </span>
+                                                        <td class="product-quantity" data-title="Quantity">
+                                                            <div class="quantity">
+                                                                <div class="control">
+                                                                    <a class="btn-number qtyminus quantity-minus" href="#">-</a>
+                                                                    <input type="number" id="count<?= $no ?>" name="jumlah" min="1" value="<?= $item['jumlah'] ?>" title="Qty" class="input-qty qty" size="4" <?= "onChange=\"update('" . $item['id_sewa_detail'] . "','" . $item['jumlah'] .  "','" . $item['id_inventory'] . "','" . $no .  "')\"" ?>>
+                                                                    <?php if ($item['status_qty'] == 0) {
+                                                                        echo '<a href="#" class="btn-number qtyplus quantity-plus" style="pointer-events: none; cursor: default;">+</a>';
+                                                                    } else {
+                                                                        echo '<a href="#" class="btn-number qtyplus quantity-plus">+</a>';
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                            </div>
                                                         </td>
+
                                                         <td class="product-price" data-title="Price">
                                                             <span class="woocommerce-Price-amount amount">
                                                                 <?= $this->format_rupiah->format($item['sub_total']) ?>
                                                             </span>
                                                         </td>
                                                     </tr>
-                                                <?php } ?>
+                                                <?php $no++;
+                                                } ?>
                                             </tbody>
                                         <?php } ?>
                                     </table>
                                 </form>
+
                                 <div class="control-cart">
                                     <a href="<?= base_url() ?>home/pesan">
                                         <button class=" button btn-cart-to-checkout">
@@ -250,7 +263,13 @@
             </div>
         </div>
     </div>
-
+    <form method="POST" action="<?= base_url() ?>home/updateQty" hidden>
+        <input type="text" name="id_sewa_detail" id="id_sw" />
+        <input type="text" name="jumlah" id="jum" />
+        <input type="text" name="id_inventory" id="id_inv" />
+        <input type="text" id="no" hidden />
+        <button type="submit" id="up"></button>
+    </form>
     <a href="#" class="backtotop">
         <i class="fa fa-angle-double-up"></i>
     </a>
@@ -261,5 +280,18 @@
         document.getElementById('name').innerText = nama;
         document.getElementById('id_inventory1').value = id_inventory;
         document.getElementById('sub_total1').value = harga;
+    }
+
+    function update(id_sw, jum, id_inv, no) {
+        let h = document.getElementById('id_sw').value = id_sw;
+        let i = document.getElementById('jum').value = jum;
+        let j = document.getElementById('id_inv').value = id_inv;
+        let k = document.getElementById('no').value = no;
+        let l = document.getElementById('count' + k).value
+        document.getElementById('jum').value = l
+        console.log(l)
+        setTimeout(function() {
+            document.getElementById('up').click()
+        }, 800);
     }
 </script>

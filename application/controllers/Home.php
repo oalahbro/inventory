@@ -108,6 +108,14 @@ class Home extends CI_Controller
 		}
 	}
 
+	public function updateQty()
+	{
+		$this->M_Landing->updateQty();
+		redirect(base_url('home/cart'));
+		// print_r($dat);
+
+	}
+
 	public function cart()
 	{
 		$post = $this->M_Landing->cart();

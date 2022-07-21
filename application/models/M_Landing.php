@@ -179,7 +179,7 @@ class M_Landing extends CI_Model
                     'sub_total' => $resultinv[0]['sub_total'] + $post['jumlah'] * $post['harga']
                 ];
                 $this->db->where(array(
-                    'id_inventory' => $resultinv[0]['id_inventory']
+                    'id_sewa_detail' => $resultinv[0]['id_sewa_detail']
                 ));
                 $this->db->update('sewa_detail', $datadetail);
 
@@ -211,6 +211,32 @@ class M_Landing extends CI_Model
         }
 
         // return ($datasewa);
+    }
+
+    public function updateQty()
+    {
+        $input = $this->input->post();
+        $cekdet = $this->db->query("SELECT * FROM sewa_detail where id_sewa_detail=" . $input['id_sewa_detail'])->result_array();
+        $cekinvt = $this->db->query("SELECT * FROM inventory where id_inventory=" . $input['id_inventory'])->result_array();
+        if ($input['jumlah'] > $cekinvt[0]['jumlah']) {
+            $datadetail = [
+                'jumlah' => $input['jumlah'],
+                'sub_total' =>  $input['jumlah'] * $cekinvt[0]['harga'],
+                'status_qty' => 0
+            ];
+        } else {
+            $datadetail = [
+                'jumlah' => $input['jumlah'],
+                'sub_total' =>  $input['jumlah'] * $cekinvt[0]['harga'],
+                'status_qty' => 1
+            ];
+        }
+        $this->db->where(array(
+            'id_sewa_detail' => $input['id_sewa_detail']
+        ));
+        $this->db->update('sewa_detail', $datadetail);
+
+        // return $datadetail;
     }
     public function transaksi()
     {
