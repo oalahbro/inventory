@@ -1,4 +1,4 @@
 ###################
 always on pzt-hnzp-rgs
 ###################
-if u know this u will see me
+if u know this u will see me, only 19.00
