@@ -1,4 +1,5 @@
 ###################
-klo ada apa2 ak lg yg kena gt? 
+Biar gweh
+Open block lah lama amat
 ###################
 
