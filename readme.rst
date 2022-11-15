@@ -1,4 +1,4 @@
 ###################
-klo call malem, sore masi dikantor
+call me when u r free
 ###################
 
