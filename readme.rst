@@ -1,4 +1,4 @@
 ###################
-ok gud, move wa ga si ?
+iya, tp kan masi di block
 ###################
 
