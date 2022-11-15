@@ -1,4 +1,4 @@
 ###################
-klo move, emg kamu yakin?
+kalo dari pihak km ada masalah lg gmn?
 ###################
 
