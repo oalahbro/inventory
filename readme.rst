@@ -1,4 +1,4 @@
 ###################
-di mana? biasa atau wa?
+klo call malem, sore masi dikantor
 ###################
 
