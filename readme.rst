@@ -1,5 +1,5 @@
 ###################
-Biar gweh
-Open block lah lama amat
+gapercaya
+bri6 km
 ###################
 
