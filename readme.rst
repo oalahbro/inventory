@@ -1,4 +1,4 @@
 ###################
-klo aku kan jelas udh clear
+gweh clear jg
 ###################
 
