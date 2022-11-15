@@ -1,4 +1,4 @@
 ###################
-kalo dari pihak km ada masalah lg gmn?
+klo aku kan jelas udh clear
 ###################
 
