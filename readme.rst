@@ -1,4 +1,4 @@
 ###################
-La gimana :(
+Kuy lah pen ngobrol aku
 ###################
 
