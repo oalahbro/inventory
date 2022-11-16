@@ -1,3 +1,4 @@
 ###################
-cepat mau ngomong pnting
+Lh udh, km tc 
+Masi ngesave g
 ###################
